@@ -53,7 +53,7 @@
   と書く。
 \end{defin}
 
-表現の同値は同値関係になる。したがって表現の分類はその同値類を求めることと言い換えられる。いきなりすべての表現を考えるのは難しいのでまずは次の意味で「最も小さい表現」を考える。
+表現の同値は同値関係になる。したがって表現の分類はその同値類を求めることと言い換えられる。いきなりすべての表現を考えるのは難しいのでまずは「小さい表現」を考えたい。そのために、与えられた表現よりも小さい表現とは何かを定義する。
 
 \begin{defin}
   $(\rho,V)$を$G$の表現とする。$V$の部分空間$W$が$G$不変であるとは
@@ -119,7 +119,7 @@
   \end{itemize}
 \end{defin}
 
-  実は、有限群の複素数体上の有限次元表現は既約表現の直和に同値であることがわかる。すなわち、表現の分類を考える上では本質的に最も小さい表現、既約表現のみを考えれば良いことがわかる。
+  これらが実際に表現になっていることは容易にわかる。実は、有限群の複素数体上の有限次元表現は既約表現の直和に同値であることがわかる(系\ref{irr_decompose})。すなわち、表現の分類を考える上では本質的に最も小さい表現、既約表現のみを考えれば良いことがわかる。
 
   \begin{theo}[Maschkeの定理]\label{maschke}
     $V$を$G$の表現とする。任意の$V$の$G$不変部分空間$W$に対して、$V$の$G$不変部分空間$U$が存在し
@@ -130,7 +130,7 @@
   \end{theo}
 
   \begin{proof}
-    証明は$W$への$G$不変な射影を構成することで示される。$\map{p}{V}{W}$を$G$不変とは限らない何らかの射影とする。
+    証明のポイントは$W$への$G$不変な射影を構成することである。$\map{p}{V}{W}$を$G$不変とは限らない何らかの射影とする。
     \[
     f(x)=\frac{1}{|G|}\sum_{h\in G} hp(\inv{h}x)
     \]
@@ -161,7 +161,7 @@
   \end{proof}
 
   \begin{notice}
-    定理\ref{maschke}は標数が群の位数を互いに素な任意の体上で成立する。実際証明中で$|G|$で割るシーンがあるが、それ以外体に依存する議論はしていない。
+    定理\ref{maschke}は標数が群の位数と互いに素な任意の体上で成立する。実際証明中で$|G|$で割るシーンがあるが、それ以外体に依存する議論はしていない。
   \end{notice}
 
 \begin{cor}\label{irr_decompose}
@@ -173,15 +173,17 @@
 \end{cor}
 
 \begin{proof}
-  $V$が既約ならば示すことはない。よって$V$は可約であるとする。$V$は非自明な部分表現$V_1$をもつが、定理\ref{maschke}より部分表現$U_1$で
+  $\dim_\complex V$に関する帰納法で示す。$\dim_\complex V=1$なら$V$は既約だからよい。$\dim_\complex V>1$で$V$は可約であるとする。このとき
+  $V$は非自明な部分表現$V_1$をもつが、定理\ref{maschke}より部分表現$U_1$で
   \[
   V=V_1\oplus U_1  
   \]
-  となるものが存在する。$V_1,U_1$がどちらも既約ならこれで示されたことになるので、どちらかは可約であるとする。例えば$V_1$が可約であるとする。同じ議論で
-  \[
-  V_1=V_2\oplus U_2  
-  \]  
-  と非自明な部分表現の直和に分解でき、以下この操作を続けていくと、$V$は有限次元だからいつかは既約表現にたどりつく。
+  となるものが存在する。$\dim_\complex V_1$, $\dim_\complex U_1<\dim_\complex V$だから帰納法の仮定により、
+  \begin{align*}
+    &V_1=W_1\oplus\cdots\oplus W_{s_1},\\
+    &U_1=W_{s+1}\oplus\cdots\oplus W_{r},\qquad\text{各$W_i$は既約}
+  \end{align*}
+  と既約分解できる。したがって$V$も既約分解される。
 \end{proof}
 
 
@@ -202,9 +204,7 @@
 
 本節では
 指標の直交関係(定理\ref{char_orthogonality})
-を示すことが目標である。
-これにより、既約指標がある程度まで決定できたら、残りは機械的な計算だけで求めることができるということがわかる。また
-その系として、
+を示すことが目標である。指標は類関数と呼ばれる群上の関数になっており、類関数のなすベクトル空間に特別な内積を入れるとこの内積に関して指標が正規直交基底をなす、というのが主張である。この系として、
 \begin{itemize}
   \item 既約表現の個数は共役類の個数に等しい
   \item 既約表現の分類は既約指標の分類に帰着される
@@ -217,9 +217,9 @@
 \begin{prop}\label{char_property}
   $V_1,V_2$を$G$の表現、対応する指標を$\chi_1,\chi_2$とする。
   \begin{enumerate}
-    \item $\chi_{V_1\oplus V_2}=\chi_1+\chi_2$
-    \item $\chi_{V_1\otimes V_2}=\chi_1\chi_2$
-    \item $\chi_{V_1^*}=\overline{\chi_1}$
+    \item $\chi_{1\oplus 2}=\chi_1+\chi_2$
+    \item $\chi_{1\otimes 2}=\chi_1\chi_2$
+    \item $\chi_{1^*}=\overline{\chi_1}$
   \end{enumerate}
   が成り立つ
 \end{prop}
@@ -233,7 +233,7 @@
     \[
     \phi(x)=f_1(x)v_1+\cdots+f_n(x)v_n
     \]
-    によって$\phi\in\Hom(V,V)$を定めればこれが同型を定める。
+    によって$\phi\in\Hom(V,V)$を定めればこれが同型を与える。
     }
     $\tr:\Hom(V,V)\rightarrow \complex$は$f\otimes v\in V^*\otimes V$に対して
     \[
@@ -241,12 +241,13 @@
     \]
     で与えられることに注意する。$e_1,\cdots,e_n$を$V$の基底として$e_1^*,\cdots,e_n^*$をその双対基底とする。このとき$\rho^*(g)\in\Hom(V^*,V^*)=V\otimes V^*$は
     \begin{align*}
-    \rho^*(g)&=e_1\otimes(\rho^*(g)e_1^*)+\cdots+e_n\otimes(\rho^*(g)e_n^*)  \\
-    &=e_1\otimes(e_1^*\rho(\inv{g}))+\cdots+e_n\otimes(e_n^*\rho(\inv{g}))
+    \rho^*(g)
+    &=e_1\otimes(\rho^*(g)e_1^*)+\cdots+e_n\otimes(\rho^*(g)e_n^*)  \\
+    &=e_1\otimes(e_1^*\circ\rho(\inv{g}))+\cdots+e_n\otimes(e_n^*\circ\rho(\inv{g}))
     \end{align*}
     と表されるから
     \[
-    \tr(\rho^*(g))=e_1^*\rho(\inv{g})e_1+\cdots e_n^*\rho(\inv{g})e_n=\tr(\rho(\inv{g}))=\tr(\rho(g)^{-1})
+    \tr(\rho^*(g))=(e_1^*\circ\rho(\inv{g}))(e_1)+\cdots (e_n^*\circ\rho(\inv{g}))(e_n)=\tr(\rho(\inv{g}))=\tr(\rho(g)^{-1})
     \]
     である。$g$は有限位数だから$\rho(g)$はユニタリ行列である。よってその固有値$\lambda_1,\cdots,\lambda_n$はすべて絶対値が1なので
     \[
@@ -305,7 +306,7 @@
 
 
 \begin{lemm}\label{hom_representation}
-  $(\rho,V),(\theta,W)$を$G$の表現とする。$\rho:G\rightarrow \gl{(\Hom(V,W))}$を
+  $(\rho,V),(\theta,W)$を$G$の表現とする。$\rho:G\rightarrow \gl{\Hom(V,W)}$を
   \[
   \rho(g)(f)=\theta(g)\circ f\circ \rho(\inv{g})
   \]
@@ -332,9 +333,10 @@
   \begin{align*}
     [v^*\circ (\rho(\inv{g}))]x\cdot \theta(g)w&=\theta(g)(v^*\circ (\rho(\inv{g}))x)w\\
     &=\theta(g)(v^*\otimes w(\rho(\inv{g})))\\
-    &=(\theta(g)\circ f\circ \rho(\inv{g}))x
+    &=(\theta(g)\circ f\circ \rho(\inv{g}))x\\
+    &=\rho(g)x
   \end{align*}
-  よって命題\ref{char_property}より従う
+  指標の公式は命題\ref{char_property}より従う
 \end{proof}
 
 \begin{lemm}\label{fix_dim}
@@ -406,7 +408,7 @@
     0 & \text{otherwise}
   \end{array}\right.  
   \]
-  で定めると$\omega$は類関数であり$\omega_1,\cdots,\omega_s$は$C(G)$の基底である。よって$\dim C(G)=s$である。
+  で定めると$\omega_i$は類関数であり$\omega_1,\cdots,\omega_s$は$C(G)$の基底である。よって$\dim C(G)=s$である。
 \end{eg}
 
 \begin{defin}
@@ -459,6 +461,9 @@
   正規直交であることは定理\ref{char_orthogonality}で示されたので、基底であること、すなわち次を示せばよい：
   \begin{quote}
     $f\in C(G)$が$\generated{\chi_i,f}=0$を各$i=1,\cdots, r$に対して満たせば$f=0$である
+    \footnote{
+    一般に内積空間$V$の正規直交系$v_1,\cdots,v_n$が、「$w\in V$が$\generated{w,v_i}=0$ならば$w=0$」を満たせば$v_1,\cdots,v_n$は$V$の基底になる。実際、任意の$x\in V$に対して$w=x-(\generated{x,v_1}v_1+\cdots+\generated{x,v_n}v_n)$と置けば$\generated{w,v_i}=0$をみたすから$w=0$
+    }
   \end{quote}
   $f$が仮定をみたす類関数であるとする。各$i$について$\chi_i$を指標に持つ既約表現を$(\rho_i,V_i)$とおく。
   \[
@@ -468,11 +473,11 @@
   \[
   F_i=\sum_{g\in G}\overline{f(g)}\rho_i(g)  
   \]
-  とおけば$\tr(F)=0$である。$F$は$G$線形写像である。実際$h\in G, x\in V_i$として
+  とおけば$\tr(F_i)=0$である。$F_i$は$G$線形写像である。実際$h\in G, x\in V_i$として
   \begin{align*}
   F_i(\rho_i(h)x)&=\sum_{g\in G}\overline{f(g)}\rho_i(gh)x\\
   &=\sum_{k\in G}\overline{f(k\inv{h})}\rho_i(k)x,\qquad\text{where $k=gh$}\\
-  &=\sum_{k\in G}\overline{f(\inv{h}k)}\rho_i(k)x\\
+  &=\sum_{k\in G}\overline{f(\inv{h}k)}\rho_i(k)x,\qquad\text{$f$は類関数}\\
   &=\sum_{g\in G}\overline{f(g)}\rho_i(hg)x,\qquad\text{where $g=\inv{h}k$}\\
   &=\rho_i(h)F(x)
   \end{align*}
@@ -496,7 +501,7 @@
   \]
   よって$e$を$G$の単位元として
   \[
-  Fe=\sum_{g\in G}\overline{f(g)}g
+  0=Fe=\sum_{g\in G}\overline{f(g)}g
   \]
   $G$は一次独立だからすべての$g$について$f(g)=0$
 \end{proof}
@@ -548,8 +553,6 @@
 
 
 
-指標の直交性から2.表現の分類が指標の分類に帰着されることもわかる
-
 \begin{cor}\label{rep_and_char}
   $\rho_1,\rho_2$を$G$の表現、対応する指標を$\chi_1,\chi_2$とする。$\rho_1\simeq \rho_2$であるための必要十分条件は$\chi_1=\chi_2$が成り立つことである。
 \end{cor}
@@ -593,7 +596,7 @@
   \[
   R(g)=\tr(\theta(g))=\left\{\begin{array}{cl}
     0 & \text{if $g\neq e$}\\
-    |G| \text{if $g=e$}
+    |G| & \text{if $g=e$}
   \end{array}\right.  
   \]
   だから
@@ -621,7 +624,7 @@
   \]
   である。
 
-  $1$を自明ね表現とし、$\sgn:G\rightarrow \complex$を置換の符号とすると、$\sgn$は1次元の既約表現である。例\ref{natural}の直和因子として現れた表現を考える。すなわち$V=\complex^3$として$\map{\rho}{G}{\gl V}$を自然な置換による作用とする。このとき
+  $1$を自明な表現とし、$\sgn:G\rightarrow \complex$を置換の符号とすると、$\sgn$は1次元の既約表現である。例\ref{natural}の直和因子として現れた表現を考える。すなわち$V=\complex^3$として$\map{\rho}{G}{\gl V}$を自然な置換による作用とする。このとき
   \[
   U=\set{(a_1,a_1,a_3)}{a_1+a_2+a_3=0}  
   \]
@@ -767,7 +770,7 @@ $V$を$G$の体$K$上の表現とする。$V$は自然に$K[G]$加群の構造�
 である。環$A$を$A$加群とみなしたとき、$A$の部分加群とは$A$の左イデアルにほかならず、$A$に含まれる単純$A$加群は$A$の極小左イデアルである。単純性に関連して次の定義をする。
 
 \begin{defin}
-  $A$加群$M$が半単純であるとは、任意の$M$の部分加群が$M$の直和因子であることをいう。また、環$A$が$A$加群として半単純であるとき、$A$を半単純環という。
+  $A$加群$M$が半単純であるとは、任意の$M$の部分加群が$M$の直和因子であることをいう。また、任意の$A$加群が半単純であるとき、$A$を半単純環という。
 \end{defin}
 
 \begin{theo}[Maschkeの定理]\label{general_maschke}
@@ -914,7 +917,8 @@ $\complex$の標数は0だから定理\ref{maschke}は定理\ref{general_maschke
   \[
   V=\complex[G]\otimes_{\complex[H]}W 
   \]
-  は左$\complex[G]$加群の構造をもつ。$V$を$W$が誘導する$G$の表現といい
+  は左$\complex[G]$加群の構造をもつ\footnote{
+    ここで$\complex[G]$は右からの積で右$\complex[H]$加群とみなしていることに注意。}。$V$を$W$が誘導する$G$の表現といい
   \[
   V=\ind_H^GW  
   \]
@@ -943,7 +947,7 @@ $\complex$の標数は0だから定理\ref{maschke}は定理\ref{general_maschke
   \[
   \overline{f}(g\otimes x)=gf(x)
   \]
-  を双線形に拡張して得られる写像\footnote{ここで$\complex[G]$は右$\complex[H]$加群とみなしていることに注意。}とすれば、
+  を双線形に拡張して得られる写像とすれば、
   より、
   \[
   \overline{f}(g(\alpha\otimes x))=\overline{f}(g\alpha\otimes x)=g\alpha f(x)  =g\overline{f}(\alpha\otimes x)
@@ -996,7 +1000,7 @@ $G$の元$g$は$G/H$に左からの積で置換作用する。すなわち、各
 \[
 g\sigma_i=\sigma_j h  
 \]
-となる$h\in H$が存在する。よってこのとき、$g\sigma_iW=\sigma_jW$、とくに
+となる$\sigma_j\in R$と$h\in H$が存在する。よってこのとき、$g\sigma_iW=\sigma_jW$、とくに
 \begin{equation}\label{ind_action}
   g\sigma_ie_k=\sigma_j he_k  \quad\in\sigma_jW,\qquad \text{for all $k=1,\cdots,n$}  
 \end{equation}
