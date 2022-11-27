@@ -1,0 +1,1050 @@
+\documentclass{ltjsarticle}
+\input{../../setting.tex}
+
+\begin{document}
+
+
+
+\section{有限群の表現論}
+\subsection{既約表現とMaschkeの定理}
+
+\begin{defin}
+  $G$を群、$V$をベクトル空間とする。群準同型$\map{\rho}{G}{\gl{G}}$が与えられたとき、$(\rho,V)$を$G$の表現といい$V$を表現空間という。
+  $\rho$や$V$のことを表現ということもある。
+\end{defin} 
+
+以下、本節ではベクトル空間と言ったら複素数体$\complex$上の有限次元ベクトル空間を指すものとし、群と言ったら有限群を指すものとする。
+
+\begin{eg}
+  $G$を群、$V=\complex$とする。すべての$g\in G$に対して$\rho(g)=\id{V}$とするとこれは表現になる。これを自明な表現という
+\end{eg}
+
+\begin{eg}\label{natural}
+  $G=\mathfrak{S}_n$, $V=\complex^n$として$\sigma\in\mathfrak{S}_n$に対して
+  \[
+  \rho(\sigma)(a_1,\cdots,a_n)=(a_{\inv{\sigma}(1)},\cdots,a_{\inv{\sigma}(b)})  
+  \]
+  とするとこれは表現になる。
+\end{eg}
+
+\begin{eg}\label{regular}
+  $G$を群、$V$を$G$の元を基底にもつ自由ベクトル空間とする。$g\in G$に対して
+  \[
+  \rho(g)\sum_{x\in G}a_xx=\sum_{x\in G}a_xgx  
+  \]
+  によって定めるとこれは表現になる。これを$G$の正則表現という
+\end{eg}
+
+文脈から明らかな場合や特に明示する必要がないとき、$\rho(g)x$のことをたんに$gx$と書く。表現論の基本的な問題は、$G$の考えうるあらゆる作用を分類することである。表現の分類の基準となるのは、次の定義である。
+
+\begin{defin}
+  $(\rho_1,V_1)$, $(\rho_2,V_2)$を$G$の表現とする。線形写像$\map{\varphi}{V_1}{V_2}$が
+  \[
+  \rho_2(g)\circ\varphi=\varphi\circ\rho_1(g),\quad \text{for all $g\in G$}
+  \]
+  をみたすとき、$\varphi$を$G$線形写像という。$G$線形写像の全体を$\Hom_G(V_1,V_2)$と書く。
+\end{defin}
+
+\begin{defin}
+  $G$の表現$(\rho_1,V_1)$, $(\rho_2,V_2)$の間に同型な$G$線形写像があるとき、$(\rho_1,V_1)$と$(\rho_2,V_2)$同値な表現であるといい、
+  \[
+  \rho_1\simeq\rho_2  
+  \]
+  と書く。
+\end{defin}
+
+表現の同値は同値関係になる。したがって表現の分類はその同値類を求めることと言い換えられる。いきなりすべての表現を考えるのは難しいのでまずは次の意味で「最も小さい表現」を考える。
+
+\begin{defin}
+  $(\rho,V)$を$G$の表現とする。$V$の部分空間$W$が$G$不変であるとは
+  \[
+  \rho(g)W\subset W,\qquad \text{for all $g\in G$}  
+  \]
+  が成り立つことをいう。このとき$\map{\rho'}{G}{GL(W)}$を
+  \[
+  \rho'(g)=\rho(g)|_W  
+  \]
+  によって定義することができ、表現になる。$(\rho',W)$を$(\rho, V)$の部分表現という。定義より、すべての表現$(\rho, V)$は$0$と$V$を部分表現に持っていることに注意。これらを自明な部分表現という。
+\end{defin}
+
+\begin{defin}
+  $G$の表現$(\rho, V)$が既約であるとは、$V$が非自明な部分表現を持たないことをいう。
+\end{defin}
+
+\begin{eg}\label{ker_im}
+  $\map{f}{V}{W}$が$G$線形写像であるなら$\ker f\subset V$, $\im f\subset W$はともに$G$不変部分空間である。
+\end{eg}
+
+\begin{eg}\label{1dim_rep}
+  すべての1次元表現は既約である。実際1次元のベクトル空間$V$の部分空間は$0$と$V$のみである。
+\end{eg}
+
+\begin{eg}
+  例\ref{natural}の表現を考える。
+  \[
+  W=\set{(a_1,\cdots,a_n)\in V}{a_1+\cdots+a_n=0}  
+  \]
+  とすると、$W$は$G$不変である。
+  \[
+  v=(1,1,\cdots,1)\in V  
+  \]
+  とし$U=\generated{v}$とおくと
+  \[
+  \rho(g)v=v  
+  \]
+  だから$U$も$G$不変部分空間で、自明な表現と同値である。例\ref{1dim_rep}より$U$は既約である。
+\end{eg}
+
+与えられた表現から新しい表現を作る方法を導入しておく。
+\begin{defin}
+  $(\rho_1,V_1)$, $(\rho_2,V_2)$を$G$の表現とする。
+  \begin{itemize}
+    \item $\map{\rho_1\oplus\rho_2}{G}{GL(V_1\oplus V_2)}$を
+    \[
+    (\rho_1\oplus\rho_2)(g)(x,y)=(\rho_1(x),\rho_2(y))
+    \]
+    で定義する。これを$\rho_1$と$\rho_2$の直和という。
+
+    \item $\map{\rho_1\otimes\rho_2}{G}{GL(V_1\otimes V_2)}$を
+    \[
+    (\rho_1\otimes\rho_2)(g)(x\otimes y)=\rho_1(x)\otimes\rho_2(y)
+    \]
+    で定義する。これを$\rho_1$と$\rho_2$のテンソル積という。
+
+    \item $\map{\rho_1^*}{G}{GL(V^*)}$を
+    \[
+    \rho_1^*(g)(f)=f\circ (\rho_1(\inv{g}))
+    \]
+    で定義する。これを$\rho_1$の反傾表現という。
+  \end{itemize}
+\end{defin}
+
+  実は、有限群の複素数体上の有限次元表現は既約表現の直和に同値であることがわかる。すなわち、表現の分類を考える上では本質的に最も小さい表現、既約表現のみを考えれば良いことがわかる。
+
+  \begin{theo}[Maschkeの定理]\label{maschke}
+    $V$を$G$の表現とする。任意の$V$の$G$不変部分空間$W$に対して、$V$の$G$不変部分空間$U$が存在し
+    \[
+    V= W\oplus U
+    \]
+    がなりたつ。
+  \end{theo}
+
+  \begin{proof}
+    証明は$W$への$G$不変な射影を構成することで示される。$\map{p}{V}{W}$を$G$不変とは限らない何らかの射影とする。
+    \[
+    f(x)=\frac{1}{|G|}\sum_{h\in G} hp(\inv{h}x)
+    \]
+    と定めると、$f$は$G$線形な$W$への射影となる。実際任意の$g\in G$に対して
+    \begin{align*}
+      f(gx)&=\frac{1}{|G|}\sum_{h\in G} hp(\inv{h}gx)\\
+      &=\frac{1}{|G|}\sum_{k\in G} gkp(\inv{k}x)\qquad \text{where $k=\inv{g}h$}\\
+      &=gf(x)
+    \end{align*}
+    より$G$線形性は示された。また
+    \begin{align*}
+      f^2(x)&=f\left(\frac{1}{|G|}\sum_{g\in G}gp(\inv{g}x)\right)\\
+      &=\frac{1}{|G|^2}\sum_{g,h\in G}ghp(\inv{h}p(\inv{g}x))
+    \end{align*}
+    ここで、$\map{p}{V}{W}$は射影で$W$は$G$不変だから$p(\inv{h}p(\inv{g}x))=\inv{h}p(\inv{g}x)$ゆえに
+    \begin{align*}
+      f^2(x)=\frac{1}{|G|^2}\sum_{g,h\in G}gp(\inv{g}x)=f(x)
+    \end{align*}
+    $f(W)\subset W$であり、任意の$W$の元$x$に対して
+    \[
+    f(x)=\frac{1}{|G|}\sum_{g\in G}gp(\inv{g}x)=\frac{1}{|G|}\sum_{g\in G}g\inv{g}x=x  
+    \]
+    だから$f$は$W$への射影である。したがって
+    \[
+    V=\im f\oplus \ker f=W\oplus \ker f  
+    \]
+    が成り立つが、$f$は$G$線形なので$\ker f$は$G$不変部分空間である(例\ref{ker_im})。
+  \end{proof}
+
+  \begin{notice}
+    定理\ref{maschke}は標数が群の位数を互いに素な任意の体上で成立する。実際証明中で$|G|$で割るシーンがあるが、それ以外体に依存する議論はしていない。
+  \end{notice}
+
+\begin{cor}\label{irr_decompose}
+  $V$を$G$の表現とすると、既約表現$W_1,\cdots,W_r$が存在して
+  \[
+  V\simeq W_1\oplus\cdots\oplus W_r  
+  \]
+  が表現の同値として成り立つ。このことを$G$の表現の完全可約性という。
+\end{cor}
+
+\begin{proof}
+  $V$が既約ならば示すことはない。よって$V$は可約であるとする。$V$は非自明な部分表現$V_1$をもつが、定理\ref{maschke}より部分表現$U_1$で
+  \[
+  V=V_1\oplus U_1  
+  \]
+  となるものが存在する。$V_1,U_1$がどちらも既約ならこれで示されたことになるので、どちらかは可約であるとする。例えば$V_1$が可約であるとする。同じ議論で
+  \[
+  V_1=V_2\oplus U_2  
+  \]  
+  と非自明な部分表現の直和に分解でき、以下この操作を続けていくと、$V$は有限次元だからいつかは既約表現にたどりつく。
+\end{proof}
+
+
+
+
+
+\subsection{指標理論}
+
+次に既約表現の分類をする上で鍵となる指標の概念を導入する。
+
+\begin{defin}
+  $(\rho,V)$を$G$の表現とする。$\map{\chi_V}{G}{\complex}$を
+  \[
+  \chi_V(g)=\tr \rho(g)
+  \]
+  で定め、これを$V$の指標という。
+\end{defin}
+
+本節では
+指標の直交関係(定理\ref{char_orthogonality})
+を示すことが目標である。
+これにより、既約指標がある程度まで決定できたら、残りは機械的な計算だけで求めることができるということがわかる。また
+その系として、
+\begin{itemize}
+  \item 既約表現の個数は共役類の個数に等しい
+  \item 既約表現の分類は既約指標の分類に帰着される
+  \item 既約表現の次元に関する公式
+\end{itemize}
+といったさまざまな有用な事実が導かれる。
+
+表現の各種の演算と指標との関係を見ておく
+
+\begin{prop}\label{char_property}
+  $V_1,V_2$を$G$の表現、対応する指標を$\chi_1,\chi_2$とする。
+  \begin{enumerate}
+    \item $\chi_{V_1\oplus V_2}=\chi_1+\chi_2$
+    \item $\chi_{V_1\otimes V_2}=\chi_1\chi_2$
+    \item $\chi_{V_1^*}=\overline{\chi_1}$
+  \end{enumerate}
+  が成り立つ
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+    \item $\tr(A\oplus B)=\tr(A)+\tr(B)$より従う
+    \item $\tr(A\otimes B)=\tr(A)\tr(B)$より従う
+    \item $\Hom(V,V)= V^*\otimes V$であり
+    \footnote{$f_1\otimes v_1+\cdots+f_n\otimes v_n\in V^*\otimes V$に対して
+    \[
+    \phi(x)=f_1(x)v_1+\cdots+f_n(x)v_n
+    \]
+    によって$\phi\in\Hom(V,V)$を定めればこれが同型を定める。
+    }
+    $\tr:\Hom(V,V)\rightarrow \complex$は$f\otimes v\in V^*\otimes V$に対して
+    \[
+    \tr(f\otimes v)=f(v)
+    \]
+    で与えられることに注意する。$e_1,\cdots,e_n$を$V$の基底として$e_1^*,\cdots,e_n^*$をその双対基底とする。このとき$\rho^*(g)\in\Hom(V^*,V^*)=V\otimes V^*$は
+    \begin{align*}
+    \rho^*(g)&=e_1\otimes(\rho^*(g)e_1^*)+\cdots+e_n\otimes(\rho^*(g)e_n^*)  \\
+    &=e_1\otimes(e_1^*\rho(\inv{g}))+\cdots+e_n\otimes(e_n^*\rho(\inv{g}))
+    \end{align*}
+    と表されるから
+    \[
+    \tr(\rho^*(g))=e_1^*\rho(\inv{g})e_1+\cdots e_n^*\rho(\inv{g})e_n=\tr(\rho(\inv{g}))=\tr(\rho(g)^{-1})
+    \]
+    である。$g$は有限位数だから$\rho(g)$はユニタリ行列である。よってその固有値$\lambda_1,\cdots,\lambda_n$はすべて絶対値が1なので
+    \[
+    \tr(\inv{\rho(g)})=\frac{1}{\lambda_1}+\cdots+\frac{1}{\lambda_n}=\overline{\lambda_1}+\cdots+\overline{\lambda_n}=\overline{\tr(\rho(g))}
+    \]
+    これで示せた
+  \end{enumerate}
+\end{proof}
+
+
+
+
+指標の直交関係を示そう。まず、いくつか必要な補題を示す。
+\begin{lemm}[Schurの補題]\label{schur_lem}
+  $V$, $W$を$G$の既約表現とする。このとき
+  \[
+  \dim_\complex\Hom_G(V,W)=\left\{\begin{array}{cl}
+    1 & \text{if $V\simeq W$ as $G$-representation}\\
+    0 & \text{otherwise}
+  \end{array}\right.
+  \]
+  が成り立つ。とくに$V=W$なら$f\in\Hom_G(V,V)$はスカラー写像である。
+\end{lemm}
+
+\begin{proof}
+  先に後半の主張を示す。$\map{f}{V}{V}$を$G$線形写像とする。$f$の固有空間を$V(\lambda)$とすると、$V(\lambda)$は$G$不変である。実際、$x\in V(\lambda)$, $g\in G$に対して
+  \[
+  f(gx)=gf(x)=g(\lambda x)=\lambda gx  
+  \]
+  である。$V$は既約であり$V(\lambda)\neq 0$なので$V(\lambda)=V$よって
+  \[
+  f=\lambda\id{V}
+  \]
+  である。
+
+  前半を示そう。$V\simeq W$とし$\varphi\in\Hom_G(V,W)$を$G$同型として固定する。任意の$f\in\Hom_G(V,W)$について、$\inv{\varphi}\circ f$は$V\rightarrow V$の$G$線形写像だから前半の結果より
+  \[
+  \inv{\varphi}\circ f=\lambda\id{V}
+  \]
+  と表される。すなわち
+  \[
+  f=\lambda\varphi  
+  \]
+  である。したがって$\Hom_G(V,W)=\generated{\varphi}$となる。
+
+  $V\simneq W$の場合、$f\in\Hom_G(V,W)$について$V,W$の既約性から
+  \[
+  \ker f=0\text{または}V,\quad \im f=0\text{または}W   
+  \]
+  を得るが、$V\neq W$より$\ker f=V$, $\im f=0$すなわち$f=0$である。これで示せた。
+\end{proof}
+
+\begin{notice}
+  定理\ref{schur_lem}の証明より$f\in\Hom_G(V,W)$は$V\simeq W$なら$0$または同型、$V\simneq W$なら$f=0$であることがわかる。こちらをSchurの補題と呼ぶ場合もある。
+\end{notice}
+
+
+\begin{lemm}\label{hom_representation}
+  $(\rho,V),(\theta,W)$を$G$の表現とする。$\rho:G\rightarrow \gl{(\Hom(V,W))}$を
+  \[
+  \rho(g)(f)=\theta(g)\circ f\circ \rho(\inv{g})
+  \]
+  とするとこれは表現となり、
+  \[
+  \chi_{\Hom(V,W)}=\overline{\chi_V}\chi_W  
+  \]
+  が成り立つ
+\end{lemm}
+
+\begin{proof}
+  $\Hom(V,W)=V^*\otimes W$であることから
+  $\rho^*(g)\otimes\theta(g)=\rho(g)$が成り立つこと
+  を示せばよい。$f=v^*\otimes w\in V^*\otimes W$に対して、反傾表現およびテンソル表現の定義から
+  \begin{align*}
+    g(v^*\otimes w)=[v^*\circ (\rho(\inv{g}))]\otimes [\theta(g)w]
+  \end{align*}
+  となるが、これの定める線形写像は、$x\in V$として
+  \begin{align*}
+    ([v^*\circ (\rho(\inv{g}))]\otimes [\theta(g)w])x
+    &=[v^*\circ (\rho(\inv{g}))]x\cdot \theta(g)w
+  \end{align*}
+  である。ここで$[v^*\circ (\rho(\inv{g}))]x$はスカラーなので
+  \begin{align*}
+    [v^*\circ (\rho(\inv{g}))]x\cdot \theta(g)w&=\theta(g)(v^*\circ (\rho(\inv{g}))x)w\\
+    &=\theta(g)(v^*\otimes w(\rho(\inv{g})))\\
+    &=(\theta(g)\circ f\circ \rho(\inv{g}))x
+  \end{align*}
+  よって命題\ref{char_property}より従う
+\end{proof}
+
+\begin{lemm}\label{fix_dim}
+  $V$を$G$の表現とし、$V^G$を$G$の固定点の集合とする。すなわち
+  \[
+  V^G=\set{v\in V}{\forall g\in G,\quad gv=v}  
+  \]
+  とする。このとき$V^G$は$V$の部分空間であり
+  \[
+  \dim V^G=\frac{1}{|G|}\sum_{g\in G}\chi_V(g)
+  \]
+  が成り立つ。
+\end{lemm}
+
+\begin{proof}
+  $\map{f}{V}{V}$を
+  \[
+  f(x)=\frac{1}{|G|}\sum_{g\in G}gx
+  \]
+  で定義すると$f$は射影になる。実際、$h\in G$として
+  \begin{align*}
+    f^2(x)&=\frac{1}{|G|}\sum_{g,h\in G}ghx\\
+    &=\frac{1}{|G|}\sum_{k\in G}kx\\
+    &=f(x)
+  \end{align*}
+  である。また
+  \[
+  hf(x)=\frac{1}{|G|}\sum_{g\in G}hgx=\frac{1}{|G|}\sum_{k\in G}kx=f(x)
+  \]
+  より$\im f=V^G$である。射影のトレースは像の次元に等しいので
+  \[
+  \tr(f)=\dim \im f=V^G  
+  \]
+  だが、
+  \[
+  \tr (f)=\frac{1}{|G|}\sum_{g\in G}\chi_V(g)  
+  \]
+  よって示せた。
+\end{proof}
+
+\begin{eg}
+  $\Hom(V,W)^G=\Hom_G(V,W)$である。実際$f\in \Hom(V,W)$の条件について
+  \[
+  \theta(g)\circ f \circ \rho(\inv{g})=f\Leftrightarrow f\circ \rho(g)=\theta(g)\circ f
+  \]
+  である。
+\end{eg}
+
+
+
+
+\begin{defin}
+  関数$\map{f}{G}{\complex}$が
+  \[
+  f(\inv{g}xg)=f(x),\qquad\text{for all $g\in G$}  
+  \]
+  を満たすとき、$f$を類関数という。類関数全体を$C(G)$と置くと$C(G)$には自然に$\complex$ベクトル空間の構造が入る
+\end{defin}
+
+\begin{eg}
+  一般に$\tr(AB)=\tr(BA)$が成り立つので、表現の指標は類関数である。
+\end{eg}
+
+\begin{eg}
+  $G$の共役類を$C_1,\cdots,C_s$とし、$G$上の関数$\omega_i$を
+  \[
+  \omega_i(x)=\left\{\begin{array}{cl}
+    1 & \text{if $x\in C_i$}\\
+    0 & \text{otherwise}
+  \end{array}\right.  
+  \]
+  で定めると$\omega$は類関数であり$\omega_1,\cdots,\omega_s$は$C(G)$の基底である。よって$\dim C(G)=s$である。
+\end{eg}
+
+\begin{defin}
+  $\phi,\psi\in C(G)$に対して
+  \[
+  \generated{\phi,\psi}=\frac{1}{|G|}\sum_{g\in G}\overline{\phi(g)}\psi(g)  
+  \]
+  によって$\generated{\cdot,\cdot}:C(G)\times C(G)\rightarrow \complex$を定めると、これは$C(G)$上のHermite内積となる。$C(G)$にはいつもこの内積が入っているものとする。
+\end{defin}
+
+\begin{theo}[指標の直交関係]\label{char_orthogonality}
+  $V,W$を$G$の既約表現とする。このとき
+  \[
+  \generated{\chi_V,\chi_W}=\left\{\begin{array}{cl}
+    1 & \text{if $V\simeq W$ as $G$-representation}\\
+    0 & \text{otherwise}
+  \end{array}\right.  
+  \]
+  が成り立つ。
+\end{theo}
+
+\begin{proof}
+  補題\ref{hom_representation}と補題\ref{fix_dim}および補題\ref{schur_lem}から
+  \begin{align*}
+    \generated{\chi_v,\chi_W}&=\frac{1}{|G|}\sum_{g\in G}\overline{\chi_V(g)}\chi_W(g)\\
+    &=\frac{1}{|G|}\sum_{g\in G}\chi_{\Hom(V,W)}(g)\\
+    &=\dim \Hom(V,W)^G\\
+    &=\dim \Hom_G(V,W)\\
+    &=\left\{\begin{array}{cl}
+      1 & \text{if $V\simeq W$ as $G$-representation}\\
+      0 & \text{otherwise}
+    \end{array}\right.  
+  \end{align*}
+\end{proof}
+
+
+\begin{cor}
+  $G$の既約指標は有限個である。したがって$G$の既約表現は同値の違いを除いて有限個である。
+\end{cor}
+
+\begin{proof}
+  定理\ref{char_orthogonality}より既約指標の集合は$C(G)$で一次独立である。$C(G)$は有限次元だから、既約指標は有限でなければならない
+\end{proof}
+
+\begin{cor}\label{irr_char_is_basis}
+  $G$の既約指標$\chi_1,\cdots,\chi_r$は$C(G)$の正規直交基底をなす。したがって$r$は$G$の共役類の数に等しい。
+\end{cor}
+
+\begin{proof}
+  正規直交であることは定理\ref{char_orthogonality}で示されたので、基底であること、すなわち次を示せばよい：
+  \begin{quote}
+    $f\in C(G)$が$\generated{\chi_i,f}=0$を各$i=1,\cdots, r$に対して満たせば$f=0$である
+  \end{quote}
+  $f$が仮定をみたす類関数であるとする。各$i$について$\chi_i$を指標に持つ既約表現を$(\rho_i,V_i)$とおく。
+  \[
+  0=\generated{f,\chi_i}=\frac{1}{|G|}\sum_{g\in G}\overline{f(g)}\tr(\rho_i(g))  
+  \]
+  より、写像$\map{F_i}{V_i}{V_i}$を
+  \[
+  F_i=\sum_{g\in G}\overline{f(g)}\rho_i(g)  
+  \]
+  とおけば$\tr(F)=0$である。$F$は$G$線形写像である。実際$h\in G, x\in V_i$として
+  \begin{align*}
+  F_i(\rho_i(h)x)&=\sum_{g\in G}\overline{f(g)}\rho_i(gh)x\\
+  &=\sum_{k\in G}\overline{f(k\inv{h})}\rho_i(k)x,\qquad\text{where $k=gh$}\\
+  &=\sum_{k\in G}\overline{f(\inv{h}k)}\rho_i(k)x\\
+  &=\sum_{g\in G}\overline{f(g)}\rho_i(hg)x,\qquad\text{where $g=\inv{h}k$}\\
+  &=\rho_i(h)F(x)
+  \end{align*}
+  よって補題\ref{schur_lem}よりある$\lambda\in\complex$で
+  \[
+  F_i=\lambda\id{V}  
+  \]
+  となるが、$\tr(F_i)=0$だったから$\lambda=0$でなければならない。よって$F_i=0$であることがわかる。
+
+  次に、$\theta:G\rightarrow \complex[G]$を$G$の正則表現とする。ただし$\complex[G]$は$G$を基底に持つ自由ベクトル空間である。定理\ref{maschke}より$\theta$はいくつかの既約表現の直和に同値である。よって
+  \begin{equation}\label{theta}
+  \theta=\rho_1^{\oplus m_1}\oplus\cdots\oplus\rho_r^{\oplus m_2}  
+  \end{equation}
+  とおく。写像$F:\complex[G]\rightarrow\complex[G]$を
+  \[
+  F=\sum_{g\in G}\overline{f(g)}\theta(g)  
+  \]
+  とすれば(\ref{theta})より
+  \[
+  F=\left(\sum_{g\in G}\overline{f(g)}\rho_1(g)\right)^{\oplus m_1}\oplus\cdots\oplus  \left(\sum_{g\in G}\overline{f(g)}\rho_r(g)\right)^{\oplus m_r}=F_1^{\oplus m_1}\oplus\cdots\oplus F_r^{\oplus m_r}=0
+  \]
+  よって$e$を$G$の単位元として
+  \[
+  Fe=\sum_{g\in G}\overline{f(g)}g
+  \]
+  $G$は一次独立だからすべての$g$について$f(g)=0$
+\end{proof}
+
+\begin{cor}\label{multiplicity}
+  $\rho$を$G$の表現, $\rho_1,\cdots,\rho_r$を$G$の既約表現の同値類の完全代表系とし、それぞれの対応する指標を$\chi,\chi_1,\cdots,\chi_r$とおく。
+  \[
+  \rho=\rho_1^{\oplus m_1}\oplus\cdots\oplus\rho_r^{\oplus m_r}  
+  \]
+  とすると、
+  \[
+  m_i=\generated{\chi,\chi_i}
+  \]
+  が成り立つ。$m_i$を$\rho$の$\rho_i$に関する重複度という
+\end{cor}
+
+\begin{cor}
+  表現の既約表現への直和分解は、同値の違いを除いて一意的である。
+\end{cor}
+
+
+\begin{cor}
+  指標$\chi$が既約指標であるための必要十分条件は$\generated{\chi,\chi}=1$が成り立つことである
+\end{cor}
+
+\begin{proof}
+  必要性は明らか。十分性を示す。$\chi=m_1\chi_1+\cdots+m_r\chi_r$とおくと
+  \[
+  \generated{\chi,\chi}=1  
+  \]
+  であるならば
+  \[
+  m_1^2+\cdots+m_r^2=1  
+  \]
+  ゆえにある$i$で$\chi=\chi_i$である。
+\end{proof}
+
+\begin{cor}[Schurの補題の逆]\label{reverse_schur}
+  $V$を$G$の表現とする。$\dim_\complex\Hom_G(V,V)=1$であるならば$V$は既約表現である。
+\end{cor}
+
+\begin{proof}
+  $\chi$を$V$の指標とするとき、補題\ref{hom_representation}, 補題\ref{fix_dim}より条件は
+  \[
+  \frac{1}{|G|}\sum_{g\in G}|\chi(g)|^2=1
+  \]
+  すなわち$\generated{\chi,\chi}=1$に他ならない。
+\end{proof}
+
+
+
+指標の直交性から2.表現の分類が指標の分類に帰着されることもわかる
+
+\begin{cor}\label{rep_and_char}
+  $\rho_1,\rho_2$を$G$の表現、対応する指標を$\chi_1,\chi_2$とする。$\rho_1\simeq \rho_2$であるための必要十分条件は$\chi_1=\chi_2$が成り立つことである。
+\end{cor}
+
+\begin{proof}
+  必要性は明らか。十分性を示す。$\theta_1,\cdots, \theta_r$を$G$の既約表現の同値類の完全代表系とし、対応する指標を$\psi_1,\cdots,\psi_r$とおく。定理\ref{maschke}より
+  \begin{align*}
+    &\rho_1=\theta_1^{\oplus m^{(1)}_1}\oplus\cdots\oplus\theta_r^{\oplus m^{(1)}_r}\\
+    &\rho_2=\theta_1^{\oplus m^{(2)}_1}\oplus\cdots\oplus\theta_r^{\oplus m^{(2)}_r}
+  \end{align*}
+  と分解すれば
+  \begin{align*}
+    &\chi_1=m^{(1)}_1\psi_1+\cdots+m^{(1)}_r\psi_r\\
+    &\chi_2=m^{(2)}_1\psi_1+\cdots+m^{(2)}_r\psi_r
+  \end{align*}
+  仮定から$\chi_1=\chi_2$であり、系\ref{irr_char_is_basis}より
+  \[
+  m^{(1)}_1=m^{(2)}_1,\cdots,m^{(1)}_r=m^{(2)}_r
+  \]
+  である。よって
+  \[
+  \rho_1\simeq\rho_2  
+  \]
+\end{proof}
+
+
+\begin{prop}\label{dim_formula}
+  $W_1,\cdots,W_r$を$G$の既約表現の同値類の完全代表系とする。
+  \[
+  |G|=\dim W_1^2+\cdots +\dim W_r^2  
+  \]
+  が成り立つ
+\end{prop}
+
+\begin{proof}
+  $\theta$を$G$の正則表現とする。$\theta$の指標を$R$, $W_i$の指標を$\chi_i$とおく。系\ref{multiplicity}より$\theta$の$W_i$に関する重複度を$m_i$とおくと
+  \[
+  m_i=\generated{R,\chi_i}=\frac{1}{|G|}\sum_{g\in G}\overline{R(g)}\chi_i(g)
+  \]
+  ここで、
+  \[
+  R(g)=\tr(\theta(g))=\left\{\begin{array}{cl}
+    0 & \text{if $g\neq e$}\\
+    |G| \text{if $g=e$}
+  \end{array}\right.  
+  \]
+  だから
+  \[
+  m_i=\chi_i(e)=\dim W_i  
+  \]
+  よって
+  \[
+  R=\dim W_1\chi_1+\cdots +\dim W_r\chi_r  
+  \]
+  だから
+  \[
+  |G|=R(e)=\dim W_1^2+\cdots +\dim W_r^2  
+  \]
+\end{proof}
+
+\begin{eg}\label{S3}
+  $G=\mathfrak{S}_3$の既約指標を全て求めよう。$G$の共役類は
+  \[
+  e,\:(1,2),\:(1,2,3)  
+  \]
+  で代表される3つだから既約表現も3つある。またそれぞれの共役類の濃度は順に
+  \[
+  1,3,2  
+  \]
+  である。
+
+  $1$を自明ね表現とし、$\sgn:G\rightarrow \complex$を置換の符号とすると、$\sgn$は1次元の既約表現である。例\ref{natural}の直和因子として現れた表現を考える。すなわち$V=\complex^3$として$\map{\rho}{G}{\gl V}$を自然な置換による作用とする。このとき
+  \[
+  U=\set{(a_1,a_1,a_3)}{a_1+a_2+a_3=0}  
+  \]
+  が$V$の不変部分空間となり、
+  \[
+  \rho\simeq\rho_U\oplus 1  
+  \]
+  となるのであった。$\rho_U$が既約であることを示そう。$\rho_U$の指標を$\chi_U$とすると
+  \[
+  \chi_U(g)=\chi_V(g)-1=|\set{x\in\{1,2,3\}}{gx=x}|-1  
+  \]
+  であるから
+  \[
+  \generated{\chi_U,\chi_U}=\frac{1}{6}(1\cdot 2^2+3\cdot 0^2+2\cdot (-1)^2)=\frac{6}{6}=1 
+  \]
+  よって既約である。まとめると$G$の既約指標は次の3つである
+  \[
+  \begin{array}{c|c|c|c}
+        &\quad e\quad & (1,2) & (1,2,3) \\ \hline
+    1   &      1      &   1   &    1    \\ \hline
+  \sgn  &      1      &   -1  &    1    \\ \hline
+  \chi_U&      2      &   0   &    -1
+  \end{array}
+  \]
+\end{eg}
+
+
+
+\begin{eg}
+  $G=\mathfrak{S}_4$の既約指標を全て求めよう。$G$の共役類は
+  \[
+  e,\:(1,2),\:(1,2,3),\:(1,2,3,4),\:(1,2)(3,4)  
+  \]
+  で代表される5つだから既約指標も5つある。またそれぞれの共役類の濃度は順に
+  \[
+  1,6,8,6,3  
+  \]
+  である。
+  
+  $\mathfrak{S}_3$と同様、1次元の既約表現として$1$と$\sgn$がある。再び
+  例\ref{natural}の直和因子として現れた表現を考える。すなわち
+  \[
+  U=\set{(a_1,a_2,a_3,a_4)}{a_1+a_2+a_3+a_4=0}  
+  \]
+  への置換による作用$\rho_U$を考える。
+  $\rho_U$が既約であることを示そう。$\rho_U$の指標を$\chi_U$とすると
+  \[
+  \chi_U(g)=|\set{x\in\{1,2,3,4\}}{gx=x}|-1  
+  \]
+  であるから
+  \[
+  \generated{\chi_U,\chi_U}=\frac{1}{24}(1\cdot 3^2+6\cdot 1^2+8\cdot 0^2+6\cdot (-1)^2+3\cdot(-1)^2)=\frac{24}{24}=1 
+  \]
+  よって既約である。さらに$\sgn^2=1$より
+  \[
+  \generated{\chi_U\sgn,\chi_U\sgn}=1 
+  \]
+  であることがわかるので$\chi_U\sgn$も既約指標である。ここまでをまとめると次の表を得る。
+  \[
+    \begin{array}{c|c|c|c|c|c}
+  
+           & \quad e\quad & (1,2) & (1,2,3) & (1,2,3,4) & (1,2)(3,4)\\
+      \hline
+      1    & 1 &   1   &    1    &     1     &      1    \\
+      \hline
+      \sgn & 1 &   -1  &    1    &     -1    &      1   \\
+      \hline
+      \chi_U & 3 &   1   &    0    &     -1    &      -1  \\
+      \hline
+      \chi_U\sgn & 3 & -1 &   0    &     1    &     -1  \\
+      \hline
+      \psi       &  x_1  & x_2 & x_3 &   x_4    &     x_5     
+    \end{array}
+  \]
+  あと1つの指標$\psi$は直交関係や次元公式を用いることで具体的な作用の考察なしに求めることができる。次元公式より
+  \[
+  \psi(e)=24-(1^2+1^2+3^2+3^2)=4  
+  \]
+  ゆえに$\psi(e)=2$である。直交関係より
+  \[
+  \left\{\begin{array}{ccc}
+    6x_2+8x_3+6x_4+3x_5 & = & -2\\
+    -6x_2+8x_3-6x_4+3x_5 & = & -2\\
+    6x_2-6x_4-3x_5 & = & -6\\
+    4+6x_2^2+8x_3^2+6x_4^2+3x_5^2 &= &24
+  \end{array}\right.  
+  \]
+  これを解くと
+  \[
+    \begin{array}{c|c|c|c|c|c}
+  
+           & \quad e\quad & (1,2) & (1,2,3) & (1,2,3,4) & (1,2)(3,4)\\
+      \hline
+      1    & 1 &   1   &    1    &     1     &      1    \\
+      \hline
+      \sgn & 1 &   -1  &    1    &     -1    &      1   \\
+      \hline
+      \chi_U & 3 &   1   &    0    &     -1    &      -1  \\
+      \hline
+      \chi_U\sgn & 3 & -1 &   0    &     1    &     -1  \\
+      \hline
+      \psi       &  2  & 0 & -1 &   0 &     2     
+    \end{array}
+  \]
+\end{eg}
+
+
+
+\subsection{群環}
+
+本節では群環という代数を導入し、環上の加群論を用いた表現論に関するいくつかの命題を証明する。この節では群は依然有限群のみを考えるが、表現はかならずしも有限次元でないとする。
+
+なおここで環は、乗法単位元をもつ必ずしも可換とは限らない環を指すとする。また加群といったら考えている環上の左加群を指しているとする。
+
+\begin{defin}
+  $G$を群, $K$を体とする。$K[G]$を$G$を基底にもつ$K$上の自由ベクトル空間とし、$G$の積から自然に定まる演算で$K[G]$に積を入れる。すなわち
+  \[
+  \left(\sum_{g\in G}a_gg\right)\cdot\left(\sum_{h\in G}b_hh\right)  =\sum_{k \in G}\left(\sum_{gh=k}a_gb_h\right)k
+  \]
+  である。これによって$K[G]$は$K$上の多元環の構造をもつ。これを$G$の$K$上の群環という。
+\end{defin}
+
+$V$を$G$の体$K$上の表現とする。$V$は自然に$K[G]$加群の構造が入り、逆に$K[G]$加群は自然に$G$の表現とみなすことができる。
+
+実際、$V$を$G$の表現とするとき、$G$の作用$gx$を線形に拡張することで$V$は$K[G]$加群となる。逆に$K[G]$加群$V$は$V$への$K[G]$の作用から定まる$G$の作用によって表現となる。
+
+またこのとき、
+\begin{itemize}
+  \item 部分表現は部分加群
+  \item 表現の直和は加群の直和
+  \item 既約表現は単純加群
+  \item $G$線形写像は加群の準同型
+  \item 表現の同値は加群の同型
+\end{itemize}
+にそれぞれ対応することがわかる。ただし表現のテンソル積は$K[G]$加群としてのテンソル積ではないことに注意。$V,W$を$K[G]$加群とするとき、$V$と$W$の表現のテンソル積は$V\otimes_{K}W$に$g(x\otimes y)=gx\otimes gy$による作用を入れたものである。
+
+ここで、
+
+\begin{defin}
+  $A$を環とする。$A$加群$M$が単純であるとは、$M$が非自明な部分加群をもたないことをいう。
+\end{defin}
+
+である。環$A$を$A$加群とみなしたとき、$A$の部分加群とは$A$の左イデアルにほかならず、$A$に含まれる単純$A$加群は$A$の極小左イデアルである。単純性に関連して次の定義をする。
+
+\begin{defin}
+  $A$加群$M$が半単純であるとは、任意の$M$の部分加群が$M$の直和因子であることをいう。また、環$A$が$A$加群として半単純であるとき、$A$を半単純環という。
+\end{defin}
+
+\begin{theo}[Maschkeの定理]\label{general_maschke}
+  $K[G]$が半単純環であるための必要十分条件は、$|G|$が$p=\text{ch}\:K$で割り切れないことである。
+\end{theo}
+
+\begin{proof}
+  十分性は定理\ref{maschke}の証明とまったく同様である。必要性を示す。$|G|$が$p$がの倍数であるとする。Wedderburnの構造定理より$K[G]$のJacobson根基が0でないことを示せばよい。$K[G]$の元$m$を
+  \[
+  m=\sum_{g\in G}g  
+  \]
+  とおくと、任意の$x\in K[G]$に対して$xm=mx$であり、さらに
+  \[
+  m^2=\sum_{g,h\in G}gh=|G|m=0  
+  \]
+  だから
+  \[
+  (1-xm)(1+xm)=1-x^2m^2=1  
+  \]
+  よって$1-xm$は単元であるから$m\in\text{Jac}(K[G])$である。
+\end{proof}
+
+
+$\complex$の標数は0だから定理\ref{maschke}は定理\ref{general_maschke}の特別な場合である。しかし系\ref{irr_decompose}は一般には成り立たない。考えている表現が有限次元の場合において成り立つことに注意せよ。
+
+以下、$K=\complex$の場合を考える。命題\ref{dim_formula}の証明より、$G$の正則表現は$G$のすべての有限次元既約表現をその次元の数だけ直和因子にもっている。このことを群環のことばで述べると、$\complex[G]$は$\complex[G]$加群として極小左イデアルの直和
+\[
+\complex[G]=L_1\oplus\cdots\oplus L_s,\quad s=m_1+\cdots+m_r
+\]
+に分解でき、適当に$L_1,\cdots,L_s$を並べ替えて
+\begin{align*}
+&L_1,\cdots,L_{m_1}\simeq W_1\\
+&L_{m_1+1},\cdots,L_{m_1+m_2}\simeq W_2\\
+&\qquad \vdots\\
+&L_{m_1+\cdots+m_{r-1}+1},\cdots,L_{m_1+\cdots+m_{r-1}+m_r}\simeq W_r
+\end{align*}
+とできるということである。ここで$W_1,\cdots,W_r$は$G$の既約表現から定まる$\complex[G]$加群であり、$m_i=\dim_{\complex}W_i$である。したがって、$G$の有限次元既約表現を求めることは環$\complex[G]$の極小左イデアルを求めることと同等である。
+
+\begin{defin}
+  $A$を環とする。べき等元$e\in A$ $(e^2=e)$が原始的であるとは、
+  \[
+  e=e_1+e_2,\quad e_1^2=e_1,\quad e_2^2=e_2,\quad e_1e_2=0\implies e_1=0\text{または}e_2=0 
+  \]
+  を満たすことをいう。
+\end{defin}
+
+\begin{prop}
+  $A$を半単純環, $e\in A$を単元でないとする。$Ae$が極小左イデアルとなるための必要十分条件は$e$が原始的べき等元であることである。
+\end{prop}
+
+\begin{proof}
+  $Ae$が極小左イデアルとする。
+  \[
+    e=e_1+e_2,\quad e_1^2=e_1,\quad e_2^2=e_2,\quad e_1e_2=0
+  \]
+  となる$e_1,e_2\in A$が存在したとすると、
+  \[
+  e_1=e_1^2=e_1^2+e_1e_2=e_1e\in Ae  
+  \]
+  同様に$e_2\in Ae$である。よって$Ae$の極小性から$Ae_1=Ae\text{ or }0$, $Ae_2=Ae\text{ or }0$である。$Ae_1=Ae$であったとしよう。このとき
+  \[
+  e=ce_1,\quad c\in A  
+  \]
+  とおくことができるから
+  \[
+  e_2=e-e_1=(c-1)e_1
+  \]
+  よって
+  \[
+  e_2=e_2^2=(c-1)e_1e_2=0
+  \]
+  また$e$はべき等元なので
+  \[
+  e_1+e_2=e=(e_1+e_2)^2=e_1+-e_2e_1+e_2
+  \]
+  ゆえに$e_2e_1=0$である。したがって$Ae_2=Ae$ならば同様の議論で$e_1=0$となる。
+
+  逆に$e$が原始的べき等元であるとする。$I\subsetneq Ae$を左イデアルとする。$A$は半単純だから
+  \[
+  Ae=I\oplus J  
+  \]
+  となる左イデアル$J$が存在する。よって
+  \[
+  e=x+y
+  \]
+  となる$x\in I, y\in J$をとることができる。$x\in Ae$より
+  \[
+  x=ce,\quad c\in A  
+  \]
+  とおくと$xe=ce^2=ce=x$。これより、
+  \[
+  x=xe=x^2+xy  
+  \]
+  だが、$xy\in J$かつ$I\cap J=0$より$xy=0$。同様に$yx=0$である。したがって$x^2=x$, $y^2=y$も導かれる。$e$は原始的なので$x=0$または$y=0$が成り立つが、これより$I=0$または$J=0$が従う。
+
+  実際、$x=0$であったとして$m\in I$を$m=ae$とおけば
+  \[
+  m=a(x+y)=ay\in J  
+  \]
+  $I\cap J=0$より$m=0$
+\end{proof}
+
+したがって$G$の既約表現を求める問題は$\complex[G]$の原始的べき等元を求める問題に帰着された。具体的に原始的べき等元を見つけるのは難しいが、対称群の場合はYoung図形とのきれいな対応により構成することができる。次節にそのことを解説する。
+
+最後にべき等元$e$で$Ae$の形の加群の間の準同型について考察する。
+
+\begin{prop}\label{hom_of_cyclic_module}
+  $A$を環とする。$e,f\in A$をべき等元とするとき、Abel群の同型として
+  \[
+  \Hom_A(Ae,Af)\simeq eAf
+  \]
+  が成り立つ。
+\end{prop}
+
+\begin{proof}
+  $\phi\in\Hom_A(Ae,Af)$に対して、
+  \[
+  \phi(e)=af  
+  \]
+  とおくと、$e$はべき等元だから
+  \[
+  \phi(e)=\phi(e^2)=e\phi(e)=eaf  
+  \]
+  よって$\phi\mapsto eaf$を考えればこれが同型を与える。
+\end{proof}
+
+\begin{notice}
+  証明からわかる通り、$A$が体$K$上の多元環である場合$e$はべき等元である必要はなく、スカラー倍のずれが許容される。すなわち
+  \[
+  e^2=\lambda e,\qquad \lambda\in K
+  \]
+  となる$e$に対しても同様のことが成り立つ。
+\end{notice}
+
+
+
+
+\subsection{誘導表現}
+
+部分群の表現が与えられたとき、それを元の群に拡張する方法について解説する。
+
+\begin{defin}\label{ind_rep}
+  $G$を群、$H$を$G$の部分群とする。$W$を$H$の表現とするとき、
+  \[
+  V=\complex[G]\otimes_{\complex[H]}W 
+  \]
+  は左$\complex[G]$加群の構造をもつ。$V$を$W$が誘導する$G$の表現といい
+  \[
+  V=\ind_H^GW  
+  \]
+  と書く。
+\end{defin}
+
+誘導表現は次の普遍性で特徴づけることができる。
+
+\begin{theo}[誘導表現の普遍性]\label{univ_ind_rep}
+  $H$を群$G$の部分群、$W$を$H$の表現とする。このとき$G$の表現$V$と$H$線形写像$\map{\iota}{W}{V}$が一意的に存在して、次の性質をもつ：
+  \begin{quote}
+    任意の$G$の表現$U$と$H$線形写像$\map{f}{W}{U}$が与えられたとき、$G$線形写像$\map{\overline{f}}{V}{U}$が一意的に存在して
+    \[
+    f=\overline{f}\circ\iota  
+    \]
+    が成り立つ
+  \end{quote}
+\end{theo}
+
+\begin{proof}
+  定義\ref{ind_rep}の$V$がこの性質を持つことを示す。$\map{\iota}{W}{V}$を
+  \[
+  \iota(x)=1\otimes x  
+  \]
+  で定めれば、($\complex[H]$上のテンソル積なので)$\iota$は$H$線形写像である。$\map{f}{W}{U}$を$H$線形写像とする。$\map{\overline{f}}{V}{U}$を
+  \[
+  \overline{f}(g\otimes x)=gf(x)
+  \]
+  を双線形に拡張して得られる写像\footnote{ここで$\complex[G]$は右$\complex[H]$加群とみなしていることに注意。}とすれば、
+  より、
+  \[
+  \overline{f}(g(\alpha\otimes x))=\overline{f}(g\alpha\otimes x)=g\alpha f(x)  =g\overline{f}(\alpha\otimes x)
+  \]
+  $\overline{f}$は$G$線形写像であり$f=\overline{f}\circ \iota$を満たす。 $\overline{f}$の一意性を示す。$G$線形写像$f':W\rightarrow U$も$f=f'\circ \iota$を満たしたとする。$G$線形性から
+  \[
+  f'(g\otimes x)=gf'(1\otimes x)=gf'(\iota(x))=gf(x)=\overline{f}(g\otimes x)  
+  \]
+  である。
+
+  最後にこの性質をもつ$V$が一意的であることを示す。$G$の表現$V'$と$H$線形写像$\iota':W\rightarrow V'$がこの性質を満たしたとする。$\iota$の普遍性を用いれば、$\overline{\iota}:V\rightarrow V'$が存在して$\iota'=\overline{\iota}\circ\iota$が成り立つ。また、$\iota'$の普遍性を用いれば$\overline{\iota'}:V'\rightarrow V$が存在して$\iota=\overline{\iota'}\circ \iota'$が成り立つ。
+\[
+\xymatrix{
+  W \ar[r]^{\iota} \ar[d]_{\iota'}& 
+  V \ar@<0.5ex>@{.>}[ld]_{\overline{\iota}} \\
+  V' \ar@<0.5ex>@{.>}[ru]_{\overline{\iota'}}
+  }
+\]
+  $\overline{\iota}$, $\overline{\iota'}$が互いに逆の写像であることを示そう。$\overline{\iota'}\circ\overline{\iota}:V\rightarrow V$は$G$線形写像であり、
+  \[
+  (\overline{\iota'}\circ\overline{\iota})\circ\iota=
+  \overline{\iota'}\circ(\overline{\iota}\circ\iota)=
+  \overline{\iota'}\circ \iota'=\iota
+  \]
+  を満たす。しかし、$\id{V}\circ \iota=\iota$であるから、$\iota$の普遍性から
+  \[
+  \overline{\iota'}\circ\overline{\iota}=\id{V}
+  \]
+  でなければならない。同様に$\overline{\iota}\circ\overline{\iota'}=\id{V'}$である。
+\end{proof}
+
+定義\ref{ind_rep}は加群論的で簡単だが、どのような作用を考えているのかがわかりにくい。そこで線形代数的な誘導表現の定義もみておく。
+
+\begin{defin}\label{ind_rep_2}
+  $V$を$G$の表現、$W$を$V$の部分空間で$H$の表現であるとする。$R$を$G/H$の完全代表系とする。このとき$V$が$W$から誘導されているとは
+  \[
+  V=\bigoplus_{\sigma\in R}\sigma W  
+  \]
+  が成り立つことをいう。
+\end{defin}
+
+$\inv{\sigma}\tau\in H$ならば$\sigma W=\tau W$が成り立つのでこの定義は$R$の取り方によらない。$W$の基底を$e_1,\cdots,e_n$として、$R=\{\sigma_1,\cdots,\sigma_r\}$とすれば
+\[
+V=
+\complex\sigma_1 e_1\oplus\cdots\oplus\complex\sigma_1 e_n
+\oplus\cdots\oplus
+\complex\sigma_r e_1\oplus\cdots\oplus\complex\sigma_r e_n
+\]
+$G$の元$g$は$G/H$に左からの積で置換作用する。すなわち、各$\sigma_i$に対して、
+\[
+g\sigma_i=\sigma_j h  
+\]
+となる$h\in H$が存在する。よってこのとき、$g\sigma_iW=\sigma_jW$、とくに
+\begin{equation}\label{ind_action}
+  g\sigma_ie_k=\sigma_j he_k  \quad\in\sigma_jW,\qquad \text{for all $k=1,\cdots,n$}  
+\end{equation}
+
+となる。$g$の$V$への作用は$G/H$への置換作用と$H$の$W$への作用を組み合わせたようなものである。また式(\ref{ind_action})から次がでる。
+
+\begin{prop}[誘導表現の指標]\label{ind_char}
+  $V$が$W$から誘導されているとき、
+  \begin{align}
+  \chi_V(g)&=\sum_{\inv{\sigma_i}g\sigma_i\in H}\chi_W(\inv{\sigma_i}g\sigma_i)
+\end{align}
+が成り立つ。
+\end{prop}
+
+\begin{proof}
+  式(\ref{ind_action})より、$g$の作用の対角成分を考えるうえで$\sigma_i=\sigma_j$すなわち$i=j$となる部分だけ考えればよいことがわかる。このとき$\inv{\sigma_i}g\sigma_i\in H$であり、
+  \[
+  h=\inv{\sigma_i}g\sigma_i 
+  \]
+  であるから、あとは$h$の$W$への作用の対角成分の和をとればよいので主張が従う。
+\end{proof}
+
+定義\ref{ind_rep_2}が定義\ref{ind_rep}と一致することを確かめておく。定義\ref{ind_rep_2}の$V$が普遍性(定理\ref{univ_ind_rep})を満たすことを示せば、一意性から従う。
+
+$V=\bigoplus_{\sigma\in R}\sigma W$において、$R$として単位元$e$を含むものをとり、$W$を$eW$と同一視する。この同一視を$\iota$とすれば$\iota$は$H$線形写像である。$U$を任意の$G$の表現とし、$f:W\rightarrow U$を$H$線形写像とする。このとき$\overline{f}:V\rightarrow U$を
+\[
+\overline{f}(\sigma_i x)=\sigma_i f(x)
+\]
+によって定義すると、$\overline{f}$は$G$線形である。実際$g\in G$に対して、$g\sigma_i =\tau_j h$となる$\sigma_j\in R, h\in H$をとれば
+\[
+\overline{f}(g\sigma_i x)=\overline{f}(\sigma_j hx)=\sigma_jf(hx)=\sigma_jhf(x)=g\sigma_if(x)  
+\]
+また、
+\[
+\overline{f}\circ\iota(x)=\overline{f}(ex)=ef(x)=f(x)  
+\]
+
+
+
+\begin{eg}
+  $H$を$G$の部分群とする。$X=G/H$とし、$V$を$X$を基底に持つ自由ベクトル空間とする。$G$は$V$に置換によって作用する。
+  \[
+  W=\complex H\subset V  
+  \]
+  とすれば$W$は$H$の自明な表現であり、
+  \[
+  V=\bigoplus_{g\in G/H}gW
+  \]
+  だから$V=\ind_H^GW$である。すなわち、$H$の自明な表現から誘導される$G$の表現は$G/H$への置換表現である。
+\end{eg}
+\end{document}

@@ -1,0 +1,501 @@
+\documentclass{ltjsarticle}
+\input{../../setting.tex}
+
+
+\begin{document}
+
+\section{対称群の表現論}
+\subsection{対称群の既約表現}
+
+前節までに述べたことは有限群の表現論の一般論であり、具体的な群が与えられたときその表現を求める手法を提供しているわけではない。そこでこの節では対称群を例に取り上げ、既約表現の分類を行う。
+
+既約表現の種類は共役類の数だけあった。$\mathcal{P}_n$を大きさ$n$のYoung図形のなす集合とする。$G=\mathfrak{S}_n$の共役類と$P_n$の元は1対1に対応することが知られている。$G$の既約表現は$\mathcal{P}_n$から自然に作ることができる。
+
+
+
+\begin{defin}
+  $\lambda\in\mathcal{P}_n$の各箱に$1$から$n$の各数字を重複なく書き入れた図を形$\lambda$のタブローという。
+  $T$をタブローとし、$T$の$i$行目の箱に書かれている数字の集合を$H_i(T)$, 同様に$T$の$j$列目の箱に書かれている数字の集合を$V_j(T)$とする。
+\end{defin}
+
+\begin{defin}
+  $T$を形$\lambda=(\lambda_1,\cdots,\lambda_s)$のタブローとする。$\sigma\in\mathfrak{S}_n$に対して、$\sigma T$を各数字を$\sigma$によって置換してできるタブローとする。
+  \begin{itemize}
+    \item 各$i$に対して$H_i(\sigma T)=H_i(T)$が成り立つなら$\sigma$を$T$の水平置換という。$T$の水平置換の全体は$G$の部分群をなす。これを$\mathcal{H}_T$と書き、$T$の水平置換群という。$\mathcal{H}_T=\mathfrak{S}(H_1(T))\times\cdots\times\mathfrak{S}(H_s(T))$
+    \item 各$j$に対して$V_j(\sigma T)=H_j(T)$が成り立つなら$\sigma$を$T$の垂直置換という。$T$の垂直置換の全体は$G$の部分群をなす。これを$\mathcal{V}_T$と書き、$T$の垂直置換群という。$\mathcal{V}_T=\mathfrak{S}(V_1(T))\times\cdots\times\mathfrak{S}(V_{\lambda_1}(T))$
+  \end{itemize}
+\end{defin}
+
+\begin{eg}\label{tableau_eg}
+  形　\ydiagram{3,2}　のタブロー$T=$　
+  \begin{ytableau}
+    4&5&1\\
+    3&2
+  \end{ytableau}　に対して、
+  \begin{equation*}
+    \mathcal{H}_T=\mathfrak{S}(\{1,4,5\})\times\mathfrak{S}(\{2,3\}),\qquad \mathcal{V}_T=\mathfrak{S}(\{3,4\})\times\mathfrak{S}(\{2,5\})
+  \end{equation*}
+  である。
+\end{eg}
+
+\begin{eg}\label{canonical_tableau}
+  Young図形$\lambda=(\lambda_1,\cdots,\lambda_s)\in\mathcal{P}_n$に対して、$\lambda$の第1行に$1,2,\cdots,\lambda_1$を、$\lambda$の第2行に$\lambda_1+1,\lambda_1+2,\cdots,\lambda_1+\lambda_2$を、と続けてできるタブローを$\lambda$から定まる自然なタブローという。
+  \[
+  \text{例\ref{tableau_eg}のYoung図形の自然なタブローは　}\begin{ytableau}
+    1&2&3\\
+    4&5
+  \end{ytableau}  
+  \]
+\end{eg}
+
+水平置換$\sigma$が垂直置換でもあるならば、$\sigma$の引き起こす各$H_i(T)$の置換は恒等置換でなければならない。したがって$\sigma=e$である。よって$\mathcal{H}_T\cap\mathcal{V}_T=\{e\}$が成り立つ。また$\mathcal{H}_{gT}=g\mathcal{H}_T\inv{g}$, $mathcal{V}_{gT}=g\mathcal{V}_T\inv{g}$が成り立つ。実際
+\begin{align}
+  \sigma\in\mathcal{H}_{gT}
+  &\Leftrightarrow \sigma gT=gT\\
+  &\Leftrightarrow \inv{g}\sigma gT=T\\
+  &\Leftrightarrow \sigma\in g\mathcal{H}_T\inv{g} 
+\end{align}
+
+群環$\complex[G]$の元$a_T,b_T,c_T$を
+\[
+a_T=\sum_{\sigma\in \mathcal{H}_T}\sigma,\qquad
+b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in\mathcal{H}_T,\tau\in\mathcal{V}_T}\sgn(\tau)\sigma\tau
+\]
+によって定める。$c_T$をYoung対称子という。ここで$c_T$は$0$でないことに注意しておく。実際$c_T$の和に現れる$\sigma\tau$はすべて異なる元である。なぜならもし$\sigma\tau=\sigma'\tau'$, $\sigma,\sigma'\in\mathcal{H}_T$, $\tau,\tau'\in\mathcal{V}_T$ならば、$\mathcal{H}_T\cap\mathcal{V}_T=e$より$\sigma=\sigma'$, $\tau=\tau'$である。
+
+
+\begin{theo}\label{sym_irr_rep}
+  $\complex[G]$の左イデアル$\complex[G]c_T$は極小である。
+\end{theo}
+
+定理\ref{sym_irr_rep}の証明しよう。ポイントになるのは次の補題である。
+\begin{lemm}\label{young_symmetrizer}
+  $\alpha\in\complex[G]$が
+  \begin{itemize}
+    \item 任意の$\sigma\in\mathcal{H}_T$に対して$\sigma\alpha=\alpha$
+    \item 任意の$\tau\in\mathcal{V}_T$に対して$\alpha\tau=\sgn(\tau)\alpha$
+  \end{itemize}
+  を満たすならば、$\alpha$は$c_T$のスカラー倍である。
+\end{lemm}
+
+\begin{proof}
+  $\alpha=\sum_{g\in G}a_gg$を仮定を満たす元とする。仮定より$\sigma\in \mathcal{H}_T$に対して
+  \[
+  \alpha=\inv{\sigma}\alpha=\sum_{g\in G}a_g\inv{\sigma} g=\sum_{g\in G}a_{\sigma g}g
+  \]
+  よって
+  \begin{equation}
+    a_{\sigma g}=a_g  \label{a_sigmag}
+  \end{equation}
+  が成り立つ。また$\tau\in\mathcal{V}_T$に対しては
+  \[
+  \alpha=\sgn(\tau)\alpha\inv{\tau}=\sum_{g\in G}\sgn(\tau)a_gg\inv{\tau}=\sum_{g\in G}\sgn(\tau)a_{g\tau}{g}
+  \]
+  より
+  \begin{equation}
+    a_{g\tau}=\sgn(\tau)a_g  \label{a_gtau}
+  \end{equation}
+  が成り立つ。\ref{a_sigmag},\ref{a_gtau}より$\sigma\tau\in\mathcal{H}_T\mathcal{V}_T$に対して
+  \[
+  a_{\sigma\tau}=\sgn(\tau)a_{e}  
+  \]
+  であることがわかる。よって
+  \begin{equation}
+  g\notin\mathcal{H}_T\mathcal{V}_T\implies a_g=0 \label{lemm:coefficient_zero} 
+  \end{equation}
+  を示せば$\alpha=a_ec_T$となって証明が完了する。$g$に関する条件$g\notin\mathcal{H}_T\mathcal{V}_T$について次の補題を示す。
+  \begin{lemm}\label{lamm:117}
+    $g\in\mathfrak{S}_n$について、$T$の同じ行にある任意の数字$i,j$(ただし$i\neq j$)が$gT$では異なる列にあるならば$g\in\mathcal{H}_T\mathcal{V}_T$が成り立つ。
+  \end{lemm}
+
+  \begin{proof}
+    $T$のYoung図形$\lambda=(\lambda_1,\cdots,\lambda_r)$の高さ$r$に関する帰納法で示す。$r=1$ならば明らか。$r>1$とする。$T$の第1行にある数字に注目する。仮定から、これらは$gT$でそれぞれ異なる列に入っているので、適当に$gT$に垂直置換$\nu\in\mathcal{V}_{gT}$を施すことで$\nu gT$においても第1行に入っているようにできる。
+    \[
+    T=\quad\begin{ytableau}
+      *(yellow)7&*(yellow)8&*(yellow)2\\
+      3&5&4\\
+      1&6
+    \end{ytableau} \qquad \rightarrow \qquad
+    gT=\quad\begin{ytableau}
+      5&3&4\\
+      *(yellow)2&1&*(yellow)8\\
+      6&*(yellow)7 
+    \end{ytableau} \qquad \rightarrow \qquad
+    \nu gT=\quad\begin{ytableau}
+      *(yellow)2&*(yellow)7&*(yellow)8\\
+      5&1&4\\
+      6&3
+    \end{ytableau}
+    \]
+    よってこのとき$\nu g$は$T$の第1行への水平置換$\sigma_1$と、
+    $T$の第2行以下を取り出したタブロー$T'$への置換$g'$との積
+    \[
+    \nu g=\sigma_1g'
+    \]
+    で表される。$g'$は$T'$への置換とみなせば主張の条件をみたすから、帰納法の仮定により
+    \[
+    g'\in\mathcal{H}_{T'}\mathcal{V}_{T'}  
+    \]
+    である。$\mathcal{H}_{T'}\subset\mathcal{H}_T$, $\mathcal{V}_{T'}\subset\mathcal{V}_T$だから
+    \[
+    g' =\sigma_2\tau_2\in\mathcal{H}_T\mathcal{V}_T
+    \]
+    と書ける。ここで$\nu\in\mathcal{V}_{gT}=g\mathcal{V}_T\inv{g}$だから
+    \[
+    \nu=g\tau_3\inv{g},\qquad \tau_3\in\mathcal{V}_{T}  
+    \]
+    よって
+    \[
+    g=\sigma_1g'\inv{\tau_3}=\sigma_1\sigma_2\tau_2\inv{\tau_3}
+    \]
+    となるので示せた。
+  \end{proof}
+
+  補題\ref{young_symmetrizer}の証明に戻ろう。(\ref{lemm:coefficient_zero})を示せばよいのであった。$g\notin\mathcal{H}_T\mathcal{V}_T$であるのなら、上記の補題から$T$の同じ行になる異なる数字$i,j$であって$gT$では同じ列にあるものが存在する。よって$\sigma=(i, j)$とすれば$\sigma\in\mathcal{H}_T\cap\mathcal{V}_{gT}$である。
+  $\mathcal{V}_{gT}=g\mathcal{V}_T\inv{g}$より$\sigma=g\tau\inv{g}$とおけば(\ref{a_sigmag}), (\ref{a_gtau})より
+  \[
+  a_{g}=a_{\sigma g}=a_{g\tau}=\sgn(\tau)a_g=-a_g 
+  \]
+  よって$a_g=0$
+\end{proof}
+
+\begin{prop}\label{square_of_young_sym}
+  \[
+  c_T^2=\frac{n!}{\dim_\complex(\complex[G]c_T)}c_T  
+  \]
+  が成り立つ。
+\end{prop}
+
+\begin{proof}
+  $\sigma\in\mathcal{H}_T$, $\tau\in\mathcal{V}_T$に対して
+  \[
+  \sigma a_T=\sigma\sum_{g\in\mathcal{H}_T}g=\sum_{g\in\mathcal{H}_T}\sigma g=a_T  
+  \]
+  であり、
+  \[
+  b_T\tau=\sum_{g\in\mathcal{V}_T}\sgn(g)g\tau=\sgn{\tau}b_T  
+  \]
+  だから、補題\ref{young_symmetrizer}よりある$n_T\in\complex$で
+  \[
+  c_T^2=n_T c_T  
+  \]
+  となることはわかる。$n_T$を求めよう。準同型$\map{\phi}{\complex[G]}{\complex[G]}$を
+  \[
+  \phi(\alpha)=\alpha c_T  
+  \]
+  によって定める。任意の$g\in G$に対して、
+  \[
+  gc_T=g+\sum_{hk\in\mathcal{H}_T\mathcal{V}_T\setminus\{e\}}\sgn(k)ghk  
+  \]
+  となるから、$\phi$の対角成分はすべて$1$である。よって
+  \[
+  \tr\phi=\dim_\complex\complex[G]=n!  
+  \]
+  である。$\complex[G]$は半単純だから、
+  \[
+  \complex[G]=\complex[G]c_T\oplus W  
+  \]
+  となる左イデアル$W$をとる。すると
+  \[
+  \complex[G]c_T=\complex[G]c_T^2\oplus Wc_T=\complex[G]c_T\oplus Wc_T 
+  \]
+  より$Wc_T=0$である。したがって、
+  \begin{align*}
+    &\phi(\complex[G]c_T)\subset \complex[G]c_T\\
+    &\phi(W)=0
+  \end{align*}
+  となることがわかる。よって
+  \[
+  \tr\phi=\tr\phi|_{\complex[G]c_T}  
+  \]
+  である。$\alpha\in\complex[G]$に対して
+  \[
+  \phi(\alpha c_T)=\alpha\phi(c_T)=n_T\alpha c_T
+  \]
+  だから、$\complex[G]c_T$は$\phi$の固有値$n_T$の固有空間の部分空間である。
+  \[
+  \tr\phi|_{\complex[G]c_T}=n_T\dim_\complex\complex[G]c_T 
+  \]
+  $c_T\neq 0$だから$\dim_\complex\complex[G]c_T\neq 0$,
+  よって
+  \[
+  n_T=\frac{n!}{\dim_\complex\complex[G]c_T}  
+  \]
+\end{proof}
+
+定理\ref{sym_irr_rep}の証明を述べる
+
+\begin{proof}
+  定理\ref{reverse_schur}より
+  \[
+  \dim_\complex\Hom(\complex[G]c_T,\complex[G]c_T)=1  
+  \]
+  を示せばよい。命題\ref{young_symmetrizer}より$c_T$は適当にスカラー倍してべき等元になる。よって命題\ref{hom_of_cyclic_module}より
+  \[
+  \Hom(\complex[G]c_T,\complex[G]c_T)=c_T\complex[G]c_T  
+  \]
+  である。任意の$c_T\alpha c_T\in c_T\complex[G]c_T$は補題\ref{young_symmetrizer}の仮定をみたすので
+  \[
+    c_T\alpha c_T=\mu c_T,\qquad\mu\in\complex
+  \]
+  と書ける。よって$\dim_\complex c_T\complex[G]c_T=1$である。
+\end{proof}
+
+
+\begin{prop}\label{reverse_young_sym}
+  $b_T a_T=\tilde{c_T}$とおくと、$\complex[G]\tilde{c_T}\simeq \complex[G]c_T$が成り立つ。
+\end{prop}
+
+\begin{proof}
+  $\map{\phi}{\complex[G]a_Tb_T}{\complex[G]b_Ta_T}$を
+  \[
+  \phi(xa_Tb_T)=xa_Tb_Ta_T  
+  \]
+  $\map{\psi}{\complex[G]b_Ta_T}{\complex[G]a_Tb_T}$を
+  \[
+  \psi(xb_Ta_T)=xb_Ta_Tb_T  
+  \]
+  とすれば
+  \[
+  \psi(\phi(xa_Tb_T))=\psi(xa_Tb_Ta_T)=xa_Tb_Ta_Tb_T=n_Txa_Tb_T  
+  \]
+  よって$\psi\circ\phi$は0でないスカラー倍写像なので$\phi$は単射、$\psi$は全射である。命題\ref{square_of_young_sym}とまったく同様に$\tilde{c_T}^2=\tilde{n_T}\tilde{c_T}$となる0でないスカラー$\tilde{n_T}$が存在することがわかる。よって$\phi$は同型である。
+\end{proof}
+
+
+\begin{prop}
+  $\lambda\in\mathcal{P}_n$とする。$T,U$を$\lambda$に書かれたタブローとすると$\complex[G]c_T\simeq \complex[G]c_U$である。
+\end{prop}
+
+\begin{proof}
+  このときある$g\in G$が存在して$U=gT$となるから、
+  \[
+  \mathcal{H}_U=g\mathcal{H}_T\inv{g},\qquad \mathcal{V}_U=g\mathcal{V}_T\inv{g}  
+  \]
+  よって
+  \[
+  c_U=a_Ub_U=ga_T\inv{g}gb_T\inv{g}=gc_T\inv{g}  
+  \]
+  である。
+  \[
+  \complex[G]c_U=\complex[G]gc_T\inv{g}=\complex[G]c_T\inv{g}  
+  \]
+  だから、
+  \[
+  \complex[G]c_T\simeq \complex[G]c_T\inv{g}  
+  \]
+  を示せばよい。$\map{\phi}{\complex[G]c_T}{\complex[G]c_T\inv{g}}$を
+  \[
+  \phi(\alpha c_T)=\alpha c_T\inv{g}  
+  \]
+  と置けば$\phi$は左$\complex[G]$加群の準同型で、$g$を右から書ける準同型が逆写像を与えるので、同型である。
+\end{proof}
+
+
+したがって、同じYoung図形に対しては$\complex[G]c_T$はタブロー$T$の取り方によらず同型である。そこで$\lambda\in\mathcal{P}_n$に対して、$\lambda$の自然なタブロー(例\ref{canonical_tableau})から定まるYoung対称子を$c_\lambda$とし、$V_\lambda=\complex[G]c_\lambda$とおく。
+
+
+
+
+
+次の定理を証明することで、既約表現の分類は完成する。
+
+\begin{theo}\label{young_and_irr_rep}
+  $\lambda,\mu\in\mathcal{P}_n$とする。
+  \[
+  V_\lambda\simeq V_\mu 
+  \]
+  となるための必要十分条件は$\lambda=\mu$である
+\end{theo}
+
+\begin{proof}
+  十分性は明らか。必要性を示す。$\lambda\neq\mu$であるとする。$V_\lambda, V_\mu$は既約表現なので、Schurの補題(補題\ref{schur_lem})より、
+  \[
+  \dim_\complex\Hom(V_\lambda,V_\mu)=0  
+  \]
+  を証明すればよいが、命題\ref{hom_of_cyclic_module}より、
+  \[
+  \Hom(V_\lambda,V_\mu)=c_\lambda\complex[G]c_\mu
+  \]
+  ゆえに、すべての$g\in G$に対して
+  \[
+  c_\lambda gc_\mu  =a_\lambda b_\lambda g a_\mu b_\mu = 0
+  \]
+  が成り立つことを示す。次の補題を示す。
+  \begin{lemm}
+    $\mathcal{P}_n$に辞書式順序を入れ、$\lambda < \mu$であるとする。$\lambda, \mu$でその自然なタブローを表すものとする。このとき任意の$g\in G$に対して、$\mu$の同じ行にある数字$i,j$であって$g\lambda$では同じ列にあるものが存在する。
+  \end{lemm}
+
+  \begin{proof}
+    $\lambda=(\lambda_1,\cdots,\lambda_s)$, $\mu=(\mu_1,\cdots,\mu_t)$とおく。$t$についての帰納法で示す。
+
+    $t=1$の場合$\lambda_1<\mu_1$となるから、$\lambda$の列数は$\mu_1$より少ない。よって鳩の巣原理$1,2,\cdots,\mu_1$のうち、$g\lambda$の同じ列に存在あるペアが必ず存在する。
+
+    $t>1$とする。$\lambda_1<\mu_1$である場合はまったく同様に鳩の巣原理から従う。$\lambda_1=\mu_1$かつ、$1,2,\cdots,\mu_1$が$g\lambda$ではすべて異なる列に存在するとする。このとき垂直置換$\tau\in\mathcal{V}_{g\lambda}$を施して
+    \[
+    H_1(\mu)=H_1(\tau g\lambda)=\{1,2,\cdots,\mu_1\}  
+    \]
+    が成り立つようにできる。そこで、$\mu$, $\tau g\lambda$の2行目以降をとりだしたタブロー$\mu'$, $(\tau g\lambda)'$を考える。すると$(\tau g\lambda)'<\mu'$であるから帰納法の仮定により$\mu'$の同じ行にある数字$i,j$であって$(\tau g\lambda)'$では同じ列にあるものが存在する。$i,j$が$(\tau g\lambda)'$の第$m$列にあるとする。$\tau$は垂直置換だから
+    \[
+    V_m(\tau g\lambda)=V_m(g\lambda)
+    \]
+    よって$i,j$は$g\lambda$の同じ列に存在する。
+  \end{proof}
+
+  定理\ref{young_and_irr_rep}の証明に戻る。補題から、$\nu=(i,j)$であって$\nu\in \mathcal{H}_\mu\cap\mathcal{V}_{\inv{g}\lambda}$となるものが存在する。よって
+  \[
+  \nu=\inv{g}\pi g,\qquad \pi\in \mathcal{V}_{\lambda}
+  \]
+  とおけば
+  \begin{align*}
+    c_\lambda g c_\mu
+    &=a_\lambda b_\lambda g a_\mu b_\mu\\
+    &=a_\lambda b_\lambda \sgn(\pi)\pi g a_\mu b_\mu\\
+    &=a_\lambda b_\lambda \sgn(\pi)g\nu a_\mu b_\mu\\
+    &=\sgn(\pi)a_\lambda b_\lambda g a_\mu b_\mu\\
+    &=-c_\lambda g c_\mu
+  \end{align*}
+  よって
+  \[
+    c_\lambda g c_\mu=0
+  \]
+\end{proof}
+
+
+\begin{eg}
+  $\lambda=(n),\mu=(1,1,\cdots,1)\in\mathcal{P}_n$とする。このとき$\mathcal{H}_\lambda=\mathfrak{S}_n$, $\mathcal{V}_\lambda=e$だから、
+  \[
+  c_\lambda=\sum_{\sigma\in\mathfrak{S}_n}\sigma  
+  \]
+  また$\mathcal{H}_\mu=e$, $\mathcal{V}_\mu=\mathfrak{S}_n$だから、
+  \[
+  c_\mu=\sum_{\sigma\in\mathfrak{S}_n}\sgn(\sigma)\sigma  
+  \]
+  したがって$\lambda$の定める既約表現は自明な表現$1$であり、$\mu$の定める既約表現は置換の符号$\sgn$であるとわかる。
+\end{eg}
+
+
+
+\begin{eg}
+  $G=\mathfrak{S}_3$とする。
+  \[
+  \lambda=\quad\ydiagram{2,1}  
+  \]
+  に対応するYoung対称子は
+  \[
+  c_\lambda=(e+(1,2))(e-(1,3))=e+(1,2)-(1,3)-(1,3,2)
+  \]
+  である。$c_\lambda$の定める既約表現が、例\ref{S3}で求めた既約表現$U$と一致することをたしかめる。
+  \[
+  c_\lambda^2=3c_\lambda  
+  \]
+  となるから、命題\ref{square_of_young_sym}より
+  \[
+  \dim_\complex\complex[G]c_\lambda=2  
+  \]
+  である。
+  \[
+  v=c_\lambda, \qquad u=(1,2,3)c_\lambda=-e+(1,3)-(2,3)+(1,2,3)
+  \]
+  とすれば、$\complex[G]c_\lambda=\complex v\oplus\complex v$であり、
+  \begin{align*}
+    &(1,2)v=v,\qquad (1,2)u=-v-u\\
+    &(1,2,3)v=u,\qquad (1,2,3)u=-v-u
+  \end{align*}
+  だから、
+  \begin{align*}
+  &\tr e=\dim_\complex\complex[G]c_\lambda=2  \\
+  &\tr(1,2)=0\\
+  &\tr(1,2,3)=-1 
+  \end{align*}
+  となり、指標が一致している。
+\end{eg}
+
+
+
+\begin{lemm}\label{tensor_with_sgn_rep}
+  $\map{\phi}{\complex[G]}{\complex[G]}$を
+  \[
+  \phi(g)=\sgn(g)g  
+  \]
+  を線形に拡張して定める。$\phi$は環準同型であり、対合である。$\varepsilon\in\complex[G]$に対して
+  \[
+  \complex[G]\varepsilon\otimes_\complex \complex_{\sgn}\simeq \complex[G]\phi(\varepsilon)
+  \]
+  が成り立つ。ここで、$\complex_{\sgn}$は$\complex_{\sgn}=\complex$であり、
+  \[
+  g\cdot\lambda=\sgn(g)\lambda,\qquad g\in G,\lambda\in\complex
+  \]
+  で定まる$\complex[G]$加群である（すなわち$\sgn$表現）。
+\end{lemm}
+
+\begin{proof}
+  $\map{f}{\complex[G]\phi(\varepsilon)}{\complex[G]\varepsilon\otimes_\complex \complex_{\sgn}}$を
+  \[
+  f(x)=\phi(x)\otimes 1  
+  \]
+  で定めれば$g\in G$として
+  \begin{align*}
+    gf(x)
+    &=g(\phi(x)\otimes 1)\\
+    &=g\phi(x)\otimes \sgn(g)\\
+    &=\sgn(g)g\phi(x)\otimes 1\\
+    &=\phi(gx)\otimes 1\\
+    &=f(gx)
+  \end{align*}
+  より$\complex[G]$加群の準同型である。任意の$y\otimes 1\in \complex[G]\varepsilon\otimes_\complex \complex_{\sgn}$に対して
+  \[
+  f(\phi(y))=y\otimes 1  
+  \]
+  となり、$\complex[G]\varepsilon\otimes_\complex \complex_{\sgn}$は$y\otimes 1$の形の元で生成されるから、$f$は全射である。
+  \[
+  \dim_\complex\complex[G]\varepsilon\otimes_\complex \complex_{\sgn}=\dim_\complex\complex[G]\varepsilon\cdot\dim_\complex\complex_{\sgn}=  \dim_\complex\complex[G]\varepsilon 
+  \]
+  より$f$は同型。
+\end{proof}
+
+
+\begin{eg}
+  $\lambda\in\mathcal{P}_n$に対して、$\lambda$の行と列を反転させたものを双対Young図形といい$\lambda^*$と書く。
+  \[
+  \lambda=\quad\ydiagram{5,2,2}\quad\rightarrow\quad\lambda^*\quad=\ydiagram{3,3,1,1,1}
+  \]
+  このとき
+  \[
+  \complex[G]_{c_\lambda}\otimes_\complex\complex_{\sgn}\simeq \complex[G]_{c_{\lambda^*}}
+  \]
+  となることを示す。定義より、
+  \[
+  \mathcal{H}_{\lambda^*}=\mathcal{V}_{\lambda},\qquad
+  \mathcal{V}_{\lambda^*}=\mathcal{H}_{\lambda}  
+  \]
+  であるから、
+  \[
+  a_{\lambda^*}=\phi(b_{\lambda}),\qquad b_{\lambda^*}=\phi(a_{\lambda})
+  \]
+  したがって
+  \[
+  c_{\lambda^*}=\phi(b_\lambda)\phi(a_\lambda)=\phi(b_\lambda a_\lambda)=\phi(\tilde{c_\lambda})  
+  \]
+  である。命題\ref{reverse_young_sym}より、
+  \[
+  \complex[G]c_\lambda\simeq \complex[G]\tilde{c_\lambda}  
+  \]
+  であるから、補題\ref{tensor_with_sgn_rep}より、
+  \[
+  \complex[G]c_{\lambda^*}\simeq \complex[G]c_\lambda\otimes_\complex\complex_{\sgn}  
+  \]
+\end{eg}
+
+
+\subsection{対称群の表現環と対称関数環}
+
+\begin{defin}
+  
+\end{defin}
+
+
+
+
+
+\end{document}

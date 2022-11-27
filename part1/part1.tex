@@ -1,0 +1,815 @@
+\documentclass{ltjsarticle}
+\input{../setting.tex}
+
+
+\begin{document}
+\part{Schur多項式}
+\section{Schur多項式}
+\subsection{対称多項式と交代多項式}
+\begin{defin}
+    $n$変数多項式$f\in\complex[x_1,\cdots,x_n]$が対称多項式であるとは、任意の置換$\sigma\in\mathfrak{S}_n$に対して$\sigma f:=f(x_{\sigma(1)},\cdots,x_{\sigma(n)})=f(x_1,\cdots,x_n)$が成り立つことをいう。対称多項式全体のなす$\complex[x_1,\cdots,x_n]$の部分集合を$\complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}$と書く。
+    $f$が交代多項式であるとは、任意の置換$\sigma$に対して$\sigma f:=f(x_{\sigma(1)},\cdots,x_{\sigma(n)})=\sgn(\sigma)f(x_1,\cdots,x_n)$が成り立つことをいう。ただし$\sgn$は置換の符号である。
+\end{defin}
+
+\begin{eg}
+    $xy, x+y, x^2+y^2$はいずれも$\complex[x,y]$の対称多項式であり、$x-y$は交代多項式である。$xy^2$, $x+2y$などは対称でも交代でもない
+\end{eg}
+
+\begin{prop}
+    $\complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}$は$\complex[x_1,\cdots,x_n]$の部分環をなす
+\end{prop}
+
+\begin{proof}
+    $f,g\in\complex[x_1,\cdots,x_n]$, $\sigma\in\mathfrak{S}_n$に対して
+    \[
+    \sigma(f+g)=\sigma f+\sigma g,\qquad \sigma(f\cdot g)=\sigma f\cdot \sigma g    
+    \]
+    が成り立つことから従う。
+\end{proof}
+
+\begin{defin}
+    $e_k, h_k\in\complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}$を次のように定め、それぞれ基本対称式, 完全対称式という。
+    \begin{align*}
+        &e_k=\sum_{1\leq i_1<i_2<\cdots<i_k\leq n}x_{i_1}x_{i_2}\cdots x_{i_k}\\
+        &h_k=\sum_{1\leq i_1\leq i_2\leq\cdots\leq i_k\leq n}x_{i_1}x_{i_2}\cdots x_{i_k}
+    \end{align*}
+\end{defin}
+
+\begin{eg}
+    $n$変数の場合
+    \begin{align*}
+        &e_1=x_1+\cdots+x_n,\quad e_2=x_1x_2+x_1x_3+\cdots,\quad e_n=x_1x_2\cdots x_n\\
+        &h_1=x_1+\cdots+x_n,\quad h_2=x_1^2+x_1x_2+\cdots, \quad h_n=x_1^n+x_1^{n-1}x_2+\cdots\\
+        &h_{n+1}=x_1^{n+1}+x_1^nx_2+\cdots
+    \end{align*}
+\end{eg}
+
+
+$n$変数の基本対称式は$e_1,\cdots, e_n$だけだが、完全対称式は無限に存在することに注意。
+また、基本対称式については次の基本的な事実が知られている。
+
+\begin{theo}[対称式の基本定理]\label{FT_of_sym}
+    任意の対称多項式は基本対称式の多項式で表される。すなわち
+    \[
+    \complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}=\complex[e_1,\cdots, e_n]
+    \]
+    が成り立つ。
+\end{theo}
+
+\begin{proof}
+    対称多項式
+    \[
+    f(x_1,\cdots,x_n)=\sum_{i_1,\cdots,i_n}c_{i_1,\cdots,i_n}x_1^{i_1}\cdots x_n^{i_n}
+    \]
+    について、任意の置換$\sigma\in\mathfrak{S}_n$に対して
+    \begin{align*}
+        f(x_1,\cdots,x_m)&=f(x_{\sigma(1)},\cdots,x_{\sigma(n)})\\
+        &=\sum_{i_1,\cdots,i_n}c_{i_1,\cdots,i_n}x_{\sigma(1)}^{i_1}\cdots x_{\sigma(n)}^{i_n}\\
+        &=\sum_{i_1,\cdots,i_n}c_{i_1,\cdots,i_n}x_1^{i_{\inv{\sigma}(1)}}\cdots x_n^{i_{\inv{\sigma}(n)}}\\
+        &=\sum_{i_1,\cdots,i_n}c_{i_{\sigma(1)},\cdots,i_{\sigma(n)}}x_1^{i_1}\cdots x_n^{i_n}
+    \end{align*}
+    よって
+    \[
+        c_{i_1,\cdots,i_n}=c_{i_{\sigma(1)},\cdots,i_{\sigma(n)}}
+    \]
+    がなりたつ。これにより$f$は
+    \begin{equation}
+        \sum_{\sigma\in\mathfrak{S}_n}x_{\sigma(1)}^{i_1}\cdots x_{\sigma(n)}^{i_n}
+    \end{equation}
+    の形の対称多項式の線形結合であることがわかるから、この形の多項式について主張を示せばよい。適当に並べ替えて$(i_1,\cdots,i_n)$は単調減少であると仮定してよい。$d=i_1+\cdots+i_n$とし、
+    \[
+        \mathcal{I}=\set{(j_1,\cdots,j_n)\in\integer_{\geq 0}^n}{j_1+\cdots+j_n=d}
+    \]
+    とし、$\mathcal{I}$に辞書式順序を入れておく。このとき
+    \[
+        g(x_1,\cdots,x_n)=\sum_{\sigma\in\mathfrak{S}_n}x_{\sigma(1)}^{i_1}\cdots x_{\sigma(n)}^{i_n}-e_n^{i_n}e_{n-1}^{i_{n-1}-i_n}\cdots e_2^{i_2-i_3}e_1^{i_1-i_2} 
+    \]
+    とおく。$g$は$d$次斉次項式で、$g$に現れる単項式の指数（それは$\mathcal{I}$の元である）を考えたとき、それはすべて$(i_1,\cdots,i_n)$より真に小さい。$\mathcal{I}$は有限集合なので帰納法により主張が従う。
+\end{proof}
+
+\begin{eg}
+    完全対称式は対称多項式なので定理\ref{FT_of_sym}より基本対称式の多項式である。実際
+    \begin{align*}
+        &h_1=e_1\\
+        &h_2=e_1^2-e_2\\
+        &h_3=e_1^3+e_3-2e_1e_2
+    \end{align*}
+    一般に
+    \[
+    h_k=\vmat{e_1&e_2&e_3&\cdots&e_k\\
+              1&e_1&e_2&\cdots&e_{k-1}\\
+              0&1&e_1&\cdots&e_{k-2}\\
+              \vdots&\vdots&\vdots&\ddots&\vdots&\\
+              0&0&0&\cdots&e_1}
+    \]
+    が成り立つことがわかる。
+\end{eg}
+
+\begin{defin}
+    $\alpha=(a_1,\cdots,a_n)$, $a_k\in\integer_{\geq 0}$に対して多項式$A_\alpha\in\complex[x_1,\cdots,x_n]$を
+    \[
+        A_\alpha=\det((x_i^{a_j}))
+    \]
+    によって定める。行列式の交代性から、$A_\alpha$は交代多項式である。よって、$\alpha$に重複があるなら$A_\alpha=0$となる。
+\end{defin}
+
+\begin{eg}
+    $\delta=(n-1,n-2,\cdots,1,0)$のとき
+    \[
+        A_\delta=\vmat{x_1^{n-1}&x_1^{n-2}&\cdots&x_1&1\\
+                       x_2^{n-1}&x_2^{n-2}&\cdots&x_2&1\\
+                       \vdots&\vdots&\ddots&\vdots&\vdots\\
+                       x_n^{n-1}&x_n^{n-2}&\cdots&x_n&1}
+    \]
+    はVandermonde行列式に他ならない。したがって
+    \[
+    A_\delta=\prod_{i<j}(x_i-x_j)    
+    \]
+\end{eg}
+
+\begin{prop}\label{alter_poly}
+    任意の交代多項式は$A_\delta$で割り切れる
+\end{prop}
+
+\begin{proof}
+    $f\in\complex[x_1,\cdots,x_n]$を交代多項式とする。交代性から$i<j$のとき$f$は$x_i$に$x_j$を代入すると$0$になる。よって$f$は$x_i-x_j$で割り切れる。$x_i-x_j$は既約多項式であり、$(i,j)$, $(k,l)$が異なるならば$x_i-x_j$, $x_k-x_l$は互いに素である。$\complex[x_1,\cdots,x_n]$はUFDであるので$f$は$A_\delta$で割り切れる。
+\end{proof}
+
+
+\subsection{Schur多項式}
+
+\begin{defin}[Schur多項式]
+    $\alpha=(a_1,\cdots,a_n)$, $a_1>\cdots> a_n\geq 0$に対して
+    \[
+    s_\alpha=\frac{A_\alpha}{A_\delta}  
+    \]
+    をSchur多項式という。
+\end{defin}
+
+
+命題\ref{alter_poly}より、$A_\alpha$は$A_\delta$で割り切れるので$s_\alpha$は多項式である。また任意の置換$\sigma\in\mathfrak{S}_n$に対して
+\[
+    \sigma s_\alpha=\frac{\sigma A_\alpha}{\sigma A_\delta}=\frac{\sgn (\sigma)A_\alpha}{\sgn (\sigma)A_\delta}=s_\alpha    
+\]
+となるからSchur多項式は対称多項式である。
+
+\begin{eg}
+    $\alpha=(4,2,0)$とする。
+    \begin{align*}
+        s_\alpha=\frac{\vmat{x_1^4&x_1^2&1\\
+                             x_2^4&x_2^2&1\\
+                             x_3^4&x_3^2&1}}
+                      {\vmat{x_1^2&x_1^1&1\\
+                             x_2^2&x_2^1&1\\
+                             x_3^2&x_3^1&1}}
+                &=\frac{(x_1^2-x_2^2)(x_1^2-x_3^2)(x_2^2-x_3^2)}{(x_1-x_2)(x_1-x_3)(x_2-x_3)}\\
+                &=(x_1+x_2)(x_1+x_3)(x_2+x_3)\\
+                &=(x_1+x_2+x_3)(x_1x_2+x_2x_3+x_1x_3)=e_1e_2
+    \end{align*}
+\end{eg}
+
+
+Schur多項式について重要な命題が次の定理である。
+
+\begin{theo}\label{schur}
+    $n>0$を整数とする。Schur多項式の集合$\set{s_\alpha}{\alpha=(a_1,\cdots,a_n), a_1> \cdots> a_n\geq 0}$は対称多項式のなす環$\complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}$の基底をなす
+\end{theo}
+
+\begin{proof}
+    次の補題を示す。
+    \begin{lemm}
+        $\mathcal{S}=\set{(a_1,\cdots,a_n)}{a_1>\cdots>a_n\geq 0}$とする。交代多項式全体のなすベクトル空間は$\{A_\alpha\}_{\alpha\in\mathcal{S}}$を基底にもつ
+    \end{lemm}
+    \begin{proof}
+        $f(x_1,\cdots,x_n)$を交代多項式とする。
+        \[
+        f(x_1,\cdots,x_n)=\sum_{i_1,\cdots,i_n}c_{i_1,\cdots,i_n}x_1^{i_1}\cdots x_n^{i_n}    
+        \]
+        とおく。任意の置換$\sigma\in\mathfrak{S}_n$に対して
+        \begin{align*}
+            f(x_1,\cdots,x_n)&=\sgn(\sigma)f(x_{\sigma(1)},\cdots,x_{\sigma(n)})\\
+            &=\sum_{i_1,\cdots,i_n}\sgn(\sigma)c_{i_1,\cdots,i_n}x_{\sigma(1)}^{i_1}\cdots x_{\sigma(n)}^{i_n}\\
+            &=\sum_{i_1,\cdots,i_n}\sgn(\sigma)c_{i_{\sigma(1)},\cdots,i_{\sigma(n)}}x_1^{i_1}\cdots x_n^{i_n}
+        \end{align*}
+        がなりたつ。よって
+        \begin{equation}
+            \sgn(\sigma)c_{i_{\sigma(1)},\cdots,i_{\sigma(n)}}=c_{i_1,\cdots,i_n}
+        \end{equation}
+        これにより、$(i_1,\cdots,i_n)$に重複がある場合
+        \[
+        c_{i_1,\cdots,i_n}=0
+        \]
+        であることがわかる。よって
+        \[
+        f(x_1,\cdots,x_n)=\sum_{(i_1,\cdots,i_n)\in\mathcal{S}}\sum_{\sigma\in\mathfrak{S}_n}c_{i_{\sigma(1)},\cdots,i_{\sigma(n)}}x_1^{i_{\sigma(1)}}\cdots x_n^{i_\sigma(n)}    
+        \]
+        と書くことができる。再び(2)より
+        \begin{align*}
+        f(x_1,\cdots,x_n)
+        &=\sum_{(i_1,\cdots,i_n)\in\mathcal{S}}\sum_{\sigma\in\mathfrak{S}_n}c_{i_{\sigma(1)},\cdots,i_{\sigma(n)}}x_1^{i_{\sigma(1)}}\cdots x_n^{i_\sigma(n)}\\
+        &=\sum_{(i_1,\cdots,i_n)\in\mathcal{S}}\sum_{\sigma\in\mathfrak{S}_n}\sgn(\sigma)c_{i_1,\cdots,i_n}x_1^{i_{\sigma(1)}}\cdots x_n^{i_\sigma(n)}\\
+        &=\sum_{(i_1,\cdots,i_n)\in\mathcal{S}}c_{i_1,\cdots,i_n}\sum_{\sigma\in\mathfrak{S}_n}\sgn(\sigma)x_1^{i_{\sigma(1)}}\cdots x_n^{i_\sigma(n)}\\
+        &=\sum_{(i_1,\cdots,i_n)\in\mathcal{S}}c_{i_1,\cdots,i_n}A_{(i_1,\cdots,i_n)}
+        \end{align*}
+        $\{A_\alpha\}_{\alpha\in\mathcal{S}}$が一次独立であることは$\alpha\neq\beta$ならば$A_\alpha$と$A_\beta$は異なる単項式を含むことからわかる。
+    \end{proof}
+
+    定理の証明に戻る。$f$が対称多項式ならば$fA_\delta$は交代多項式であるから、補題により
+    \[
+    fA_\delta=\sum_{\alpha\in\mathcal{S}}c_\alpha A_\alpha    
+    \]
+    両辺を$A_\delta$で割って
+    \[
+    f=\sum_{\alpha\in\mathcal{S}}c_{\alpha}\frac{A_\alpha}{A_\delta}=\sum_{\alpha\in\mathcal{S}}c_{\alpha}s_\alpha    
+    \]
+    一意的に表せることは$\{A_\alpha\}_{\alpha\in\mathcal{S}}$が一次独立であることからわかる。
+\end{proof}
+
+
+定理\ref{schur}より、2つのSchur多項式の積はSchur多項式の線形結合であることがわかる。次節ではその係数を記述するLittlewood-Richardson規則について解説する。
+
+
+
+
+
+\section{Littlewood-Richardson規則}
+\subsection{Young図形}
+\begin{defin}
+    整数列$\lambda=(\lambda_1,\cdots,\lambda_n,\cdots)$, $\lambda_1\geq\cdots\geq\lambda_n\geq 0$に対して、$1$行目に$\lambda_1$個の箱を書き、$2$行目に$\lambda_2$個の箱を書き...と続けてできる図形をYoung図形といい、$\lambda$で表す。ある$n$以降$\lambda_n=\lambda_{n+1}=\cdots=0$となる場合は、$0$を省略して$\lambda=(\lambda_1,\cdots,\lambda_{n-1})$と書くこともある。箱が1つもないものもYoung図形であるとし、これを$\varnothing$で表す。また$|\lambda|=\lambda_1+\lambda_2+\cdots$とし、これを$\lambda$の大きさという。
+\end{defin}
+
+\begin{eg}
+    \[
+    (2,1)=\ydiagram{2,1},\quad (4,3,3,1)=\ydiagram{4,3,3,1},\quad (3)=\ydiagram{3},\quad (1,1,1,1)=\ydiagram{1,1,1,1}
+    \]
+\end{eg}
+
+\begin{defin}
+    2つのYoung図形$\lambda=(\lambda_1,\cdots,\lambda_n,\cdots)$, $\mu=(\mu_1,\cdots,\mu_n,\cdots)$に対して、
+    \[
+    \lambda\leq\mu\Leftrightarrow \lambda_1\leq \mu_1,\cdots,\lambda_n\leq\mu_n,\cdots   
+    \]
+    と定義する。このとき$\lambda$は$\mu$の部分Young図形であるという。
+\end{defin}
+
+\begin{defin}
+    $n$行からなるYoung図形の全体を$\mathcal{Y}_n$とする。すなわち
+    \[
+    \mathcal{Y}_n=\set{\lambda=(\lambda_1,\cdots,\lambda_n,0)}{\lambda_1\geq \cdots\geq\lambda_n\geq 0}
+    \]
+    である。また、$(m-n,m-n,\cdots,m-n)$, ($m-n$が$n$個、つまり$n\times(m-n)$長方形)の部分Young図形の全体を$\mathcal{Y}_n(m)$とする。
+\end{defin}
+
+
+定義より
+\[
+\mathcal{Y}_n=\bigcup_{k=n+1}^\infty\mathcal{Y}_n(k)    
+\]
+が成り立つ。
+
+Young図形とSchur多項式との関係は次の命題で表される
+\begin{prop}
+    $\mathcal{S}=\set{(a_1,\cdots,a_n)}{a_1>\cdots>a_n\geq 0}$と$\mathcal{Y}_n$には次の全単射が存在する。
+    \[
+    \mathcal{Y}_n\owns \lambda \mapsto \alpha=\lambda+\delta \in\mathcal{S}   
+    \]
+    ただし$\delta=(n-1,n-2,\cdots,1,0)$である
+\end{prop}
+
+\begin{proof}
+    $\lambda\in\mathcal{Y}_n$は単調減少であるから、実際に$\lambda+\delta\in\mathcal{S}$であることはわかる。逆に任意の$\alpha\in\mathcal{S}$に対して、$\delta$が$\mathcal{S}$の辞書式順序に関する最小元であることから$\alpha-\delta\in\mathcal{Y}_n$であることもわかり、全単射であることが従う。
+\end{proof}
+
+よってYoung図形$\lambda$に対応するSchur多項式を$s_\lambda=\frac{A_{\lambda+\delta}}{A_\delta}$と書くことにする。
+
+\begin{defin}
+    $\lambda\in\mathcal{Y}_n$に対して、$\lambda$の各箱に次の条件が満たされるように数字を書き入れたものを形$\lambda$の半標準タブローという。
+    \begin{itemize}
+        \item 各数字は1以上n以下
+        \item 各行は左から右に広義単調増加
+        \item 各列は上から下に狭義単調増加
+    \end{itemize}
+    形$\lambda$の半標準タブロー全体のなす集合を$\mathcal{T}(\lambda)$と書く。半標準タブロー$T\in\mathcal{T}(\lambda)$について、Tに数字$k\in\{1,\cdots,n\}$が$t_k$個書かれているとき$\omega_k(T)=t_k$のように書き、
+    \[
+    \omega(T)=(t_1,\cdots,t_n)
+    \]
+    とし、これを$T$のウェイトと呼ぶ。
+\end{defin}
+
+\begin{eg}\label{tableau_21}
+    形$(2,1)=\ydiagram{2,1}\in\mathcal{Y}_3$の半標準タブローは次の通りである
+    \begin{align*}
+        \mathcal{T}((2,1))=\{\quad
+        &\begin{ytableau}
+            1&1\\
+            2
+        \end{ytableau},\qquad
+        \begin{ytableau}
+            1&2\\
+            2
+        \end{ytableau},\qquad
+        \begin{ytableau}
+            1&1\\
+            3
+        \end{ytableau},\qquad
+        \begin{ytableau}
+            1&3\\
+            3
+        \end{ytableau}\\
+        &\begin{ytableau}
+            1&2\\
+            3
+        \end{ytableau},\qquad
+        \begin{ytableau}
+            1&3\\
+            2
+        \end{ytableau},\qquad
+        \begin{ytableau}
+            2&2\\
+            3
+        \end{ytableau},\qquad
+        \begin{ytableau}
+            2&3\\
+            3
+        \end{ytableau}
+        \quad\}
+    \end{align*}
+    しかし次などは半標準タブローではない
+    \[
+    \begin{ytableau}
+        1&1\\
+        1
+    \end{ytableau},\qquad
+    \begin{ytableau}
+        2&1\\
+        3
+    \end{ytableau}  
+    \]
+\end{eg}
+
+\begin{defin}
+    Young図形$\lambda\in\mathcal{Y}_n$に対して次で定まる多項式を$\lambda$のタブロー和という。
+    \[
+        T_\lambda=\sum_{T\in\mathcal{T}(\lambda)}x_1^{\omega_1(T)}\cdots x_n^{\omega_n(T)}
+    \]
+\end{defin}
+
+\begin{eg}
+    例\ref{tableau_21}より、
+    \[
+    T_{(2,1)}=x_1^2x_2+x_1x_2^2+x_1^2x_3+x_1x_3^2+2x_1x_2x_3+x_2^2x_3+x_2x_3^2=e_1e_2=s_{(2,1)}
+    \]
+\end{eg}
+
+
+
+\subsection{Littlewood-Richardson規則}
+
+\begin{theo}[Littlewood-Richardson規則]\label{LR}
+    Young図形$\lambda,\mu\in\mathcal{Y}_n$について
+    \[
+    s_\lambda s_\mu=\sum_{\nu\in\mathcal{Y}_n}\eta^\nu_{\lambda\mu}s_\nu    
+    \]
+    とおいたとき、
+    \[
+    \eta^\nu_{\lambda\mu}=\#\!\set{T\in\mathcal{T}(\mu)}{T\text{は$\lambda$-goodであり、}\omega(T)=\nu-\lambda}  
+    \]
+    が成り立つ。係数$\eta^\nu_{\lambda\mu}$をLittlewood-Richardson数と呼ぶ。
+\end{theo}
+
+ここで$T\in\mathcal{T}(\mu)$が$\lambda$-goodであるとは、次の条件を満たすことをいう。$T$に書かれている数字を上から下、右から左へ読んでいったときにできる数字の並びを$c(T)$とする。
+\[
+T=\begin{ytableau}
+    1&1&2&2\\
+    3&3&3&4\\
+    4&5
+\end{ytableau}\qquad \rightarrow \qquad c(T)=2423135134
+\]
+$c(T)_j$を$c(T)$の左から$j$番目までの部分列とするとき
+\[
+\lambda+\omega(c(T)_j)\in\mathcal{Y}_n,\qquad\forall j=1,\cdots,|\mu|
+\]
+が成り立つとき、$T$は$\lambda$-goodであるという。すなわち、「$T$の右上から左下へ数字を読んでいくとき、読まれた数に対応する$\lambda$の行に箱を追加する」という操作を続けて各ステップでYoung図形であることが保たれるということである。
+\begin{eg}
+$T=$　\begin{ytableau}
+    1&1\\
+    3
+\end{ytableau}　は　\ydiagram{1,1}　-goodである。実際$c(T)=113$であり
+\begin{align*}
+\ydiagram{1,1}\quad\rightarrow\quad
+\begin{ytableau}
+    *(white)&*(yellow)\\
+    *(white)
+\end{ytableau}\quad\rightarrow\quad
+\begin{ytableau}
+    *(white)&*(white)&*(yellow)\\
+    *(white)
+\end{ytableau}\quad\rightarrow\quad
+\begin{ytableau}
+    *(white)&*(white)&*(white)\\
+    *(white)\\
+    *(yellow)
+\end{ytableau}\\
+\end{align*}
+
+一方で$T$は　\ydiagram{1}　-goodではない。
+\[
+    \ydiagram{1}\quad\rightarrow\quad
+    \begin{ytableau}
+        *(white)&*(yellow)
+    \end{ytableau}\quad\rightarrow\quad
+    \begin{ytableau}
+        *(white)&*(white)&*(yellow)\\
+    \end{ytableau}\quad\rightarrow\quad
+    \begin{ytableau}
+        *(white)&*(white)&*(white)\\
+        \none\\
+        *(yellow)
+    \end{ytableau}\text{ はYoung図形でない}
+\]
+\end{eg}
+
+\begin{eg}\label{empty-good}
+    $\varnothing$-goodであるような形$\mu$の半標準タブローは$1$行目がすべて1, $2$行目がすべて2, ... というものただ一つである。
+    この半標準タブローを$\mu^{st}$と書く。
+
+    $T$が$\varnothing$-goodであるとする。$\varnothing$に箱を$1$つ追加してYoung図形になるためには第$1$行目に追加しなければならない。よって$T$の一番右上には$1$が入っており、半標準タブローの行単調性から$1$行目はすべて$1$である。半標準タブローの列単調性から$2$行目の一番右は$2$以上が入っているはずであり、$3$より大きければYoung図形ができないので$2$である。よって行単調性から$2$行目はすべて$2$である。以下同様にして$k$行目に入っている数字はすべて$k$であることがわかる。
+\end{eg}
+
+\begin{eg}
+    $\lambda=$ \ydiagram{2,1} $\in\mathcal{Y}_2$ とし、$s_\lambda^2$をSchur多項式の線形結合として表そう。$\lambda$-goodな形$\lambda$の半標準タブローは
+    \begin{align*}
+        T_1=\begin{ytableau}
+            1&1\\
+            2
+        \end{ytableau},\qquad
+        T_2=\begin{ytableau}
+            1&2\\
+            2
+        \end{ytableau}
+    \end{align*}
+    ですべてである。それぞれのウェイトは
+    \begin{align*}
+        \omega(T_1)=(2,1),\quad\omega(T_2)=(1,2)
+    \end{align*}
+    定理\ref{LR}より
+    \[
+    s_\lambda^2=s_{4,2}+s_{3,3}
+    \]
+    である。実際、定義より
+    \begin{align*}
+    &s_\lambda=\frac{\vmat{x^3&x\\y^3&y}}{\vmat{x&1\\y&1}}=\frac{x^3y-xy^3}{x-y}=xy(x+y),\qquad 
+    s_\lambda^2=x^4y^2+2x^3y^3+x^2y^4\\
+    &s_{4,2}=\frac{\vmat{x^5&x^2\\y^5&y^2}}{\vmat{x&1\\y&1}}=\frac{x^5y^2-x^2y^5}{x-y}=x^2y^2(x^2+xy+y^2)=x^4y^2+x^3y^3+x^2y^4\\
+    &s_{3,3}=\frac{\vmat{x^4&x^3\\y^4&y^3}}{\vmat{x&1\\y&1}}=\frac{x^4y^3-x^3y^4}{x-y}=x^3y^3
+    \end{align*}
+    で確かに正しい。
+
+\end{eg}
+
+定理\ref{LR}の証明のあらすじを述べよう。ポイントになるのが次の等式(補題\ref{equality})である：
+\[
+A_{\lambda+\delta}T_\mu=\sum_{T\in\mathcal{T}(\mu)}A_{\lambda+\omega(T)+\delta} 
+\]
+この等式はタブロー和$T_\mu$が対称多項式であること(命題\ref{tableausum})から示される。右辺に関して、$T$が$\lambda$-goodでない項たちは互いにキャンセルされることが示され(補題\ref{cancellation})、結局
+\begin{equation}
+A_{\lambda+\delta}T_\mu=\sum_{T:\lambda\text{-good}}A_{\lambda+\omega(T)+\delta}   
+\end{equation}
+ここで、$\lambda=\varnothing$の場合を考えると例\ref{empty-good}
+より
+\[
+A_{\delta}T_\mu=A_{\omega({\mu^{st}})+\delta}
+\]
+両辺を$A_\delta$で割れば
+\[
+T_\mu=\frac{A_{\omega(\mu^{st})+\delta}}{A_\delta}=\frac{A_{\mu+\delta}}{A_\delta}=s_\mu
+\]
+すなわち、タブロー和はSchur多項式と等しいということが導かれる。再び一般の$\lambda$に対し式(3)の両辺を$A_\delta$で割って
+\[
+s_\lambda s_\mu=\sum_{T:\lambda\text{-good}}s_{\lambda+\omega(T)}
+\]
+これより主張が従う。
+
+あらすじで用いた命題・等式を示そう。
+
+\begin{prop}\label{tableausum}
+    タブロー和$T_\lambda$は対称多項式である。
+\end{prop}
+
+\begin{proof}
+    対称群は隣り合う数字の互換$\sigma=(k-1,k)$, $k=2,\cdots,n$によって生成されるから、
+    \[
+    \sigma T_\lambda=T_\lambda    
+    \]
+    を証明すればよい。ポイントになるのは半標準タブローの集合$\mathcal{T}(\lambda)$上の対合\footnote{集合$X$上の対合とは写像$\map{\iota}{X}{X}$であって$\iota^2=\id{X}$をみたすものをいう}$\iota$であって
+    \begin{equation}
+    \omega(\iota(T))=\sigma(\omega(T))  
+    \end{equation}
+    をみたすものの存在である。ここで、
+    \[
+    \sigma(\omega(T))=(\omega_{\inv{\sigma}(1)}(T),\cdots,\omega_{\inv{\sigma}(n)}(T))  
+    \]
+    である。このような$\iota$が構成できれば、
+    \begin{align*}
+    \sigma T_\lambda&=\sum_{T\in\mathcal{T}(\lambda)}x_{\sigma(1)}^{\omega_1(T)}\cdots x_{\sigma(n)}^{\omega_n(T)}\\
+    &=\sum_{T\in\mathcal{T}(\lambda)}x_1^{\omega_{{\inv{\sigma}(1)}}(T)}\cdots x_n^{\omega_{{\inv{\sigma}(n)}}(T)}\\
+    &=\sum_{T\in\mathcal{T}(\lambda)}x_1^{\omega_1(\iota(T))}\cdots x_n^{\omega_n(\iota(T))}\\
+    &=T_\lambda
+    \end{align*}
+    となり対称性が従う。最後の等式は$\iota$が全単射であることによる。
+
+    このような$\iota$は次のように構成される。まず条件(4)は、半標準タブロー$T$と$\iota(T)$は書かれている$k-1$と$k$の数が逆転した関係にある、ということを意味している。最初に$T$が一行のYoung図形からなる場合を考えよう。半標準タブローの単調性から$k-1$か$k$の書かれている部分はひとつながりの帯領域をなしており、その長さは$\omega_{k-1}(T)+\omega_{k}(T)$である。よってこの帯領域の数字を、左$\omega_{k}(T)$個の箱に$k-1$, 残りの$\omega_{k-1}(T)$個の箱に$k$を入れるように変更したものを$\iota(T)$とすれば、これは条件(4)を満たす半標準タブローになる。
+    \[
+    T=\quad
+    \begin{ytableau}
+        \none[\cdots]&
+        \scriptstyle k-2&
+        *(yellow)\scriptstyle k-1&
+        *(yellow)\scriptstyle k-1&
+        *(yellow)\scriptstyle k&
+        *(yellow)\scriptstyle k&
+        *(yellow)\scriptstyle k&
+        \scriptstyle k+1&
+        \none[\cdots]
+    \end{ytableau}\qquad\rightarrow\qquad
+    \iota(T)=\quad
+    \begin{ytableau}
+        \none[\cdots]&
+        \scriptstyle k-2&
+        *(yellow)\scriptstyle k-1&
+        *(yellow)\scriptstyle k-1&
+        *(yellow)\scriptstyle k-1&
+        *(yellow)\scriptstyle k&
+        *(yellow)\scriptstyle k&
+        \scriptstyle k+1&
+        \none[\cdots]
+    \end{ytableau}
+    \]
+    また、この場合に$\iota^2(T)=T$が成立していることもわかる。
+
+    一般の半標準タブロー$T$に対しては一行の場合の操作を拡張することで得られる。まず、$T$の箱が自由であることを
+    \begin{itemize}
+        \item 箱に$k$が入っており、上の箱は$k-1$より真に小さい
+        \item 箱に$k-1$が入っており、下の箱は$k$より真に大きいか下に箱がない
+    \end{itemize}
+    のどちらかを満たしていることと定義する。例えば$k=4$において
+    \[
+    T=\begin{ytableau}
+        1&1&1&1&2&2\\
+        2&2&*(green)3&*(yellow)3&*(yellow)3&*(yellow)4\\
+        *(yellow)3&*(yellow)3&*(green)4&5\\
+        5
+    \end{ytableau}  
+    \]
+    黄色の箱は自由であり、緑の箱は自由でない。不自由な箱は数字を入れ替えると単調性が崩れるので、入れ替えることができないという意味で不自由である。したがって数字の入れ替えをするには、自由な箱のみを考えればよい。重要なこととして、
+    \begin{quote}
+        自由な箱の全体はいくつかの帯領域をなし、さらに帯は各行にたかだか1つである。
+    \end{quote}
+    実際
+    \begin{itemize}
+        \item $k-1$が書かれている箱が自由なら、その右にある$k-1$の書かれた箱はすべて自由である。なぜなら半標準タブローの行単調性から、その下にある箱はすべて$k$より真に大きいからである。
+        \item $k$が書かれている箱が自由なら、その左にある$k$の書かれた箱はすべて自由である。なぜなら半標準タブローの行単調性から、その上にある箱はすべて$k-1$より真に小さいからである。
+    \end{itemize}
+    より、各行に帯領域はたかだか一つである。そこで各帯領域に対して、1行の場合の入れ替え操作を行った半標準タブローを$\iota(T)$と置けば、$\iota(T)$は条件(4)を満たす。なぜなら、不自由な箱は$k-1$が書かれているものと$k$が書かれているもので同数あり、1行の場合に条件(4)は満たされているからである。また半標準タブローの列単調性から$\iota(T)$と$T$で箱の自由性は保たれるので$\iota^2(T)=T$であることもわかる。また、もし$T$に自由な箱が存在しない場合は$\iota(T)=T$とする。これで構成できた。
+    \[
+    T=\quad\begin{ytableau}
+        1&1&1&1&2&2\\
+        2&2&*(green)3&*(yellow)3&*(yellow)3&*(yellow)4\\
+        *(yellow)3&*(yellow)3&*(green)4&5\\
+        5
+    \end{ytableau}\qquad\rightarrow\qquad
+    \iota(T)=\quad\begin{ytableau}
+        1&1&1&1&2&2\\
+        2&2&*(green)3&*(yellow)3&*(yellow)4&*(yellow)4\\
+        *(yellow)4&*(yellow)4&*(green)4&5\\
+        5
+    \end{ytableau}
+    \]
+\end{proof}
+
+\begin{lemm}\label{equality}
+    $\lambda,\mu\in\mathcal{Y}_n$に対して
+    \[
+    A_{\lambda+\delta}T_\mu=\sum_{T\in\mathcal{T}(\mu)}A_{\lambda+\omega(T)+\delta}
+    \]
+    が成り立つ。
+\end{lemm}
+
+\begin{proof}
+    $\text{Alt}_n=\sum_{\sigma\in\mathfrak{S}_n}\sgn(\sigma)\sigma$とおく(これは交代化作用素と呼ばれる)。交代化作用素と対称多項式をかけることは可換である。実際、$f\in\complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}$, $g\in\complex[x_1,\cdots,x_n]$に対し
+    \begin{align*}
+        \text{Alt}_n(fg)&=\sum_{\sigma\in\mathfrak{S}_n}\sgn(\sigma)\sigma(fg)\\
+        &=\sum_{\sigma\in\mathfrak{S}_n}\sgn(\sigma)\sigma f\cdot \sigma g\\
+        &=f\cdot\sum_{\sigma\in\mathfrak{S}_n}\sgn(\sigma)\sigma g\\
+        &=f\cdot\text{Alt}_n(g)
+    \end{align*}
+    である。
+    \[
+    A_{\lambda+\delta}=\text{Alt}_n(x_1^{\lambda_1+\delta_1}\cdots x_n^{\lambda_n+\delta_n})
+    \]
+    だから命題\ref{tableausum}より
+    \begin{align*}
+        A_{\lambda+\delta}T_\mu&=\text{Alt}_n(T_\mu\cdot x_1^{\lambda_1+\delta_1}\cdots x_n^{\lambda_n+\delta_n})\\
+        &=\text{Alt}_n\left(
+            \sum_{T\in\mathcal{T}(\mu)}x_1^{\lambda_1+\omega_1(T)+\delta_1}\cdots x_n^{\lambda_n+\omega_n(T)+\delta_n}
+        \right)\\
+        &=\sum_{\sigma\in\mathfrak{S}_n}\sum_{T\in\mathcal{T}(\mu)}\sgn(\sigma)x_{\sigma(1)}^{\lambda_1+\omega_1(T)+\delta_1}\cdots x_{\sigma(n)}^{\lambda_n+\omega_n(T)+\delta_n}\\
+        &=\sum_{T\in\mathcal{T}(\mu)}\sum_{\sigma\in\mathfrak(S)_n}\sgn(\sigma)x_{\sigma(1)}^{\lambda_1+\omega_1(T)+\delta_1}\cdots x_{\sigma(n)}^{\lambda_n+\omega_n(T)+\delta_n}\\
+        &=\sum_{T\in\mathcal{T}(\mu)}A_{\lambda+\omega(T)+\delta}
+    \end{align*}
+\end{proof}
+
+\begin{lemm}\label{cancellation}
+    $\lambda,\mu\in\mathcal{Y}_n$に対して、形$\mu$の半標準タブローで$\lambda$-goodでないものを$\lambda$-badと呼び、その全体を$\mathcal{T}(\mu)^{\lambda-bad}$とおく。このとき
+    \[
+    \sum_{T\in\mathcal{T}(\mu)^{\lambda-bad}}A_{\lambda+\omega(T)+\delta}=0    
+    \]
+    が成り立つ。
+\end{lemm}
+
+\begin{proof}
+    この証明においてもポイントになるのが$\mathcal{T}(\mu)^{\lambda-bad}$上の対合$\iota$であって
+    各$T\in\mathcal{T}(\mu)^{\lambda-bad}$に対してある$k$が存在して$\sigma=(k-1,k)$に対して
+    \begin{equation}
+    \lambda+\omega(\iota(T))+\delta=\sigma(\lambda+\omega(T)+\delta)
+    \end{equation}
+    をみたすものの存在である。このような$\iota$が構成されれば、$A_{\lambda+\omega(T)+\delta}$たちはペアごとに打ち消される。実際、
+    \begin{align*}
+        \sum_{T\in\mathcal{T}(\mu)^{\lambda-bad}}A_{\lambda+\omega(T)+\delta}
+        &=\frac{1}{2}\sum_{T\in\mathcal{T}(\mu)^{\lambda-bad}}(A_{\lambda+\omega(T)+\delta}+A_{\lambda+\omega(\iota(T))+\delta})\\
+        &=\frac{1}{2}\sum_{T\in\mathcal{T}(\mu)^{\lambda-bad}}(A_{\lambda+\omega(T)+\delta}+A_{\sigma(\lambda+\omega(T)+\delta)})\\
+        &=\frac{1}{2}\sum_{T\in\mathcal{T}(\mu)^{\lambda-bad}}(A_{\lambda+\omega(T)+\delta}-A_{\lambda+\omega(T)+\delta})\\
+        &=0
+    \end{align*}
+
+    (5)をみたす$\iota$を構成するために、条件(5)が成り立つための必要条件から考察していく。(5)が成り立つには
+    \[
+    \lambda_k+\omega_k(\iota(T))+\delta_k=\lambda_{k-1}+\omega_{k-1}(T)+\delta_{k-1}    
+    \]
+    したがって
+    \begin{equation}
+    \omega_k(\iota(T))=\omega_{k-1}(T)+(\lambda_{k-1}-\lambda_k)+1    
+    \end{equation}
+    となることが必要である。この右辺の値は、$\lambda$の$k$行目にいくつ箱を追加するとYoung図形でなくなるか、ということを表していることに注意する。このような$k$と$\iota(T)$をみつけたいのである。
+
+    そこで、
+    \[
+    \lambda+\omega(c(T)_j)\notin\mathcal{Y}_n
+    \]
+    を満たす最小の$j$をとってこよう。これは$\lambda$-badの定義から必ず存在する。そして$j$に対応する箱に入っている数字を$k$とおく。すなわち、$j$ステップ目で$k$行目に箱を追加すると初めてYoung図形でなくなるとする。 またこの箱を悪い箱と呼ぶことにする。このとき
+    \begin{equation}
+    \omega_{k}(c(T)_j)=\omega_{k-1}(c(T)_j)+(\lambda_{k-1}-\lambda_k)+1  
+    \end{equation}
+    が成り立つ。ここで、$T$を悪い箱よりも左側にある部分$T_1$と悪い箱を含む右側の部分$T_2$に分割する。
+    例えば
+    \[
+    T=\quad
+        \begin{ytableau}
+            1&1&1&2&2\\
+            2&2&2&3\\
+            3&3&*(yellow)4&4\\
+            4&5&5
+        \end{ytableau}     
+    \text{　は　}\ydiagram{2}\text{　-bad}
+    \]
+    においては、黄色い箱が悪い箱で
+    \[
+    T_1=\quad\begin{ytableau}
+        1&1\\
+        2&2\\
+        3&3\\
+        4&5
+    \end{ytableau},\qquad 
+    T_2=\quad\begin{ytableau}
+        1&2&2\\
+        2&3\\
+        *(yellow)4&4\\
+        5
+    \end{ytableau}
+    \]
+    である。すると、半標準タブローの列単調性から悪い箱の下にある箱には$k+1$以上しか存在しないから、
+    \[
+    \omega_k(c(T)_j)=\omega_k(T_2),\quad \omega_{k-1}(c(T)_j)=\omega_{k-1}(T_2)    
+    \]
+    よって(7)は
+    \[
+    \omega_k(T_2)=\omega_{k-1}(T_2)+(\lambda_{k-1}-\lambda_k)+1
+    \]
+    と書き換えることができる。$\iota(T)$の満たすべき必要条件(6)は
+    \begin{align*}
+        \omega_k(\iota(T))&=\omega_{k-1}(T)+(\lambda_{k-1}+\lambda_k)+1\\
+        \omega_k(\iota(T_1))+\omega_k(\iota(T_2))&=\omega_{k-1}(T_1)+\omega_{k-1}(T_2)+(\lambda_{k-1}+\lambda_k)+1
+    \end{align*}
+    となるが、$\iota(T_2)=T_2$であると仮定すれば
+    \begin{align*}
+        \omega_k(\iota(T_1))+\omega_k(T_2)&=\omega_{k-1}(T_1)+\omega_{k-1}(T_2)+(\lambda_{k-1}+\lambda_k)+1\\
+        \omega_k(\iota(T_1))&=\omega_{k-1}(T_1)
+    \end{align*}
+    結局、$\iota(T)$は次のように定義すればよいであろうことがわかる。
+    \[
+    \text{$\iota(T)$は$T_1$に命題\ref{tableausum}で定義した対合を施し、$T_2$には何もしない}    
+    \]
+    \[
+    T=\quad
+    \begin{ytableau}
+        1&1&1&2&2\\
+        2&2&2&3\\
+        3&3&*(yellow)4&4\\
+        4&5&5
+    \end{ytableau}\qquad\rightarrow\qquad
+    \iota(T)=\quad
+    \begin{ytableau}
+        1&1&1&2&2\\
+        2&2&2&3\\
+        3&4&*(yellow)4&4\\
+        4&5&5
+    \end{ytableau} 
+    \]
+
+
+
+    示すべきことは
+    \begin{enumerate}
+        \item 実際に$\iota(T)$が$\lambda$-badな半標準タブローであること
+        \item $\iota(T)$が(5)をみたすこと
+    \end{enumerate}
+    である。
+    \begin{enumerate}
+        \item $\iota$が$T_2$には何もしないことから、$\lambda$-badであることは直ちに従う。よって$\iota(T)$が半標準タブローであることさえ示せばよい。$\iota(T_1)$は命題\ref{tableausum}から半標準タブローであり、$T_2$も半標準タブローだから、問題になるのは$\iota(T_1)$と$T_2$の境界部分である。悪い箱は命題\ref{tableausum}の証明中の意味で自由である。すなわちその上にある箱は$k-1$より真に小さい。
+        \begin{quote}
+            なぜならもし悪い箱の上に$k-1$があったとすると、$j-1$ステップ目で$k-1$行目に箱を追加してもYoung図形であることは保たれている。よってそのとき$k$行目の箱の数は$k-1$行目の箱の数と同じかそれ以下である。もし同じなら$j-2$ステップの時点では$k-1$行目の箱の数が$k$行目の箱の数より小さいこととなり、これはYoung図形になっていない。$k-1$行目の箱の数以下であるなら$j$ステップ目に$k$行目に箱を追加してもYoung図形であることは保たれるから、悪い箱であることに矛盾する。
+        \end{quote}
+        よって$T$の悪い箱よりも上部分は考えなくてよい。悪い箱の下部分は半標準タブローの列単調性から$k$より真に大きいのでここも考えなくてよい。したがって問題になるのは悪い箱の左に入っている数が$\iota$によってどうなるかということだけであるが、$\iota$は$k-1$と$k$を適当に入れ替える操作なので単調性は崩れない。
+
+
+        \item $\iota$は結局のところ$k-1$と$k$を(6)が成り立つように入れ替える操作であるから、
+        \begin{align*}
+            &\lambda_{k}+\omega_k(\iota(T))+\delta_k=\lambda_{k-1}+\omega_{k-1}(T)+\delta_{k-1}\\
+            & l\neq k,\;k-1\implies \lambda_{l}+\omega_l(\iota(T))+\delta_l=\lambda_{l}+\omega_{l}(T)+\delta_{l}\\
+        \end{align*}
+        が成り立つ。命題\ref{tableausum}の対合を用いているので$\iota$もまた対合であるから
+        \begin{align*}
+            \lambda_{k-1}+\omega_{k-1}(\iota(T))+\delta_{k-1}
+            &=\lambda_{k}+\omega_{k}(\iota^2(T))+\delta_k\\
+            &=\lambda_{k}+\omega_{k}(T)+\delta_k
+        \end{align*}
+        よって$\sigma=(k, k-1)$として
+        \[
+            \lambda+\omega(\iota(T))+\delta=\sigma(\lambda+\omega(T)+\delta)
+        \]
+        が成り立つ。
+    \end{enumerate}
+\end{proof}
+
+
+
+Littlewood-Richardson規則の特別な場合として、$\lambda$が一行のYoung図形の場合はPieriの規則と呼ばれ、比較的簡単に計算できる。
+
+\begin{defin}
+    Young図形$\mu\leq \nu$, $|\nu|=|\mu|+k$に対して、$\nu/\mu$が水平帯であるとは
+    \[
+    \text{
+        $\nu$に含まれ、$\mu$に含まれない箱が各列にたかだか一つ
+        }
+    \]
+    を満たすことをいう。このことは
+    \[
+    \nu_l\leq \mu_{l-1}    
+    \]
+    がすべての$l=2,3,\cdots$について成り立つことと同値である。
+\end{defin}
+
+\begin{theo}[Pieriの規則]\label{Pieri}
+    $\lambda=(k)$, $\mu\in\mathcal{Y}_n$に対して
+    \[
+    s_\lambda s_\mu=\sum_{\substack{|\nu|=|\mu|+k\\\nu/\mu\text{は水平帯}}}s_\nu    
+    \]
+    が成り立つ
+\end{theo}
+
+\begin{proof}
+    定理\ref{LR}より、$\mu$-goodな形$\lambda$の半標準タブローを考える。$T$が形$\lambda$の$\mu$-goodな半標準タブローであるとする。いま$\lambda$は一行のYoung図形だから、$T$が$\mu$-goodであることは
+    \[
+    \omega_{l}(T)+\mu_l\leq \mu_{l-1}    
+    \]
+    がすべての$l=2,3,\cdots, n$に対して成り立つことと同値である。$\nu=\mu+\omega(T)$とすれば、これは
+    $\nu/\mu$が水平帯であることに他ならない。
+\end{proof}
+
+\begin{eg}
+    $\lambda=\quad\ydiagram{2}$, $\mu=\quad\ydiagram{2,1}\quad\in\mathcal{Y}_3$として$s_\lambda s_\mu$を計算する。定理\ref{Pieri}より大きさ$5$のYoung図形で水平帯となっているものを探せばよい。それらは
+    \begin{align*}
+        \nu_1=\quad\ydiagram[*(yellow)]{2+2}*[*(white)]{2,1},\qquad
+        \nu_2=\quad\ydiagram[*(yellow)]{2+1,1+1}*[*(white)]{2,1},\qquad
+        \nu_3=\quad\ydiagram[*(yellow)]{0,1+1,1}*[*(white)]{2,1},\qquad
+        \nu_4=\quad\ydiagram[*(yellow)]{2+1,0,1}*[*(white)]{2,1}
+    \end{align*}
+    だから
+    \[
+    s_\lambda s_\mu=s_{\nu_1}+s_{\nu_2}+s_{\nu_3}+s_{\nu_4}
+    \]
+\end{eg}
+
+
+    
+\end{document}
