@@ -27,16 +27,43 @@
     が成り立つことから従う。
 \end{proof}
 
-\begin{defin}
-    $e_k, h_k\in\complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}$を次のように定め、それぞれ基本対称式, 完全対称式という。
+\begin{eg}
+    整数$n>1$を固定する。非負整数列$\alpha=(\alpha_1,\cdots,\alpha_n)$, $\beta=(\beta_1,\cdots,\beta_n)$に対して、ある置換$\sigma\in\mathfrak{S}_n$が存在して
+    \[
+    \beta=\sigma\alpha=(\alpha_{\inv{\sigma}(1)},\cdots,\alpha_{\inv{\sigma}(n)})    
+    \]
+    となるとき、$\beta\sim\alpha$と書く。広義単調減少な$\alpha=(\alpha_1,\cdots,\alpha_n)$に対して
+    \[
+    m_\alpha=\sum_{\beta\sim\alpha}x_1^{\beta_1}\cdots x_n^{\beta_n}    
+    \]
+    と定めると、$m_\alpha$は対称式である。
     \begin{align*}
-        &e_k=\sum_{1\leq i_1<i_2<\cdots<i_k\leq n}x_{i_1}x_{i_2}\cdots x_{i_k}\\
-        &h_k=\sum_{1\leq i_1\leq i_2\leq\cdots\leq i_k\leq n}x_{i_1}x_{i_2}\cdots x_{i_k}
+        &m_{2,1}(x,y)=x^2y+xy^2\\
+        &m_{2,2,0}(x,y,z)=x^2y^2+y^2z^2+z^2x^2
     \end{align*}
-\end{defin}
+\end{eg}
 
 \begin{eg}
-    $n$変数の場合
+    整数$n>1$を固定する。$k=1,2,\cdots,n$に対して$p_k$を
+    \[
+    p_k
+    =m_{k,0,\cdots,0}
+    =x_1^k+\cdots+x_n^k
+    \]
+    によって定義する。$p_k$はもちろん対称多項式である
+\end{eg}
+
+\begin{eg}[基本対称式・完全対称式]
+    整数$n>1$を固定する。$k=1,2,\cdots,n$に対して、$u_k=(1,1,\cdots,1,0,\cdots,0)$を最初の$k$個が$1$で、残りが$0$の数列とする。また
+    \[
+    \mathcal{P}_{k,n}=\set{(\alpha_1,\cdots,\alpha_n)\in\integer_{\geq 0}^n}{\alpha_1\geq \cdots\geq\alpha_n,\quad\alpha_1+\cdots+\alpha_n=k}    
+    \]
+    とする。
+    \begin{align*}
+        &e_k=m_{u_k}=\sum_{1\leq i_1<i_2<\cdots<i_k\leq n}x_{i_1}x_{i_2}\cdots x_{i_k}\\
+        &h_k=\sum_{\alpha\in P_{k,n}}m_\alpha=\sum_{1\leq i_1\leq i_2\leq\cdots\leq i_k\leq n}x_{i_1}x_{i_2}\cdots x_{i_k}
+    \end{align*}
+    として、$e_k$を$k$次基本対称式, $h_k$を$k$次完全対称式という。
     \begin{align*}
         &e_1=x_1+\cdots+x_n,\quad e_2=x_1x_2+x_1x_3+\cdots,\quad e_n=x_1x_2\cdots x_n\\
         &h_1=x_1+\cdots+x_n,\quad h_2=x_1^2+x_1x_2+\cdots, \quad h_n=x_1^n+x_1^{n-1}x_2+\cdots\\
@@ -45,19 +72,14 @@
 \end{eg}
 
 
-$n$変数の基本対称式は$e_1,\cdots, e_n$だけだが、完全対称式は無限に存在することに注意。
-また、基本対称式については次の基本的な事実が知られている。
+$n$変数の基本対称式は$e_1,\cdots, e_n$だけだが、完全対称式は無限に存在することに注意。ここで定義したさまざまな対称多項式は、対称多項式環$\complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}$における良い性質をもっている。
 
-\begin{theo}[対称式の基本定理]\label{FT_of_sym}
-    任意の対称多項式は基本対称式の多項式で表される。すなわち
-    \[
-    \complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}=\complex[e_1,\cdots, e_n]
-    \]
-    が成り立つ。
-\end{theo}
+\begin{prop}\label{m_is_basis}
+    $\set{m_\alpha}{\alpha=(\alpha_1\geq\cdots\geq\alpha_n), \alpha_n\geq 0}$は$\complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}$の基底をなす
+\end{prop}
 
 \begin{proof}
-    対称多項式
+    $\set{m_\alpha}{\alpha=(\alpha_1\geq\cdots\geq\alpha_n), \alpha_n\geq 0}$が一次独立であることは、$\alpha\neq\beta$ならば$m_\alpha$, $m_\beta$は異なる単項式を含むことからわかる。よって$\complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}$を生成することを示す。対称多項式
     \[
     f(x_1,\cdots,x_n)=\sum_{i_1,\cdots,i_n}c_{i_1,\cdots,i_n}x_1^{i_1}\cdots x_n^{i_n}
     \]
@@ -72,19 +94,51 @@ $n$変数の基本対称式は$e_1,\cdots, e_n$だけだが、完全対称式は
     \[
         c_{i_1,\cdots,i_n}=c_{i_{\sigma(1)},\cdots,i_{\sigma(n)}}
     \]
-    がなりたつ。これにより$f$は
-    \begin{equation}
-        \sum_{\sigma\in\mathfrak{S}_n}x_{\sigma(1)}^{i_1}\cdots x_{\sigma(n)}^{i_n}
-    \end{equation}
-    の形の対称多項式の線形結合であることがわかるから、この形の多項式について主張を示せばよい。適当に並べ替えて$(i_1,\cdots,i_n)$は単調減少であると仮定してよい。$d=i_1+\cdots+i_n$とし、
+    がなりたつ。したがって
     \[
-        \mathcal{I}=\set{(j_1,\cdots,j_n)\in\integer_{\geq 0}^n}{j_1+\cdots+j_n=d}
+    f=\sum_{\alpha}c_\alpha m_\alpha   
     \]
-    とし、$\mathcal{I}$に辞書式順序を入れておく。このとき
+    となることがわかる。
+\end{proof}
+
+\begin{theo}[対称式の基本定理]\label{FT_of_sym}
+    任意の対称多項式は基本対称式の多項式で表される。すなわち
     \[
-        g(x_1,\cdots,x_n)=\sum_{\sigma\in\mathfrak{S}_n}x_{\sigma(1)}^{i_1}\cdots x_{\sigma(n)}^{i_n}-e_n^{i_n}e_{n-1}^{i_{n-1}-i_n}\cdots e_2^{i_2-i_3}e_1^{i_1-i_2} 
+    \complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}=\complex[e_1,\cdots, e_n]
     \]
-    とおく。$g$は$d$次斉次項式で、$g$に現れる単項式の指数（それは$\mathcal{I}$の元である）を考えたとき、それはすべて$(i_1,\cdots,i_n)$より真に小さい。$\mathcal{I}$は有限集合なので帰納法により主張が従う。
+    が成り立つ。
+\end{theo}
+
+\begin{proof}
+    命題\ref{m_is_basis}より、$m_\alpha$が$e_1,\cdots,e_n$の多項式で表されることを示せばよい。$\mathcal{P}_n=\bigcup_{k=1}^\infty\mathcal{P}_{k,n}$とおく。$\mathcal{P}_n$には辞書式順序による全順序を入れておく。$\alpha\in\mathcal{P}_n$に関する帰納法によって示そう。$\mathcal{P}_n$の最小元は$(1,0,\cdots,0)$であり、
+    \[
+    m_{1,0,\cdots,0}=e_1    
+    \]
+    であるからよい。$\alpha=(\alpha_1\geq\cdots\geq\alpha_n)\in\mathcal{P}_n$を$\alpha>(1,0,\cdots,0)$であるとする。
+    \[
+        g(x_1,\cdots,x_n)=m_\alpha-e_n^{\alpha_n}e_{n-1}^{\alpha_{n-1}-\alpha_n}\cdots e_2^{\alpha_2-\alpha_3}e_1^{\alpha_1-\alpha_2} 
+    \]
+    とおく。$g$は対称多項式だが、
+    \[
+    g=\sum_{\beta}m_\beta    
+    \]
+    と表した時、このときすべての$\beta$は$\alpha$より真に小さいことを示そう。$h=e_n^{\alpha_n}e_{n-1}^{\alpha_{n-1}-\alpha_n}\cdots e_2^{\alpha_2-\alpha_3}e_1^{\alpha_1-\alpha_2}$とおく。まず、
+    \[
+    e_n^{\alpha_n}=x_1^{\alpha_n}\cdots x_n^{\alpha_n}    
+    \]
+    より$h$を展開したときの単項式の指数はすべて$(\alpha_n,\cdots,\alpha_n)$以上であることがわかる。次に
+    \[
+    e_{n-1}^{\alpha_{n-1}-\alpha_n}=\left(\sum_{1\leq i_1<\cdots<i_{n-1}\leq n}x_{i_1}\cdots x_{i_{n-1}}\right)^{\alpha_{n-1}-\alpha_n}
+    \]
+    より$h$の単項式の指数で最も大きいものは
+    \[
+    (\alpha_{n-1},\cdots,\alpha_{n-1},\alpha_n)    
+    \]
+    以上であることがわかる。このことを繰り返していけば、$h$の指数最大の単項式は
+    \[
+    (\alpha_1,\alpha_2,\cdots,\alpha_n)    
+    \]
+    になることがわかる。またその係数が$1$であることも従う。よって$\beta <\alpha$であるから、帰納法の仮定により主張が成立する。
 \end{proof}
 
 \begin{eg}
@@ -104,6 +158,9 @@ $n$変数の基本対称式は$e_1,\cdots, e_n$だけだが、完全対称式は
     \]
     が成り立つことがわかる。
 \end{eg}
+
+次に交代多項式についてみていこう。
+
 
 \begin{defin}
     $\alpha=(a_1,\cdots,a_n)$, $a_k\in\integer_{\geq 0}$に対して多項式$A_\alpha\in\complex[x_1,\cdots,x_n]$を
