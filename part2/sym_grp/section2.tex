@@ -487,12 +487,24 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
   \]
 \end{eg}
 
-
-\subsection{対称群の表現環と対称関数環}
+\subsection{表現環と対称関数環}
 
 \begin{defin}
   可算無限個の変数をもつ形式的べき級数環$R=\complex[[x_1,x_2,\cdots]]$を考える。
+  \[
+  \mathfrak{S}=\set{\map{\sigma}{\natnum}{\natnum}}{\text{$f$は全単射で$f(n)\neq n$なる$n$が有限個}}  
+  \]
+  とする
+  \footnote{
+    $\mathfrak{S}$は対称群$\mathfrak{S}_n$と自然な包含$\iota:\mathfrak{S}_n\rightarrow\mathfrak{S}_{n+1}$のなす帰納系の帰納極限である。
+  }。
+  \[
+  \Lambda=\set{f\in R}{\sigma f=f,\:(\text{for all }\sigma\in\mathfrak{S}),\:\text{$f$の単項式の次数は有界}}  
+  \]
+  を対称関数環という
 \end{defin}
+
+
 
 
 
