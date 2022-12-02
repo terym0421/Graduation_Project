@@ -54,14 +54,14 @@
 \end{eg}
 
 \begin{eg}[基本対称式・完全対称式]
-    整数$n>1$を固定する。$k=1,2,\cdots,n$に対して、$u_k=(1,1,\cdots,1,0,\cdots,0)$を最初の$k$個が$1$で、残りが$0$の数列とする。また
+    整数$n>1$を固定する。$k=1,2,\cdots,n$に対して、$1^k=(1,1,\cdots,1,0,\cdots,0)$を最初の$k$個が$1$で、残りが$0$の数列とする。また
     \[
-    \mathcal{P}_{k,n}=\set{(\alpha_1,\cdots,\alpha_n)\in\integer_{\geq 0}^n}{\alpha_1\geq \cdots\geq\alpha_n,\quad\alpha_1+\cdots+\alpha_n=k}    
+    \mathcal{Y}_{k,n}=\set{(\alpha_1,\cdots,\alpha_n)\in\integer_{\geq 0}^n}{\alpha_1\geq \cdots\geq\alpha_n,\quad\alpha_1+\cdots+\alpha_n=k}    
     \]
     とする。
     \begin{align*}
-        &e_k=m_{u_k}=\sum_{1\leq i_1<i_2<\cdots<i_k\leq n}x_{i_1}x_{i_2}\cdots x_{i_k}\\
-        &h_k=\sum_{\alpha\in P_{k,n}}m_\alpha=\sum_{1\leq i_1\leq i_2\leq\cdots\leq i_k\leq n}x_{i_1}x_{i_2}\cdots x_{i_k}
+        &e_k=m_{1^k}=\sum_{1\leq i_1<i_2<\cdots<i_k\leq n}x_{i_1}x_{i_2}\cdots x_{i_k}\\
+        &h_k=\sum_{\alpha\in\mathcal{Y}_{k,n}}m_\alpha=\sum_{1\leq i_1\leq i_2\leq\cdots\leq i_k\leq n}x_{i_1}x_{i_2}\cdots x_{i_k}
     \end{align*}
     として、$e_k$を$k$次基本対称式, $h_k$を$k$次完全対称式という。
     \begin{align*}
@@ -110,11 +110,11 @@ $n$変数の基本対称式は$e_1,\cdots, e_n$だけだが、完全対称式は
 \end{theo}
 
 \begin{proof}
-    命題\ref{m_is_basis}より、$m_\alpha$が$e_1,\cdots,e_n$の多項式で表されることを示せばよい。$\mathcal{P}_n=\bigcup_{k=1}^\infty\mathcal{P}_{k,n}$とおく。$\mathcal{P}_n$には辞書式順序による全順序を入れておく。$\alpha\in\mathcal{P}_n$に関する帰納法によって示そう。$\mathcal{P}_n$の最小元は$(1,0,\cdots,0)$であり、
+    命題\ref{m_is_basis}より、$m_\alpha$が$e_1,\cdots,e_n$の多項式で表されることを示せばよい。$\mathcal{Y}_n=\bigcup_{k=1}^\infty\mathcal{Y}_{k,n}$とおく。$\mathcal{Y}_n$には辞書式順序による全順序を入れておく。$\alpha\in\mathcal{Y}_n$に関する帰納法によって示そう。$\mathcal{Y}_n$の最小元は$(1,0,\cdots,0)$であり、
     \[
     m_{1,0,\cdots,0}=e_1    
     \]
-    であるからよい。$\alpha=(\alpha_1\geq\cdots\geq\alpha_n)\in\mathcal{P}_n$を$\alpha>(1,0,\cdots,0)$であるとする。
+    であるからよい。$\alpha=(\alpha_1\geq\cdots\geq\alpha_n)\in\mathcal{Y}_n$を$\alpha>(1,0,\cdots,0)$であるとする。
     \[
         g(x_1,\cdots,x_n)=m_\alpha-e_n^{\alpha_n}e_{n-1}^{\alpha_{n-1}-\alpha_n}\cdots e_2^{\alpha_2-\alpha_3}e_1^{\alpha_1-\alpha_2} 
     \]
@@ -310,19 +310,14 @@ Schur多項式について重要な命題が次の定理である。
 \end{defin}
 
 \begin{defin}
-    $n$行からなるYoung図形の全体を$\mathcal{Y}_n$とする。すなわち
+    $n$行からなるYoung図形の全体を第1節と同じく$\mathcal{Y}_n$で表す。すなわち
     \[
-    \mathcal{Y}_n=\set{\lambda=(\lambda_1,\cdots,\lambda_n,0)}{\lambda_1\geq \cdots\geq\lambda_n\geq 0}
+    \mathcal{Y}_n=\set{\lambda=(\lambda_1,\cdots,\lambda_n)}{\lambda_1\geq \cdots\geq\lambda_n\geq 0}
     \]
-    である。また、$(m-n,m-n,\cdots,m-n)$, ($m-n$が$n$個、つまり$n\times(m-n)$長方形)の部分Young図形の全体を$\mathcal{Y}_n(m)$とする。
+    である。
 \end{defin}
 
 
-定義より
-\[
-\mathcal{Y}_n=\bigcup_{k=n+1}^\infty\mathcal{Y}_n(k)    
-\]
-が成り立つ。
 
 Young図形とSchur多項式との関係は次の命題で表される
 \begin{prop}
