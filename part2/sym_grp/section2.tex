@@ -488,26 +488,7 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
 \end{eg}
 
 
-\subsection{続・対称多項式}
-第1部で述べた対称多項式について、本節でもう少し詳しく説明する。
-基本的な対称多項式の例として次のようなものがあった。
-\begin{itemize}
-  \item 大きさ$k$の$n$行のYoung図形$\lambda\in\mathcal{Y}_{k,n}$に対して
-  \[
-  m_\lambda=\sum_{\mu\sim\lambda}x_1^{\lambda_1}\cdots x_n^{\lambda_n}  
-  \] 
-  ただし$\lambda\sim\mu$とはある$\sigma\in\mathfrak{S}_n$に対して$(\mu_1,\cdots,\mu_n)=(\lambda_{\inv{\sigma}(1)},\cdots,\lambda_{\inv{\sigma}(n)})$が成り立つことである\footnote{したがって$\mu$はYoung図形ではない}。
-
-  \item $1^k=(1,1,\cdots,1,0,0,\cdots,0)\in\mathcal{Y}_{k,n}$に対して
-  \[
-  e_k=m_{1^k}  
-  \]
-
-  \item 
-\end{itemize}
-
-
-
+\newpage
 \subsection{表現環と対称関数環}
 
 \begin{defin}
@@ -522,9 +503,54 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
   \[
   \Lambda=\set{f\in R}{\sigma f=f,\:(\text{for all }\sigma\in\mathfrak{S}),\:\text{$f$の単項式の次数は有界}}  
   \]
-  を対称関数環という
+  $\Lambda$は$R$の部分環で対称関数環と呼ばれる。$\Lambda^k$を
+  \[
+  \Lambda^k=\set{f\in\Lambda}{\text{$f$の単項式の次数はすべて$k$}}  
+  \]
+  で定め、$\Lambda^k$の元を$k$次斉次対称関数という。
+  \[
+  \Lambda=\bigoplus_{k=0}^\infty\Lambda^k  
+  \]
+  より$\Lambda$は次数付き環の構造をもつ。
 \end{defin}
 
+対称関数の$k$次斉次部分は$k$次斉次対称多項式からの射影極限と考えることができる。$\Lambda_n^k$を$n$変数$k$次斉次対称多項式のなすベクトル空間とする。$m\leq n$に対して線形写像$\map{\rho_{m,n}}{\Lambda^k_n}{\Lambda^k_m}$を
+\[
+\rho_{m,n}(f(x_1,\cdots,x_m,x_{m+1},\cdots,x_n))=f(x_1,\cdots,x_m,0,\cdots,0)  
+\]
+によって定める。ここで$\rho_{m,n}(f)$は実際に$m$変数の$k$次斉次対称多項式である\footnote{変数の置換と$0$を代入する写像が可換であることによる}。$l\leq m\leq n$に対して
+\[
+\rho_{l,m}\circ\rho_{m,n}=\rho_{l,n}  
+\]
+が成り立つから、$\{\lambda^k_n,\rho_{m,n}\}$は射影系をなす。
+
+\begin{prop}\label{sym_func_is_inverselimit}
+  上の状況において、
+  \[
+    \Lambda^k=\mathop{\lim_{\longleftarrow}}\Lambda^k_n
+  \]
+  がなりたつ。
+\end{prop}
+
+\begin{proof}
+  $\Lambda^k$が射影極限の普遍性を満たすことを言えばよい。
+  線形写像$\map{\rho_n}{\Lambda^k}{\Lambda^k_n}$を
+  \[
+  \rho_n(f(x_1,x_2,\cdots))=f(x_1,x_2,\cdots,x_n,0,0,\cdots)  
+  \]
+  によって定義すれば$m\leq n$に対して
+  \[
+  \rho_{m,n}\circ\rho_{n}=\rho_m
+  \]
+  が成り立つ。任意のベクトル空間$V$と線形写像$\phi_n:V\rightarrow\Lambda^k_n$であって$m\leq n$に対して
+  \[
+  \rho_{m,n}\circ\phi_n=\phi_m  
+  \]
+  を満たすものが与えられたとき、$\varphi:V\rightarrow\Lambda^k$を
+  \[
+  \varphi(x)=  
+  \]
+\end{proof}
 
 
 
