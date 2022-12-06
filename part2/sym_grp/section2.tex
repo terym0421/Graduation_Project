@@ -489,6 +489,11 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
 
 
 \newpage
+\subsection{続・対称多項式}
+
+
+
+\newpage
 \subsection{表現環と対称関数環}
 
 \begin{defin}
@@ -514,37 +519,7 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
   より$\Lambda$は次数付き環の構造をもつ。
 \end{defin}
 
-対称関数の$k$次斉次部分は$k$次斉次対称多項式からの射影極限と考えることができる。$\Lambda_n^k$を$n$変数$k$次斉次対称多項式のなすベクトル空間とする。$m\leq n$に対して線形写像$\map{\rho_{m,n}}{\Lambda^k_n}{\Lambda^k_m}$を
-\[
-\rho_{m,n}(f(x_1,\cdots,x_m,x_{m+1},\cdots,x_n))=f(x_1,\cdots,x_m,0,\cdots,0)  
-\]
-によって定める。ここで$\rho_{m,n}(f)$は実際に$m$変数の$k$次斉次対称多項式である\footnote{変数の置換と$0$を代入する操作が可換であることによる}。$l\leq m\leq n$に対して
-\[
-\rho_{l,m}\circ\rho_{m,n}=\rho_{l,n}  
-\]
-が成り立つから、$\{\Lambda^k_n,\rho_{m,n}\}$は射影系をなす。
-
-\begin{prop}\label{sym_func_is_inverselimit}
-  上の状況において、
-  \[
-    \Lambda^k=\mathop{\lim_{\longleftarrow}}\Lambda^k_n
-  \]
-  がなりたつ。
-\end{prop}
-
-\begin{proof}
-  $\theta_n:\Lambda^k\rightarrow\Lambda^k_n$を$n+1$番目以降の変数を$0$にする写像とすれば、
-  \[
-  \rho_{m,n}\circ\theta_n=\theta_m  
-  \]
-  が成り立つから、射影極限の普遍性から
-  \[
-  \theta:\Lambda^k\rightarrow\mathop{\lim_{\longleftarrow}}\Lambda^k_n
-  \]
-  が誘導される。$\mathop{\lim_{\longleftarrow}}\Lambda^k_n$から$\Lambda^k$への写像は次のように定義する。$\mathop{\lim_{\longleftarrow}}\Lambda^k_n$の元$(f_n)_n$, $f_n\in\Lambda^k_n$に対して、
-\end{proof}
-
-\begin{eg}
+\begin{eg}\label{monomial_sym_func}
   任意のYoung図形$\lambda=(\lambda_1,\cdots,\lambda_n)$に対して
   \[
   m_{\lambda}=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}x_2^{\alpha_2}\cdots x_{n}^{\alpha_n}
@@ -578,7 +553,65 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
   とする。
 \end{eg}
 
-このように、対称関数はいままでみてきた対称多項式を自然に無限変数に拡張した概念であり、対称多項式で成り立っていた関係式が対称関数においても成立することが多い。
+このように、対称関数はいままでみてきた対称多項式を自然に無限変数に拡張した概念であり、対称多項式で成り立っていた関係式が対称関数においても成立することが多い。このことは対称関数の$k$次斉次部分が$k$次斉次対称多項式からの射影極限と考えることができることによる。$\Lambda_n^k$を$n$変数$k$次斉次対称多項式のなすベクトル空間とする。$m\leq n$に対して線形写像$\map{\rho_{m,n}}{\Lambda^k_n}{\Lambda^k_m}$を
+\[
+\rho_{m,n}(f(x_1,\cdots,x_m,x_{m+1},\cdots,x_n))=f(x_1,\cdots,x_m,0,\cdots,0)  
+\]
+によって定める。ここで$\rho_{m,n}(f)$は実際に$m$変数の$k$次斉次対称多項式である\footnote{変数の置換と$0$を代入する操作が可換であることによる}。$l\leq m\leq n$に対して
+\[
+\rho_{l,m}\circ\rho_{m,n}=\rho_{l,n}  
+\]
+が成り立つから、$\{\Lambda^k_n,\rho_{m,n}\}$は射影系をなす。
+
+\begin{prop}\label{sym_func_is_inverselimit}
+  上の状況において、
+  \[
+    \Lambda^k=\mathop{\lim_{\longleftarrow}}\Lambda^k_n
+  \]
+  がなりたつ。
+\end{prop}
+
+\begin{proof}
+  $\theta_n:\Lambda^k\rightarrow\Lambda^k_n$を$n+1$番目以降の変数を$0$にする写像とすれば、
+  \[
+  \rho_{m,n}\circ\theta_n=\theta_m  
+  \]
+  が成り立つから、射影極限の普遍性から
+  \[
+  \theta:\Lambda^k\rightarrow\mathop{\lim_{\longleftarrow}}\Lambda^k_n
+  \]
+  が誘導される。$\mathop{\lim_{\longleftarrow}}\Lambda^k_n$から$\Lambda^k$への写像$\varphi$は次のように定義する。$\mathop{\lim_{\longleftarrow}}\Lambda^k_n$の元$(f_n)_{n\in\integer_{>0}}$, ($f_n\in\Lambda^k_n$)に対して、$f_n\neq 0$となる$f_n$をとる。$f_n$は$n$変数$k$次斉次対称多項式だから、大きさ$k$の$n$行Young図形$\mathcal{P}_k(n)$でパラメトライズされた$\{m_\lambda(x_1,\cdots,x_n)\}_{\lambda\in\mathcal{P}_k(n)}$で生成される。すなわち
+  \[
+  f_n=\sum_{\lambda\in\mathcal{P}_k(n)}c_\lambda m_\lambda(x_1,\cdots,x_n)  
+  \]
+  と表される。そこで、
+  \[
+  \varphi((f_n)_{n\in\integer_{>0}})=  \sum_{\lambda\in\mathcal{P}_k(n)}c_\lambda m_\lambda
+  \]
+  によって定義する。ただし、右辺の$m_\lambda$は例\ref{monomial_sym_func}の対称関数である。$\varphi$が$f_n$の取り方によらないことを示す。$f_m\neq 0$かつ$m\geq n$とする。
+  \[
+  f_m=\sum_{\mu\in\mathcal{P}_k(m)}d_\mu m_\mu(x_1,\cdots,x_n,x_{n+1},\cdots,x_m)  
+  \]
+  と表せば、$\rho_{n,m}(f_m)=f_n$より
+  \begin{equation}\label{equality_1}
+    \sum_{\lambda\in\mathcal{P}_k(n)}c_\lambda m_\lambda(x_1,\cdots,x_n) 
+    =
+    \sum_{\mu\in\mathcal{P}_k(m)}d_\mu m_\mu(x_1,\cdots,x_n,0,\cdots,0)  
+  \end{equation}
+  となる。ここで、$\mu_{n+1}>0$となる$\mu$に対しては$m_\mu(x_1,\cdots,x_n,0,\cdots,0)=0$となるから、式(\ref{equality_1})の右辺の和で残るのは、$\mu_{n+1}=0$なる$\mu$すなわち$\mu\in\mathcal{P}_k(n)$である。また、$\mu\in\mathcal{P}_k(n)$のとき、
+  \[
+  m_\mu(x_1,\cdots,x_n,0,\cdots,0)=m_\mu(x_1,\cdots,x_n)  
+  \]
+  であるから、結局式(\ref{equality_1})は
+  \begin{equation}
+    \sum_{\lambda\in\mathcal{P}_k(n)}c_\lambda m_\lambda(x_1,\cdots,x_n) 
+    =
+    \sum_{\lambda\in\mathcal{P}_k(n)}d_\lambda m_\lambda(x_1,\cdots,x_n) 
+  \end{equation}
+  となり、$c_\lambda=d_\lambda$が従う。
+\end{proof}
+
+
 
 
 
