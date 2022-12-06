@@ -518,11 +518,11 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
 \[
 \rho_{m,n}(f(x_1,\cdots,x_m,x_{m+1},\cdots,x_n))=f(x_1,\cdots,x_m,0,\cdots,0)  
 \]
-によって定める。ここで$\rho_{m,n}(f)$は実際に$m$変数の$k$次斉次対称多項式である\footnote{変数の置換と$0$を代入する写像が可換であることによる}。$l\leq m\leq n$に対して
+によって定める。ここで$\rho_{m,n}(f)$は実際に$m$変数の$k$次斉次対称多項式である\footnote{変数の置換と$0$を代入する操作が可換であることによる}。$l\leq m\leq n$に対して
 \[
 \rho_{l,m}\circ\rho_{m,n}=\rho_{l,n}  
 \]
-が成り立つから、$\{\lambda^k_n,\rho_{m,n}\}$は射影系をなす。
+が成り立つから、$\{\Lambda^k_n,\rho_{m,n}\}$は射影系をなす。
 
 \begin{prop}\label{sym_func_is_inverselimit}
   上の状況において、
@@ -533,24 +533,52 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
 \end{prop}
 
 \begin{proof}
-  $\Lambda^k$が射影極限の普遍性を満たすことを言えばよい。
-  線形写像$\map{\rho_n}{\Lambda^k}{\Lambda^k_n}$を
+  $\theta_n:\Lambda^k\rightarrow\Lambda^k_n$を$n+1$番目以降の変数を$0$にする写像とすれば、
   \[
-  \rho_n(f(x_1,x_2,\cdots))=f(x_1,x_2,\cdots,x_n,0,0,\cdots)  
+  \rho_{m,n}\circ\theta_n=\theta_m  
   \]
-  によって定義すれば$m\leq n$に対して
+  が成り立つから、射影極限の普遍性から
   \[
-  \rho_{m,n}\circ\rho_{n}=\rho_m
+  \theta:\Lambda^k\rightarrow\mathop{\lim_{\longleftarrow}}\Lambda^k_n
   \]
-  が成り立つ。任意のベクトル空間$V$と線形写像$\phi_n:V\rightarrow\Lambda^k_n$であって$m\leq n$に対して
-  \[
-  \rho_{m,n}\circ\phi_n=\phi_m  
-  \]
-  を満たすものが与えられたとき、$\varphi:V\rightarrow\Lambda^k$を
-  \[
-  \varphi(x)=  
-  \]
+  が誘導される。$\mathop{\lim_{\longleftarrow}}\Lambda^k_n$から$\Lambda^k$への写像は次のように定義する。$\mathop{\lim_{\longleftarrow}}\Lambda^k_n$の元$(f_n)_n$, $f_n\in\Lambda^k_n$に対して、
 \end{proof}
+
+\begin{eg}
+  任意のYoung図形$\lambda=(\lambda_1,\cdots,\lambda_n)$に対して
+  \[
+  m_{\lambda}=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}x_2^{\alpha_2}\cdots x_{n}^{\alpha_n}
+  \]
+  とする。ここで指数$\alpha$は、$\lambda$の置換になっているもの全体をわたる。すなわちある$\sigma\in\mathfrak{S}$が存在して$\alpha=\sigma\lambda$をみたすもの全体である。$m_\lambda$は対称関数である。
+\end{eg}
+
+\begin{eg}
+  \begin{align*}
+  &e_k=m_{1^k}=\sum_{1\leq i_1<i_2<\cdots<i_k}x_{i_1}x_{i_2}\cdots x_{i_k}\\
+  &h_k=\sum_{\lambda\in\mathcal{P}_n} m_\lambda
+  \end{align*}
+  をそれぞれ、基本対称関数, 完全対称関数という。また、任意のYoung図形$\lambda=(\lambda_1,\cdots,\lambda_n)$に対して
+  \begin{align*}
+    &e_\lambda=e_{\lambda_1}\cdots e_{\lambda_n}\\
+    &h_\lambda=h_{\lambda_1}\cdots h_{\lambda_n}
+  \end{align*}
+  とする。
+  \begin{align*}
+    &e_1=x_1+x_2+x_3+\cdots\\
+    &e_2=\sum_{i<j}x_ix_j
+  \end{align*}
+  である。
+\end{eg}
+
+\begin{eg}
+  $(k)=(k,0,\cdots,0)$に対して
+  \[
+  p_{k}=m_{(k)}=x_1^k+x_2^k+\cdots
+  \]
+  とする。
+\end{eg}
+
+このように、対称関数はいままでみてきた対称多項式を自然に無限変数に拡張した概念であり、対称多項式で成り立っていた関係式が対称関数においても成立することが多い。
 
 
 

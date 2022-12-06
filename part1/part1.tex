@@ -44,10 +44,11 @@
 \end{eg}
 
 \begin{eg}
-    整数$n>1$を固定する。$k=1,2,\cdots,n$に対して$p_k$を
+    整数$n>1$を固定する。$k=1,2,\cdots,n$に対して$(k)=(k,0,\cdots,0)$とする。
+    $p_k$を
     \[
     p_k
-    =m_{k,0,\cdots,0}
+    =m_{(k)}
     =x_1^k+\cdots+x_n^k
     \]
     によって定義する。$p_k$はもちろん対称多項式である
@@ -292,7 +293,8 @@ Schur多項式について重要な命題が次の定理である。
 \section{Littlewood-Richardson規則}
 \subsection{Young図形}
 \begin{defin}
-    整数列$\lambda=(\lambda_1,\cdots,\lambda_n,\cdots)$, $\lambda_1\geq\cdots\geq\lambda_n\geq 0$に対して、$1$行目に$\lambda_1$個の箱を書き、$2$行目に$\lambda_2$個の箱を書き...と続けてできる図形をYoung図形といい、$\lambda$で表す。ある$n$以降$\lambda_n=\lambda_{n+1}=\cdots=0$となる場合は、$0$を省略して$\lambda=(\lambda_1,\cdots,\lambda_{n-1})$と書くこともある。箱が1つもないものもYoung図形であるとし、これを$\varnothing$で表す。また$|\lambda|=\lambda_1+\lambda_2+\cdots$とし、これを$\lambda$の大きさという。
+    整数列$\lambda=(\lambda_1,\lambda_2,\cdots)$, $\lambda_1\geq\lambda_2\geq\cdots\geq \lambda_{k}=\lambda_{k+1}=\cdots=0$に対して、$1$行目に$\lambda_1$個の箱を書き、$2$行目に$\lambda_2$個の箱を書き...と続けてできる図形をYoung図形といい、同じく$\lambda$で表す。箱が１つもないYoung図形、すなわち$(0,0,\cdots)$は$\varnothing$で表す。$\lambda_{n+1}=0$のときたんに$\lambda=(\lambda_1,\cdots,\lambda_n)$と書くこともある。
+    また$|\lambda|=\lambda_1+\lambda_2+\cdots$とし、これを$\lambda$の大きさという。
 \end{defin}
 
 \begin{eg}
@@ -304,13 +306,13 @@ Schur多項式について重要な命題が次の定理である。
 \begin{defin}
     2つのYoung図形$\lambda=(\lambda_1,\cdots,\lambda_n,\cdots)$, $\mu=(\mu_1,\cdots,\mu_n,\cdots)$に対して、
     \[
-    \lambda\leq\mu\Leftrightarrow \lambda_1\leq \mu_1,\cdots,\lambda_n\leq\mu_n,\cdots   
+    \lambda\subset \mu\Leftrightarrow \lambda_1\leq \mu_1,\cdots,\lambda_n\leq\mu_n,\cdots   
     \]
     と定義する。このとき$\lambda$は$\mu$の部分Young図形であるという。
 \end{defin}
 
 \begin{defin}
-    $n$行からなるYoung図形の全体を第1節と同じく$\mathcal{Y}_n$で表す。すなわち
+    $n$行からなるYoung図形の全体を第1節と同じ記号$\mathcal{Y}_n$で表す。すなわち
     \[
     \mathcal{Y}_n=\set{\lambda=(\lambda_1,\cdots,\lambda_n)}{\lambda_1\geq \cdots\geq\lambda_n\geq 0}
     \]
