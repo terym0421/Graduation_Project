@@ -1,0 +1,108 @@
+\documentclass{ltjsreport}
+\input{../setting.tex}
+
+\begin{document}
+
+\appendix
+\chapter{Robinson-Schensted-Knuth対応}
+
+Robinson-Schensted-Knuth対応(以下RSK対応と呼ぶ)とは、非負整数行列と、同じ台をもつ半標準タブローの組との間の1対1対応のことである。この付録ではRSK対応の証明はせず、主張の紹介と第2章で用いたCauchyの等式の証明を解説する。
+
+\begin{defin}[行挿入]
+  $T$を形$\lambda$の半標準タブローとし、$k$を正の整数とする。次の操作で得られる半標準タブローを$T\leftarrow k$と書く：
+  \begin{enumerate}
+    \item $T$の一行目の一番右の数が$k$以下なら、右端に$k$を追加したものを$T\leftarrow k$として終了する。
+    \item $T$の右端が$k$より真に大きいならば、$T$の一行目において$k$より大きいもののうち最も左にある箱を$k$で置き換える。またそのときもともと入っていた数を$l$とおく。
+    \item $T$の二行目以降の部分タブローを$T'$とし、$T'\leftarrow l$と$T$の一行目を結合したものを$T\leftarrow k$として終了する。
+  \end{enumerate}
+\end{defin}
+
+\begin{defin}
+  $A$を非負整数行列とする。$A=(a_{ij})$とおいて、次の操作で定まる$2\times n$行列$W$を$A$のbiwordという。
+  \begin{enumerate}
+    \item 各成分$a_{ij}$に対して、$a_{ij}$個の列ベクトル$\pmat{i\\j}$を並べていった行列を$W'$とする
+    \item $W'=(v_1,v_2,\cdots,v_n)$において、$v_1,v_2,\cdots,v_n$の第1成分を優先した辞書式順序に関して左から右に昇順に並び変えたものを$W$とする。
+  \end{enumerate}
+\end{defin}
+
+\begin{eg}
+  $A=\pmat{2 & 1 & 0\\0 &0 &1\\3 &1 &0}$のとき、
+  \[
+  W=\pmat{
+    1 & 1 & 1 & 2 & 3 & 3 & 3 & 3\\
+    1 & 1 & 2 & 3 & 1 & 1 & 1 & 2
+  }
+  \]
+  である。
+\end{eg}
+
+
+\begin{theo}[RSK対応]
+  非負整数行列$A\in M_{m,n}(\integer_{\geq 0})$に対して、次の操作で定まる同じ台をもつタブローの組$(P,Q)$はどちらも半標準であり、$P$に書かれた数はたかだか$n$, $Q$に書かれた数はたかだか$m$である。この対応は全単射である。
+  \begin{enumerate}
+    \item $A$のbiwordを$W$とする。$P,Q=\varnothing$として初期化する。
+    \item $W$の各列ベクトル$\pmat{i\\j}$を左から右へ読んでいって、次の処理をする。
+    \begin{itemize}
+      \item $P$を$P\leftarrow j$で置き換える。
+      \item $Q$に対して、$P\leftarrow j$の行挿入で新しく追加された箱の場所に$i$を追加する。
+    \end{itemize}
+  \end{enumerate}
+\end{theo}
+
+\begin{eg}
+  上記の例において、$A$から定まる$P,Q$は
+  \[
+  P=\begin{ytableau}
+    1 & 1 & 1 & 1 & 1 & 2\\
+    2 & 3
+  \end{ytableau},\qquad
+  Q=\begin{ytableau}
+    1 & 1 & 1& 2 &3 & 3 \\
+    3 & 3
+  \end{ytableau}
+  \]
+\end{eg}
+
+対応からわかるように、$A=(a_{ij})\in M_{m,n}(\integer)$とし$P,Q$のウェイトをそれぞれ$p=(p_1,\cdots,p_n)$, $q=(q_1,\cdots,q_m)$とおくと
+\begin{equation}\label{weight_and_matrix}
+p_i=a_{1i}+\cdots+a_{mi},\qquad q_j=a_{j1}+\cdots+a_{jn}  
+\end{equation}
+である。
+
+\begin{theo}[Cauchyの等式]
+  \[
+  \prod_{i=1}^n\prod_{j=1}^m\frac{1}{1-x_iy_j}=\sum_{\lambda}s_\lambda(x_1,\cdots,x_n)s_\lambda(y_1,\cdots,y_m)  
+  \]
+  が成り立つ。ただし右辺の和はすべてのYoung図形をわたる。
+\end{theo}
+
+\begin{proof}
+  $\mathcal{T}(\lambda)$で形$\lambda$の半標準タブロー全体のなす集合とすれば、Schur多項式はタブロー和に等しい(第1部参照)ので右辺の和は
+  \[
+  \sum_{\lambda}s_\lambda(x_1,\cdots,x_n)s_\lambda(y_1,\cdots,y_m)
+  =\sum_{\lambda}
+  \sum_{\substack{P,Q\in\mathcal{T}(\lambda) \\ [P]=n,[Q]=m}}
+  (x_1^{p_1}\cdots x_n^{p_n})(y_1^{q_1}\cdots y_m^{q_m})
+  \]
+  である。ここで$[P]=n$とは$P$に書かれた数がたかだか$n$であることを意味する。$[Q]=m$も同様。一方、左辺の式は
+  \begin{align*}
+  \prod_{i,j}\frac{1}{1-x_iy_j}&=\prod_{i,j}(1+x_iy_j+(x_iy_j)^2+\cdots)\\
+  &=\sum_{A\in M_{m,n}(\integer_{\geq 0})}\prod_{i,j}(x_iy_j)^{a_{ji}}\\
+  &=\sum_{A\in M_{m,n}(\integer_{\geq 0})}\prod_i x_i^{a_{1i}+\cdots+a_{mi}}\prod_j y_j^{a_{j1}+\cdots+a_{jn}}
+  \end{align*}
+  と書くことができる。RSK対応によって$M_{m,n}(\integer_{\geq 0})$と半標準タブローの組$(P,Q)$が1対1に対応し、このとき(\ref{weight_and_matrix})がなりたつから、
+  \begin{align*}
+    \sum_{A\in M_{m,n}(\integer_{\geq 0})}\prod_i x_i^{a_{1i}+\cdots+a_{mi}}\prod_j y_j^{a_{j1}+\cdots+a_{jn}}
+    &=\sum_{A\in M_{m,n}(\integer_{\geq 0})}\prod_i x_i^{p_i}\prod_j y_j^{q_j}\\
+    &=\sum_{\lambda}
+    \sum_{\substack{P,Q\in\mathcal{T}(\lambda) \\ [P]=n,[Q]=m}}
+    (x_1^{p_1}\cdots x_n^{p_n})(y_1^{q_1}\cdots y_m^{q_m})
+  \end{align*}
+  よって示せた。
+\end{proof}
+
+
+
+
+
+\end{document}

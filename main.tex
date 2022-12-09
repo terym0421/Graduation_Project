@@ -1,40 +1,31 @@
-\documentclass{ltjsarticle}
+\documentclass{ltjsreport}
 \input{setting.tex}
 
-\title{Schur多項式からみる幾何学と表現論}
-\author{慶應義塾大学総合政策学部　金沢研究会\\赤松輝海}
+\title{Schur多項式からみる表現論と幾何学}
+\author{慶應義塾大学総合政策学部　金沢研究会\\学籍番号：71900121　赤松輝海}
 \date{}
 
 
 \begin{document}
 \maketitle
-Schur多項式は数学の様々な分野に現れる対称多項式で、その組み合わせ論的性質がまったく関係のないように思える問題の解を与えることがしばしばある。本稿では、表現論と幾何学でSchur多項式がどのように用いられるかを紹介する。
-
-
-第1部ではまずSchur多項式の定義と基本性質について述べる。特に重要なのがSchur多項式が対称多項式環の基底をなすという事実である。これにより、2つのSchur多項式の積はSchur多項式の線形結合で表せられることがわかるが、その係数はLittlewood-Richardson規則という組み合わせ論的ルールによって記述される。
-
-
-第2部では有限群の表現論の一般論と、その具体例として対称群の表現論、およびSchur-Weyl双対性について紹介する。表現論とは群や多元環などの抽象的な代数系を、ベクトル空間への作用（これを表現という）を通して研究する分野である。第2部では最も基本的な対称群の表現論と一般線形群の表現論について解説する。対称群の表現の同値類からつくられる表現環が対称関数環という、任意変数の対称多項式をあつめてきたような環と同型になることが示される。その中で、Schur多項式と対称群の既約表現が対応することがわかり、積の構造を通して既約表現の分解にLittlewood-Richardson規則が現れる。また、一般線形群の表現においては、既約表現のテンソル積の分解にLittlewood-Richardson規則が現れる。
-
-
-第3部では数え上げ幾何学を紹介する。数え上げ幾何の古典的な問題として、幾何学的な条件を満たす直線の本数を数えることがある。そのような条件を満たす直線の集合はSchubert多様体と呼ばれる空間をなし、数え上げ問題を解くことはSchubert多様体の交叉を調べることに対応する。交叉を調べる際にまたしてもLittlewood-Richardson規則が現れ、これを用いて数え上げ問題に解答を与えることが目標である。
-
-
-本稿で用いる記号を整理しておく。$\integer$, $\quotient$, $\real$, $\complex$でそれぞれ、整数, 有理数, 実数, 複素数全体のなす集合を表すものとする。
 
 \newpage
-\tableofcontents
+\input{./introduction.tex}
 
+\tableofcontents
 \newpage
 \input{./part1/part1.tex}
-
 
 \newpage
 \input{./part2/part2.tex}
 
 \newpage
-\part{数え上げ幾何学}
+\chapter{数え上げ幾何学}
 
+
+
+\newpage
+\input{./appendix/RSK_correspondence.tex}
 
 \newpage
 \input{reference.tex}
