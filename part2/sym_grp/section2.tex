@@ -127,7 +127,11 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
       6&3
     \end{ytableau}
     \]
-    よってこのとき$\nu g$は$T$の第1行への水平置換$\sigma_1$と、
+    すなわち
+    \[
+    H_1(T)=H_1(\nu gT)  
+    \]
+    が成り立つようにできる。このとき$\nu g$は$T$の第1行への水平置換$\sigma_1$と、
     $T$の第2行以下を取り出したタブロー$T'$への置換$g'$との積
     \[
     \nu g=\sigma_1g'
@@ -242,6 +246,8 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
 \end{proof}
 
 
+Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違いはない。
+
 \begin{prop}\label{reverse_young_sym}
   $b_T a_T=\tilde{c_T}$とおくと、$\complex[G]\tilde{c_T}\simeq \complex[G]c_T$が成り立つ。
 \end{prop}
@@ -323,13 +329,13 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
   \]
   が成り立つことを示す。次の補題を示す。
   \begin{lemm}
-    $\mathcal{P}_n$に辞書式順序を入れ、$\lambda < \mu$であるとする。$\lambda, \mu$でその自然なタブローを表すものとする。このとき任意の$g\in G$に対して、$\mu$の同じ行にある数字$i,j$であって$g\lambda$では同じ列にあるものが存在する。
+    $\mathcal{P}_n$に辞書式順序を入れ、$\lambda < \mu$であるとする。$\lambda, \mu$でその自然なタブローを表すものとする。このとき任意の$g\in G$に対して、$\mu$の同じ行にある数字$i,j$であって$g\lambda$でも同じ列にあるものが存在する。
   \end{lemm}
 
   \begin{proof}
     $\lambda=(\lambda_1,\cdots,\lambda_s)$, $\mu=(\mu_1,\cdots,\mu_t)$とおく。$t$についての帰納法で示す。
 
-    $t=1$の場合$\lambda_1<\mu_1$となるから、$\lambda$の列数は$\mu_1$より少ない。よって鳩の巣原理$1,2,\cdots,\mu_1$のうち、$g\lambda$の同じ列に存在あるペアが必ず存在する。
+    $t=1$の場合$\lambda_1<\mu_1$となるから、$\lambda$の列数は$\mu_1$より少ない。よって鳩の巣原理を用いれば$1,2,\cdots,\mu_1$のうち、$g\lambda$の同じ列にあるペアが必ず存在することがわかる。
 
     $t>1$とする。$\lambda_1<\mu_1$である場合はまったく同様に鳩の巣原理から従う。$\lambda_1=\mu_1$かつ、$1,2,\cdots,\mu_1$が$g\lambda$ではすべて異なる列に存在するとする。このとき垂直置換$\tau\in\mathcal{V}_{g\lambda}$を施して
     \[
@@ -493,6 +499,10 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
 
 
 
+
+
+
+
 \newpage
 \subsection{表現環と対称関数環}
 
@@ -524,13 +534,15 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
   \[
   m_{\lambda}=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}x_2^{\alpha_2}\cdots x_{n}^{\alpha_n}
   \]
-  とする。ここで指数$\alpha$は、$\lambda$の置換になっているもの全体をわたる。すなわちある$\sigma\in\mathfrak{S}$が存在して$\alpha=\sigma\lambda$をみたすもの全体である。$m_\lambda$は対称関数である。
+  とする。ここで指数$\alpha$は、$\lambda$の置換になっているもの全体をわたる。すなわちある$\sigma\in\mathfrak{S}$が存在して$\alpha=\sigma\lambda$をみたすもの全体である。$m_\lambda$は対称関数である。対称多項式の場合と同様の議論で、$\Lambda^k$は$\{m_\lambda\}_{\lambda\in\mathcal{P}_k}$を基底に持つことがわかる。
 \end{eg}
 
 \begin{eg}
   \begin{align*}
-  &e_k=m_{1^k}=\sum_{1\leq i_1<i_2<\cdots<i_k}x_{i_1}x_{i_2}\cdots x_{i_k}\\
-  &h_k=\sum_{\lambda\in\mathcal{P}_n} m_\lambda
+  &e_k=m_{1^k}
+  =\sum_{1\leq i_1<i_2<\cdots<i_k}x_{i_1}x_{i_2}\cdots x_{i_k}\\
+  &h_k=\sum_{\lambda\in\mathcal{P}_k} m_\lambda
+  =\sum_{1\leq i_1\leq i_2\leq \cdots\leq i_k}x_{i_1}x_{i_2}\cdots x_{i_k}
   \end{align*}
   をそれぞれ、基本対称関数, 完全対称関数という。また、任意のYoung図形$\lambda=(\lambda_1,\cdots,\lambda_n)$に対して
   \begin{align*}
@@ -553,7 +565,7 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
   とする。
 \end{eg}
 
-このように、対称関数はいままでみてきた対称多項式を自然に無限変数に拡張した概念であり、対称多項式で成り立っていた関係式が対称関数においても成立することが多い。このことは対称関数の$k$次斉次部分が$k$次斉次対称多項式からの射影極限と考えることができることによる。$\Lambda_n^k$を$n$変数$k$次斉次対称多項式のなすベクトル空間とする。$m\leq n$に対して線形写像$\map{\rho_{m,n}}{\Lambda^k_n}{\Lambda^k_m}$を
+このように、対称関数はいままでみてきた対称多項式を自然に無限変数に拡張した概念であり、対称多項式で成り立っていた関係式が対称関数においても成立することが多い。このことは対称関数の$k$次斉次部分$\Lambda^k$が$k$次斉次対称多項式からの射影極限と考えることができることによる。$\Lambda_n^k$を$n$変数$k$次斉次対称多項式のなすベクトル空間とする。$m\leq n$に対して線形写像$\map{\rho_{m,n}}{\Lambda^k_n}{\Lambda^k_m}$を
 \[
 \rho_{m,n}(f(x_1,\cdots,x_m,x_{m+1},\cdots,x_n))=f(x_1,\cdots,x_m,0,\cdots,0)  
 \]
@@ -576,39 +588,74 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
   \[
   \rho_{m,n}\circ\theta_n=\theta_m  
   \]
-  が成り立つから、射影極限の普遍性から
+  が成り立つから、射影極限の普遍性から線形写像
   \[
   \theta:\Lambda^k\rightarrow\mathop{\lim_{\longleftarrow}}\Lambda^k_n
   \]
-  が誘導される。$\mathop{\lim_{\longleftarrow}}\Lambda^k_n$から$\Lambda^k$への写像$\varphi$は次のように定義する。$\mathop{\lim_{\longleftarrow}}\Lambda^k_n$の元$(f_n)_{n\in\integer_{>0}}$, ($f_n\in\Lambda^k_n$)に対して、$f_n\neq 0$となる$f_n$をとる。$f_n$は$n$変数$k$次斉次対称多項式だから、大きさ$k$の$n$行Young図形$\mathcal{P}_k(n)$でパラメトライズされた$\{m_\lambda(x_1,\cdots,x_n)\}_{\lambda\in\mathcal{P}_k(n)}$で生成される。すなわち
+  が誘導される。$\mathop{\lim_{\longleftarrow}}\Lambda^k_n$から$\Lambda^k$への写像$\varphi$は次のように定義する。$\mathop{\lim_{\longleftarrow}}\Lambda^k_n$の元$(f_n)_{n\in\integer_{>0}}$, ($f_n\in\Lambda^k_n$)に対して、$k$変数の部分に注目すると
   \[
-  f_n=\sum_{\lambda\in\mathcal{P}_k(n)}c_\lambda m_\lambda(x_1,\cdots,x_n)  
+  f_k=\sum_{\lambda\in\mathcal{P}_k}c_\lambda m_\lambda(x_1,\cdots,x_k)
   \]
-  と表される。そこで、
+  と一意的に表せるので
   \[
-  \varphi((f_n)_{n\in\integer_{>0}})=  \sum_{\lambda\in\mathcal{P}_k(n)}c_\lambda m_\lambda
+  \varphi((f_n)_{n\in\integer_{>0}})
+  =\sum_{\lambda\in\mathcal{P}_k}c_\lambda m_\lambda
   \]
-  によって定義する。ただし、右辺の$m_\lambda$は例\ref{monomial_sym_func}の対称関数である。$\varphi$が$f_n$の取り方によらないことを示す。$f_m\neq 0$かつ$m\geq n$とする。
-  \[
-  f_m=\sum_{\mu\in\mathcal{P}_k(m)}d_\mu m_\mu(x_1,\cdots,x_n,x_{n+1},\cdots,x_m)  
-  \]
-  と表せば、$\rho_{n,m}(f_m)=f_n$より
-  \begin{equation}\label{equality_1}
-    \sum_{\lambda\in\mathcal{P}_k(n)}c_\lambda m_\lambda(x_1,\cdots,x_n) 
-    =
-    \sum_{\mu\in\mathcal{P}_k(m)}d_\mu m_\mu(x_1,\cdots,x_n,0,\cdots,0)  
+  と定める。ただし右辺の$m_\lambda$は例\ref{monomial_sym_func}の対称関数である。$\varphi$が$\theta$の逆写像であることを示そう。
+  \begin{equation}\label{proj_of_monomial}
+  \theta_n(m_\lambda)=
+  \left\{\begin{array}{cc}
+    m_\lambda(x_1,\cdots,x_n) & \text{if }\lambda_{n+1}=0\\
+    0 & \text{otherwise}
+  \end{array}\right.  
+\end{equation}
+  であるが、$\lambda$は$k$の分割であるので$n\geq k$において$\lambda_{n+1}=0$である。よって$n\geq k$ならば
+  \begin{equation}\label{theta_n}
+  \theta_n(\varphi((f_n)_{n\in\integer_{>0}}))
+  =\sum_{\lambda\in\mathcal{P}_k}c_\lambda m_\lambda(x_1,\cdots,x_n)  
   \end{equation}
-  となる。ここで、$\mu_{n+1}>0$となる$\mu$に対しては$m_\mu(x_1,\cdots,x_n,0,\cdots,0)=0$となるから、式(\ref{equality_1})の右辺の和で残るのは、$\mu_{n+1}=0$なる$\mu$すなわち$\mu\in\mathcal{P}_k(n)$である。また、$\mu\in\mathcal{P}_k(n)$のとき、
+  が成り立つ。一方、
   \[
-  m_\mu(x_1,\cdots,x_n,0,\cdots,0)=m_\mu(x_1,\cdots,x_n)  
+  f_n=\sum_{\lambda\in\mathcal{P}_k(n)}d_\lambda m_\lambda(x_1,\cdots,x_n)    
   \]
-  であるから、結局式(\ref{equality_1})は
-  \begin{equation}
-    \sum_{\lambda\in\mathcal{P}_k(n)}c_\lambda m_\lambda(x_1,\cdots,x_n) 
-    =
-    \sum_{\lambda\in\mathcal{P}_k(n)}d_\lambda m_\lambda(x_1,\cdots,x_n) 
-  \end{equation}
-  となり、$c_\lambda=d_\lambda$が従う。
+  とおくと$n\geq k$より$\mathcal{P}_k(n)=\mathcal{P}_k$だから
+  \[
+  f_n=\sum_{\lambda\in\mathcal{P}_k}d_\lambda m_\lambda(x_1,\cdots,x_n)    
+  \]
+  となる。よって$\rho_{k,n}(f_n)=f_k$と(\ref{theta_n})より
+  \[
+  f_n=\theta_n(\varphi((f_n)_{n\in\integer_{>0}}))
+  \]
+  次に$n<k$の場合、(\ref{proj_of_monomial})より
+  \[
+  \theta_n(\varphi((f_n)_{n\in\integer_{>0}}))  
+  =\sum_{\lambda\in\mathcal{P}(k)}c_\lambda m_\lambda
+  \]
+  となるが、
+  \[
+  f_n=\sum_{\lambda\in\mathcal{P}_k}d_\lambda m_\lambda(x_1,\cdots,x_n)    
+  \]
+  とおけば$\rho_{n,k}(f_k)=f_n$より
+  \[
+  f_n=\theta_n(\varphi((f_n)_{n\in\integer_{>0}}))
+  \]
+  以上より
+  \[
+  \theta\circ\varphi=\text{id}
+  \]
+  がわかる。逆に任意の$f\in\Lambda^k$に対して
+  \[
+  f=\sum_{\lambda\in\mathcal{P}_k}c_\lambda m_\lambda  
+  \]
+  とおけば(\ref{proj_of_monomial})より
+  \[
+  \theta_k(f)=\sum_{\lambda\in\mathcal{P}_k}c_\lambda m_\lambda(x_1,\cdots,x_k)
+  \]
+  だから
+  \[
+  \varphi(\theta(f))=f  
+  \]
+  がわかる。
 \end{proof}
 
 
