@@ -494,8 +494,198 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
 \end{eg}
 
 
-\newpage
+
+
+
+
+
 \subsection{続・対称多項式}
+対称群の表現と対称多項式の間には深い関係がある。次節でそのことを解説するが、そのための準備として対称多項式に関してより詳しく解説する。以下正の整数$n$を固定し、$\Lambda^k_n$を$n$変数の$k$次斉次対称多項式のなすベクトル空間とする。第1部の記号を復習すると、$n$行のYoung図形$\lambda$に対して
+\[
+m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}  
+\]
+とし、に対して
+\begin{align*}
+  &e_k=m_{1^k}=\sum_{1\leq i_1<\cdots<i_k\leq n}x_{i_1}\cdots x_{i_k},\qquad(k=1,\cdots,n)\\
+  &h_k=\sum_{\lambda\in\mathcal{P}_k}m_\lambda=\sum_{1\leq i_1\leq\cdots\leq i_k\leq n}x_{i_1}\cdots x_{i_k}\\
+  &p_k=m_{(k)}=x_1^k+\cdots+x_n^k
+\end{align*}
+とするのであった。$e_k$や$h_k$に対しては、その母関数を考えることは有用である。すなわち
+\begin{align}
+  &E(t)=1+e_1t+e_2t^2+\cdots+e_nt^n=\prod_{i=1}^n(1+x_it) \label{gen_func_of_e}\\
+  &H(t)=1-h_1t+h_2t^2+\cdots+(-1)^nh_nt^n+\cdots=\prod_{i=1}^n\frac{1}{1+x_it}
+\end{align}
+である。とくに$E(t)H(t)=1$であるので、$k=1,\cdots,n$のとき
+\begin{equation}\label{e_to_h}
+  e_k-h_1e_{k-1}+\cdots+(-1)^{k-1}e_1h_{k-1}+(-1)^kh_k=0   
+\end{equation}
+を得る。
+
+\begin{prop}\label{det_formula}
+  $k=1,\cdots,n$に対して
+  \begin{align*}
+    h_k=\vmat{
+      e_1&e_2&e_3&\cdots&e_k\\
+      1&e_1&e_2&\cdots&e_{k-1}\\
+      0&1&e_1&\cdots&e_{k-2}\\
+      \vdots&\vdots&\vdots&\ddots&\vdots&\\
+      0&0&0&\cdots&e_1},\qquad
+    e_k=\vmat{
+      h_1&h_2&h_3&\cdots&h_k\\
+      1&h_1&h_2&\cdots&h_{k-1}\\
+      0&1&h_1&\cdots&h_{k-2}\\
+      \vdots&\vdots&\vdots&\ddots&\vdots&\\
+      0&0&0&\cdots&h_1
+    }
+  \end{align*}
+\end{prop}
+
+\begin{proof}
+  まったく同様なので$h_k$の場合だけ示す。$e_1=h_1$であり、$k-1$までこの公式が成り立っていたとすると、
+  \begin{align*}
+    e_k&=h_1e_{k-1}-h_2e_{k-2}+\cdots+(-1)^{k-1}h_k \\
+    &=h_1\vmat{
+      h_1&h_2&\cdots&h_{k-1}\\
+      1&h_1&\cdots&h_{k-2}\\
+      \vdots&\vdots&\ddots&\vdots&\\
+      0&0&\cdots&h_1
+    }-h_2\vmat{
+      h_1&\cdots&h_{k-1}\\
+      \vdots&\ddots&\vdots&\\
+      0&\cdots&h_1
+    }+\cdots+(-1)^{k-1}h_k\\
+    &=\vmat{
+      h_1&h_2&h_3&\cdots&h_k\\
+      1&h_1&h_2&\cdots&h_{k-1}\\
+      0&1&h_1&\cdots&h_{k-2}\\
+      \vdots&\vdots&\vdots&\ddots&\vdots&\\
+      0&0&0&\cdots&h_1
+    }
+  \end{align*}
+\end{proof}
+
+次に、$\lambda\in\mathcal{P}_k$に対して
+\begin{align*}
+  &e_\lambda=e_{\lambda_1}\cdots e_{\lambda_n}\\
+  &h_\lambda=h_{\lambda_1}\cdots h_{\lambda_n}\\
+  &p_\lambda=p_{\lambda_1}\cdots p_{\lambda_n}
+\end{align*}
+とする。
+
+\begin{prop}\label{various_basis}
+  $\Lambda^k_n$の次の部分集合について
+  \begin{enumerate}[(i)]
+    \item $\{m_\lambda\}_\lambda$ ただし$\lambda$は大きさが$k$で$n$行
+    \item $\{e_\lambda\}_\lambda$ ただし$\lambda$は大きさが$k$で$n$列
+    \item $\{h_\lambda\}_\lambda$ ただし$\lambda$は大きさが$k$で$n$列
+    \item $\{s_\lambda\}_\lambda$ ただし$\lambda$は大きさが$k$で$n$行
+    \item $\{p_\lambda\}_\lambda$ ただし$\lambda$は大きさが$k$で$n$列
+  \end{enumerate}
+  はすべて$\Lambda^k_n$の基底をなす。
+\end{prop}
+
+\begin{proof}
+  (i)は命題\ref{m_is_basis}の証明を斉次部分で考えればまったく同様である。(ii)については定理\ref{FT_of_sym}の証明において、任意の対称多項式$f$が
+  \[
+  e_1^{a_1}\cdots e_n^{a_n}
+  \]
+  で生成されていることを示したことからわかる。(iv)は\ref{schur}の証明を斉次部分で行えばよい。(iii)については、命題\ref{det_formula}より$\{h_\lambda\}$が$\{e_\lambda\}$を生成することがわかるが、ともに集合の濃度が等しいことから基底をなすことがわかる。(v)が基底をなすことを示そう。(v)が(iii)を生成することを示せばよい。
+  \begin{align*}
+    &\quad1+h_1t+h_2t^2+\cdots\\
+    &=H(-t)\\
+    &=\prod_{i=1}^n\frac{1}{1-x_it}\\
+    &=\exp \left(\sum_{i=1}^n-\log(1-x_it)\right)\\
+    &=\exp \left(\sum_{i=1}^n\sum_{r=1}^\infty\frac{x_i^rt^r}{r}\right)\\
+    &=\exp \left(\sum_{r=1}^\infty\frac{p_r}{r}t^r\right)\\
+    &=\prod_{r=1}^\infty\exp \left(\frac{p_r}{r}t^r\right)\\
+    &=\prod_{r=1}^\infty \sum_{m_r=0}^\infty \frac{p_r^{m_r}}{m_r!\cdot r^{m_r}}t^{r\cdot m_r}\\
+    &=
+    \left(\sum_{m_1=0}^\infty \frac{p_1^{m_1}}{m_1!\cdot 1^{m_1}}t^{m_1}\right)\cdot
+    \left(\sum_{m_2=0}^\infty \frac{p_2^{m_2}}{m_2!\cdot 2^{m_2}}t^{2 \cdot m_2}\right)\cdot
+    \left(\sum_{m_3=0}^\infty \frac{p_3^{m_3}}{m_3!\cdot 3^{m_3}}t^{3 \cdot m_3}\right)\cdots
+  \end{align*}
+  となるから、Young図形$\lambda=(\lambda_1,\lambda_2,\cdots)$に対して
+  \[
+  z(\lambda)=\prod_{i}\lambda_i!\cdot i^{\lambda_i}  
+  \]
+  とおけば、最後の式は
+  \begin{align*}
+    &\quad\sum_{m_1,m_2,m_3,\cdots}\frac{p_1^{m_1}p_2^{m_2}p_3^{m_3}\cdots}{(m_1!\cdot 1^{m_1})(m_2!\cdot 2^{m_2})(m_3!\cdot 3^{m_3})\cdots}t^{m_1+2\cdot m_2+3\cdot m_3+\cdots}\\
+    &=\sum_{\lambda}\frac{p_\lambda}{z(\lambda)}t^{|\lambda|}\\
+    &=\sum_{k=0}^\infty \sum_{\lambda\in\mathcal{P}_{k}}\frac{p_\lambda}{z(\lambda)}t^k
+  \end{align*}
+  となる。よって
+  \[
+  h_k=\sum_{\lambda\in\mathcal{P}_{k}}\frac{p_\lambda}{z(\lambda)}
+  \]
+  が成り立つ。$n$列のYoung図形$\lambda$に対して
+  \[
+  h_\lambda=h_{\lambda_1}\cdots h_{\lambda_s},\qquad \lambda_i\leq n 
+  \]
+  とおくと、
+  \[
+  h_{\lambda_i}=\sum_{\mu_i\in\mathcal{P}_{\lambda_i}}\frac{p_{\mu_i}}{z(\mu_i)}  
+  \]
+  であるから
+  \[
+  h_\lambda=\sum_{\mu_1,\cdots,\mu_s}\frac{p_{\mu_1}\cdots p_{\mu_s}}{z(\mu_1)\cdots z(\mu_s)}  
+  \]
+  各$\mu_i$は$\lambda_i\leq n$の分割を与えているから、$p_{\mu_1}\cdots p_{\mu_s}$はたかだか$n$列のYoung図形に対応するべき和対称式である。よって(v)も基底を与える。
+\end{proof}
+
+証明中に現れた等式は重要なので再掲しておく。
+
+\begin{prop}\label{p_to_h}
+  正の整数$k,n$に対して
+  \[
+    h_k(x_1,\cdots,x_n)=\sum_{\lambda\in\mathcal{P}_{k}}\frac{p_\lambda(x_1,\cdots,x_n)}{z(\lambda)}
+  \]
+  が成り立つ。
+\end{prop}
+
+後に必要になる公式を用意しておく
+
+
+\begin{lemm}\label{formal_power_series_relation}
+  形式的べき級数$\prod_{i=1}^m\prod_{j=1}^n\frac{1}{1-x_iy_j}$は次と等しい。
+  \begin{align*}
+    &\text{(a):}\:\sum_{\lambda,\lambda_{n+1}=0}h_\lambda(x_1,\cdots,x_m)m_\lambda(y_1,\cdots,y_n),\qquad \text{ただし和は$n$行Young図形全体をわたる}\\
+    &\text{(b):}\:\sum_{\lambda}\frac{1}{z(\lambda)}p_\lambda(x_1,\cdots,x_m)p_\lambda(y_1,\cdots,y_n),\qquad \text{ただし和はすべてのYoung図形全体をわたる}\\
+    &\text{(c):}\:\sum_{\lambda}s_\lambda(x_1,\cdots,x_m)s_\lambda(y_1,\cdots,y_n),\qquad \text{ただし和はすべてのYoung図形全体をわたる}
+  \end{align*}
+\end{lemm}
+
+\begin{proof}
+  (a)を示す。
+  \begin{align*}
+    &\quad\prod_{i=1}^m\prod_{j=1}^n\frac{1}{1-x_iy_j}\\
+    &=\prod_{j=1}^n H(y_j)\\
+    &=\prod_{j=1}^n \left(
+      \sum_{k=0}^\infty h_k(x_1,\cdots,x_m)y_j^k
+      \right)\\
+    &=\left(
+      \sum_{k_1=0}^\infty h_{k_1}(x_1,\cdots,x_m)y_1^{k_1}
+      \right)\cdot
+      \left(
+      \sum_{k_2=0}^\infty h_{k_2}(x_1,\cdots,x_m)y_2^{k_2}
+      \right)
+      \cdots
+      \left(
+      \sum_{k_n=0}^\infty h_{k_n}(x_1,\cdots,x_m)y_n^{k_n}
+      \right)\\
+      &=\sum_{k_1,\cdots,k_n}h_{k_1}\cdots h_{k_n}y_1^{k_1}\cdots y_n^{k_n}\\
+      &=\sum_{\lambda, \lambda_{n+1}=0}h_\lambda(x_1,\cdots,x_m)m_\lambda(y_1,\cdots,y_n)
+  \end{align*}
+  (b)を示す。命題\ref{p_to_h}より
+  \begin{align*}
+  \prod_{i,j}\frac{1}{1-x_iy_j}
+  &=1+h_1(\{x_iy_j\})+h_2(\{x_iy_j\})+\cdots\\
+  &=1+\sum_{\lambda\in\mathcal{P}_1}\frac{1}{z(\lambda)}p_\lambda(\{x_iy_j\})+\sum_{\lambda\in\mathcal{P}_2}\frac{1}{z(\lambda)}p_\lambda(\{x_iy_j\})+\cdots\\
+  &=\sum_{\lambda}\frac{1}{z(\lambda)}p_\lambda(\{x_iy_j\})\\
+  &=\sum_{\lambda}\frac{1}{z(\lambda)}p_\lambda(x_1,\cdots,x_m)p_\lambda(y_1,\cdots,y_n)
+  \end{align*}
+  (c)については、Robinson-Schensted-Knuth対応と呼ばれる対応を用いて証明される。詳細は付録を参照
+\end{proof}
 
 
 
@@ -503,7 +693,10 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
 
 
 
-\newpage
+
+
+
+
 \subsection{表現環と対称関数環}
 
 \begin{defin}
@@ -529,7 +722,7 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
   より$\Lambda$は次数付き環の構造をもつ。
 \end{defin}
 
-\begin{eg}\label{monomial_sym_func}
+\begin{eg}[単項対称関数]\label{monomial_sym_func}
   任意のYoung図形$\lambda=(\lambda_1,\cdots,\lambda_n)$に対して
   \[
   m_{\lambda}=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}x_2^{\alpha_2}\cdots x_{n}^{\alpha_n}
@@ -537,7 +730,7 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
   とする。ここで指数$\alpha$は、$\lambda$の置換になっているもの全体をわたる。すなわちある$\sigma\in\mathfrak{S}$が存在して$\alpha=\sigma\lambda$をみたすもの全体である。$m_\lambda$は対称関数である。対称多項式の場合と同様の議論で、$\Lambda^k$は$\{m_\lambda\}_{\lambda\in\mathcal{P}_k}$を基底に持つことがわかる。
 \end{eg}
 
-\begin{eg}
+\begin{eg}[基本対称関数・完全対称関数]
   \begin{align*}
   &e_k=m_{1^k}
   =\sum_{1\leq i_1<i_2<\cdots<i_k}x_{i_1}x_{i_2}\cdots x_{i_k}\\
@@ -557,7 +750,7 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
   である。
 \end{eg}
 
-\begin{eg}
+\begin{eg}[べき和対称関数]
   $(k)=(k,0,\cdots,0)$に対して
   \[
   p_{k}=m_{(k)}=x_1^k+x_2^k+\cdots
@@ -660,8 +853,42 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
 
 
 
+\begin{eg}\label{monomial_sym_fun_as_lim}
+  $n$行のYoung図形$\lambda$に対して
+  \[
+  \rho_{n,n+1}(m_\lambda(x_1,\cdots,x_n,x_{n+1}))=m_\lambda(x_1,\cdots,x_n)  
+  \]
+  が成り立つ。実際
+  \begin{align*}
+    \rho_{n,n+1}(m_\lambda(x_1,\cdots,x_n,x_{n+1}))
+    &=\rho_{n,n+1}\left(
+      \sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}x_{n+1}^{\alpha_{n+1}}
+      \right)\\
+    &=\sum_{\substack{\alpha\sim\lambda \\ \alpha_{n+1}=0}}x_1^{\alpha_1}\cdots x_n^{\alpha_n}\\
+    &=m_\lambda(x_1,\cdots,x_n)
+  \end{align*}
+  よって$k=|\lambda|$次対称多項式の列$(m_\lambda(x_1,\cdots,x_l))_{l\in\integer_{\geq n}}$は一つの対称関数を定めるが、これは単項対称関数$m_\lambda$に他ならない。
+\end{eg}
 
+\begin{eg}
+  例\ref{monomial_sym_fun_as_lim}と命題\ref{various_basis}より$e_\lambda$, $h_\lambda$, $p_\lambda$,$s_\lambda$もすべて一つの対称関数を定める。$e_\lambda,h_\lambda,p_\lambda$の定める対称関数は、上述した例に他ならない。また$s_\lambda$の定める対称関数はSchur関数という。
+\end{eg}
 
+命題\ref{various_basis}より、次が成り立つ。
+
+\begin{prop}\label{various_symfunc_basis}
+  $\Lambda^k$の次の部分集合
+  \begin{enumerate}
+    \item $\{m_\lambda\}_{\lambda\in\mathcal{P}_k}$
+    \item $\{e_\lambda\}_{\lambda\in\mathcal{P}_k}$
+    \item $\{h_\lambda\}_{\lambda\in\mathcal{P}_k}$
+    \item $\{s_\lambda\}_{\lambda\in\mathcal{P}_k}$
+    \item $\{p_\lambda\}_{\lambda\in\mathcal{P}_k}$
+  \end{enumerate}
+  はすべて$\Lambda^k$の基底をなす。
+\end{prop}
+
+また、命題\ref{det_formula}や命題\ref{p_to_h}, Littlewood-Richardson規則などの関係式は、そのまま対称関数においても成立することがわかる。
 
 
 
