@@ -581,7 +581,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     \item $\{s_\lambda\}_\lambda$ ただし$\lambda$は大きさが$k$で$n$行
     \item $\{p_\lambda\}_\lambda$ ただし$\lambda$は大きさが$k$で$n$列
   \end{enumerate}
-  (i)$\sim$(iv)は$\Lambda^k_n$の$\integer$上の基底をなし、(v)は$\quotient$上の基底をなす。
+  (i)$\sim$(iv)は$\Lambda^k_n$の$\integer$上の基底をなし、(v)は$\quotient\otimes_{\integer}\Lambda^k_n$の基底をなす。
 \end{prop}
 
 \begin{proof}
@@ -646,7 +646,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 後に必要になる公式を用意しておく
 
 
-\begin{lemm}\label{formal_power_series_relation}
+\begin{lemm}[Cauchyの等式]\label{formal_power_series_relation}
   形式的べき級数$\prod_{i=1}^m\prod_{j=1}^n\frac{1}{1-x_iy_j}$は次と等しい。
   \begin{align*}
     &\text{(a):}\:\sum_{\lambda,\lambda_{n+1}=0}h_\lambda(x_1,\cdots,x_m)m_\lambda(y_1,\cdots,y_n),\qquad \text{ただし和は$n$行Young図形全体をわたる}\\
@@ -661,7 +661,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     &\quad\prod_{i=1}^m\prod_{j=1}^n\frac{1}{1-x_iy_j}\\
     &=\prod_{j=1}^n H(y_j)\\
     &=\prod_{j=1}^n \left(
-      \sum_{k=0}^\infty h_k(x_1,\cdots,x_m)y_j^k
+      \sum_{k_j=0}^\infty h_{k_j}(x_1,\cdots,x_m)y_j^{k_j}
       \right)\\
     &=\left(
       \sum_{k_1=0}^\infty h_{k_1}(x_1,\cdots,x_m)y_1^{k_1}
@@ -673,8 +673,10 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
       \left(
       \sum_{k_n=0}^\infty h_{k_n}(x_1,\cdots,x_m)y_n^{k_n}
       \right)\\
-      &=\sum_{k_1,\cdots,k_n}h_{k_1}\cdots h_{k_n}y_1^{k_1}\cdots y_n^{k_n}\\
-      &=\sum_{\lambda, \lambda_{n+1}=0}h_\lambda(x_1,\cdots,x_m)m_\lambda(y_1,\cdots,y_n)
+    &=\sum_{k_1,\cdots,k_n}h_{k_1}\cdots h_{k_n}y_1^{k_1}  
+      \cdots y_n^{k_n}\\
+    &=\sum_{\lambda, \lambda_{n+1}=0}h_\lambda(x_1,\cdots,
+      x_m)m_\lambda(y_1,\cdots,y_n)
   \end{align*}
   (b)を示す。命題\ref{p_to_h}より
   \begin{align*}
@@ -700,7 +702,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 \subsection{表現環と対称関数環}
 
 \begin{defin}
-  可算無限個の変数をもつ形式的べき級数環$R=\complex[[x_1,x_2,\cdots]]$を考える。
+  可算無限個の変数をもつ形式的べき級数環$R=\integer[[x_1,x_2,\cdots]]$を考える。
   \[
   \mathfrak{S}=\set{\map{\sigma}{\natnum}{\natnum}}{\text{$f$は全単射で$f(n)\neq n$なる$n$が有限個}}  
   \]
@@ -721,6 +723,8 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   \]
   より$\Lambda$は次数付き環の構造をもつ。
 \end{defin}
+
+ここで、$\Lambda$の定義において単項式の次数が有界であることを要請するのは自然である。実際、もし仮定しなければ$\Lambda$は$\Lambda^k$の直和にはならない。
 
 \begin{eg}[単項対称関数]\label{monomial_sym_func}
   任意のYoung図形$\lambda=(\lambda_1,\cdots,\lambda_n)$に対して
@@ -852,6 +856,20 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 \end{proof}
 
 
+\begin{notice}
+  対称多項式環の射影極限をとっても対称関数環にはならないことに注意せよ。例えば対称多項式の列
+  \[
+    f=(1+x_1),\:(1+x_1)(1+x_2),\:(1+x_1)(1+x_2)(1+x_3),\:\cdots
+  \]
+  を考えると、$f$は対称多項式の射影極限の元であるが、次数の有界性を満たさないので対称関数ではない。
+
+  一方
+  \[
+  \integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}=\bigoplus_{k=0}^\infty \Lambda^k_n  
+  \]
+  だから、対称関数環は射影極限が直和と可換でない例を与えている。
+\end{notice}
+
 
 \begin{eg}\label{monomial_sym_fun_as_lim}
   $n$行のYoung図形$\lambda$に対して
@@ -885,14 +903,64 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     \item $\{s_\lambda\}_{\lambda\in\mathcal{P}_k}$
     \item $\{p_\lambda\}_{\lambda\in\mathcal{P}_k}$
   \end{enumerate}
-  (i)$\sim$(iv)は$\Lambda^k$の$\integer$上の基底をなし、(v)は$\quotient$上の基底をなす。特に$\lambda$の範囲をすべてのYoung図形全体に変えれば、これらは$\Lambda$の基底を与える。
+  (i)$\sim$(iv)は$\Lambda^k$の$\integer$上の基底をなし、(v)は$\quotient\otimes_\integer{\Lambda}$上の基底をなす。特に$\lambda$の範囲をすべてのYoung図形全体に変えれば、これらは$\Lambda$または$\quotient\otimes_\integer{\Lambda}$の基底を与える。
 \end{prop}
 
-また、命題\ref{det_formula}や命題\ref{p_to_h}, Littlewood-Richardson規則などの関係式は、そのまま対称関数においても成立することがわかる。以下、$\Lambda$の係数を$\quotient$に拡大して考える。命題\ref{various_symfunc_basis}より、$\{s_\lambda\}$は$\Lambda$の基底をなすので、
+また、命題\ref{det_formula}や命題\ref{p_to_h}, 補題\ref{formal_power_series_relation}, Littlewood-Richardson規則などの関係式は、そのまま対称関数においても成立することがわかる。
+
+\begin{prop}
+  次の関係式が成り立つ
+  \begin{align*}
+    &\text{(i):}\:h_k=\vmat{
+      e_1&e_2&e_3&\cdots&e_k\\
+      1&e_1&e_2&\cdots&e_{k-1}\\
+      0&1&e_1&\cdots&e_{k-2}\\
+      \vdots&\vdots&\vdots&\ddots&\vdots&\\
+      0&0&0&\cdots&e_1},\qquad
+    e_k=\vmat{
+      h_1&h_2&h_3&\cdots&h_k\\
+      1&h_1&h_2&\cdots&h_{k-1}\\
+      0&1&h_1&\cdots&h_{k-2}\\
+      \vdots&\vdots&\vdots&\ddots&\vdots&\\
+      0&0&0&\cdots&h_1
+    }\\
+    &\text{(ii):}\:h_k=\sum_{\lambda\in\mathcal{P}_k}\frac{p_\lambda}{z(\lambda)}\\
+    &\text{(iii):}\:
+    \sum_{\lambda}h_\lambda m_\lambda
+    =\sum_{\lambda}\frac{1}{z(\lambda)}p_\lambda^2
+    =\sum_{\lambda}s_\lambda^2,\qquad\text{ただし和はすべてのYoung図形全体をわたる。}\\
+    &\text{(iv):}\:
+    s_\lambda s_\mu=\sum_{\nu}\eta^{\nu}_{\lambda\mu}s_\nu,\qquad\text{ただし$\eta^{\nu}_{\lambda\mu}$はLittlewood-Richardson数}
+  \end{align*}
+\end{prop}
+
+以下、$\Lambda$の係数を$\quotient$に拡大して考える。命題\ref{various_symfunc_basis}より、$\{s_\lambda\}$は$\Lambda$の基底をなすので、$\Lambda$に
 \[
 \generated{s_\lambda,s_\mu}=\delta_{\lambda\mu}  
 \]
-となるように内積を入れ、
+となるような内積を入れて考える。ただし$\delta_{\lambda\mu}$はKroneckerのデルタである。
+
+\begin{prop}
+  次が成り立つ
+  \begin{enumerate}
+    \item $\generated{h_\lambda,m_\mu}=\delta_{\lambda\mu}$
+    \item $\generated{p_\lambda,p_\mu}=\delta_{\lambda\mu}z(\lambda)$
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+    \item $h_\lambda=\sum_{\nu}a_{\lambda\nu}s_\nu$, $m_\mu=\sum_{\nu}b_{\mu\nu}s_\nu$とおく。このとき
+    \begin{align*}
+      \sum_{\lambda,\mu}h_\lambda m_\mu
+      =\sum_{\lambda,\mu}\sum_{\nu_1,\nu_2}
+    \end{align*}
+  \end{enumerate}
+\end{proof}
+
+
+
+
 
 
 
