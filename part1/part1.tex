@@ -7,20 +7,20 @@
 \section{Schur多項式}
 \subsection{対称多項式と交代多項式}
 \begin{defin}
-    $n$変数多項式$f\in\complex[x_1,\cdots,x_n]$が対称多項式であるとは、任意の置換$\sigma\in\mathfrak{S}_n$に対して$\sigma f:=f(x_{\sigma(1)},\cdots,x_{\sigma(n)})=f(x_1,\cdots,x_n)$が成り立つことをいう。対称多項式全体のなす$\complex[x_1,\cdots,x_n]$の部分集合を$\complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}$と書く。
+    $n$変数多項式$f\in\integer[x_1,\cdots,x_n]$が対称多項式であるとは、任意の置換$\sigma\in\mathfrak{S}_n$に対して$\sigma f:=f(x_{\sigma(1)},\cdots,x_{\sigma(n)})=f(x_1,\cdots,x_n)$が成り立つことをいう。対称多項式全体のなす$\integer[x_1,\cdots,x_n]$の部分集合を$\integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}$と書く。
     $f$が交代多項式であるとは、任意の置換$\sigma$に対して$\sigma f:=f(x_{\sigma(1)},\cdots,x_{\sigma(n)})=\sgn(\sigma)f(x_1,\cdots,x_n)$が成り立つことをいう。ただし$\sgn$は置換の符号である。
 \end{defin}
 
 \begin{eg}
-    $xy, x+y, x^2+y^2$はいずれも$\complex[x,y]$の対称多項式であり、$x-y$は交代多項式である。$xy^2$, $x+2y$などは対称でも交代でもない
+    $xy, x+y, x^2+y^2$はいずれも$\integer[x,y]$の対称多項式であり、$x-y$は交代多項式である。$xy^2$, $x+2y$などは対称でも交代でもない
 \end{eg}
 
 \begin{prop}
-    $\complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}$は$\complex[x_1,\cdots,x_n]$の部分環をなす
+    $\integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}$は$\integer[x_1,\cdots,x_n]$の部分環をなす
 \end{prop}
 
 \begin{proof}
-    $f,g\in\complex[x_1,\cdots,x_n]$, $\sigma\in\mathfrak{S}_n$に対して
+    $f,g\in\integer[x_1,\cdots,x_n]$, $\sigma\in\mathfrak{S}_n$に対して
     \[
     \sigma(f+g)=\sigma f+\sigma g,\qquad \sigma(f\cdot g)=\sigma f\cdot \sigma g    
     \]
@@ -73,14 +73,14 @@
 \end{eg}
 
 
-$n$変数の基本対称式は$e_1,\cdots, e_n$だけだが、完全対称式は無限に存在することに注意。ここで定義したさまざまな対称多項式は、対称多項式環$\complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}$における良い性質をもっている。
+$n$変数の基本対称式は$e_1,\cdots, e_n$だけだが、完全対称式は無限に存在することに注意。ここで定義したさまざまな対称多項式は、対称多項式環$\integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}$における良い性質をもっている。
 
 \begin{prop}\label{m_is_basis}
-    $\set{m_\alpha}{\alpha=(\alpha_1\geq\cdots\geq\alpha_n), \alpha_n\geq 0}$は$\complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}$の基底をなす
+    $\set{m_\alpha}{\alpha=(\alpha_1\geq\cdots\geq\alpha_n), \alpha_n\geq 0}$は$\integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}$の基底をなす
 \end{prop}
 
 \begin{proof}
-    $\set{m_\alpha}{\alpha=(\alpha_1\geq\cdots\geq\alpha_n), \alpha_n\geq 0}$が一次独立であることは、$\alpha\neq\beta$ならば$m_\alpha$, $m_\beta$は異なる単項式を含むことからわかる。よって$\complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}$を生成することを示す。対称多項式
+    $\set{m_\alpha}{\alpha=(\alpha_1\geq\cdots\geq\alpha_n), \alpha_n\geq 0}$が一次独立であることは、$\alpha\neq\beta$ならば$m_\alpha$, $m_\beta$は異なる単項式を含むことからわかる。よって$\integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}$を生成することを示す。対称多項式
     \[
     f(x_1,\cdots,x_n)=\sum_{i_1,\cdots,i_n}c_{i_1,\cdots,i_n}x_1^{i_1}\cdots x_n^{i_n}
     \]
@@ -105,7 +105,7 @@ $n$変数の基本対称式は$e_1,\cdots, e_n$だけだが、完全対称式は
 \begin{theo}[対称式の基本定理]\label{FT_of_sym}
     任意の対称多項式は基本対称式の多項式で表される。すなわち
     \[
-    \complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}=\complex[e_1,\cdots, e_n]
+    \integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}=\integer[e_1,\cdots, e_n]
     \]
     が成り立つ。
 \end{theo}
@@ -164,7 +164,7 @@ $n$変数の基本対称式は$e_1,\cdots, e_n$だけだが、完全対称式は
 
 
 \begin{defin}
-    $\alpha=(a_1,\cdots,a_n)$, $a_k\in\integer_{\geq 0}$に対して多項式$A_\alpha\in\complex[x_1,\cdots,x_n]$を
+    $\alpha=(a_1,\cdots,a_n)$, $a_k\in\integer_{\geq 0}$に対して多項式$A_\alpha\in\integer[x_1,\cdots,x_n]$を
     \[
         A_\alpha=\det((x_i^{a_j}))
     \]
@@ -190,7 +190,7 @@ $n$変数の基本対称式は$e_1,\cdots, e_n$だけだが、完全対称式は
 \end{prop}
 
 \begin{proof}
-    $f\in\complex[x_1,\cdots,x_n]$を交代多項式とする。交代性から$i<j$のとき$f$は$x_i$に$x_j$を代入すると$0$になる。よって$f$は$x_i-x_j$で割り切れる。$x_i-x_j$は既約多項式であり、$(i,j)$, $(k,l)$が異なるならば$x_i-x_j$, $x_k-x_l$は互いに素である。$\complex[x_1,\cdots,x_n]$はUFDであるので$f$は$A_\delta$で割り切れる。
+    $f\in\integer[x_1,\cdots,x_n]$を交代多項式とする。交代性から$i<j$のとき$f$は$x_i$に$x_j$を代入すると$0$になる。よって$f$は$x_i-x_j$で割り切れる。$x_i-x_j$は既約多項式であり、$(i,j)$, $(k,l)$が異なるならば$x_i-x_j$, $x_k-x_l$は互いに素である。$\integer[x_1,\cdots,x_n]$はUFDであるので$f$は$A_\delta$で割り切れる。
 \end{proof}
 
 
@@ -230,13 +230,13 @@ $n$変数の基本対称式は$e_1,\cdots, e_n$だけだが、完全対称式は
 Schur多項式について重要な命題が次の定理である。
 
 \begin{theo}\label{schur}
-    $n>0$を整数とする。Schur多項式の集合$\set{s_\alpha}{\alpha=(a_1,\cdots,a_n), a_1> \cdots> a_n\geq 0}$は対称多項式のなす環$\complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}$の基底をなす
+    $n>0$を整数とする。Schur多項式の集合$\set{s_\alpha}{\alpha=(a_1,\cdots,a_n), a_1> \cdots> a_n\geq 0}$は対称多項式のなす環$\integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}$の基底をなす
 \end{theo}
 
 \begin{proof}
     次の補題を示す。
     \begin{lemm}
-        $\mathcal{S}=\set{(a_1,\cdots,a_n)}{a_1>\cdots>a_n\geq 0}$とする。交代多項式全体のなすベクトル空間は$\{A_\alpha\}_{\alpha\in\mathcal{S}}$を基底にもつ
+        $\mathcal{S}=\set{(a_1,\cdots,a_n)}{a_1>\cdots>a_n\geq 0}$とする。交代多項式全体のなす$\integer$加群は$\{A_\alpha\}_{\alpha\in\mathcal{S}}$を基底にもつ
     \end{lemm}
     \begin{proof}
         $f(x_1,\cdots,x_n)$を交代多項式とする。
@@ -650,7 +650,7 @@ s_\lambda s_\mu=\sum_{T:\lambda\text{-good}}s_{\lambda+\omega(T)}
 \end{lemm}
 
 \begin{proof}
-    $\text{Alt}_n=\sum_{\sigma\in\mathfrak{S}_n}\sgn(\sigma)\sigma$とおく(これは交代化作用素と呼ばれる)。交代化作用素と対称多項式をかけることは可換である。実際、$f\in\complex[x_1,\cdots,x_n]^{\mathfrak{S}_n}$, $g\in\complex[x_1,\cdots,x_n]$に対し
+    $\text{Alt}_n=\sum_{\sigma\in\mathfrak{S}_n}\sgn(\sigma)\sigma$とおく(これは交代化作用素と呼ばれる)。交代化作用素と対称多項式をかけることは可換である。実際、$f\in\integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}$, $g\in\integer[x_1,\cdots,x_n]$に対し
     \begin{align*}
         \text{Alt}_n(fg)&=\sum_{\sigma\in\mathfrak{S}_n}\sgn(\sigma)\sigma(fg)\\
         &=\sum_{\sigma\in\mathfrak{S}_n}\sgn(\sigma)\sigma f\cdot \sigma g\\

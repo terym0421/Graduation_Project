@@ -500,7 +500,7 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
 
 
 \subsection{続・対称多項式}
-対称群の表現と対称多項式の間には深い関係がある。次節でそのことを解説するが、そのための準備として対称多項式に関してより詳しく解説する。以下正の整数$n$を固定し、$\Lambda^k_n$を$n$変数の$k$次斉次対称多項式のなすベクトル空間とする。第1部の記号を復習すると、$n$行のYoung図形$\lambda$に対して
+対称群の表現と対称多項式の間には深い関係がある。次節でそのことを解説するが、そのための準備として対称多項式に関してより詳しく解説する。以下正の整数$n$を固定し、$\Lambda^k_n$を$n$変数の$k$次斉次対称多項式のなす$\integer$加群とする。第1部の記号を復習すると、$n$行のYoung図形$\lambda$に対して
 \[
 m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}  
 \]
@@ -581,7 +581,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     \item $\{s_\lambda\}_\lambda$ ただし$\lambda$は大きさが$k$で$n$行
     \item $\{p_\lambda\}_\lambda$ ただし$\lambda$は大きさが$k$で$n$列
   \end{enumerate}
-  はすべて$\Lambda^k_n$の基底をなす。
+  (i)$\sim$(iv)は$\Lambda^k_n$の$\integer$上の基底をなし、(v)は$\quotient$上の基底をなす。
 \end{prop}
 
 \begin{proof}
@@ -758,7 +758,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   とする。
 \end{eg}
 
-このように、対称関数はいままでみてきた対称多項式を自然に無限変数に拡張した概念であり、対称多項式で成り立っていた関係式が対称関数においても成立することが多い。このことは対称関数の$k$次斉次部分$\Lambda^k$が$k$次斉次対称多項式からの射影極限と考えることができることによる。$\Lambda_n^k$を$n$変数$k$次斉次対称多項式のなすベクトル空間とする。$m\leq n$に対して線形写像$\map{\rho_{m,n}}{\Lambda^k_n}{\Lambda^k_m}$を
+このように、対称関数はいままでみてきた対称多項式を自然に無限変数に拡張した概念であり、対称多項式で成り立っていた関係式が対称関数においても成立することが多い。このことは対称関数の$k$次斉次部分$\Lambda^k$が$k$次斉次対称多項式からの射影極限と考えることができることによる。$\Lambda_n^k$を$n$変数$k$次斉次対称多項式のなす$\integer$加群とする。$m\leq n$に対して線形写像$\map{\rho_{m,n}}{\Lambda^k_n}{\Lambda^k_m}$を
 \[
 \rho_{m,n}(f(x_1,\cdots,x_m,x_{m+1},\cdots,x_n))=f(x_1,\cdots,x_m,0,\cdots,0)  
 \]
@@ -877,7 +877,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 命題\ref{various_basis}より、次が成り立つ。
 
 \begin{prop}\label{various_symfunc_basis}
-  $\Lambda^k$の次の部分集合
+  $\Lambda^k$の次の部分集合について、
   \begin{enumerate}
     \item $\{m_\lambda\}_{\lambda\in\mathcal{P}_k}$
     \item $\{e_\lambda\}_{\lambda\in\mathcal{P}_k}$
@@ -885,10 +885,14 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     \item $\{s_\lambda\}_{\lambda\in\mathcal{P}_k}$
     \item $\{p_\lambda\}_{\lambda\in\mathcal{P}_k}$
   \end{enumerate}
-  はすべて$\Lambda^k$の基底をなす。
+  (i)$\sim$(iv)は$\Lambda^k$の$\integer$上の基底をなし、(v)は$\quotient$上の基底をなす。特に$\lambda$の範囲をすべてのYoung図形全体に変えれば、これらは$\Lambda$の基底を与える。
 \end{prop}
 
-また、命題\ref{det_formula}や命題\ref{p_to_h}, Littlewood-Richardson規則などの関係式は、そのまま対称関数においても成立することがわかる。
+また、命題\ref{det_formula}や命題\ref{p_to_h}, Littlewood-Richardson規則などの関係式は、そのまま対称関数においても成立することがわかる。以下、$\Lambda$の係数を$\quotient$に拡大して考える。命題\ref{various_symfunc_basis}より、$\{s_\lambda\}$は$\Lambda$の基底をなすので、
+\[
+\generated{s_\lambda,s_\mu}=\delta_{\lambda\mu}  
+\]
+となるように内積を入れ、
 
 
 
