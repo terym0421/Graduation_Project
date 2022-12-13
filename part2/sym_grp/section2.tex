@@ -298,7 +298,7 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
 \end{proof}
 
 
-したがって、同じYoung図形に対しては$\complex[G]c_T$はタブロー$T$の取り方によらず同型である。そこで$\lambda\in\mathcal{P}_n$に対して、$\lambda$の自然なタブロー(例\ref{canonical_tableau})から定まるYoung対称子を$c_\lambda$とし、$V_\lambda=\complex[G]c_\lambda$とおく。
+したがって、同じYoung図形に対しては$\complex[G]c_T$はタブロー$T$の取り方によらず同型である。そこで$\lambda\in\mathcal{P}_n$に対して、$\lambda$の自然なタブロー(例\ref{canonical_tableau})から定まるYoung対称子を$c_\lambda$とし、$S_\lambda=\complex[G]c_\lambda$とおく。
 
 
 
@@ -309,26 +309,26 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
 \begin{theo}\label{young_and_irr_rep}
   $\lambda,\mu\in\mathcal{P}_n$とする。
   \[
-  V_\lambda\simeq V_\mu 
+  S_\lambda\simeq S_\mu 
   \]
   となるための必要十分条件は$\lambda=\mu$である
 \end{theo}
 
 \begin{proof}
-  十分性は明らか。必要性を示す。$\lambda\neq\mu$であるとする。$V_\lambda, V_\mu$は既約表現なので、Schurの補題(補題\ref{schur_lem})より、
+  十分性は明らか。必要性を示す。$\lambda\neq\mu$であるとする。$S_\lambda, S_\mu$は既約表現なので、Schurの補題(補題\ref{schur_lem})より、
   \[
-  \dim_\complex\Hom(V_\lambda,V_\mu)=0  
+  \dim_\complex\Hom(S_\lambda,S_\mu)=0  
   \]
   を証明すればよいが、命題\ref{hom_of_cyclic_module}より、
   \[
-  \Hom(V_\lambda,V_\mu)=c_\lambda\complex[G]c_\mu
+  \Hom(S_\lambda,S_\mu)=c_\lambda\complex[G]c_\mu
   \]
   ゆえに、すべての$g\in G$に対して
   \[
   c_\lambda gc_\mu  =a_\lambda b_\lambda g a_\mu b_\mu = 0
   \]
   が成り立つことを示す。次の補題を示す。
-  \begin{lemm}
+  \begin{lemm}\label{lexicographical}
     $\mathcal{P}_n$に辞書式順序を入れ、$\lambda < \mu$であるとする。$\lambda, \mu$でその自然なタブローを表すものとする。このとき任意の$g\in G$に対して、$\mu$の同じ行にある数字$i,j$であって$g\lambda$でも同じ列にあるものが存在する。
   \end{lemm}
 
@@ -493,6 +493,83 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
   \]
 \end{eg}
 
+\begin{eg}\label{ind_from_horizontal_perm}
+  $\lambda\in\mathcal{P}_n$に対して
+  \[
+  M_\lambda=\ind_{\mathcal{H}_\lambda}^{G}(\mathbf{1})  
+  \]
+  とする。ここで$\mathbf{1}$は$\mathcal{H}_\lambda$の自明な表現である。\ref{ind_from_trivial}より、$M_\lambda$は$G/\mathcal{H}_\lambda$の置換表現に他ならない。
+  $M_\lambda=\complex[G]a_\lambda$となることを示す。
+  $\phi:M_\lambda=\complex[G]\otimes_{\complex[H_\lambda]} \mathbf{1}\rightarrow \complex[G]a_\lambda$を
+  \[
+  \phi(g\otimes c)=cga_\lambda  
+  \]
+  $\complex[\mathcal{H}_\lambda]$双線形に拡張して定める。$h\in\mathcal{H}_\lambda$に対して
+  \[
+  \phi(gh\otimes c)=cgha_\lambda=cga_\lambda=\phi(g\otimes hc)
+  \]
+  だから$\phi$はwell-definedであり$\complex[G]$準同型である。逆に$\psi:\complex[G]a_\lambda\rightarrow\complex[G]\otimes_{\complex[H_\lambda]} \mathbf{1}$を
+  \[
+  \psi(ga_\lambda)=\frac{1}{|\mathcal{H}_\lambda|}ga_\lambda\otimes 1=  g\otimes 1
+  \]
+  によって定めれば$\phi,\psi$は互いに逆写像であるから、同型である。
+  
+  $\lambda$が1行のYoung図形の場合、$\mathcal{H}_\lambda=G$であるから、$M_\lambda$は自明な表現にほかならない。一方$\lambda$が1列のYoung図形の場合は$\mathfrak{H}_\lambda=1$であるから$M_\lambda$は正則表現である。
+  
+  この表現が後に重要になるので、$M_\lambda$に関する性質を一つ示しておく。
+\end{eg}
+
+\begin{theo}[Youngの規則]\label{young_rule}
+  $\lambda\in\mathcal{P}_n$と、辞書式順序で$\lambda$より大きい$\mu\in\mathcal{P}_n$に対して正の整数$k_{\lambda\mu}$が存在して
+  \[
+  M_\lambda=S_\lambda\oplus \left(\bigoplus_{\mu>\lambda}S_\mu^{\oplus k_{\lambda\mu}}\right)
+  \]
+  $k_{\lambda\mu}$をKostka数という。
+\end{theo}
+
+\begin{proof}
+  定理\ref{char_orthogonality}より、
+  \[
+  \dim_{\complex}\Hom(M_\lambda,S_\mu)=
+  \left\{\begin{array}{cc}
+    1 & \text{if $\mu=\lambda$}\\
+    0 & \text{if $\mu<\lambda$}
+  \end{array}\right.  
+  \]
+  を証明すればよい。例\ref{ind_from_horizontal_perm}より$M_\lambda=\complex[G]a_\lambda$であるから、\ref{hom_of_cyclic_module}より
+  \[
+  \Hom(M_\lambda,S_\mu)=\Hom(\complex[G]a_\lambda,\complex[G]c_\mu)=a_\lambda\complex[G]c_\mu 
+  \]
+  である。$\lambda=\mu$の場合、任意の$\alpha\in\complex[G]$に対して$a_\lambda\alpha c_\lambda$ は補題\ref{young_symmetrizer}の条件をみたすから、
+  \[
+  a_\lambda\complex[G]c_\lambda=\complex c_\lambda
+  \]
+  よって
+  \[
+  \dim_\complex\Hom(M_\lambda,S_\mu)=1  
+  \]
+  次に$\mu<\lambda$のとき、補題\ref{lexicographical}より、任意の$g\in G$に対して$\lambda$の同じ行にある文字$i,j$であって$g\mu$で同じ列にあるものが存在する。すなわち$\sigma=(i,j)$とおけば$\sigma\in \mathcal{H}_\lambda$かつ$\sigma\in\mathcal{V}_{g\mu}=g\mathcal{V}_{\mu}\inv{g}$である。そこで$\sigma=g\tau\inv{g}$, $\tau\in\mathcal{V}_\mu$とおけば、
+  \begin{align*}
+    a_\lambda g b_\mu
+    &=a_\lambda\sigma g b_\mu\\
+    &=a_\lambda g\tau b_\mu\\
+    &=-a_\lambda g b_\mu
+  \end{align*}
+  ゆえに$a_\lambda\complex[G]b_\mu=0$であるから、
+  \[
+  a_\lambda\complex[G]c_\lambda\subset a_\lambda\complex[G]b_\mu=0
+  \]
+  よって示せた。
+\end{proof}
+
+Kostka数はSchur多項式を単項対称式の線形結合で表すときの係数にも現れる。すなわち
+\[
+s_\lambda=\sum_{\mu}k_{\lambda\mu}m_\mu  
+\]
+となることが知られている。また、その具体的な値については、$k_{\lambda\mu}$は形$\lambda$のウェイト$\mu$の半標準タブローの数に等しいことも知られている。
+
+また、対称群の既約指標については、その値はすべて有理数であることが知られている(Frobeniusの指標公式)。
+
 
 
 
@@ -649,14 +726,14 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 \begin{lemm}[Cauchyの等式]\label{formal_power_series_relation}
   形式的べき級数$\prod_{i=1}^m\prod_{j=1}^n\frac{1}{1-x_iy_j}$は次と等しい。
   \begin{align*}
-    &\text{(a):}\:\sum_{\lambda,\lambda_{n+1}=0}h_\lambda(x_1,\cdots,x_m)m_\lambda(y_1,\cdots,y_n),\qquad \text{ただし和は$n$行Young図形全体をわたる}\\
-    &\text{(b):}\:\sum_{\lambda}\frac{1}{z(\lambda)}p_\lambda(x_1,\cdots,x_m)p_\lambda(y_1,\cdots,y_n),\qquad \text{ただし和はすべてのYoung図形全体をわたる}\\
-    &\text{(c):}\:\sum_{\lambda}s_\lambda(x_1,\cdots,x_m)s_\lambda(y_1,\cdots,y_n),\qquad \text{ただし和はすべてのYoung図形全体をわたる}
+    &\text{(i):}\:\sum_{\lambda,\lambda_{n+1}=0}h_\lambda(x_1,\cdots,x_m)m_\lambda(y_1,\cdots,y_n),\qquad \text{ただし和は$n$行Young図形全体をわたる}\\
+    &\text{(ii):}\:\sum_{\lambda}\frac{1}{z(\lambda)}p_\lambda(x_1,\cdots,x_m)p_\lambda(y_1,\cdots,y_n),\qquad \text{ただし和はすべてのYoung図形全体をわたる}\\
+    &\text{(iii):}\:\sum_{\lambda}s_\lambda(x_1,\cdots,x_m)s_\lambda(y_1,\cdots,y_n),\qquad \text{ただし和はすべてのYoung図形全体をわたる}
   \end{align*}
 \end{lemm}
 
 \begin{proof}
-  (a)を示す。
+  (i)を示す。
   \begin{align*}
     &\quad\prod_{i=1}^m\prod_{j=1}^n\frac{1}{1-x_iy_j}\\
     &=\prod_{j=1}^n H(y_j)\\
@@ -678,7 +755,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     &=\sum_{\lambda, \lambda_{n+1}=0}h_\lambda(x_1,\cdots,
       x_m)m_\lambda(y_1,\cdots,y_n)
   \end{align*}
-  (b)を示す。命題\ref{p_to_h}より
+  (ii)を示す。命題\ref{p_to_h}より
   \begin{align*}
   \prod_{i,j}\frac{1}{1-x_iy_j}
   &=1+h_1(\{x_iy_j\})+h_2(\{x_iy_j\})+\cdots\\
@@ -686,7 +763,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   &=\sum_{\lambda}\frac{1}{z(\lambda)}p_\lambda(\{x_iy_j\})\\
   &=\sum_{\lambda}\frac{1}{z(\lambda)}p_\lambda(x_1,\cdots,x_m)p_\lambda(y_1,\cdots,y_n)
   \end{align*}
-  (c)については、Robinson-Schensted-Knuth対応と呼ばれる対応を用いて証明される。詳細は付録を参照
+  (iii)については、Robinson-Schensted-Knuth対応と呼ばれる対応を用いて証明される。詳細は付録を参照
 \end{proof}
 
 
@@ -702,7 +779,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 \subsection{表現環と対称関数環}
 
 \begin{defin}
-  可算無限個の変数をもつ形式的べき級数環$R=\integer[[x_1,x_2,\cdots]]$を考える。
+  可算無限個の変数をもつ形式的べき級数環$\integer[[x_1,x_2,\cdots]]$を考える。
   \[
   \mathfrak{S}=\set{\map{\sigma}{\natnum}{\natnum}}{\text{$f$は全単射で$f(n)\neq n$なる$n$が有限個}}  
   \]
@@ -711,9 +788,9 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     $\mathfrak{S}$は対称群$\mathfrak{S}_n$と自然な包含$\iota:\mathfrak{S}_n\rightarrow\mathfrak{S}_{n+1}$のなす帰納系の帰納極限である。
   }。
   \[
-  \Lambda=\set{f\in R}{\sigma f=f,\:(\text{for all }\sigma\in\mathfrak{S}),\:\text{$f$の単項式の次数は有界}}  
+  \Lambda=\set{f\in \integer[[x_1,x_2,\cdots]]}{\sigma f=f,\:(\text{for all }\sigma\in\mathfrak{S}),\:\text{$f$の単項式の次数は有界}}  
   \]
-  $\Lambda$は$R$の部分環で対称関数環と呼ばれる。$\Lambda^k$を
+  $\Lambda$は$\integer[[x_1,x_2,\cdots]]$の部分環で対称関数環と呼ばれる。$\Lambda^k$を
   \[
   \Lambda^k=\set{f\in\Lambda}{\text{$f$の単項式の次数はすべて$k$}}  
   \]
@@ -734,7 +811,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   とする。ここで指数$\alpha$は、$\lambda$の置換になっているもの全体をわたる。すなわちある$\sigma\in\mathfrak{S}$が存在して$\alpha=\sigma\lambda$をみたすもの全体である。$m_\lambda$は対称関数である。対称多項式の場合と同様の議論で、$\Lambda^k$は$\{m_\lambda\}_{\lambda\in\mathcal{P}_k}$を基底に持つことがわかる。
 \end{eg}
 
-\begin{eg}[基本対称関数・完全対称関数]
+\begin{eg}[基本対称関数・完全対称関数]\label{elementary_func}
   \begin{align*}
   &e_k=m_{1^k}
   =\sum_{1\leq i_1<i_2<\cdots<i_k}x_{i_1}x_{i_2}\cdots x_{i_k}\\
@@ -754,7 +831,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   である。
 \end{eg}
 
-\begin{eg}[べき和対称関数]
+\begin{eg}[べき和対称関数]\label{power_func}
   $(k)=(k,0,\cdots,0)$に対して
   \[
   p_{k}=m_{(k)}=x_1^k+x_2^k+\cdots
@@ -859,7 +936,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 \begin{notice}
   対称多項式環の射影極限をとっても対称関数環にはならないことに注意せよ。例えば対称多項式の列
   \[
-    f=(1+x_1),\:(1+x_1)(1+x_2),\:(1+x_1)(1+x_2)(1+x_3),\:\cdots
+    f=((1+x_1),\:(1+x_1)(1+x_2),\:(1+x_1)(1+x_2)(1+x_3),\:\cdots)
   \]
   を考えると、$f$は対称多項式の射影極限の元であるが、次数の有界性を満たさないので対称関数ではない。
 
@@ -889,14 +966,14 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 \end{eg}
 
 \begin{eg}
-  例\ref{monomial_sym_fun_as_lim}と命題\ref{various_basis}より$e_\lambda$, $h_\lambda$, $p_\lambda$,$s_\lambda$もすべて一つの対称関数を定める。$e_\lambda,h_\lambda,p_\lambda$の定める対称関数は、上述した例に他ならない。また$s_\lambda$の定める対称関数はSchur関数という。
+  例\ref{monomial_sym_fun_as_lim}と命題\ref{various_basis}より$e_\lambda$, $h_\lambda$, $p_\lambda$,$s_\lambda$もすべて一つの対称関数を定める。$e_\lambda,h_\lambda,p_\lambda$の定める対称関数は、例\ref{elementary_func}と例\ref{power_func}に他ならない。また$s_\lambda$の定める対称関数はSchur関数という。
 \end{eg}
 
 命題\ref{various_basis}より、次が成り立つ。
 
 \begin{prop}\label{various_symfunc_basis}
   $\Lambda^k$の次の部分集合について、
-  \begin{enumerate}
+  \begin{enumerate}[(i)]
     \item $\{m_\lambda\}_{\lambda\in\mathcal{P}_k}$
     \item $\{e_\lambda\}_{\lambda\in\mathcal{P}_k}$
     \item $\{h_\lambda\}_{\lambda\in\mathcal{P}_k}$
@@ -906,10 +983,12 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   (i)$\sim$(iv)は$\Lambda^k$の$\integer$上の基底をなし、(v)は$\quotient\otimes_\integer{\Lambda}$上の基底をなす。特に$\lambda$の範囲をすべてのYoung図形全体に変えれば、これらは$\Lambda$または$\quotient\otimes_\integer{\Lambda}$の基底を与える。
 \end{prop}
 
-また、命題\ref{det_formula}や命題\ref{p_to_h}, 補題\ref{formal_power_series_relation}, Littlewood-Richardson規則などの関係式は、そのまま対称関数においても成立することがわかる。
+また、命題\ref{det_formula}や命題\ref{p_to_h}, 補題\ref{formal_power_series_relation}, Littlewood-Richardson規則などの関係式は、そのまま対称関数においても成立することがわかる。(変数の制限$\rho_{m,n}$は和や積と可換である)
 
 \begin{prop}
-  次の関係式が成り立つ
+  次の関係式が成り立つ\footnote{
+    (ii)から(iv)は$h_k$の母関数$H(t)=\prod_{i=1}^\infty\frac{1}{1-x_it}$を用いて補題\ref{formal_power_series_relation}と同じ計算で直接示してもよい。
+  }
   \begin{align*}
     &\text{(i):}\:h_k=\vmat{
       e_1&e_2&e_3&\cdots&e_k\\
@@ -942,7 +1021,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 
 \begin{prop}
   次が成り立つ
-  \begin{enumerate}
+  \begin{enumerate}[(i)]
     \item $\generated{h_\lambda,m_\mu}=\delta_{\lambda\mu}$
     \item $\generated{p_\lambda,p_\mu}=\delta_{\lambda\mu}z(\lambda)$
   \end{enumerate}
@@ -953,13 +1032,98 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     \item $h_\lambda=\sum_{\nu}a_{\lambda\nu}s_\nu$, $m_\mu=\sum_{\nu}b_{\mu\nu}s_\nu$とおく。このとき
     \begin{align*}
       \sum_{\lambda,\mu}h_\lambda m_\mu
-      =\sum_{\lambda,\mu}\sum_{\nu_1,\nu_2}
+      &=\sum_{\lambda,\mu}\sum_{\nu_1,\nu_2}a_{\lambda\nu_1}b_{\mu\nu_2}s_{\nu_1}s_{\nu_2}\\
+      &=\sum_{\nu_1,\nu_2}\left(\sum_{\lambda,\mu}a_{\lambda\nu_1}b_{\mu\nu_2}\right)s_{\nu_1}s_{\nu_2}
     \end{align*}
   \end{enumerate}
 \end{proof}
 
 
 
+次に対称群の表現全体から作られる環を導入する。
+
+\begin{defin}
+  $\mathfrak{S}_n$の表現の同値類全体で生成される自由Abel群を$\tilde{R_n}$とする。$D$を
+  \[
+  \set{[V\oplus W]-[V]-[W]\in R}{V,W\text{はそれぞれ$\mathfrak{S}_n$の表現}}  
+  \]
+  で生成される$\tilde{R_n}$の部分加群とし、$R_n=\tilde{R_n}/D$とする。$R_0=\integer$として$R=\bigoplus_{n=0}^\infty R_n$とおく。
+  
+  $\mathfrak{S}_n$, $\mathfrak{S}_m$の表現$V,W$に対して、
+  \[
+  [V]\circ [W]=[\ind_{\mathfrak{S}_n\times\mathfrak{S}_m}^{\mathfrak{S}_{n+m}}V\boxtimes W]
+  \]
+  と定める。ここで、$\mathfrak{S}_n\times\mathfrak{S}_m$は$\mathfrak{S}_n$の元を$n+1$から$n+m$を固定する置換と同一視し、$\mathfrak{S}_m$の元を$1$から$n$を固定する置換と同一視することで$\mathfrak{S}_n\times\mathfrak{S}_m$の部分群とみなしている。$\circ$を双線形に拡張することによって$R$は可換環の構造を持つ。$R$を対称群の表現環という。
+\end{defin}
+
+\begin{prop}
+  $\circ$は実際にwell-definedな乗法を定め、$R$は次数付き可換環となる。
+\end{prop}
+
+\begin{proof}
+  テンソル積と直和の可換性から、$\mathfrak{S}_n$の表現$V,V'$に対して
+  \[
+    \ind_{\mathfrak{S}_n\times\mathfrak{S}_m}^{\mathfrak{S}_{n+m}}(V\oplus V')\boxtimes W
+    =(\ind_{\mathfrak{S}_n\times\mathfrak{S}_m}^{\mathfrak{S}_{n+m}}V\boxtimes W)
+    \oplus
+    (\ind_{\mathfrak{S}_n\times\mathfrak{S}_m}^{\mathfrak{S}_{n+m}}V'\boxtimes W)
+  \]
+  よって
+  \[
+  ([V]+[V'])\circ [W]=[V\oplus V']\circ [W]=[V]\circ[W]+[V']\circ[W]  
+  \]
+  より$\circ$はwell-definedである。$\circ$が可換であることは$\mathfrak{S}_n$の元と$\mathfrak{S}_m$の元が$\mathfrak{S}_{n+m}$において可換であることからわかる。
+\end{proof}
+
+$R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対して
+\[
+\generated{[V],[W]}=\generated{\chi_V,\chi_W}  
+\]
+と定義し、$\generated{}$を$R$に双線形に拡張し内積を入れる。本節の主定理の一つが次の定理である。
+
+\begin{theo}\label{rep_ring_and_func_ring}
+  $\varphi:\Lambda\rightarrow R$を$\varphi(h_\lambda)=[M_\lambda]$によって定めると$\varphi$は内積を保つ環の同型
+  であり、
+  \[
+  \varphi(s_\lambda)=[S_\lambda]
+  \]
+  が成り立つ。ただし$M_\lambda$は例\ref{ind_from_horizontal_perm}の誘導表現, $S_\lambda$は$\lambda$で定まる対称群の既約表現である。
+\end{theo}
+
+\begin{proof}
+  $\{h_\lambda\}$は$\Lambda$の基底だから$\varphi$は$\quotient$線形写像として定義できることに注意する。また、Youngの規則(定理\ref{young_rule})より
+  \[
+  [M_\lambda]=[S_\lambda]+\sum_{\mu>\lambda}k_{\lambda\mu}[S_\mu]
+  \]
+  となるから、$R_n$の基底$\{[S_\lambda]\}$に関して$\{[M_\lambda]\}$を行列表示したとき、対角成分がすべて１の上三角行列になる。すなわち$\{[M_\lambda]\}$は$R_n$の基底となることがわかる。したがって$\varphi$は少なくとも線形同型であることがわかる。
+
+  $\varphi$が環準同型であることを示す。$h_\lambda=h_{\lambda_1}\cdots h_{\lambda_r}$だから、
+  \[
+  [M_\lambda]=[M_{(\lambda_1)}]\circ\cdots\circ[M_{(\lambda_r)}]  
+  \]
+  となることを示せばよい。$n=|\lambda|$とおく。各$M_{(\lambda_i)}$について、$(\lambda_i)$は1行のYoung図形だから$M_{(\lambda_i)}$は$\mathfrak{S}_{\lambda_i}$の自明な表現である。よって$M_{(\lambda_i)}\boxtimes M_{(\lambda_j)}$は$\mathfrak{S}_{\lambda_i}\times\mathfrak{S}_{\lambda_j}$の自明な表現だから、
+  \[
+  [M_{(\lambda_i)}]\circ[M_{(\lambda_j)}]=[M_{(\lambda_i,\lambda_j)}]
+  \]
+  したがって
+  \[
+  [M_\lambda]=[M_{(\lambda_1)}]\circ\cdots\circ[M_{(\lambda_r)}]  
+  \]
+  
+  次に$\varphi$が内積を保つことを示す。
+\end{proof}
+
+
+
+この定理によって対称群の表現に関する性質を、対称関数の知識を使って調べることができる。
+
+\begin{cor}
+  $\mathfrak{S}_n$の既約表現$S_\lambda$, $\mathfrak{S}_m$の既約表現$S_\mu$について
+  \[
+  \ind_{\mathfrak{S}_n\times\mathfrak{S}_m}^{\mathfrak{S}_{n+m}}S_\lambda\boxtimes S_\mu =\bigoplus_{\nu}S_\nu^{\oplus\eta^{\nu}_{\lambda\mu}} 
+  \]
+  が成り立つ。ただし$\eta^{nu}_{\lambda\mu}$はLittlewood-Richardson数である。
+\end{cor}
 
 
 

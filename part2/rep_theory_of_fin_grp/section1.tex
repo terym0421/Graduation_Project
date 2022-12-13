@@ -109,7 +109,7 @@
     \[
     (\rho_1\otimes\rho_2)(g)(x\otimes y)=\rho_1(x)\otimes\rho_2(y)
     \]
-    で定義する。これを$\rho_1$と$\rho_2$のテンソル積という。
+    で定義する。これを$\rho_1$と$\rho_2$の(内部)テンソル積という。
 
     \item $\map{\rho_1^*}{G}{GL(V^*)}$を
     \[
@@ -117,6 +117,12 @@
     \]
     で定義する。これを$\rho_1$の反傾表現という。
   \end{itemize}
+
+  $(\rho_G,V)$を群$G$の表現、$(\rho_H,W)$を群$H$の表現とする。このとき$\rho_G\boxtimes\rho_H:G\times H\rightarrow GL(V\otimes W)$を
+  \[
+    \rho_G\boxtimes\rho_H(g,h)(x\otimes y)=\rho_G(g)(x)\otimes\rho_H(h)(y)
+  \]
+  で定義する。これを$\rho_G$と$\rho_H$の外部テンソル積という。
 \end{defin}
 
   これらが実際に表現になっていることは容易にわかる。実は、有限群の複素数体上の有限次元表現は既約表現の直和に同値であることがわかる(系\ref{irr_decompose})。すなわち、表現の分類を考える上では本質的に最も小さい表現、既約表現のみを考えれば良いことがわかる。
@@ -1013,7 +1019,7 @@ g\sigma_i=\sigma_j h
 \begin{prop}[誘導表現の指標]\label{ind_char}
   $V$が$W$から誘導されているとき、
   \begin{align}
-  \chi_V(g)&=\sum_{\inv{\sigma_i}g\sigma_i\in H}\chi_W(\inv{\sigma_i}g\sigma_i)
+  \chi_V(g)&=\sum_{\substack{\sigma_i\in R \\ \inv{\sigma_i}g\sigma_i\in H}}\chi_W(\inv{\sigma_i}g\sigma_i)
 \end{align}
 が成り立つ。
 \end{prop}
@@ -1043,15 +1049,17 @@ $V=\bigoplus_{\sigma\in R}\sigma W$において、$R$として単位元$e$を含
 
 
 
-\begin{eg}
-  $H$を$G$の部分群とする。$X=G/H$とし、$V$を$X$を基底に持つ自由ベクトル空間とする。$G$は$V$に置換によって作用する。
+\begin{eg}\label{ind_from_trivial}
+  $H$を$G$の部分群とする。$X=G/H=\{H,g_1H,\cdots,g_nH\}$とし、$V$を$X$を基底に持つ自由ベクトル空間とする。$G$は$V$に置換によって作用する。
   \[
   W=\complex H\subset V  
   \]
-  とすれば$W$は$H$の自明な表現であり、
-  \[
-  V=\bigoplus_{g\in G/H}gW
-  \]
+  とすれば$W$は$H$の自明な表現であり、$R=\{e,g_1,\cdots,e_n\}$
+  \begin{align*}
+  V&=\complex H\oplus \complex g_1H\oplus\cdots\oplus\complex g_nH\\
+  &=\bigoplus_{\sigma\in R}\sigma\complex H\\
+  &=\bigoplus_{\sigma\in R}\sigma W
+  \end{align*}
   だから$V=\ind_H^GW$である。すなわち、$H$の自明な表現から誘導される$G$の表現は$G/H$への置換表現である。
 \end{eg}
 \end{document}

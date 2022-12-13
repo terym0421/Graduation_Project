@@ -6,14 +6,14 @@
 \appendix
 \chapter{Robinson-Schensted-Knuth対応}
 
-Robinson-Schensted-Knuth対応(以下RSK対応と呼ぶ)とは、非負整数行列と、同じ台をもつ半標準タブローの組との間の1対1対応のことである。この付録ではRSK対応の証明はせず、主張の紹介と第2章で用いたCauchyの等式(補題\ref{formal_power_series_relation})の証明を解説する。
+Robinson-Schensted-Knuth対応(以下RSK対応と呼ぶ)とは、非負整数行列と、同じ形をもつ半標準タブローの組との間の1対1対応のことである。この付録ではRSK対応の証明はせず、主張の紹介と第2章で用いたCauchyの等式(補題\ref{formal_power_series_relation})の証明を解説する。
 
 \begin{defin}[行挿入]
-  $T$を形$\lambda$の半標準タブローとし、$k$を正の整数とする。次の操作で得られる半標準タブローを$T\leftarrow k$と書く：
+  $T$を形$\lambda$の半標準タブローとし、$k$を正の整数とする。次の帰納的な操作で得られる半標準タブローを$T\leftarrow k$と書く：
   \begin{enumerate}
-    \item $T$の一行目の一番右の数が$k$以下なら、右端に$k$を追加したものを$T\leftarrow k$として終了する。
+    \item $T$の一行目の一番右の数が$k$以下なら、右端に$k$を追加したものを$T\leftarrow k$として操作を終了する。
     \item $T$の右端が$k$より真に大きいならば、$T$の一行目において$k$より大きいもののうち最も左にある箱を$k$で置き換える。またそのときもともと入っていた数を$l$とおく。
-    \item $T$の二行目以降の部分タブローを$T'$とし、$T'\leftarrow l$と$T$の一行目を結合したものを$T\leftarrow k$として終了する。
+    \item $T$の二行目以降の部分タブローを$T'$とし、$T'\leftarrow l$と$T$の一行目を結合したものを$T\leftarrow k$として操作を終了する。
   \end{enumerate}
 \end{defin}
 
@@ -38,7 +38,7 @@ Robinson-Schensted-Knuth対応(以下RSK対応と呼ぶ)とは、非負整数行
 
 
 \begin{theo}[RSK対応]
-  非負整数行列$A\in M_{m,n}(\integer_{\geq 0})$に対して、次の操作で定まる同じ台をもつタブローの組$(P,Q)$はどちらも半標準であり、$P$に書かれた数はたかだか$n$, $Q$に書かれた数はたかだか$m$である。この対応は全単射である。
+  非負整数行列$A\in M_{m,n}(\integer_{\geq 0})$に対して、次の操作で定まるタブローの組$(P,Q)$はどちらも半標準であり、$P$に書かれた数はたかだか$n$, $Q$に書かれた数はたかだか$m$である。そしてこの対応は$M_{m,n}(\integer_{\geq 0})$から$\mathcal{T}_n\times \mathcal{T}_m$への全単射である。ここで$\mathcal{T}_n$はすべてのYoung図形に対するたかだか$n$までを用いた半標準タブロー全体のなす集合である。
   \begin{enumerate}
     \item $A$のbiwordを$W$とする。$P,Q=\varnothing$として初期化する。
     \item $W$の各列ベクトル$\pmat{i\\j}$を左から右へ読んでいって、次の処理をする。
@@ -47,6 +47,7 @@ Robinson-Schensted-Knuth対応(以下RSK対応と呼ぶ)とは、非負整数行
       \item $Q$に対して、$P\leftarrow j$の行挿入で新しく追加された箱の場所に$i$を追加する。
     \end{itemize}
   \end{enumerate}
+  また$P,Q$は同じYoung図形を形にもつタブローである。
 \end{theo}
 
 \begin{eg}
@@ -81,10 +82,10 @@ p_i=a_{1i}+\cdots+a_{mi},\qquad q_j=a_{j1}+\cdots+a_{jn}
   \[
   \sum_{\lambda}s_\lambda(x_1,\cdots,x_n)s_\lambda(y_1,\cdots,y_m)
   =\sum_{\lambda}
-  \sum_{\substack{P,Q\in\mathcal{T}(\lambda) \\ [P]=n,[Q]=m}}
+  \sum_{P\in\mathcal{T}_n(\lambda),Q\in\mathcal{T}_m(\lambda)}
   (x_1^{p_1}\cdots x_n^{p_n})(y_1^{q_1}\cdots y_m^{q_m})
   \]
-  である。ここで$[P]=n$とは$P$に書かれた数がたかだか$n$であることを意味する。$[Q]=m$も同様。一方、左辺の式は
+  である。一方、左辺の式は
   \begin{align*}
   \prod_{i,j}\frac{1}{1-x_iy_j}&=\prod_{i,j}(1+x_iy_j+(x_iy_j)^2+\cdots)\\
   &=\sum_{A\in M_{m,n}(\integer_{\geq 0})}\prod_{i,j}(x_iy_j)^{a_{ji}}\\
@@ -95,7 +96,7 @@ p_i=a_{1i}+\cdots+a_{mi},\qquad q_j=a_{j1}+\cdots+a_{jn}
     \sum_{A\in M_{m,n}(\integer_{\geq 0})}\prod_i x_i^{a_{1i}+\cdots+a_{mi}}\prod_j y_j^{a_{j1}+\cdots+a_{jn}}
     &=\sum_{A\in M_{m,n}(\integer_{\geq 0})}\prod_i x_i^{p_i}\prod_j y_j^{q_j}\\
     &=\sum_{\lambda}
-    \sum_{\substack{P,Q\in\mathcal{T}(\lambda) \\ [P]=n,[Q]=m}}
+    \sum_{P\in\mathcal{T}_n(\lambda),Q\in\mathcal{T}_m(\lambda)}
     (x_1^{p_1}\cdots x_n^{p_n})(y_1^{q_1}\cdots y_m^{q_m})
   \end{align*}
   よって示せた。
