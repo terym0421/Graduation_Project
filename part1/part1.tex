@@ -343,7 +343,7 @@ Young図形とSchur多項式との関係は次の命題で表される
         \item 各行は左から右に広義単調増加
         \item 各列は上から下に狭義単調増加
     \end{itemize}
-    形$\lambda$の半標準タブロー全体のなす集合を$\mathcal{T}(\lambda)$と書く。半標準タブロー$T\in\mathcal{T}(\lambda)$について、Tに数字$k\in\{1,\cdots,n\}$が$t_k$個書かれているとき$\omega_k(T)=t_k$のように書き、
+    形$\lambda$の半標準タブロー全体のなす集合を$\mathcal{T}(\lambda)$と書く。半標準タブロー$T\in\mathcal{T}(\lambda)$について、$T$に数字$k\in\{1,\cdots,n\}$が$t_k$個書かれているとき$\omega_k(T)=t_k$のように書き、
     \[
     \omega(T)=(t_1,\cdots,t_n)
     \]
@@ -413,6 +413,23 @@ Young図形とSchur多項式との関係は次の命題で表される
     \[
     T_{(2,1)}=x_1^2x_2+x_1x_2^2+x_1^2x_3+x_1x_3^2+2x_1x_2x_3+x_2^2x_3+x_2x_3^2=e_1e_2=s_{(2,1)}
     \]
+\end{eg}
+
+\begin{eg}\label{1row_schur}
+    $\lambda$が1行からなるYoung図形$\lambda=(k)\in\mathcal{Y}_n$の場合、$T_\lambda=h_k$である。なぜなら、形$(k)$の半標準タブローは左端に$1$をいくつか書き($0$個でもよい),続けて$2$をいくつか書き,$3$をいくつか書き...と続けて得られるから、
+    \[
+    1\leq i_1\leq \cdots\leq i_k\leq n    
+    \]
+    をみたす$i_1,\cdots,i_k$の組み合わせと1対1に対応するからである。
+\end{eg}
+
+\begin{eg}\label{1col_schur}
+    $\lambda$が1列からなるYoung図形$\lambda=1^k\in\mathcal{Y}_n$ ($k\leq n$)の場合、
+    $T_\lambda=e_k$である。なぜなら、形$1^k$の半標準タブローは
+    \[
+    1\leq i_1<\cdots<i_k\leq n    
+    \]
+    をみたす$i_1,\cdots,i_k$の組み合わせと1対1に対応するからである。
 \end{eg}
 
 
@@ -863,6 +880,62 @@ Littlewood-Richardson規則の特別な場合として、$\lambda$が一行のYo
     s_\lambda s_\mu=s_{\nu_1}+s_{\nu_2}+s_{\nu_3}+s_{\nu_4}
     \]
 \end{eg}
+
+例\ref{1row_schur}より、Pieriの規則は
+\[
+h_ks_\mu=\sum_{\substack{|\nu|=|\mu|+k\\\nu/\mu\text{は水平帯}}}s_\nu  
+\]
+と書くこともできる。
+
+
+\begin{cor}[Youngの規則]\label{Young_rule_for_poly}
+    $\lambda\in\mathcal{Y}_n$に対して
+    \[
+    h_\lambda=h_{\lambda_1}\cdots h_{\lambda_n}=s_{(\lambda_1)}\cdots s_{(\lambda_n)}    
+    \]
+    とおく。$h_\lambda$は対称多項式であるが、そのSchur多項式への分解について次が成り立つ：
+    \[
+    h_\lambda=s_{\lambda}+\sum_{\mu>\lambda}k_{\lambda\mu}s_\mu    
+    \]
+    係数$k_{\lambda\mu}$をKostka数という。
+\end{cor}
+
+\begin{proof}
+    $\lambda$の行数$n$に関する帰納法で示す。$n=1$のときは$h_\lambda=s_\lambda$ゆえに明らか。$n>1$とする。$\lambda'=(\lambda_2,\cdots,\lambda_n)$として帰納法の仮定より
+    \[
+    h_{\lambda_2}\cdots h_{\lambda_n}=s_{\lambda'}+\sum_{\mu>\lambda'}k_{\lambda'\mu}s_\mu    
+    \]
+    と書けるから
+    \begin{align*}
+        h_{\lambda_1}h_{\lambda_2}\cdots h_{\lambda_n}
+        &=s_{(\lambda_1)}\left(s_{\lambda'}+\sum_{\mu>\lambda'}k_{\lambda'\mu}s_\mu \right)
+    \end{align*}
+    となる。$s_{(\lambda_1)}s_{\lambda'}$について考えると、Pieriの規則(系\ref{Pieri})より、
+    \[
+        s_{(\lambda_1)}s_{\lambda'}=\sum_{\substack{|\nu|=|\lambda'|+\lambda_1\\\nu/\lambda'\text{は水平帯}}}s_\nu 
+    \]
+    となるが、$l=2,3,\cdots$に対して
+    \begin{align*}
+        \lambda_l=\lambda'_{l-1}
+    \end{align*}
+    だから$\lambda/\lambda'$は水平帯である。また、$\nu/\lambda'$が水平帯であるような$|\nu|=|\lambda'|+\lambda_1$をみたす任意の$\nu$について、
+    \[
+    \nu_l\leq\lambda'_{l-1}=\lambda_l,\qquad l=2,3,\cdots,n
+    \]
+    だから、
+    \[
+    \nu_1=|\nu|-(\nu_2+\cdots+\nu_n)\geq |\lambda|-(\lambda_2+\cdots+\lambda_n)=\lambda_1    
+    \]
+    よって$\lambda\leq \nu$である。したがって
+    \[
+        s_{(\lambda_1)}s_{\lambda'}=s_{\lambda}+\sum_{\mu>\lambda}s_\mu
+    \]
+    と書くことができる。一方で、$\mu>\lambda'$に対して$s_{(\lambda_1)}s_\mu$を考えると、再びPieriの規則から
+    \[
+    s_{(\lambda_1)}s_\mu=\sum_{\substack{|\nu|=|\mu|+\lambda_1 \\ \nu/\mu\text{は水平帯}}}s_\nu
+    \]
+    となるが、$\mu>\lambda'$だったので先ほどと同様の議論で$\nu>\lambda$となることがわかる。これで示せた。
+\end{proof}
 
 
     

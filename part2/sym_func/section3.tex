@@ -417,7 +417,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 
 \begin{prop}
   次の関係式が成り立つ\footnote{
-    (ii)から(iv)は$h_k$の母関数$H(t)=\prod_{i=1}^\infty\frac{1}{1-x_it}$を用いて補題\ref{formal_power_series_relation}と同じ計算で直接示してもよい。
+    $e_k$の母関数$E(t)=\prod_{i=1}^\infty(1+x_it)$や$h_k$の母関数$H(t)=\prod_{i=1}^\infty\frac{1}{1-x_it}$を用いて補題\ref{formal_power_series_relation}と同じ計算で直接示してもよい。
   }
   \begin{align*}
     &\text{(i):}\:h_k=\vmat{
@@ -487,7 +487,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 \end{defin}
 
 \begin{prop}
-  $\circ$は実際にwell-definedな乗法を定め、$R$は次数付き可換環となる。
+  $\circ$は実際に乗法を定め、$R$は次数付き可換環となる。
 \end{prop}
 
 \begin{proof}
@@ -502,14 +502,75 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   \[
   ([V]+[V'])\circ [W]=[V\oplus V']\circ [W]=[V]\circ[W]+[V']\circ[W]  
   \]
-  より$\circ$はwell-definedである。$\circ$が可換であることは$\mathfrak{S}_n$の元と$\mathfrak{S}_m$の元が$\mathfrak{S}_{n+m}$において可換であることからわかる。
+  より$\circ$は双線形である。$\circ$が可換であることは$\mathfrak{S}_n$の元と$\mathfrak{S}_m$の元が$\mathfrak{S}_{n+m}$において可換であることからわかる。
+
+  乗法が結合的であることを示そう。すなわち
+  \[
+  ([V]\circ[W])\circ[U]=[V]\circ([W]\circ [U])  
+  \]
+  を示す。そのためには$\mathfrak{S}_n$, $\mathfrak{m}$, $\mathfrak{S}_l$それぞれの表現$V,W,U$に対して、2つの表現
+  \[
+  \ind_{\mathfrak{S}_{n+m}\times\mathfrak{S}_l}^{\mathfrak{S}_{n+m+l}}\left\{
+    (\ind_{\mathfrak{S}_n\times\mathfrak{S}_m}^{\mathfrak{S_{n+m}}}V\boxtimes W)\boxtimes U
+  \right\},\qquad
+  \ind_{\mathfrak{S}_{n}\times\mathfrak{S}_{m+l}}^{\mathfrak{S}_{n+m+l}}\left\{
+    V\boxtimes (\ind_{\mathfrak{S}_m\times\mathfrak{S}_l}^{\mathfrak{S}_{m+l}}W\boxtimes U)
+  \right\}
+  \]
+  の指標が等しいことをみればよい。
+  $
+    \ind_{\mathfrak{S}_{n+m}\times\mathfrak{S}_l}^{\mathfrak{S}_{n+m+l}}\left\{
+      (\ind_{\mathfrak{S}_n\times\mathfrak{S}_m}^{\mathfrak{S_{n+m}}}V\boxtimes W)\boxtimes U
+    \right\} 
+  $ 
+  の指標を$\chi_A$とおき、$\ind_{\mathfrak{S}_n\times\mathfrak{S}_m}^{\mathfrak{S_{n+m}}}V\boxtimes W$の指標を$\chi_{A'}$とおく。誘導指標の公式(命題\ref{ind_char})より、
+  \begin{align*}
+    \chi_A(g)
+    &=\frac{1}{(n+m)!\:l!}
+    \sum_{\substack{\sigma\in\mathfrak{S}_{n+m+l} \\ \inv{\sigma}g\sigma\in\mathfrak{S}_{n+m}\times\mathfrak{S}_l}}
+    \chi_{A'}((\inv{\sigma}g\sigma)|_{n+m})\chi_U((\inv{\sigma}g\sigma)|_l)
+  \end{align*}
+  ここで、$(\inv{\sigma}g\sigma)|_{n+m}$は$\inv{\sigma}g\sigma$の最初の$n+m$文字の置換への制限である。
+  $g$と$\inv{\sigma}g\sigma$の置換の型は同じだから、$\inv{\sigma}g\sigma\in\mathfrak{S}_{n+m}\times\mathfrak{S}_l$と、$g\in\mathfrak{S}_{n+m}\times\mathfrak{S}_l$は同値である。よって、
+  \begin{align*}
+    \chi_A(g)=\left\{\begin{array}{lc}
+      \frac{(n+m+l)!}{(n+m)!\:l!}\chi_{A'}(g|_{n+m})\chi_U(g|_l) & \text{if $g\in\mathfrak{S}_{n+m}\times\mathfrak{S}_l$}\\
+      0 & \text{otherwise}
+    \end{array}\right.
+  \end{align*}
+  となる。
+  同様の議論で、
+  \begin{align*}
+  \chi_{A'}(g|_{n+m})
+  &=\frac{1}{n!\:m!}
+  \sum_{ \substack{t\in\mathfrak{S_{n+m}} \\ \inv{t}g|_{n+m}t\in\mathfrak{S}_n\times\mathfrak{S}_m} }
+  \chi_V((\inv{t}gt)_n)\chi_W((\inv{t}gt)_m) \\
+  &=\left\{\begin{array}{lc}
+    \frac{(n+m)!}{n!\:m!}\chi_V(g|_n)\chi_W(g|_m) & \text{if $g\in\mathfrak{S}_n\times\mathfrak{S}_m\times\mathfrak{S}_l$}\\
+    0 & \text{otherwise}
+    \end{array}\right.
+  \end{align*}
+  となる。結局、
+  \begin{equation}\label{char_A}
+  \chi_A(g)=\left\{\begin{array}{lc}
+    \frac{(n+m+l)!}{n!\:m!\:l!}\chi_V(g|_n)\chi_W(g|_m)\chi_U(g|_l) & \text{if $g\in\mathfrak{S}_n\times\mathfrak{S}_m\times\mathfrak{S}_l$}\\
+    0 & \text{otherwise}
+  \end{array}\right.  
+\end{equation}
+  で、$n,m,l$について対称な形となった。同様に
+  $
+  \ind_{\mathfrak{S}_{n}\times\mathfrak{S}_{m+l}}^{\mathfrak{S}_{n+m+l}}\left\{
+    V\boxtimes (\ind_{\mathfrak{S}_m\times\mathfrak{S}_l}^{\mathfrak{S}_{m+l}}W\boxtimes U)
+  \right\}
+  $
+  の指標を計算すると、(\ref{char_A})となることがわかる。
 \end{proof}
 
 $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対して
 \[
 \generated{[V],[W]}=\generated{\chi_V,\chi_W}  
 \]
-と定義し、$\generated{}$を$R$に双線形に拡張し内積を入れる。本節の主定理の一つが次の定理である。
+と定義し、$\generated{,}$を$R$に双線形に拡張し内積を入れる。本節の主定理の一つが次の定理である。
 
 \begin{theo}\label{rep_ring_and_func_ring}
   $\varphi:\Lambda\rightarrow R$を$\varphi(h_\lambda)=[M_\lambda]$によって定めると$\varphi$は内積を保つ環の同型
@@ -521,7 +582,7 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
 \end{theo}
 
 \begin{proof}
-  $\{h_\lambda\}$は$\Lambda$の基底だから$\varphi$は$\quotient$線形写像として定義できることに注意する。また、Youngの規則(定理\ref{young_rule})より
+  $\{h_\lambda\}$は$\Lambda$の基底だから$\varphi$は$\quotient$線形写像として定義できることに注意する。また、Youngの規則(定理\ref{Young_rule_for_rep})より
   \[
   [M_\lambda]=[S_\lambda]+\sum_{\mu>\lambda}k_{\lambda\mu}[S_\mu]
   \]
@@ -533,9 +594,11 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
   \]
   となることを示せばよい。$n=|\lambda|$とおく。各$M_{(\lambda_i)}$について、$(\lambda_i)$は1行のYoung図形だから$M_{(\lambda_i)}$は$\mathfrak{S}_{\lambda_i}$の自明な表現である。よって$M_{(\lambda_i)}\boxtimes M_{(\lambda_j)}$は$\mathfrak{S}_{\lambda_i}\times\mathfrak{S}_{\lambda_j}$の自明な表現だから、
   \[
-  [M_{(\lambda_i)}]\circ[M_{(\lambda_j)}]=[M_{(\lambda_i,\lambda_j)}]
+  [M_{(\lambda_i)}]\circ[M_{(\lambda_j)}]
+  =[\ind_{\mathfrak{S}_{\lambda_i}\times\mathfrak{S}_{\lambda_j}}^{\mathfrak{S}_{\lambda_i+\lambda_j}}\mathbf{1}]
+  =[M_{(\lambda_i,\lambda_j)}]
   \]
-  したがって
+  積は可換かつ結合的だから
   \[
   [M_\lambda]=[M_{(\lambda_1)}]\circ\cdots\circ[M_{(\lambda_r)}]  
   \]

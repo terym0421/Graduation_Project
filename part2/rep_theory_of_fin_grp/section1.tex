@@ -1017,9 +1017,10 @@ g\sigma_i=\sigma_j h
 となる。$g$の$V$への作用は$G/H$への置換作用と$H$の$W$への作用を組み合わせたようなものである。また式(\ref{ind_action})から次がでる。
 
 \begin{prop}[誘導表現の指標]\label{ind_char}
-  $V$が$W$から誘導されているとき、
+  $V=\ind_H^GW$のとき、
   \begin{align}
   \chi_V(g)&=\sum_{\substack{\sigma_i\in R \\ \inv{\sigma_i}g\sigma_i\in H}}\chi_W(\inv{\sigma_i}g\sigma_i)
+  =\frac{1}{H}\sum_{\substack{\sigma\in G \\ \inv{\sigma}g\sigma\in H}}\chi_W(\inv{\sigma}g\sigma)
 \end{align}
 が成り立つ。
 \end{prop}
@@ -1029,7 +1030,7 @@ g\sigma_i=\sigma_j h
   \[
   h=\inv{\sigma_i}g\sigma_i 
   \]
-  であるから、あとは$h$の$W$への作用の対角成分の和をとればよいので主張が従う。
+  であるから、あとは$h$の$W$への作用の対角成分の和をとればよいので前半の式がでる。後半については指標が類関数であること、$|\sigma H|=|H|$であることから従う。
 \end{proof}
 
 定義\ref{ind_rep_2}が定義\ref{ind_rep}と一致することを確かめておく。定義\ref{ind_rep_2}の$V$が普遍性(定理\ref{univ_ind_rep})を満たすことを示せば、一意性から従う。
