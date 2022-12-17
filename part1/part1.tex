@@ -293,7 +293,7 @@ Schur多項式について重要な命題が次の定理である。
 \section{Littlewood-Richardson規則}
 \subsection{Young図形}
 \begin{defin}
-    整数列$\lambda=(\lambda_1,\lambda_2,\cdots)$, $\lambda_1\geq\lambda_2\geq\cdots\geq \lambda_{k}=\lambda_{k+1}=\cdots=0$に対して、$1$行目に$\lambda_1$個の箱を書き、$2$行目に$\lambda_2$個の箱を書き...と続けてできる図形をYoung図形といい、同じく$\lambda$で表す。箱が１つもないYoung図形、すなわち$(0,0,\cdots)$は$\varnothing$で表す。$\lambda_{n+1}=0$のときたんに$\lambda=(\lambda_1,\cdots,\lambda_n)$と書くこともある。
+    非負整数列$\lambda=(\lambda_1,\lambda_2,\cdots)$, $\lambda_1\geq\lambda_2\geq\cdots\geq \lambda_{k}=\lambda_{k+1}=\cdots=0$に対して、$1$行目に$\lambda_1$個の箱を書き、$2$行目に$\lambda_2$個の箱を書き...と続けてできる図形をYoung図形といい、同じく$\lambda$で表す。箱が１つもないYoung図形、すなわち$(0,0,\cdots)$は$\varnothing$で表す。$\lambda_{n+1}=0$のときたんに$\lambda=(\lambda_1,\cdots,\lambda_n)$と書くこともある。
     また$|\lambda|=\lambda_1+\lambda_2+\cdots$とし、これを$\lambda$の大きさという。
 \end{defin}
 
@@ -837,7 +837,7 @@ s_\lambda s_\mu=\sum_{T:\lambda\text{-good}}s_{\lambda+\omega(T)}
 Littlewood-Richardson規則の特別な場合として、$\lambda$が一行のYoung図形の場合はPieriの規則と呼ばれ、比較的簡単に計算できる。
 
 \begin{defin}
-    Young図形$\mu\leq \nu$, $|\nu|=|\mu|+k$に対して、$\nu/\mu$が水平帯であるとは
+    Young図形$\mu\subset \nu$, $|\nu|=|\mu|+k$に対して、$\nu/\mu$が水平帯であるとは
     \[
     \text{
         $\nu$に含まれ、$\mu$に含まれない箱が各列にたかだか一つ
@@ -914,7 +914,7 @@ h_ks_\mu=\sum_{\substack{|\nu|=|\mu|+k\\\nu/\mu\text{は水平帯}}}s_\nu
     \[
         s_{(\lambda_1)}s_{\lambda'}=\sum_{\substack{|\nu|=|\lambda'|+\lambda_1\\\nu/\lambda'\text{は水平帯}}}s_\nu 
     \]
-    となるが、$l=2,3,\cdots$に対して
+    となるが、$l=2,3,\cdots,n$に対して
     \begin{align*}
         \lambda_l=\lambda'_{l-1}
     \end{align*}
@@ -931,10 +931,27 @@ h_ks_\mu=\sum_{\substack{|\nu|=|\mu|+k\\\nu/\mu\text{は水平帯}}}s_\nu
         s_{(\lambda_1)}s_{\lambda'}=s_{\lambda}+\sum_{\mu>\lambda}s_\mu
     \]
     と書くことができる。一方で、$\mu>\lambda'$に対して$s_{(\lambda_1)}s_\mu$を考えると、再びPieriの規則から
-    \[
+    \begin{equation}\label{tmp}
     s_{(\lambda_1)}s_\mu=\sum_{\substack{|\nu|=|\mu|+\lambda_1 \\ \nu/\mu\text{は水平帯}}}s_\nu
-    \]
-    となるが、$\mu>\lambda'$だったので先ほどと同様の議論で$\nu>\lambda$となることがわかる。これで示せた。
+    \end{equation}
+    であるが、$\nu>\lambda$となることを示れば証明が完了する。次の補題を示す。
+    \begin{lemm}
+        Young図形$\lambda,\mu$について、$\mu>\lambda$であるとする。$\mu$に$k$個の箱を、水平帯条件が成り立つように追加してできる最小のYoung図形を$\overline{\mu}$とおき、同様に$\lambda$に$k$個の箱を、水平帯条件が成り立つように追加してできる最小のYoung図形を$\overline{\lambda}$とおく。このとき$\overline{\mu}>\overline{\lambda}$である。
+    \end{lemm}
+
+    \begin{proof}
+       辞書式順序の定義から、$\lambda$や$\mu$に箱を追加する際、最も小さくなるようにするには各列に左から箱を足していけばよい。
+        \begin{gather*}
+            k=3, \lambda=\quad\ydiagram{4,3,1}\quad\text{のとき}\\
+            \ydiagram[*(yellow)]{0,0,0,1}*[*(white)]{4,3,1}\quad\rightarrow\quad
+            \ydiagram[*(yellow)]{0,0,1+1,1}*[*(white)]{4,3,1}\quad\rightarrow\quad
+            \ydiagram[*(yellow)]{0,0,1+2,1}*[*(white)]{4,3,1}\quad=\overline{\lambda}
+        \end{gather*}
+        また、$\lambda<\mu$であることは「$\lambda$の列数と$μ$の列数を右から辞書式順序で比べたとき、$μ$のほうが大きい」ということと同値だから、$λ$, $μ$の列に左から１つずつ箱を足しても大小は保たれる。
+    \end{proof}
+
+    式(\ref{tmp})において$\nu\mu$は水平帯であり、$\mu>\lambda'$だったが、$\lambda'$に$\lambda_1$個の箱を水平帯となるように追加した最小のYoung図形は$\lambda$に他ならなかったから、補題により$\nu>\lambda$    
+    
 \end{proof}
 
 

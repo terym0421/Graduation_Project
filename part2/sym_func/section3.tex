@@ -410,12 +410,12 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     \item $\{s_\lambda\}_{\lambda\in\mathcal{P}_k}$
     \item $\{p_\lambda\}_{\lambda\in\mathcal{P}_k}$
   \end{enumerate}
-  (i)$\sim$(iv)は$\Lambda^k$の$\integer$上の基底をなし、(v)は$\quotient\otimes_\integer{\Lambda}$上の基底をなす。特に$\lambda$の範囲をすべてのYoung図形全体に変えれば、これらは$\Lambda$または$\quotient\otimes_\integer{\Lambda}$の基底を与える。
+  (i)$\sim$(iv)は$\Lambda^k$の$\integer$上の基底をなし、(v)は$\quotient\otimes_\integer{\Lambda^k}$上の基底をなす。特に$\lambda$の範囲をすべてのYoung図形全体に変えれば、これらは$\Lambda$または$\quotient\otimes_\integer{\Lambda}$の基底を与える。
 \end{prop}
 
 また、命題\ref{det_formula}や命題\ref{p_to_h}, 補題\ref{formal_power_series_relation}, Littlewood-Richardson規則などの関係式は、そのまま対称関数においても成立することがわかる。(変数の制限$\rho_{m,n}$は和や積と可換である)
 
-\begin{prop}
+\begin{prop}\label{various_relation}
   次の関係式が成り立つ\footnote{
     $e_k$の母関数$E(t)=\prod_{i=1}^\infty(1+x_it)$や$h_k$の母関数$H(t)=\prod_{i=1}^\infty\frac{1}{1-x_it}$を用いて補題\ref{formal_power_series_relation}と同じ計算で直接示してもよい。
   }
@@ -435,9 +435,10 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     }\\
     &\text{(ii):}\:h_k=\sum_{\lambda\in\mathcal{P}_k}\frac{p_\lambda}{z(\lambda)}\\
     &\text{(iii):}\:
-    \sum_{\lambda}h_\lambda m_\lambda
-    =\sum_{\lambda}\frac{1}{z(\lambda)}p_\lambda^2
-    =\sum_{\lambda}s_\lambda^2,\qquad\text{ただし和はすべてのYoung図形全体をわたる。}\\
+    \sum_{\lambda}h_\lambda(x) m_\lambda(y)
+    =\sum_{\lambda}\frac{1}{z(\lambda)}p_\lambda(x)p_\lambda(y)
+    =\sum_{\lambda}s_\lambda(x)s_\lambda(y)
+    =\prod_{i,j}\frac{1}{1-x_iy_j}\\
     &\text{(iv):}\:
     s_\lambda s_\mu=\sum_{\nu}\eta^{\nu}_{\lambda\mu}s_\nu,\qquad\text{ただし$\eta^{\nu}_{\lambda\mu}$はLittlewood-Richardson数}
   \end{align*}
@@ -458,14 +459,10 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 \end{prop}
 
 \begin{proof}
-  \begin{enumerate}
-    \item $h_\lambda=\sum_{\nu}a_{\lambda\nu}s_\nu$, $m_\mu=\sum_{\nu}b_{\mu\nu}s_\nu$とおく。このとき
-    \begin{align*}
-      \sum_{\lambda,\mu}h_\lambda m_\mu
-      &=\sum_{\lambda,\mu}\sum_{\nu_1,\nu_2}a_{\lambda\nu_1}b_{\mu\nu_2}s_{\nu_1}s_{\nu_2}\\
-      &=\sum_{\nu_1,\nu_2}\left(\sum_{\lambda,\mu}a_{\lambda\nu_1}b_{\mu\nu_2}\right)s_{\nu_1}s_{\nu_2}
-    \end{align*}
-  \end{enumerate}
+  $h_\lambda(x)=\sum_{\nu_1}a_{\lambda\nu_1}s_{\nu_1}(x)$, $m_\mu(y)=\sum_{\nu_2}b_{\mu\nu_2}s_{\nu_2}(y)$とおく。
+  \begin{align*}
+    h_\lambda(x)m_\mu(y)=\sum_{\nu_1,\nu_2}a_{\lambda\nu_1}b_{\mu\nu_2}s_{\nu_1}(x)s_{\nu_2}(y)
+  \end{align*}
 \end{proof}
 
 
@@ -617,4 +614,17 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
   \]
   が成り立つ。ただし$\eta^{nu}_{\lambda\mu}$はLittlewood-Richardson数である。
 \end{cor}
+
+\begin{cor}
+  $k_{\lambda\mu}$をKostka数とする。
+  \[
+  M_\lambda=S_\lambda\oplus \left(\bigoplus_{\mu>\lambda}S_\mu^{\oplus k_{\lambda\mu}}\right)  
+  \]
+  が成り立つ。
+\end{cor}
+
+\begin{proof}
+  系\ref{Young_rule_for_poly}, 定理\ref{Young_rule_for_rep}より
+\end{proof}
+
 \end{document}

@@ -462,7 +462,7 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
 
 
 \begin{eg}
-  $\lambda\in\mathcal{P}_n$に対して、$\lambda$の行と列を反転させたものを双対Young図形といい$\lambda^*$と書く。
+  $\lambda\in\mathcal{P}_n$に対して、$\lambda$の行と列を反転させたものを共役Young図形といい$\lambda^*$と書く。
   \[
   \lambda=\quad\ydiagram{5,2,2}\quad\rightarrow\quad\lambda^*\quad=\ydiagram{3,3,1,1,1}
   \]
@@ -520,11 +520,10 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
 \end{eg}
 
 \begin{theo}[Youngの規則]\label{Young_rule_for_rep}
-  $\lambda\in\mathcal{P}_n$と、辞書式順序で$\lambda$より大きい$\mu\in\mathcal{P}_n$に対して正の整数$k_{\lambda\mu}$が存在して
+  $\lambda\in\mathcal{P}_n$と、辞書式順序で$\lambda$より大きい$\mu\in\mathcal{P}_n$に対して正の整数$a_{\lambda\mu}$が存在して
   \[
-  M_\lambda=S_\lambda\oplus \left(\bigoplus_{\mu>\lambda}S_\mu^{\oplus k_{\lambda\mu}}\right)
+  M_\lambda=S_\lambda\oplus \left(\bigoplus_{\mu>\lambda}S_\mu^{\oplus a_{\lambda\mu}}\right)
   \]
-  $k_{\lambda\mu}$をKostka数という。
 \end{theo}
 
 \begin{proof}
@@ -562,8 +561,7 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
   よって示せた。
 \end{proof}
 
-Kostka数はSchur多項式を単項対称式の線形結合で表すときの係数にも現れた(系\ref{Young_rule_for_poly})。実際にこの二つの係数が等しいことは次節に示される。
-
+Youngの規則はSchur多項式の線形結合で表すときにも現れた(系\ref{Young_rule_for_poly})。実際にこの二つの係数が等しいことは次節に示される。
 また、対称群の既約指標については、その値はすべて有理数であることが知られている(Frobeniusの指標公式)。
 
 
