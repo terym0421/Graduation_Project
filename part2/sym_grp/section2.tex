@@ -14,12 +14,12 @@ $\mathcal{P}_n$を大きさ$n$のYoung図形のなす集合とする。既約表
 
 
 \begin{defin}
-  $\lambda\in\mathcal{P}_n$の各箱に$1$から$n$の各数字を重複なく書き入れた図を形$\lambda$のタブローという。
-  $T$をタブローとし、$T$の$i$行目の箱に書かれている数字の集合を$H_i(T)$, 同様に$T$の$j$列目の箱に書かれている数字の集合を$V_j(T)$とする。
+  $\lambda\in\mathcal{P}_n$の各箱に$1$から$n$の各数字を重複なく書き入れた図を形$\lambda$の標準タブローという。
+  $T$を標準タブローとし、$T$の$i$行目の箱に書かれている数字の集合を$H_i(T)$, 同様に$T$の$j$列目の箱に書かれている数字の集合を$V_j(T)$とする。
 \end{defin}
 
 \begin{defin}
-  $T$を形$\lambda=(\lambda_1,\cdots,\lambda_s)$のタブローとする。$\sigma\in\mathfrak{S}_n$に対して、$\sigma T$を各数字を$\sigma$によって置換してできるタブローとする。
+  $T$を形$\lambda=(\lambda_1,\cdots,\lambda_s)$の標準タブローとする。$\sigma\in\mathfrak{S}_n$に対して、$\sigma T$を各数字を$\sigma$によって置換してできる標準タブローとする。
   \begin{itemize}
     \item 各$i$に対して$H_i(\sigma T)=H_i(T)$が成り立つなら$\sigma$を$T$の水平置換という。$T$の水平置換の全体は$G$の部分群をなす。これを$\mathcal{H}_T$と書き、$T$の水平置換群という。$\mathcal{H}_T=\mathfrak{S}(H_1(T))\times\cdots\times\mathfrak{S}(H_s(T))$である。
     \item 各$j$に対して$V_j(\sigma T)=V_j(T)$が成り立つなら$\sigma$を$T$の垂直置換という。$T$の垂直置換の全体は$G$の部分群をなす。これを$\mathcal{V}_T$と書き、$T$の垂直置換群という。$\mathcal{V}_T=\mathfrak{S}(V_1(T))\times\cdots\times\mathfrak{S}(V_{\lambda_1}(T))$である。
@@ -27,7 +27,7 @@ $\mathcal{P}_n$を大きさ$n$のYoung図形のなす集合とする。既約表
 \end{defin}
 
 \begin{eg}\label{tableau_eg}
-  形　\ydiagram{3,2}　のタブロー$T=$　
+  形　\ydiagram{3,2}　の標準タブロー$T=$　
   \begin{ytableau}
     4&5&1\\
     3&2
@@ -39,7 +39,7 @@ $\mathcal{P}_n$を大きさ$n$のYoung図形のなす集合とする。既約表
 \end{eg}
 
 \begin{eg}\label{canonical_tableau}
-  Young図形$\lambda=(\lambda_1,\cdots,\lambda_s)\in\mathcal{P}_n$に対して、$\lambda$の第1行に$1,2,\cdots,\lambda_1$を、$\lambda$の第2行に$\lambda_1+1,\lambda_1+2,\cdots,\lambda_1+\lambda_2$を、と続けてできるタブローを$\lambda$から定まる自然なタブローという。
+  Young図形$\lambda=(\lambda_1,\cdots,\lambda_s)\in\mathcal{P}_n$に対して、$\lambda$の第1行に$1,2,\cdots,\lambda_1$を、$\lambda$の第2行に$\lambda_1+1,\lambda_1+2,\cdots,\lambda_1+\lambda_2$を、と続けてできる標準タブローを$\lambda$から定まる自然なタブローという。
   \[
   \text{例\ref{tableau_eg}のYoung図形の自然なタブローは　}\begin{ytableau}
     1&2&3\\
@@ -270,7 +270,7 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
 
 
 \begin{prop}
-  $\lambda\in\mathcal{P}_n$とする。$T,U$を$\lambda$に書かれたタブローとすると$\complex[G]c_T\simeq \complex[G]c_U$である。
+  $\lambda\in\mathcal{P}_n$とする。$T,U$を$\lambda$に書かれた標準タブローとすると$\complex[G]c_T\simeq \complex[G]c_U$である。
 \end{prop}
 
 \begin{proof}
@@ -298,7 +298,7 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
 \end{proof}
 
 
-したがって、同じYoung図形に対しては$\complex[G]c_T$はタブロー$T$の取り方によらず同型である。そこで$\lambda\in\mathcal{P}_n$に対して、$\lambda$の自然なタブロー(例\ref{canonical_tableau})から定まるYoung対称子を$c_\lambda$とし、$S_\lambda=\complex[G]c_\lambda$とおく。
+したがって、同じYoung図形に対しては$\complex[G]c_T$は標準タブロー$T$の取り方によらず同型である。そこで$\lambda\in\mathcal{P}_n$に対して、$\lambda$の自然なタブロー(例\ref{canonical_tableau})から定まるYoung対称子を$c_\lambda$とし、$S_\lambda=\complex[G]c_\lambda$とおく。
 
 
 
@@ -561,8 +561,58 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
   よって示せた。
 \end{proof}
 
-Youngの規則はSchur多項式の線形結合で表すときにも現れた(系\ref{Young_rule_for_poly})。実際にこの二つの係数が等しいことは次節に示される。
-また、対称群の既約指標については、その値はすべて有理数であることが知られている(Frobeniusの指標公式)。
+Youngの規則はSchur多項式の線形結合で表すときにも現れた(系\ref{Young_rule_for_poly})。実際にこの二つの係数が等しいことは次節に示される。Youngの規則から、対称群の既約指標について次がわかる
 
+\begin{cor}\label{char_integrity}
+  $S_\lambda$の指標を$\chi_{\lambda}$とおく。すべての$g\in G$に対して$\chi_\lambda(g)\in\integer$である
+\end{cor}
+
+\begin{proof}
+  $\lambda\in\mathcal{P}_n$の、辞書式順序に関する数学的帰納法で示す。$\mathcal{P}_n$の最大元は、1行Young図形$(n)$であるが、このとき$S_{(n)}$は自明な表現なので指標は当然整数である。ある$\lambda$より大きいすべてのYoung図形$\mu$に対して$\chi_\mu$が整数値であったとする。定理\ref{Young_rule_for_rep}より
+  \[
+  \chi_{M_\lambda}  =\chi_{\lambda}+\sum_{\mu>\lambda}k_{\lambda\mu}\chi_\mu
+  \]
+  であるが、$M_\lambda$は置換表現であるから$\chi_{M_\lambda}$は整数値である。帰納法の仮定より$\chi_\mu$も整数値だから、$\chi_\lambda$は整数値。
+\end{proof}
+
+既約指標の具体的な値はFrobeniusの指標公式として知られている。$M_\lambda$の指標は比較的簡単に計算できる。
+
+\begin{prop}\label{m_lambda_char_1}
+  $g\in\mathfrak{S}_n$を巡回置換の積に表したとき、含まれている長さ$q$の巡回置換の数を$m_q$とする。このとき、$\chi_{M_\lambda}(g)$は次の値に等しい
+  \[
+  \chi_{M_\lambda}(g)=\sum\prod_{q=1}^n\frac{m_q!}{c_{1q}!\cdots c_{nq}!}  
+  \]
+  ただし和は
+  \begin{itemize}
+    \item $c_{p1}+2c_{p2}+3c_{p3}+\cdots+nc_{pn}=\lambda_p$, for all $p=1,\cdots,n$
+    \item $c_{1q}+c_{2q}+c_{3q}+\cdots+c_{nq}=m_q$, for all $q=1,\cdots,n$
+  \end{itemize}
+  をみたす非負行列$\{c_{pq}\}\in M_n(\integer_{\geq 0})$全体をわたる。
+\end{prop}
+
+\begin{proof}
+  $M_\lambda$は$G/\mathcal{H}_\lambda$への置換表現であるから、
+  \[
+  \chi_{M_\lambda}(g)
+  =\sharp\set{\sigma\mathcal{H}_{\lambda}\in G/\mathcal{H}_\lambda}{g\sigma\mathcal{H}_\lambda=\sigma\mathcal{H}_\lambda}
+  =\frac{1}{|\mathcal{H}_\lambda|}\sharp\set{\sigma\in G}{g\in\mathcal{H}_{\sigma\lambda}}
+  \]
+  と書くことができる。右辺の集合の大きさは形$\lambda$の標準タブローであって、$g$がその水平置換になっているものの個数である。
+  
+  $g$がある標準タブロー$\sigma\lambda$の水平置換であるための必要十分条件は、$g$を巡回置換の積で表したときその各巡回置換$(i_1,\cdots,i_k)$について、$i_1,\cdots,i_k$が$\sigma\lambda$の同一行に含まれていることである。よって、逆に$g$からそのような標準タブローを構成するには、$g$の長さ$q$の巡回置換が$\lambda$の$p$行目に何個含まれているかを指定し、水平置換で動かせばよい。
+
+  $g$の長さ$q$の巡回置換が$\lambda$の$p$行目に$c_{pq}$個含まれているとする。具体的にどの巡回置換がどの行に含まれているかを数えると
+  \[
+    \prod_{q=1}^n\frac{m_q!}{c_{1q}!\cdots c_{nq}!}    
+  \]
+  通りある。またこのとき制約として主張の条件が満たされなければならない。含まれるだけなら上の数でよいが、$\lambda$の水平置換の分だけ自由度があるので
+  \[
+  |\mathcal{H}_\lambda|\prod_{q=1}^n\frac{m_q!}{c_{1q}!\cdots c_{nq}!}  
+  \]
+  に等しい。これより、
+  \[
+  \chi_{M_\lambda}=\sum\prod_{q=1}^n\frac{m_q!}{c_{1q}!\cdots c_{nq}!}   
+  \]
+\end{proof}
 
 \end{document}

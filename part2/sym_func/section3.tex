@@ -113,7 +113,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   \end{align*}
   となるから、Young図形$\lambda=(\lambda_1,\lambda_2,\cdots)$に対して
   \[
-  z(\lambda)=\prod_{i}\lambda_i!\cdot i^{\lambda_i}  
+  z(\lambda)=\prod_{i}m_i!\cdot i^{m_i},\qquad \text{ただし$m_i$は$\lambda$に現れる$i$の個数}  
   \]
   とおけば、最後の式は
   \begin{align*}
@@ -196,6 +196,41 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   (iii)については、Robinson-Schensted-Knuth対応と呼ばれる対応を用いて証明される。詳細は付録を参照
 \end{proof}
 
+
+\begin{lemm}\label{p_to_m}
+  $\mu\in\mathcal{P}_k$とし、変数の数$n$は$n\geq k$とする。
+  \[
+  p_\mu=\sum_{\lambda\in\mathcal{P}_k}\xi_{\lambda\mu}m_\lambda
+  \]
+  とおいたとき、
+  \[
+  \xi_{\lambda\mu}=\sum\prod_{q=1}^n\frac{m_q!}{c_{1q}!\cdots c_{nq}!}=\chi_{M_\lambda}(g_\mu)  
+  \]
+  ただし、$g_\mu$は$\mu$を置換の型にもつ元であり、$\mu=(1^{m_1},2^{m_2},\cdots)$であり、また和は命題\ref{m_lambda_char_1}と同様
+  \begin{itemize}
+    \item $c_{p1}+2c_{p2}+3c_{p3}+\cdots+nc_{pn}=\lambda_p$, for all $p=1,\cdots,n$
+    \item $c_{1q}+c_{2q}+c_{3q}+\cdots+c_{nq}=m_q$, for all $q=1,\cdots,n$
+  \end{itemize}
+  をみたす非負行列$\{c_{pq}\}\in M_n(\integer_{\geq 0})$全体をわたる。
+\end{lemm}
+
+\begin{proof}
+  $p_\mu=p_1^{m_1}p_2^{m_2}\cdots p_n^{m_n}$であるが、
+  \[
+  p_q^{m_q}=(x_1^q+x_2^q+\cdots+x_n^q)^{m_q}
+  =\sum_{
+    c_{1q},c_{2q},\cdots,c_{nq}\geq 0
+  } \frac{m_q!}{c_{1q}!c_{2q}!\cdots c_{nq}!}x_1^{c_{1q}}x_2^{c_{2q}}\cdots x_n^{c_{nq}}
+  \]
+  であるので、
+  \begin{align*}
+  p_\mu
+  &=\prod_{q=1}^n\sum_{
+    c_{1q},c_{2q},\cdots,c_{nq}\geq 0
+  } \frac{m_q!}{c_{1q}!c_{2q}!\cdots c_{nq}!}x_1^{c_{1q}}x_2^{c_{2q}}\cdots x_n^{c_{nq}}\\
+  &=\sum\prod_{q=1}^n\frac{m_q!}{c_{1q}!c_{2q}!\cdots c_{nq}!}x_1^{\mu_1}x_2^{\mu_2}\cdots x_n^{\mu_n}
+  \end{align*}
+\end{proof}
 
 
 
@@ -440,7 +475,11 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     =\sum_{\lambda}s_\lambda(x)s_\lambda(y)
     =\prod_{i,j}\frac{1}{1-x_iy_j}\\
     &\text{(iv):}\:
-    s_\lambda s_\mu=\sum_{\nu}\eta^{\nu}_{\lambda\mu}s_\nu,\qquad\text{ただし$\eta^{\nu}_{\lambda\mu}$はLittlewood-Richardson数}
+    s_\lambda s_\mu=\sum_{\nu}\eta^{\nu}_{\lambda\mu}s_\nu,\qquad\text{ただし$\eta^{\nu}_{\lambda\mu}$はLittlewood-Richardson数}\\
+    &\text{(vi):}\:
+    p_\mu=\sum_{\lambda\in\mathcal{P}_k}\xi_{\lambda\mu}m_\lambda
+    \text{ ここで }
+    \xi_{\lambda\mu}=\sum\prod_{q=1}^n\frac{m_q!}{c_{1q}!\cdots c_{nq}!}=\chi_{M_\lambda}(g_\mu)  
   \end{align*}
 \end{prop}
 
@@ -450,7 +489,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 \]
 となるような内積を入れて考える。ただし$\delta_{\lambda\mu}$はKroneckerのデルタである。
 
-\begin{prop}
+\begin{prop}\label{inner_prod}
   次が成り立つ
   \begin{enumerate}[(i)]
     \item $\generated{h_\lambda,m_\mu}=\delta_{\lambda\mu}$
@@ -459,12 +498,35 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 \end{prop}
 
 \begin{proof}
-  $h_\lambda(x)=\sum_{\nu_1}a_{\lambda\nu_1}s_{\nu_1}(x)$, $m_\mu(y)=\sum_{\nu_2}b_{\mu\nu_2}s_{\nu_2}(y)$とおく。
-  \begin{align*}
-    h_\lambda(x)m_\mu(y)=\sum_{\nu_1,\nu_2}a_{\lambda\nu_1}b_{\mu\nu_2}s_{\nu_1}(x)s_{\nu_2}(y)
-  \end{align*}
-\end{proof}
+  一般に$\Lambda$の基底$\{u_\lambda\}$, $\{v_\lambda\}$について
+  \begin{enumerate}[(a)]
+    \item $\generated{u_\lambda,v_\mu}=\delta_{\lambda\mu}$
+    \item $\sum_{\lambda}u_\lambda(x) v_\lambda(y)=\prod_{i,j}\frac{1}{1-x_iy_j}$
+  \end{enumerate}
+  が同値であることを示せば命題\ref{various_relation}より従う。
 
+  $u_\lambda(x)=\sum_{\nu_1}a_{\lambda\nu_1}s_{\nu_1}$, $v_\mu=\sum_{\nu_2}b_{\mu\nu_2}s_{\nu_2}$とおく。(a)は
+  \begin{equation}\label{equi_1}
+    \sum_{\nu}a_{\lambda\nu}b_{\mu\nu}=\delta_{\lambda\mu}
+  \end{equation}
+  と同値である。命題\ref{various_relation}より
+  \[
+  \prod_{i,j}\frac{1}{1-x_iy_j}=\sum_{\lambda}s_\lambda(x)s_\lambda(y)  
+  \]
+  であり、
+  \begin{align*}
+    \sum_{\lambda}u_\lambda(x)v_\lambda(y)
+    &=\sum_{\lambda}\sum_{\nu_1,\nu_2}a_{\lambda\nu_1}b_{\lambda\nu_2}s_{\nu_1}(x)s_{\nu_2}(y)\\
+    &=\sum_{\nu_1,\nu_2}\left(\sum_{\lambda}a_{\lambda\nu_1}b_{\lambda\nu_2}\right)s_{\nu_1}s_{\nu_2}\\
+    &=\sum_{\nu}\left(\sum_{\lambda}a_{\lambda\nu}b_{\lambda\nu}\right)s_\nu(x)s_\nu(y)
+    +\sum_{\nu_1\neq\nu_2}\left(\sum_{\lambda}a_{\lambda\nu_1}b_{\lambda\nu_2}\right)s_{\nu_1}(x)s_{\nu_2}(y)
+  \end{align*}
+  だから、$\{s_\lambda(x)s_\mu(y)\}_{\lambda,\mu}$は一次独立であることに注意すれば、(b)は
+  \begin{equation}\label{equi_2}
+    \sum_{\lambda}a_{\lambda\nu_1}b_{\lambda\nu_2}=\delta_{\nu_1\nu_2}  
+  \end{equation}
+  と同値である。(\ref{equi_1})と(\ref{equi_2})は同値(行列の行ベクトルが正規直交であることと列ベクトルが正規直交であることは同値)であるので、(a)と(b)も同値である。
+\end{proof}
 
 
 次に対称群の表現全体から作られる環を導入する。
@@ -505,7 +567,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   \[
   ([V]\circ[W])\circ[U]=[V]\circ([W]\circ [U])  
   \]
-  を示す。そのためには$\mathfrak{S}_n$, $\mathfrak{m}$, $\mathfrak{S}_l$それぞれの表現$V,W,U$に対して、2つの表現
+  を示す。そのためには$\mathfrak{S}_n$, $\mathfrak{S}_m$, $\mathfrak{S}_l$それぞれの表現$V,W,U$に対して、2つの表現
   \[
   \ind_{\mathfrak{S}_{n+m}\times\mathfrak{S}_l}^{\mathfrak{S}_{n+m+l}}\left\{
     (\ind_{\mathfrak{S}_n\times\mathfrak{S}_m}^{\mathfrak{S_{n+m}}}V\boxtimes W)\boxtimes U
@@ -583,7 +645,7 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
   \[
   [M_\lambda]=[S_\lambda]+\sum_{\mu>\lambda}k_{\lambda\mu}[S_\mu]
   \]
-  となるから、$R_n$の基底$\{[S_\lambda]\}$に関して$\{[M_\lambda]\}$を行列表示したとき、対角成分がすべて１の上三角行列になる。すなわち$\{[M_\lambda]\}$は$R_n$の基底となることがわかる。したがって$\varphi$は少なくとも線形同型であることがわかる。
+  となるから、$R_n$の基底$\{[S_\lambda]\}$に関して$\{[M_\lambda]\}$を成分表示して並べたとき、対角成分がすべて１の上三角行列になる。すなわち$\{[M_\lambda]\}$は$R_n$の基底となることがわかる。したがって$\varphi$は少なくとも線形同型であることがわかる。
 
   $\varphi$が環準同型であることを示す。$h_\lambda=h_{\lambda_1}\cdots h_{\lambda_r}$だから、
   \[
@@ -600,12 +662,46 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
   [M_\lambda]=[M_{(\lambda_1)}]\circ\cdots\circ[M_{(\lambda_r)}]  
   \]
   
-  次に$\varphi$が内積を保つことを示す。
+  次に$\varphi$が内積を保つことを示す。$\varphi$は同型なので$\varphi$の逆写像$\psi$が内積を保つことを示せばよい。
+  命題\ref{various_relation}と命題\ref{inner_prod}より、$\lambda\in\mathcal{P}_n$に対して$h_\lambda$を$p_\lambda$の線形結合で表すことができる：
+  \[
+  h_\lambda=\sum_{\mu\in\mathcal{P}_n}\frac{\chi_{M_\lambda}(g_\mu)}{z(\mu)}p_\mu  
+  \]
+  ここで、$z(\mu)=\prod m_i!\cdot i^{m_i}$, ($m_i$は$\mu$に現れる$i$の個数)について、$g_\mu$の共役類の大きさ$|C(g_\mu)|$を考えると
+  \[
+  |C(g_\mu)|=\frac{n!}{m_1!1^{m_1}\cdots m_n!n^{m_n}}=\frac{n!}{z(\mu)}
+  \]
+  である。これは、$n$の置換のうち、長さ$i$の巡回置換は$i$通りの同じ表示をもつ($(1,2,3)=(3,1,2)=(2,3,1)$)こと、$m_i$個の巡回置換の並べ替えの分重複があることを考えればわかる。よって
+  \[
+  z(\mu)=\frac{n!}{|C(g_\mu)|}
+  \]
+  これより、
+  \begin{align*}
+    \generated{\psi([M_{\lambda}]),\psi([M_\mu])}
+    &=\generated{\sum_{\nu_1\in\mathcal{P}_k}\frac{\chi_{M_\lambda}(g_{\nu_1})}{z(\nu_1)}p_{\nu_1},\sum_{\nu_2\in\mathcal{P}_k}\frac{\chi_{M_\mu}(g_{\nu_2})}{z(\nu_2)}p_{\nu_2}}\\
+    &=\sum_{\nu\in\mathcal{P}_k}\frac{\chi_{M_\lambda}(g_\nu)\chi_{M_\mu}(g_\nu)}{z(\nu)}\\
+    &=\frac{1}{n!}\sum_{\nu\in\mathcal{P}_k}
+    |C(g_\nu)|\chi_{M_\lambda}(g_\nu)\chi_{M_\mu}(g_\nu)\\
+    &=\frac{1}{|\mathfrak{S}_n|}
+    \sum_{\sigma\in\mathfrak{S_n}}\chi_{M_\lambda}(\sigma)\chi_{M_\mu}(\sigma)\\
+    &=\generated{[M_\lambda],[M_\mu]}
+  \end{align*}
+  よって示せた。最後に$\varphi(s_\lambda)=[S_\lambda]$であることを示す。Youngの規則(系\ref{Young_rule_for_poly},命題\ref{Young_rule_for_rep})より
+  \begin{align*}
+  \varphi(s_\lambda)&=\varphi(h_\lambda)-\sum_{\nu>\lambda}k_{\lambda\nu}\varphi(s_\nu)\\
+  &=[S_\lambda]+\sum_{\nu'>\lambda}k_{\lambda\nu'}[S_\nu']-\sum_{\nu>\lambda}k_{\lambda\nu}\varphi(s_\nu)\\
+  &=[S_\lambda]+\sum_{\nu>\lambda}m_{\lambda\nu}[S_\nu]
+  \end{align*}
+  となるような整数$m_{\lambda\mu}$が存在する。
+  \[
+  1=\generated{\varphi(s_\lambda),\varphi(s_\lambda)}=1+\sum_{\nu>\lambda}m_{\lambda\nu}^2
+  \]
+  ゆえに$m_{\lambda\nu}=0$。よって示せた。
 \end{proof}
 
 
 
-この定理によって対称群の表現に関する性質を、対称関数の知識を使って調べることができる。
+この定理によって対称群の表現を対称関数の知識を使って調べることができる。
 
 \begin{cor}
   $\mathfrak{S}_n$の既約表現$S_\lambda$, $\mathfrak{S}_m$の既約表現$S_\mu$について
@@ -624,7 +720,9 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
 \end{cor}
 
 \begin{proof}
-  系\ref{Young_rule_for_poly}, 定理\ref{Young_rule_for_rep}より
+  系\ref{Young_rule_for_poly}, 定理\ref{Young_rule_for_rep}よりただちに従う。
 \end{proof}
+
+
 
 \end{document}
