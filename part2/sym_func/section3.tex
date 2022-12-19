@@ -703,7 +703,7 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
 
 この定理によって対称群の表現を対称関数の知識を使って調べることができる。
 
-\begin{cor}
+\begin{cor}\label{LR_for_rep}
   $\mathfrak{S}_n$の既約表現$S_\lambda$, $\mathfrak{S}_m$の既約表現$S_\mu$について
   \[
   \ind_{\mathfrak{S}_n\times\mathfrak{S}_m}^{\mathfrak{S}_{n+m}}S_\lambda\boxtimes S_\mu =\bigoplus_{\nu}S_\nu^{\oplus\eta^{\nu}_{\lambda\mu}} 
@@ -723,6 +723,13 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
   系\ref{Young_rule_for_poly}, 定理\ref{Young_rule_for_rep}よりただちに従う。
 \end{proof}
 
+
+\begin{cor}[Pieriの規則]
+  $\mathfrak{S}_n$の既約表現$S_\lambda$に対して、
+  \[
+  \ind_{\mathfrak{S}_n}^{\mathfrak{S}_{n+m}}S_\lambda=\bigoplus_{\substack{|\mu|=|\lambda|+m \\ \mu/\lambda\text{は水平帯}}} S_{\mu} 
+  \]
+\end{cor}
 
 
 \end{document}

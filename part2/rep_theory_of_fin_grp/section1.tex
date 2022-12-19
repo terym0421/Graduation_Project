@@ -355,11 +355,11 @@
   \[
   V^G=\set{v\in V}{\forall g\in G,\quad gv=v}  
   \]
-  とする。このとき$V^G$は$V$の部分空間であり
+  とする。このとき$V^G$は$V$の部分表現であり
   \[
   \dim V^G=\frac{1}{|G|}\sum_{g\in G}\chi_V(g)
   \]
-  が成り立つ。
+  が成り立つ。とくに$V^G$は$G$の自明な表現の直和である。
 \end{lemm}
 
 \begin{proof}
@@ -385,7 +385,7 @@
   \[
   \tr (f)=\frac{1}{|G|}\sum_{g\in G}\chi_V(g)  
   \]
-  よって示せた。
+  よって示せた。$V^G$が$G$の自明な表現の直和であることは、$V^G$の定義そのものである。
 \end{proof}
 
 \begin{eg}
@@ -518,20 +518,56 @@
 \end{proof}
 
 \begin{cor}\label{multiplicity}
-  $\rho$を$G$の表現, $\rho_1,\cdots,\rho_r$を$G$の既約表現の同値類の完全代表系とし、それぞれの対応する指標を$\chi,\chi_1,\cdots,\chi_r$とおく。
+  $(\rho,V)$を$G$の表現, $(\rho_1,W_1),\cdots,(\rho_r,W_r)$を$G$の既約表現の同値類の完全代表系とし、それぞれの対応する指標を$\chi,\chi_1,\cdots,\chi_r$とおく。
   \[
-  \rho=\rho_1^{\oplus m_1}\oplus\cdots\oplus\rho_r^{\oplus m_r}  
+  \rho\simeq \rho_1^{\oplus m_1}\oplus\cdots\oplus\rho_r^{\oplus m_r}  
   \]
   とすると、
   \[
-  m_i=\generated{\chi,\chi_i}
+  m_i=\generated{\chi,\chi_i}=\dim_\complex\Hom_G(W_i,V)
   \]
-  が成り立つ。$m_i$を$\rho$の$\rho_i$に関する重複度という
+  が成り立つ。$m_i$を$\rho$の$\rho_i$に関する重複度という。また
+  \[
+  V\simeq \bigoplus_{i=1}^rW_i\otimes \Hom_G(W_i,V)  
+  \]
+  がなりたつ。
 \end{cor}
+
+\begin{proof}
+  系\ref{irr_char_is_basis}より前半は直ちに従う。後半を示す。
+  まず、$\psi_i:W_i\otimes \Hom_G(W_i,V) \rightarrow V$を
+  \[
+  \psi_i(x\otimes f)=f(x)  
+  \]
+  を双線形に拡張して定め、$\psi:\bigoplus_{i=1}^rW_i\otimes \Hom_G(W_i,V)\rightarrow V$を$\psi=\oplus_{i=1}^r\psi_i$とする。
+  
+  $V$の既約表現への直和分解
+  \[
+  V=\bigoplus_{i=1}^rU^{(i)}_{1}\oplus\cdots\oplus U^{(i)}_{m_i},\qquad U^{(i)}_j\simeq W_i
+  \]
+  を1つ固定し、$G$同型$\phi^{(i)}_j:W_i\rightarrow U^{(i)}_j$を取る。$\phi^{(i)}_j\in\Hom_G(W_i,V)$であるから、\\$\phi^{(i)}:U^{(i)}_{1}\oplus\cdots\oplus U^{(i)}_{m_i}\rightarrow W_i\otimes\Hom_G(W_i,V)$を
+  \[
+  \phi^{(i)}(x_1,\cdots,x_{m_i})
+  =\phi^{(i)-1}_1(x_1)\otimes \phi^{(i)}_1+\cdots+\phi^{(i)-1}_{m_i}(x_{m_i})\otimes \phi^{(i)}_{m_i}
+  \]
+  によって定め、$\phi:V\rightarrow \bigoplus_{i=1}^rW_i\otimes\Hom_G(W_i,V)$を$\phi=\oplus_{i=1}^r\phi^{(i)}$とおけば、これらは$G$線形であり
+  \[
+  \psi\circ\phi=\id{V}  
+  \]
+  となることがわかる。よって$\phi$は単射であり、
+  \[
+  dim_{\complex}V=\dim_{\complex}  \bigoplus_{i=1}^rW_i\otimes \Hom_G(W_i,V)
+  \]
+  だから、同型である。
+\end{proof}
 
 \begin{cor}
   表現の既約表現への直和分解は、同値の違いを除いて一意的である。
 \end{cor}
+
+\begin{notice}
+  既約表現への分解は同値の違いを除いて一意的であるが、与えられた表現を既約表現の直和に分解する標準的な方法があるわけではない。
+\end{notice}
 
 
 \begin{cor}
