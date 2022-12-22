@@ -6,4 +6,42 @@
 
 \section{一般線形群の表現とSchur-Weyl双対性}
 
+前節までで対称群の既約表現に関して解説してきたが、次に対称群と表現論的に関係の深い一般線形群の表現について解説する。とくに多項式表現と呼ばれる表現のクラスが、Schur-Weyl双対性を通して対称群の表現と密接にかかわりあっている。
+
+
+
+\subsection{Lie群とLie代数}
+Schur-Weyl双対性のために若干のLie群・Lie代数の知識を用いる。
+
+\begin{defin}[Lie群]
+  $G$を群であり複素多様体でもあるとする。$G$の演算$\cdot:G\times G\rightarrow G$, および逆元を取る写像$\inv{}:G\rightarrow G$がともに正則であるとき、$G$を(複素)Lie群という。Lie群の間の写像$f:G\rightarrow H$について、$f$が群準同型かつ正則であるとき$f$をLie群の準同型という。
+\end{defin}
+
+\begin{eg}
+  $\complex$ベクトル空間$V$に対して一般線形群$\gl(V)$は行列の積に関してLie群である。実際、行列の積は成分の多項式であるし、逆行列は分母が$0$でない有理関数で表される。同様に$\text{SL}(V)$, $\text{U}(n)$, $\text{SU}(n)$もLie群である。
+\end{eg}
+
+\begin{defin}[Lie代数]
+  $\mathfrak{g}$を$\complex$ベクトル空間とする。写像$[\:,\:]:\mathfrak{g}\times \mathfrak{g}\rightarrow \mathfrak{g}$が与えられており
+  \begin{enumerate}[(i)]
+    \item $[\:,\:]$は双線形
+    \item $[x,x]=0$, (交代性)
+    \item $[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0$, (Jacobiの恒等式)
+  \end{enumerate}
+  をみたすとき、$\mathfrak{g}$を(複素)Lie代数という。Lie代数の間の写像$f:\mathfrak{g}\rightarrow \mathfrak{h}$について、$f$が線形写像かつ$f([X,Y])=[f(X),f(Y)]$をみたすとき、$f$をLie代数の準同型という。
+\end{defin}
+
+\begin{eg}
+  $\mathfrak{gl}(V)=\End(V)$とし、$X,Y\in\mathfrak{gl}(V)$に対して
+  \[
+  [X,Y]=XY-YX  
+  \]
+  とおくと$\mathfrak{gl}(V)$は複素Lie代数である。同様の演算で
+  \begin{itemize}
+    \item $\mathfrak{sl}(V)=\set{X\in\mathfrak{gl}(V)}{\tr(X)=0}$
+    \item $\mathfrak{alt}(V)=\set{X\in\mathfrak{gl}(V)}{\transpose{X}=-X}$
+  \end{itemize}
+  などもLie代数である。
+\end{eg}
+
 \end{document}
