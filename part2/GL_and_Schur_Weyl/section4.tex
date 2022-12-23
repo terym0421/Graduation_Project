@@ -18,7 +18,7 @@ Schur-Weyl双対性のために若干のLie群・Lie代数の知識を用いる�
 \end{defin}
 
 \begin{eg}
-  $\complex$ベクトル空間$V$に対して一般線形群$\gl(V)$は行列の積に関してLie群である。実際、行列の積は成分の多項式であるし、逆行列は分母が$0$でない有理関数で表される。同様に$\text{SL}(V)$, $\text{U}(n)$, $\text{SU}(n)$もLie群である。
+  $\complex$ベクトル空間$V$に対して一般線形群$\gl(V)$は行列の積に関してLie群である。実際、行列の積は成分の多項式であるし、逆行列は分母が$0$でない有理関数で表されるから正則である。同様に$\text{SL}(V)$, $\text{U}(n)$, $\text{SU}(n)$もLie群である。
 \end{eg}
 
 \begin{defin}[Lie代数]
@@ -28,7 +28,10 @@ Schur-Weyl双対性のために若干のLie群・Lie代数の知識を用いる�
     \item $[x,x]=0$, (交代性)
     \item $[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0$, (Jacobiの恒等式)
   \end{enumerate}
-  をみたすとき、$\mathfrak{g}$を(複素)Lie代数という。Lie代数の間の写像$f:\mathfrak{g}\rightarrow \mathfrak{h}$について、$f$が線形写像かつ$f([X,Y])=[f(X),f(Y)]$をみたすとき、$f$をLie代数の準同型という。
+  をみたすとき、$\mathfrak{g}$を(複素)Lie代数という。Lie代数の積$[,]$を括弧積やLieブラケットと呼ぶ。
+  Lie代数の間の写像$f:\mathfrak{g}\rightarrow \mathfrak{h}$について、$f$が線形写像かつ$f([X,Y])=[f(X),f(Y)]$をみたすとき、$f$をLie代数の準同型という。
+
+  とくにこの節ではLie代数はすべて有限次元のものを扱う。
 \end{defin}
 
 \begin{eg}
@@ -41,7 +44,170 @@ Schur-Weyl双対性のために若干のLie群・Lie代数の知識を用いる�
     \item $\mathfrak{sl}(V)=\set{X\in\mathfrak{gl}(V)}{\tr(X)=0}$
     \item $\mathfrak{alt}(V)=\set{X\in\mathfrak{gl}(V)}{\transpose{X}=-X}$
   \end{itemize}
-  などもLie代数である。
+  などもLie代数である。また、一般に$\complex$代数$A$に対して
+  \[
+  X,Y\in A,\qquad [X,Y]=XY-YX  
+  \]
+  と定めると$A$はLie代数の構造をもつ。逆にすべてのLie代数がこのように$\complex$代数から誘導されるか、というのは興味深い問題である。
 \end{eg}
+
+Lie代数はLie群を調べる際に自然に現れる。$G$をLie群とし、$G$の単位元$e$における接空間$T_eG$に積$[,]$を
+\[
+\text{正則関数$f:G\rightarrow\complex$に対して }[X,Y](f)=X(f)Y(f)-Y(f)X(f)
+\]
+によって定める。これによって$T_eG$はLie代数の構造をもつ。これを$G$から定まるLie代数といい、$\text{Lie}(G)$とかく。
+
+\begin{eg}
+  $\Lie(\gl(V))=\mathfrak{gl}(V)$である。実際、$\gl(V)$は$M_{n^2}(\complex)$の開集合であり、$T_E(M_{n^2}(\complex))=M_{n^2}(\complex)=\mathfrak{gl}(V)$だから、
+  \[
+    \Lie(\gl(V))=\mathfrak{gl}(V)
+  \]
+\end{eg}
+
+
+
+
+\begin{defin}\label{induced_hom}
+  Lie群の準同型$\rho:G\rightarrow H$が与えられたとき、その微分$(d\rho)_{e}:\Lie(G)\rightarrow\Lie(H)$はLie代数の準同型となる。すなわち
+  \[
+    (d\rho)_e([X,Y])=[(d\rho)_e(X),(d\rho)_e(Y)] 
+  \]
+  を満たす。これを$\rho$が誘導するLie代数の準同型と呼ぶ。
+\end{defin}
+
+\begin{defin}
+  $V$をベクトル空間,$G$をLie群とし、Lie群の準同型$\rho:G\rightarrow\gl(V)$を$G$の表現という。また、$\mathfrak{g}$をLie代数とし、Lie代数の準同型$\rho:\mathfrak{g}\rightarrow\mathfrak{gl}(V)$を$\mathfrak{g}$の表現という。
+\end{defin}
+
+定義\ref{induced_hom}より、Lie群の表現$\rho:G\rightarrow \gl(V)$はLie代数の表現$(d\rho)_e:\Lie(G)\rightarrow \mathfrak{gl}(V)$を誘導する。
+
+\begin{eg}\label{tensor_rep_of_gl}
+  $V$をベクトル空間、$G=\gl(V)$とする。$\rho:G\rightarrow\gl({V^{\otimes m}})$を
+  \[
+  \rho(g)=g\otimes\cdots\otimes g,\quad\ie\quad
+  \rho(g)(v_1\otimes\cdots\otimes v_m)=gv_1\otimes\cdots\otimes gv_m  
+  \]
+  によって定めると$\rho$は$G$の表現になる。$\rho$の誘導するLie代数の表現を求める。$V$の基底$e_1,\cdots,e_n$を固定して$G$を$\gl_n(\complex)$と同一視し、$E_{ij}\in G$を行列単位とする。このとき$g\in G$は
+  \[
+  g=\sum_{i,j}x_{ij}E_{ij}  
+  \]
+  と座標表示でき、$g\otimes\cdots\otimes g\in\gl(V^{\otimes m})$は
+  \[
+  g\otimes\cdots\otimes g=\sum_{i_1,j_1,\cdots,i_m,j_m}x_{i_1j_1}\cdots x_{i_mj_m}E_{i_1j_1}\otimes\cdots\otimes E_{i_mj_m}  
+  \]
+  と座標表示できる。$y_{i_1,j_1,\cdots,i_m,j_m}=x_{i_1j_1}\cdots x_{i_mj_m}$とおくと、
+  \[
+  \del{y_{i_1,j_1,\cdots,i_m,j_m}}{x_{k,l}}=
+  \left\{\begin{array}{cc}
+    x_{i_1j_1}\cdots \hat{x}_{i_sj_s} \cdots x_{i_mj_m} & \text{ある$s$で$(k,l)=(i_s,j_s)$}\\
+    0 & \text{otherwise}
+  \end{array}\right.
+  \]
+  となる。ここで$\hat{x}_{i_sj_s}$は$x_{i_sj_s}$を取り除いていることを意味する。これより$X=E$(単位行列)のとき
+  \[
+  \del{y_{i_1,j_1,\cdots,i_m,j_m}}{x_{k,l}}(E)
+  =\left\{\begin{array}{cc}
+    1 & \text{ある$s$で$(k,l)=(i_s,j_s)$かつ$i_1=j_1,\cdots,i_m=j_m$, ($i_s=j_s$は除く)}\\
+    0 & \text{otherwise}
+  \end{array}\right.
+  \]
+  となる。よって$X\in\Lie(G)=T_EG=M_{n^2}(\complex)$に対して
+  \[
+  X=\sum_{k,l}a_{kl}E_{{kl}}
+  \]
+  とおくと
+  \begin{align*}
+  (d\rho)_E(X)
+  &=\sum_{i_1,j_1,\cdots,i_m,j_m}
+      \left(
+        \sum_{k,l}\del{y_{i_1,j_1,\cdots,i_m,j_m}}{x_{k,l}}(E)a_{kl}
+      \right)
+      E_{i_1j_1}\otimes\cdots\otimes E_{i_mj_m}\\
+  &=\sum_{i_2=j_2,\cdots,i_m=j_m}
+      \left(
+        \sum_{i_1,j_1}a_{i_1j_1}E_{i_1j_1}
+      \right)
+    \otimes E_{i_2i_2}\otimes\cdots\otimes E_{i_mi_m}\\
+  &\quad +
+    \sum_{i_1=j_1,i_3=j_3\cdots,i_m=j_m}
+      E_{i_1i_1}\otimes
+      \left(
+        \sum_{i_2,j_2}a_{i_2j_2}E_{i_2j_2}
+      \right)
+    \otimes E_{i_3i_3}\otimes\cdots\otimes E_{i_mi_m}\\
+  &\quad +\\
+  &\quad \vdots\\
+  &\quad +
+    \sum_{i_1=j_1,\cdots,i_{m-1}=j_{m-1}}
+      E_{i_1i_1}\otimes\cdots\otimes E_{i_{m-1}j_{m-1}}\otimes
+      \left(
+        \sum_{i_m,j_m}a_{i_mj_m}E_{i_mj_m}
+      \right)\\
+  &=X\otimes E\otimes\cdots\otimes E
+   +E\otimes X\otimes E\otimes\cdots\otimes E
+   +\cdots 
+   +E\otimes E\otimes\cdots\otimes X
+  \end{align*}
+\end{eg}
+
+すべてのLie代数が$\complex$代数から誘導されるか、という問題について考えよう。$\mathfrak{g}$をLie代数とし、$\mathcal{T}(\mathfrak{g})$を$\mathfrak{g}$のテンソル代数とする。すなわち、
+\[
+\mathcal{T}(\mathfrak{g})=\bigoplus_{k=0}^\infty\mathfrak{g}^{\otimes k}  
+\]
+このとき$\mathcal{I}$を
+\[
+\set{[X,Y]-X\otimes Y-Y\otimes X}{X,Y\in\mathfrak{g}}  
+\]
+によって生成される$\mathcal{T}(\mathfrak{g})$の両側イデアルとして、
+\[
+\mathcal{U}(\mathfrak{g})=\mathcal{T}(\mathfrak{g})/\mathcal{I}  
+\]
+とする。$T,S\in\mathcal{U}(\mathfrak{g})$に対して括弧積$[,]$を
+\[
+[T,S]=T\otimes S-S\otimes T  
+\]
+によって定めると$\mathcal{U}(\mathfrak{g})$はLie代数となる。これを$\mathfrak{g}$の普遍包絡代数という。$\mathfrak{g}$から$\mathcal{U}(\mathfrak{g})$に対しては、
+\[
+\mathfrak{g}\rightarrow \mathcal{T}(\mathfrak{g})\rightarrow \mathcal{U}(\mathfrak{g})  
+\]
+なる自然なLie代数の準同型$\sigma:\mathfrak{g}\rightarrow\mathcal{U}(\mathfrak{g})$が存在する。
+普遍包絡代数については次の定理が知られている。
+
+\begin{theo}[Poincare-Birkhoff-Wittの定理]
+  $e_1,\cdots,e_n$を$\mathfrak{g}$の基底とする。このとき\\
+  $\set{\sigma(e_{i_1})\otimes\cdots\otimes\sigma(e_{i_k})}{1\leq i_1\leq\cdots\leq i_k\leq n}$は$\mathcal{U}(\mathfrak{g})$の基底となる。
+\end{theo}
+
+この定理から、$\sigma$が単射であることが従う。実際、$\{\sigma(e_i)\}$は主張の基底の一部に含まれている。したがって、すべてのLie代数はある$\complex$代数から誘導されるLie代数の部分代数として実現できるのである。普遍包絡代数は表現論的にも重要である。
+
+\begin{prop}[普遍包絡代数の普遍性]
+  $\mathcal{U}(\mathfrak{g})$, $\sigma:\mathfrak{g}\rightarrow\mathcal{U}(\mathfrak{g})$は次の性質をもつ。
+  \begin{quote}
+    任意の$\complex$代数$A$とLie代数の準同型$f:\mathfrak{g}\rightarrow A$が与えられたとき、$\complex$代数の準同型$\overline{f}:\mathcal{U}(\mathfrak{g})\rightarrow A$が一意的に存在して、$f=\overline{f}\circ\sigma$を満たす。
+  \end{quote}
+  \[
+  \xymatrix{
+  \mathcal{U}(\mathfrak{g}) \ar@{.>}[rd]^{\overline{f}} \\
+  \mathfrak{g} \ar[u]^{\sigma} \ar[r]_f & A
+  }
+  \]
+  また、この性質をもつ$\complex$代数$\mathcal{U}(\mathfrak{g})$とLie代数の準同型$\sigma$の組は同型を除いて一意的である。
+\end{prop}
+
+これにより、$\mathfrak{g}$の表現$\rho:\mathfrak{g}\rightarrow \mathfrak{gl}(V)$は$\complex$代数の準同型$\overline{\rho}:\mathcal{U}(\mathfrak{g})\rightarrow \mathfrak{gl}(V)$を一意的に誘導する。すなわち、$\mathfrak{g}$の表現を調べる代わりに$\mathcal{U}(\mathfrak{g})$の表現を調べればよいということになる。
+
+
+\begin{eg}
+  $\mathfrak{gl}(V)$の普遍包絡代数を求めよう。
+\end{eg}
+
+
+\subsection{Double Centralizer Theorem}
+
+もう一つSchur-Weyl双対性の証明で用いる定理を一つ解説しておく。
+
+\begin{theo}
+  
+\end{theo}
 
 \end{document}
