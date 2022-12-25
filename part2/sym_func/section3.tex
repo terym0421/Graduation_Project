@@ -662,11 +662,19 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
   [M_\lambda]=[M_{(\lambda_1)}]\circ\cdots\circ[M_{(\lambda_r)}]  
   \]
   
-  次に$\varphi$が内積を保つことを示す。$\varphi$は同型なので$\varphi$の逆写像$\psi$が内積を保つことを示せばよい。
+  次に$\varphi$が内積を保つことを示す。$\varphi$は同型なので$\varphi$の逆写像$\psi$が内積を保つことを示せばよい。$\psi$を求める。
+  
   命題\ref{various_relation}と命題\ref{inner_prod}より、$\lambda\in\mathcal{P}_n$に対して$h_\lambda$を$p_\lambda$の線形結合で表すことができる：
   \[
   h_\lambda=\sum_{\mu\in\mathcal{P}_n}\frac{\chi_{M_\lambda}(g_\mu)}{z(\mu)}p_\mu  
   \]
+  
+  そこで
+  \[
+  \psi([V])=\sum_{\mu\in\mathcal{P}_n}\frac{\chi_V(g_\mu)}{z(\mu)}p_\mu  
+  \]
+  と定義すると$\psi$は$\varphi$の逆写像になっている。
+
   ここで、$z(\mu)=\prod m_i!\cdot i^{m_i}$, ($m_i$は$\mu$に現れる$i$の個数)について、$g_\mu$の共役類の大きさ$|C(g_\mu)|$を考えると
   \[
   |C(g_\mu)|=\frac{n!}{m_1!1^{m_1}\cdots m_n!n^{m_n}}=\frac{n!}{z(\mu)}
@@ -677,14 +685,14 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
   \]
   これより、
   \begin{align*}
-    \generated{\psi([M_{\lambda}]),\psi([M_\mu])}
-    &=\generated{\sum_{\nu_1\in\mathcal{P}_k}\frac{\chi_{M_\lambda}(g_{\nu_1})}{z(\nu_1)}p_{\nu_1},\sum_{\nu_2\in\mathcal{P}_k}\frac{\chi_{M_\mu}(g_{\nu_2})}{z(\nu_2)}p_{\nu_2}}\\
-    &=\sum_{\nu\in\mathcal{P}_k}\frac{\chi_{M_\lambda}(g_\nu)\chi_{M_\mu}(g_\nu)}{z(\nu)}\\
+    \generated{\psi([V]),\psi([W])}
+    &=\generated{\sum_{\nu_1\in\mathcal{P}_k}\frac{\chi_{V}(g_{\nu_1})}{z(\nu_1)}p_{\nu_1},\sum_{\nu_2\in\mathcal{P}_k}\frac{\chi_{W}(g_{\nu_2})}{z(\nu_2)}p_{\nu_2}}\\
+    &=\sum_{\nu\in\mathcal{P}_k}\frac{\chi_{V}(g_\nu)\chi_{W}(g_\nu)}{z(\nu)}\\
     &=\frac{1}{n!}\sum_{\nu\in\mathcal{P}_k}
-    |C(g_\nu)|\chi_{M_\lambda}(g_\nu)\chi_{M_\mu}(g_\nu)\\
+    |C(g_\nu)|\chi_{V}(g_\nu)\chi_{W}(g_\nu)\\
     &=\frac{1}{|\mathfrak{S}_n|}
-    \sum_{\sigma\in\mathfrak{S_n}}\chi_{M_\lambda}(\sigma)\chi_{M_\mu}(\sigma)\\
-    &=\generated{[M_\lambda],[M_\mu]}
+    \sum_{\sigma\in\mathfrak{S_n}}\chi_{V}(\sigma)\chi_{W}(\sigma)\\
+    &=\generated{[V],[W]}
   \end{align*}
   よって示せた。最後に$\varphi(s_\lambda)=[S_\lambda]$であることを示す。Youngの規則(系\ref{Young_rule_for_poly},命題\ref{Young_rule_for_rep})より
   \begin{align*}
@@ -730,6 +738,18 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
   \ind_{\mathfrak{S}_n}^{\mathfrak{S}_{n+m}}S_\lambda=\bigoplus_{\substack{|\mu|=|\lambda|+m \\ \mu/\lambda\text{は水平帯}}} S_{\mu} 
   \]
 \end{cor}
+
+
+\begin{cor}[Frobeniusの指標公式]
+  $\mathfrak{S}_n$の既約指標$\chi_\lambda$について、$\chi_\lambda(g_\mu)$の値は$s_\lambda$を$\{\frac{p_\mu}{z(\mu)}\}$の線形結合で表したときの$\frac{p_\mu}{z(\mu)}$の係数に等しい
+\end{cor}
+
+\begin{proof}
+  \[
+  s_\lambda=\psi([S_\lambda])=\sum_{\mu\in\mathcal{P}_n}\frac{\chi_\lambda(g_\mu)}{z(\mu)}p_\mu 
+  \]
+  より従う。
+\end{proof}
 
 
 \end{document}

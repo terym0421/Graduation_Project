@@ -1,0 +1,459 @@
+\documentclass{ltjsreport}
+\input{../setting.tex}
+
+
+\begin{document}
+
+\section{一般線形群の表現とSchur-Weyl双対性}
+
+前節までで対称群の既約表現に関して解説してきたが、次に対称群と表現論的に関係の深い一般線形群の表現について解説する。とくに多項式表現と呼ばれる表現のクラスが、Schur-Weyl双対性を通して対称群の表現と密接にかかわりあっている。
+
+
+
+\subsection{Lie群とLie代数}\label{lie}
+Schur-Weyl双対性のために若干のLie群・Lie代数の知識を用いる。
+
+\begin{defin}[Lie群]
+  $G$を群であり複素多様体でもあるとする。$G$の演算$\cdot:G\times G\rightarrow G$, および逆元を取る写像$\inv{}:G\rightarrow G$がともに正則であるとき、$G$を(複素)Lie群という。Lie群の間の写像$f:G\rightarrow H$について、$f$が群準同型かつ正則であるとき$f$をLie群の準同型という。
+\end{defin}
+
+\begin{eg}
+  $\complex$ベクトル空間$V$に対して一般線形群$\gl(V)$は行列の積に関してLie群である。実際、行列の積は成分の多項式であるし、逆行列は分母が$0$でない有理関数で表されるから正則である。同様に$\text{SL}(V)$, $\text{U}(n)$, $\text{SU}(n)$もLie群である。
+\end{eg}
+
+\begin{defin}[Lie代数]
+  $\mathfrak{g}$を$\complex$ベクトル空間とする。写像$[\:,\:]:\mathfrak{g}\times \mathfrak{g}\rightarrow \mathfrak{g}$が与えられており
+  \begin{enumerate}[(i)]
+    \item $[\:,\:]$は双線形
+    \item $[x,x]=0$, (交代性)
+    \item $[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0$, (Jacobiの恒等式)
+  \end{enumerate}
+  をみたすとき、$\mathfrak{g}$を(複素)Lie代数という。Lie代数の積$[,]$を括弧積やLieブラケットと呼ぶ。
+  Lie代数の間の写像$f:\mathfrak{g}\rightarrow \mathfrak{h}$について、$f$が線形写像かつ$f([X,Y])=[f(X),f(Y)]$をみたすとき、$f$をLie代数の準同型という。
+
+  とくにこの節ではLie代数はすべて有限次元のものを扱う。
+\end{defin}
+
+\begin{eg}
+  $\mathfrak{gl}(V)=\End(V)$とし、$X,Y\in\mathfrak{gl}(V)$に対して
+  \[
+  [X,Y]=XY-YX  
+  \]
+  とおくと$\mathfrak{gl}(V)$は複素Lie代数である。同様の演算で
+  \begin{itemize}
+    \item $\mathfrak{sl}(V)=\set{X\in\mathfrak{gl}(V)}{\tr(X)=0}$
+    \item $\mathfrak{alt}(V)=\set{X\in\mathfrak{gl}(V)}{\transpose{X}=-X}$
+  \end{itemize}
+  などもLie代数である。また、一般に$\complex$代数$A$に対して
+  \[
+  X,Y\in A,\qquad [X,Y]=XY-YX  
+  \]
+  と定めると$A$はLie代数の構造をもつ。逆にすべてのLie代数がこのように$\complex$代数から誘導されるか、というのは興味深い問題である。
+\end{eg}
+
+Lie代数はLie群を調べる際に自然に現れる。$G$をLie群とし、$G$の単位元$e$における接空間$T_eG$に積$[,]$を
+\[
+\text{正則関数$f:G\rightarrow\complex$に対して }[X,Y](f)=X(f)Y(f)-Y(f)X(f)
+\]
+によって定める。これによって$T_eG$はLie代数の構造をもつ。これを$G$から定まるLie代数といい、$\text{Lie}(G)$とかく。
+
+\begin{eg}
+  $\Lie(\gl(V))=\mathfrak{gl}(V)$である。実際、$\gl(V)$は$M_{n^2}(\complex)$の開集合であり、$T_E(M_{n^2}(\complex))=M_{n^2}(\complex)=\mathfrak{gl}(V)$だから、
+  \[
+    \Lie(\gl(V))=\mathfrak{gl}(V)
+  \]
+\end{eg}
+
+
+
+
+\begin{defin}\label{induced_hom}
+  Lie群の準同型$\rho:G\rightarrow H$が与えられたとき、その微分$(d\rho)_{e}:\Lie(G)\rightarrow\Lie(H)$はLie代数の準同型となる。すなわち
+  \[
+    (d\rho)_e([X,Y])=[(d\rho)_e(X),(d\rho)_e(Y)] 
+  \]
+  を満たす。これを$\rho$が誘導するLie代数の準同型と呼ぶ。
+\end{defin}
+
+\begin{defin}
+  $V$をベクトル空間,$G$をLie群とし、Lie群の準同型$\rho:G\rightarrow\gl(V)$を$G$の表現という。また、$\mathfrak{g}$をLie代数とし、Lie代数の準同型$\rho:\mathfrak{g}\rightarrow\mathfrak{gl}(V)$を$\mathfrak{g}$の表現という。
+\end{defin}
+
+定義\ref{induced_hom}より、Lie群の表現$\rho:G\rightarrow \gl(V)$はLie代数の表現$(d\rho)_e:\Lie(G)\rightarrow \mathfrak{gl}(V)$を誘導する。
+
+\begin{eg}\label{tensor_rep_of_gl}
+  $V$をベクトル空間、$G=\gl(V)$とする。$\rho:G\rightarrow\gl({V^{\otimes m}})$を
+  \[
+  \rho(g)=g\otimes\cdots\otimes g,\quad\ie\quad
+  \rho(g)(v_1\otimes\cdots\otimes v_m)=gv_1\otimes\cdots\otimes gv_m  
+  \]
+  によって定めると$\rho$は$G$の表現になる。$\rho$の誘導するLie代数の表現を求める。$V$の基底$e_1,\cdots,e_n$を固定して$G$を$\gl_n(\complex)$と同一視し、$E_{ij}\in G$を行列単位とする。このとき$g\in G$は
+  \[
+  g=\sum_{i,j}x_{ij}E_{ij}  
+  \]
+  と座標表示でき、$g\otimes\cdots\otimes g\in\gl(V^{\otimes m})$は
+  \[
+  g\otimes\cdots\otimes g=\sum_{i_1,j_1,\cdots,i_m,j_m}x_{i_1j_1}\cdots x_{i_mj_m}E_{i_1j_1}\otimes\cdots\otimes E_{i_mj_m}  
+  \]
+  と座標表示できる。$y_{i_1,j_1,\cdots,i_m,j_m}=x_{i_1j_1}\cdots x_{i_mj_m}$とおくと、
+  \[
+  \del{y_{i_1,j_1,\cdots,i_m,j_m}}{x_{k,l}}=
+  \left\{\begin{array}{cc}
+    x_{i_1j_1}\cdots \hat{x}_{i_sj_s} \cdots x_{i_mj_m} & \text{ある$s$で$(k,l)=(i_s,j_s)$}\\
+    0 & \text{otherwise}
+  \end{array}\right.
+  \]
+  となる。ここで$\hat{x}_{i_sj_s}$は$x_{i_sj_s}$を取り除いていることを意味する。これより$X=E$(単位行列)のとき
+  \[
+  \del{y_{i_1,j_1,\cdots,i_m,j_m}}{x_{k,l}}(E)
+  =\left\{\begin{array}{cc}
+    1 & \text{ある$s$で$(k,l)=(i_s,j_s)$かつ$i_1=j_1,\cdots,i_m=j_m$, ($i_s=j_s$は除く)}\\
+    0 & \text{otherwise}
+  \end{array}\right.
+  \]
+  となる。よって$X\in\Lie(G)=T_EG=M_{n^2}(\complex)$に対して
+  \[
+  X=\sum_{k,l}a_{kl}E_{{kl}}
+  \]
+  とおくと
+  \begin{align*}
+  (d\rho)_E(X)
+  &=\sum_{i_1,j_1,\cdots,i_m,j_m}
+      \left(
+        \sum_{k,l}\del{y_{i_1,j_1,\cdots,i_m,j_m}}{x_{k,l}}(E)a_{kl}
+      \right)
+      E_{i_1j_1}\otimes\cdots\otimes E_{i_mj_m}\\
+  &=\sum_{i_2=j_2,\cdots,i_m=j_m}
+      \left(
+        \sum_{i_1,j_1}a_{i_1j_1}E_{i_1j_1}
+      \right)
+    \otimes E_{i_2i_2}\otimes\cdots\otimes E_{i_mi_m}\\
+  &\quad +
+    \sum_{i_1=j_1,i_3=j_3\cdots,i_m=j_m}
+      E_{i_1i_1}\otimes
+      \left(
+        \sum_{i_2,j_2}a_{i_2j_2}E_{i_2j_2}
+      \right)
+    \otimes E_{i_3i_3}\otimes\cdots\otimes E_{i_mi_m}\\
+  &\quad +\\
+  &\quad \vdots\\
+  &\quad +
+    \sum_{i_1=j_1,\cdots,i_{m-1}=j_{m-1}}
+      E_{i_1i_1}\otimes\cdots\otimes E_{i_{m-1}j_{m-1}}\otimes
+      \left(
+        \sum_{i_m,j_m}a_{i_mj_m}E_{i_mj_m}
+      \right)\\
+  &=X\otimes E\otimes\cdots\otimes E
+   +E\otimes X\otimes E\otimes\cdots\otimes E
+   +\cdots 
+   +E\otimes E\otimes\cdots\otimes X
+  \end{align*}
+\end{eg}
+
+すべてのLie代数が$\complex$代数から誘導されるか、という問題について考えよう。$\mathfrak{g}$をLie代数とし、$\mathcal{T}(\mathfrak{g})$を$\mathfrak{g}$のテンソル代数とする。すなわち、
+\[
+\mathcal{T}(\mathfrak{g})=\bigoplus_{k=0}^\infty\mathfrak{g}^{\otimes k}  
+\]
+このとき$\mathcal{I}$を
+\[
+\set{[X,Y]-X\otimes Y-Y\otimes X}{X,Y\in\mathfrak{g}}  
+\]
+によって生成される$\mathcal{T}(\mathfrak{g})$の両側イデアルとして、
+\[
+\mathcal{U}(\mathfrak{g})=\mathcal{T}(\mathfrak{g})/\mathcal{I}  
+\]
+とする。$T,S\in\mathcal{U}(\mathfrak{g})$に対して括弧積$[,]$を
+\[
+[T,S]=T\otimes S-S\otimes T  
+\]
+によって定めると$\mathcal{U}(\mathfrak{g})$はLie代数となる。これを$\mathfrak{g}$の普遍包絡代数という。$\mathfrak{g}$から$\mathcal{U}(\mathfrak{g})$に対しては、
+\[
+\mathfrak{g}\rightarrow \mathcal{T}(\mathfrak{g})\rightarrow \mathcal{U}(\mathfrak{g})  
+\]
+なる自然なLie代数の準同型$\sigma:\mathfrak{g}\rightarrow\mathcal{U}(\mathfrak{g})$が存在する。
+普遍包絡代数については次の定理が知られている。
+
+\begin{theo}[Poincare-Birkhoff-Wittの定理]
+  $e_1,\cdots,e_n$を$\mathfrak{g}$の基底とする。このとき\\
+  $\set{\sigma(e_{i_1})\otimes\cdots\otimes\sigma(e_{i_k})}{1\leq i_1\leq\cdots\leq i_k\leq n}$は$\mathcal{U}(\mathfrak{g})$の基底となる。
+\end{theo}
+
+この定理から、$\sigma$が単射であることが従う。実際、$\{\sigma(e_i)\}$は主張の基底の一部に含まれている。したがって、すべてのLie代数はある$\complex$代数から誘導されるLie代数の部分代数として実現できるのである。普遍包絡代数は表現論的にも重要である。
+
+\begin{prop}[普遍包絡代数の普遍性]
+  $\mathcal{U}(\mathfrak{g})$, $\sigma:\mathfrak{g}\rightarrow\mathcal{U}(\mathfrak{g})$は次の性質をもつ。
+  \begin{quote}
+    任意の$\complex$代数$A$とLie代数の準同型$f:\mathfrak{g}\rightarrow A$が与えられたとき、$\complex$代数の準同型$\overline{f}:\mathcal{U}(\mathfrak{g})\rightarrow A$が一意的に存在して、$f=\overline{f}\circ\sigma$を満たす。
+  \end{quote}
+  \[
+  \xymatrix{
+  \mathcal{U}(\mathfrak{g}) \ar@{.>}[rd]^{\overline{f}} \\
+  \mathfrak{g} \ar[u]^{\sigma} \ar[r]_f & A
+  }
+  \]
+  また、この性質をもつ$\complex$代数$\mathcal{U}(\mathfrak{g})$とLie代数の準同型$\sigma$の組は同型を除いて一意的である。
+\end{prop}
+
+これにより、$\mathfrak{g}$の表現$\rho:\mathfrak{g}\rightarrow \mathfrak{gl}(V)$は$\complex$代数の準同型$\overline{\rho}:\mathcal{U}(\mathfrak{g})\rightarrow \mathfrak{gl}(V)$を一意的に誘導する。すなわち、$\mathfrak{g}$の表現を調べる代わりに$\mathcal{U}(\mathfrak{g})$の表現を調べればよいということになる。
+
+
+\subsection{Double Centralizer Theorem}
+
+もう一つSchur-Weyl双対性の証明で用いる定理を一つ解説しておく。
+
+\begin{theo}[Double Centralizer Theorem]\label{DCT}
+  $V$を有限次元ベクトル空間、$A$を$\End(V)$の半単純部分環とし、$B=\End_A(V)$とする。このとき、
+  \begin{enumerate}
+    \item $B$は半単純環である
+    \item $A=\End_B(V)$が成り立つ
+    \item $A\otimes_\complex B$加群として分解
+    \[
+      V\simeq \bigoplus_iU_i\otimes_\complex W_i  
+    \]
+    が成り立つ。ここで$U_i$は単純$A$加群で$W_i=\Hom_A(U_i,V)$は単純$B$加群である。
+  \end{enumerate}
+\end{theo}
+
+\begin{proof}
+  (i)から示す。$A$は有限次元半単純$\complex$代数だから、系\ref{multiplicity}の証明において、「既約表現」を「単純$A$加群」, 「$G$線形」を「$A$準同型」にそのまま変えて$A$加群として
+  \[
+  V\simeq \bigoplus_{i}U_i\otimes_\complex \Hom_A(U_i,V)  
+  \]
+  と分解されることがわかる。よって
+  \begin{align*}
+    B&=\End_A(V)\\
+    &=\Hom_A \left(\bigoplus_{i}U_i\otimes_\complex \Hom_A(U_i,V),A\right)\\
+    &=\bigoplus_{i}\Hom_A(U_i\otimes_\complex \Hom_A(U_i,V),V)\\
+    &=\bigoplus_{i}\Hom_\complex(\Hom_A(U_i,V),\Hom_A(U_i,V)),\qquad\text{($\Hom$と$\otimes$の随伴性)}\\
+    &=\bigoplus_i\End_\complex(W_i)
+  \end{align*}
+  となる。したがって$B$は有限個の全行列環の直積に同型であるからWedderburnの構造定理(付録参照)により$B$は半単純環である。
+  
+  次に(iii)を示す。まず$W_i$が単純$B$加群であることを示そう。そのためには、$B$が$W_i$に推移的に作用することを示せばよい。
+  \footnote{
+    一般に$A$加群$M$が単純であることと任意の$0$でない$M$の元$x$に対して$M=Ax$が成り立つことは同値である。
+  }
+  $f\in W_i=\Hom_A(U_i,V)$, $\phi\in B=\End_A(V)$に対して$\phi$は$f$に写像の合成として作用する。$U_i$は単純$A$加群だから、$0$でない$U_i$の元$u$を1つ固定して$U_i=Au$である。任意の$f,f'\in\Hom_A(U_i,V)$に対して
+  \[
+  v=f(u),\qquad v'=f'(u)  
+  \]
+  とおくと、$A$は半単純だから
+  \[
+  V=Av\oplus M
+  \]
+  をみたす$V$の部分$A$加群$M$が存在する。そこで、$\phi\in B$を
+  \[
+  \phi(av) = av',\qquad \phi(w)=0,\qquad(a\in A, w\in W)  
+  \]
+  によって定めれば、$f'=\phi\circ f$である。
+
+  $V$は少なくとも$A$加群として
+  \[
+    V\simeq \bigoplus_{i}U_i\otimes_\complex W_i
+  \]
+  と分解されるが、$U_i\otimes_\complex W_i$は$A\otimes_\complex B$加群でもあるからよい。
+
+  最後に(ii)を示す。
+\end{proof}
+
+
+
+\subsection{Schur-Weyl双対性}
+
+次のような問題を考えることから始める。$V$を$n$次元ベクトル空間としたとき、テンソル空間$V^{\otimes k}$の部分空間として対称テンソル空間$\Sym^k(V)$, 交代テンソル空間$\Alt^k(V)$というものが
+\begin{align*}
+  &\Sym^k(V)=\set{v_1\otimes\cdots\otimes v_k}{v_{\sigma(1)}\otimes\cdots\otimes v_{\sigma (k)}=v_1\otimes\cdots\otimes v_k,\quad\text{for all $\sigma\in\mathfrak{S}_k$}}\\
+  &\Alt^k(V)=\set{v_1\otimes\cdots\otimes v_k}{v_{\sigma(1)}\otimes\cdots\otimes v_{\sigma (k)}=\sgn(\sigma)v_1\otimes\cdots\otimes v_k,\quad\text{for all $\sigma\in\mathfrak{S}_k$}}
+\end{align*}
+によって定義された。
+\[
+\dim\Sym^k(V)=\pmat{n+k-1\\k},\qquad\dim\Alt^k(V)=\pmat{n\\k}  
+\]
+より、$k=2$の場合
+\[
+\dim\Sym^2(V)+\dim\Alt^2(V)=n^2=\dim V\otimes V  
+\]
+だから、$\Sym^k(V)\cap\Alt^k(V)=0$に注意すれば
+\[
+V\otimes V=\Sym^2(V)\oplus\Alt^2(V)  
+\]
+が成り立つ。一般の$k$に対してもこのようなテンソル空間の分解を行うことを考える。特に、表現も含めた分解を考えることが鍵になる。
+
+$\sigma\in \mathfrak{S}_k$に対して、
+\[
+\sigma(v_1\otimes\cdots\otimes v_k)=v_{\inv{\sigma}(1)}\otimes\cdots\otimes v_{\inv{\sigma}(k)}  
+\]
+によって$V^{\otimes k}$を$\mathfrak{S}_n$の表現とみなす。さらに、$g\in \gl(V)$に対して
+\[
+g(v_1\otimes\cdots\otimes v_k)=gv_1\otimes\cdots\otimes gv_k  
+\]
+とによって$V^{\otimes k}$は$\gl(V)$の表現とみなすこともできる。$V^{\otimes k}$は$\mathfrak{S}_k$, $\gl(V)$両方の作用を同時に受けている。さらに次が成り立つ。
+
+\begin{prop}\label{comm_of_sym_gl}
+  任意の$\sigma\in\mathfrak{S}_k$, $g\in\gl(V)$に対して、
+  \[
+  \sigma g(v_1\otimes\cdots\otimes v_k)
+  =
+  g \sigma(v_1\otimes\cdots\otimes v_k)
+  \]
+  である。
+\end{prop}
+
+\begin{proof}
+  $u_i=gv_i$とおく。
+  \begin{align*}
+    \sigma g(v_1\otimes\cdots\otimes v_k)
+    &=\sigma(gv_1\otimes\cdots\otimes gv_k)\\
+    &=\sigma(u_1\otimes\cdots\otimes u_k)\\
+    &=u_{\inv{\sigma}(1)}\otimes\cdots\otimes u_{\inv{\sigma}(k)}\\
+    &=gv_{\inv{\sigma}(1)}\otimes\cdots\otimes gv_{\inv{\sigma}(k)}\\
+    &=g\sigma (v_1\otimes\cdots\otimes v_k)
+  \end{align*}
+\end{proof}
+
+このとき、
+$c_{(k)}=\sum_{\sigma\in \mathfrak{S}_n}\sigma\in\complex[\mathfrak{S}_n]$, $c_{1^k}=\sum_{\sigma\in \mathfrak{S}_n}\sgn(\sigma)\sigma\in\complex[\mathfrak{S}_n]$とおくと
+\[
+\Sym^k(V)=c_{(k)}V^{\otimes k},\qquad\Alt^k(V)=c_{1^k}V^{\otimes k}
+\]
+となることがわかり、命題\ref{comm_of_sym_gl}よりこの2つは$\gl(V)$の表現でもある。よって$k>2$のときにも、$\lambda\in\mathcal{P}_k$に対するYoung対称子$c_\lambda$による像
+\[
+W_\lambda=c_\lambda V^{\otimes k}  
+\]
+を考察することは自然である。再び\ref{comm_of_sym_gl}より$W_\lambda$は$\gl(V)$の部分表現になるが、このとき次が成り立つ
+
+\begin{theo}[Schur-Weyl双対性]\label{schur_weyl}
+  $W_\lambda$は$\gl(V)$の既約表現であり、$\mathfrak{S}_\lambda\times\gl(V)$の表現として
+  \[
+  V^{\otimes k}\simeq \bigoplus_{\lambda\in\mathcal{P}_k}S_\lambda\boxtimes W_\lambda  
+  \]
+  が成り立つ。
+\end{theo}
+
+定理\ref{schur_weyl}は以下の補題を示すことによって示される。まず、\ref{lie}節で述べたことにより、$\gl(V)$の表現$\gl(V)\rightarrow \gl(V^{\otimes k})$は$\mathcal{U}(\mathfrak{gl}(V))$の表現$\mathcal{U}(\mathfrak
+gl(V))\rightarrow \mathfrak{gl}(V^{\otimes k})=\End(V^{\otimes k})$を誘導する。
+
+\begin{lemm}\label{gen_of_symtensor}
+  $V$を$n$次元ベクトル空間とする。$\Sym^k(V)$は$\{v\otimes\cdots\otimes v\}_{v\in V}$によって生成される
+\end{lemm}
+
+\begin{proof}
+  $n$変数$k$次斉次多項式のなすベクトル空間を$S$とおく。主張は$S$が1次斉次多項式の$k$乗で生成されることと同値である。単項式
+  \[
+  x_1^{i_1}\cdots x_n^{i_n},\quad i_1+\cdots+i_n=k
+  \]
+  が生成されることを示せば十分である。$f_0(x_1,\cdots,x_n)=(x_1+\cdots +x_n)^k$とおく。
+  \[
+  f_1(x_1,\cdots,x_n)=f_0(2x_1,x_2,\cdots,x_n)-2^{k}f_0(x_1,\cdots,x_n)  
+  \]
+  とすれば、$f_1$は$x_1^k$を含む項をもたない。次に
+  \[
+  f_2(x_1,\cdots,x_n)=f_1(2x_1,x_2,\cdots,x_n)-2^{k-1}f_1(x_1,\cdots,x_n)  
+  \]
+  とすれば$f_2$は$x_1^{k}$, $x_1^{k-1}$を含む項をもたない。この操作を$i_1$以外に対して行えば、最終的に$x_1^{i_1}$を含む項以外をもたないような多項式$g_0(x_1,\cdots,x_n)$を得る。そして$g_0$は作り方から、一次斉次多項式の$k$乗の線形結合で表される。同様に
+  \[
+  g_1(x_1,\cdots,x_n)=g_0(x_1,2x_2,x_3,\cdots,x_n)-2^{k}g_0(x_1,\cdots,x_n)  
+  \]
+  とすれば$g_1$は$x_2^k$を含む項をもたない。再びこの操作を繰り返して$x_1^{i_1}$, $x_2^{i_2}$を含む項以外をもたないような多項式を得る。これを繰り返していけば、有限回のうちに$x_1^{i_1}x_2^{i_2}\cdots x_n^{i_n}$を作ることができる。
+\end{proof}
+
+
+\begin{lemm}\label{lemma}
+  $A$を$\End(V^{\otimes k})$における$\complex[\mathfrak{S}_k]$の像とし、$B$を$\End(V^{\otimes k})$における$\mathcal{U}(\mathfrak{gl}(V))$の像とする。$A$は半単純環であり、$B=\End_A(V^{\otimes k})$が成り立つ。
+\end{lemm}
+
+\begin{proof}
+  Maschkeの定理(定理\ref{general_maschke})より$\complex[\mathfrak{S}_n]$は半単純であり、$A$は$\complex[\mathfrak{S}_n]$の剰余環であるが、半単純環の剰余環はまた半単純であるからよい。
+
+  $\End(V^{\otimes k})=\End(V)^{\otimes k}$であり、任意の$\sigma\in \mathfrak{S}_k$に対して
+  \[
+    \sigma (f_1\otimes\cdots\otimes f_k)=(f_1\otimes\cdots\otimes f_k)\sigma
+  \]
+  であることと$f_1\otimes \cdots\otimes f_k\in\Sym^k(\End(V))$は同値だから、
+  \[
+  \End_A(V^{\otimes k})=\Sym^k(\End(V))  
+  \]
+  である。
+
+  例\ref{tensor_rep_of_gl}より、$X\in\mathfrak{gl}(V)$の$\End(V^{\otimes k})$における像を$\Pi(X)$とすると
+  \[
+  \Pi(X)=X\otimes E\otimes \cdots\otimes E
+  +\cdots 
+  +E\otimes\cdots\otimes E\otimes X  \in \Sym^k(\End(V))
+  \]
+  だから、$B\subset \End_A(V^{\otimes k})$が従う。
+
+  ここで$X_1=X\otimes E\otimes\cdots\otimes E$, $X_2=E\otimes X\otimes E\otimes\cdots\otimes E$, $\cdots$, $X_k=E\otimes\cdots\otimes E\otimes X$とおくと、
+  \begin{align*}
+  &\Pi(X)=X_1+X_2+\cdots+X_k=p_1(X_1,\cdots,X_k)\\
+  &\Pi(X^2)=X_1^2+X_2^2+\cdots+X_k^2=p_2(X_1,\cdots,X_k)\\
+  &\vdots\\
+  &\Pi(X^k)=X_1^k+X_2^k+\cdots+X_k^k=p_k(X_1,\cdots,X_k)
+  \end{align*}
+  であるが、命題\ref{various_basis}より、
+  \[
+  X\otimes\cdots\otimes X=e_k(X_1,\cdots,X_k)=P(\Pi(X),\Pi(X^2),\cdots,\Pi(X^k))  
+  \]
+  をみたす多項式$P$が存在する。すなわち$X\otimes \cdots\otimes X\in B$である。補題\ref{gen_of_symtensor}より、$\{X\otimes \cdots\otimes X\}_{X\in\End(V)}$は$\Sym^k(\End(V))$を生成するから
+  \[
+  B=\Sym^k(\End(V))=\End_A(V^{\otimes k})  
+  \]
+\end{proof}
+
+
+\begin{lemm}\label{im_of_GL}
+  $\End(V^{\otimes k})$における$\complex[\gl(V)]$の像は$B=\End_A(V^{\otimes k})$に等しい。
+\end{lemm}
+
+\begin{proof}
+  $g\in\gl(V)$の$\End(V^{\otimes k})$における像は
+  $
+  g\otimes \cdots\otimes g 
+  $
+  だから$B$に含まれている。$g\in\gl(V)$に対して$g\otimes \cdots\otimes g$が生成する$\End(V^{\otimes k})$の部分代数を$B'$とする。任意の(正則とは限らない)$X\in\End(V)$に対して$X\otimes \cdots\otimes X$が$B'$に含まれることを示せばよい。$X+tE$は有限個の$t$を除いて正則である
+  \footnote{
+    行列式は$t$の多項式
+  }
+  から、$X$に収束する$\gl(V)$の点列$(X+t_iE)$が存在する
+  \footnote{
+    すなわち$\gl(V)$は$\End(V)$の稠密集合
+  }。$\End(V^{\otimes k})$は有限次元だから$B'$は閉部分空間であるので、
+  \[
+  X^{\otimes k}=\lim_{i\rightarrow\infty}(X+t_iE)^{\otimes k}\in B'  
+  \]
+  が成り立つ\footnote{
+    表現は連続だからこのような極限操作が可能である。
+  }
+\end{proof}
+
+
+定理\ref{schur_weyl}を示そう。
+\begin{proof}
+  補題\ref{im_of_GL}と定理\ref{DCT}より$\mathfrak{S}_k\times\gl(V)$の表現(すなわち$\complex[\mathfrak{S}_k]\otimes_{\complex}\complex[\gl(V)]$加群)として
+  \[
+  V^{\otimes k}=\bigoplus_{\lambda\in\mathcal{P}_k}S_\lambda\boxtimes \Hom_A(S_\lambda,V^{\otimes k})  
+  \]
+  と分解される。
+  
+  ここで$S_\lambda$の指標を$\chi_\lambda$とすると、$S_\lambda$の反傾表現の指標を$\chi^*_\lambda$とすると、
+  \[
+  \chi^*_\lambda(g)=\overline{\chi_\lambda(g)}=\chi_\lambda(\inv{g})=\chi_\lambda(g)  
+  \]
+  である。実際$g$は置換なので$g$と$\inv{g}$は同一の共役類に含まれる。よって表現として$S_\lambda\simeq S_\lambda^*$が成り立つ。
+
+  $S_\lambda=\complex[\mathfrak{S}_k]c_\lambda$だから
+  \begin{align*}
+    \Hom_A(S_\lambda,V^{\otimes k})
+    &=(S_\lambda)^*\otimes_AV^{\otimes k}\\
+    &=S_\lambda\otimes_AV^{\otimes k}\\
+    &=\complex[\mathfrak{S}_k]c_\lambda\otimes_{\complex[\mathfrak{S}_k]}V^{\otimes k}\\
+    &=c_\lambda V^{\otimes k}\\
+    &=W_\lambda
+  \end{align*}
+
+  定理\ref{DCT}より$\Hom_A(S_\lambda,V^{\otimes k})$は既約$\gl(V)$表現だから$W_\lambda$は既約である。
+\end{proof}
+
+$W_\lambda$を$\gl(V)$のWeyl表現という。とくに、$W_\lambda$はLie代数$\mathfrak{gl}(V)$の既約表現でもある。
+
+\end{document}

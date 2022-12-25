@@ -576,7 +576,7 @@ Youngの規則はSchur多項式の線形結合で表すときにも現れた(系
   であるが、$M_\lambda$は置換表現であるから$\chi_{M_\lambda}$は整数値である。帰納法の仮定より$\chi_\mu$も整数値だから、$\chi_\lambda$は整数値。
 \end{proof}
 
-既約指標の具体的な値はFrobeniusの指標公式として知られている。$M_\lambda$の指標は比較的簡単に計算できる。
+既約指標$S_\lambda$の具体的な値はFrobeniusの指標公式として知られている。$M_\lambda$の指標は比較的簡単に計算できる。
 
 \begin{prop}\label{m_lambda_char_1}
   $g\in\mathfrak{S}_n$を巡回置換の積に表したとき、含まれている長さ$q$の巡回置換の数を$m_q$とする。このとき、$\chi_{M_\lambda}(g)$は次の値に等しい
@@ -598,19 +598,27 @@ Youngの規則はSchur多項式の線形結合で表すときにも現れた(系
   =\sharp\set{\sigma\mathcal{H}_{\lambda}\in G/\mathcal{H}_\lambda}{g\sigma\mathcal{H}_\lambda=\sigma\mathcal{H}_\lambda}
   =\frac{1}{|\mathcal{H}_\lambda|}\sharp\set{\sigma\in G}{g\in\mathcal{H}_{\sigma\lambda}}
   \]
-  と書くことができる。右辺の集合の大きさは形$\lambda$の標準タブローであって、$g$がその水平置換になっているものの個数である。
+  と書くことができる。$N=\sharp\set{\sigma\in G}{g\in\mathcal{H}_{\sigma\lambda}}$とおく。$N$は形$\lambda$の標準タブローであって、$g$がその水平置換になっているものの個数である。
   
   $g$がある標準タブロー$\sigma\lambda$の水平置換であるための必要十分条件は、$g$を巡回置換の積で表したときその各巡回置換$(i_1,\cdots,i_k)$について、$i_1,\cdots,i_k$が$\sigma\lambda$の同一行に含まれていることである。よって、逆に$g$からそのような標準タブローを構成するには、$g$の長さ$q$の巡回置換が$\lambda$の$p$行目に何個含まれているかを指定し、水平置換で動かせばよい。
 
-  $g$の長さ$q$の巡回置換が$\lambda$の$p$行目に$c_{pq}$個含まれているとする。具体的にどの巡回置換がどの行に含まれているかを数えると
+  $g$の長さ$q$の巡回置換が$\lambda$の$p$行目に$c_{pq}$個含まれているとする。このとき$p$行目に含まれる巡回置換の長さの総和が、$\lambda$の$p$行目の箱の数に等しくなければならない。また、長さ$q$の巡回置換は全部で$m_q$個あることに注意すると、
+  $c_{pq}$は
+  \begin{itemize}
+    \item $c_{p1}+2c_{p2}+3c_{p3}+\cdots+nc_{pn}=\lambda_p$, for all $p=1,\cdots,n$
+    \item $c_{1q}+c_{2q}+c_{3q}+\cdots+c_{nq}=m_q$, for all $q=1,\cdots,n$
+  \end{itemize}
+  を満たすように動かなければならない。
+
+  長さ$q$の巡回置換を各$p$行目に$c_{pq}$個ずつ置く置き方は
   \[
     \prod_{q=1}^n\frac{m_q!}{c_{1q}!\cdots c_{nq}!}    
   \]
-  通りある。またこのとき制約として主張の条件が満たされなければならない。含まれるだけなら上の数でよいが、$\lambda$の水平置換の分だけ自由度があるので
+  通りある。そこから$\lambda$の水平置換を作用させて異なる標準タブローが作れるので
   \[
-  |\mathcal{H}_\lambda|\prod_{q=1}^n\frac{m_q!}{c_{1q}!\cdots c_{nq}!}  
+  N=\sum|\mathcal{H}_\lambda|\prod_{q=1}^n\frac{m_q!}{c_{1q}!\cdots c_{nq}!}  
   \]
-  に等しい。これより、
+  である。これより、
   \[
   \chi_{M_\lambda}=\sum\prod_{q=1}^n\frac{m_q!}{c_{1q}!\cdots c_{nq}!}   
   \]
