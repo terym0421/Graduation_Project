@@ -752,4 +752,48 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
 \end{proof}
 
 
+\begin{eg}
+  $\lambda=(n-1,1)=\begin{ytableau}
+    *(white) & *(white) & \none[\dots] & *(white) \\
+    *(white) 
+  \end{ytableau}$
+  とする。$S_\lambda$が
+  \[
+  U=\set{\pmat{x_1\\\vdots\\x_n}\in\complex^n}{x_1+\cdots+x_n=0}  
+  \]
+  に同値であることを示す。Pieriの規則より、
+  \[
+  \ind_{\mathfrak{S}_{n-1}}^{{\mathfrak{S}_n}}\mathbf{1}=S_{(n)}\oplus S_{(n-1,1)}  
+  \]
+  である。ここで、$\mathfrak{S}_n/\mathfrak{S}_{n-1}$の完全代表系を求めると
+  \[
+  X=\{(1\:n), (2\:n), \cdots, (n-1\:n), e\}  
+  \]
+  が取れる。$\ind_{\mathfrak{S}_{n-1}}^{{\mathfrak{S}_n}}\mathbf{1}$は$X$への置換表現に他ならない。$v_i=(i\:n)$, $v_n=e$とおけば
+  \[
+  (j\:n)v_i=\left\{\begin{array}{cc}
+    v_n & \text{if $i=j$}\\
+    v_j & \text{if $i=n$}\\
+    v_i & \text{otherwise}
+  \end{array}\right.  
+  \]
+  となる。すなわち$(j\: n)$が引き起こす$X$上の置換は$(j\:n)$に他ならない。これは$\ind_{\mathfrak{S}_{n-1}}^{{\mathfrak{S}_n}}\mathbf{1}$が標準的な置換表現
+  \[
+  V=\complex^n,\quad \text{for }\sigma\in\mathfrak{S}_n,\:\sigma \pmat{x_1\\\vdots\\x_n}=\pmat{x_{\inv{\sigma}(1)}\\\vdots\\x_{\inv{\sigma}(n)}}  
+  \]
+  に同値であることを意味する。
+  \[
+  V\simeq \mathbf{1}\oplus U  
+  \]
+  であり、
+  \[
+  V\simeq \ind_{\mathfrak{S}_{n-1}}^{{\mathfrak{S}_n}}\mathbf{1}=S_{(n)}\oplus S_{(n-1,1)}=\mathbf{1}\oplus S_{(n-1,1)}
+  \]
+  だから
+  \[
+  S_{(n-1,1)}\simeq U  
+  \]
+\end{eg}
+
+
 \end{document}

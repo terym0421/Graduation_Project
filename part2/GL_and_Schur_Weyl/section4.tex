@@ -63,18 +63,19 @@ Schur-Weyl双対性の証明で用いる定理を一つ解説しておく。
   \[
     V\simeq \bigoplus_{i}U_i\otimes_\complex W_i
   \]
-  と分解されるが、$U_i\otimes_\complex W_i$は$A\otimes_\complex B$加群でもあるからよい。
+  と分解されるが、この同型を与える写像
+  \[
+  U_i\otimes_{\complex}W_i\owns x\otimes f\mapsto f(x)\in V  
+  \]
+  を考えると、$\phi\otimes \psi\in A\otimes_{\complex}B$に対して
+  \[
+  (\phi\otimes\psi)(x\otimes f)=\phi(x)\otimes \psi(f)\mapsto(\psi\circ f)(\phi(x))=(\phi\circ\psi)(f(x))
+  \]
+  ゆえにこの写像は$A\otimes_{\complex}B$加群としての同型を与える。
+  
 
   最後に(ii)を示す。
 \end{proof}
-
-\begin{notice}
-  $A\otimes_{\complex}B$加群は
-  \[
-  A,\quad B\rightarrow A\otimes 1,\quad 1\otimes B
-  \]
-  によって$A$加群でもあり$B$加群でもあるから、$B$は$U_i$に自明に作用し、$A$は$W_i$に自明に作用する。
-\end{notice}
 
 
 
@@ -97,7 +98,7 @@ Schur-Weyl双対性の証明で用いる定理を一つ解説しておく。
 \[
 V\otimes V=\Sym^2(V)\oplus\Alt^2(V)  
 \]
-が成り立つ。一般の$k$に対してもこのようなテンソル空間の分解を行うことを考える。特に、表現も含めた分解を考えることが鍵になる。
+が成り立つ。$k>2$のときは次元が足りず、対称テンソルと交代テンソル以外の部分がでてくる。その分解を与える規則を考える。特に、表現を含めた分解を考えることが鍵になる。
 
 $\sigma\in \mathfrak{S}_k$に対して、
 \[
