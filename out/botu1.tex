@@ -456,4 +456,154 @@ gl(V))\rightarrow \mathfrak{gl}(V^{\otimes k})=\End(V^{\otimes k})$を誘導す�
 
 $W_\lambda$を$\gl(V)$のWeyl表現という。とくに、$W_\lambda$はLie代数$\mathfrak{gl}(V)$の既約表現でもある。
 
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Schur-Wyelの証明}
+
+
+
+定理\ref{schur_weyl}を示そう。ポイントになるのは次の半単純環に関する補題である。
+
+Schur-Weyl双対性の証明で用いる定理を一つ解説しておく。
+
+\begin{lemm}\label{DCT}
+  $V$を有限次元ベクトル空間、$A$を$\End(V)$の半単純部分環とし、$B=\End_A(V)$とする。$\{U_i\}$を互いに同型でない単純$A$加群とし、$W_i=\Hom_A(U_i,V)$とする。$f\in W_i, b\in B$に対して
+  \[ 
+  bf=b\circ f
+  \]
+  によって左$B$加群とみなし、$U_i$は自明な作用によって$B$加群, $W_i$も自明な作用によって$A$加群とみなす。
+  このとき、$A\otimes_\complex B$加群として分解
+  \[
+  V\simeq \bigoplus_iU_i\otimes_\complex W_i  
+  \]
+  が成り立ち、さらに$W_i$は単純$B$加群になる。
+\end{lemm}
+
+\begin{proof}
+  $A$は半単純なので、互いに同型でない$A$の単純加群$\{U_i\}$をとって、$A$加群として
+  \[
+  V= \bigoplus_i U^{(i)}_1\oplus\cdots\oplus U^{(i)}_{m_i},\qquad U^{(i)}_j\simeq U_i
+  \]
+  と分解することができる。$\phi_i:U_i\otimes_\complex W_i\rightarrow V$を
+  \[
+  \phi_i(x\otimes f)=f(x)  
+  \]
+  を双線形に拡張して定める。$a\in A$に対して
+  \[
+  \phi_i(ax\otimes f)=f(ax)=af(x)=a\psi_i(x\otimes f)
+  \]
+  より$\phi_i$は$A$加群の準同型である。$\phi=\oplus_{i}\phi_i:\bigoplus_iU_i\otimes_{\complex}W_i\rightarrow V$とする。
+
+  次に$A$同型$\psi^{(i)}_j:U^{(i)}_j\rightarrow U_i$を固定する。$\psi^{(i)}:U^{(i)}_1\oplus\cdots\oplus U^{(i)}_{m_i}\rightarrow U_i\otimes_{\complex}W_i$を
+  \[
+  \psi^{(i)}(x_1+\cdots+x_{m_i})
+  =\psi^{(i)}_1(x_1)\otimes \psi^{(i)-1}_1
+   +\cdots
+   +\psi^{(i)}_{m_i}(x_{m_i})\otimes \psi^{(i)-1}_{m_i}
+  \]
+  によって定める。ここで、$x_j\in U^{(i)}_j$である。$a\in A$に対して
+  \begin{align*}
+  \psi^{(i)}(a(x_1+\cdots+x_{m_i}))  
+  &=\psi^{(i)}_1(ax_1)\otimes \psi^{(i)-1}_1
+  +\cdots
+  +\psi^{(i)}_{m_i}(ax_{m_i})\otimes \psi^{(i)-1}_{m_i}\\
+  &=a(\psi^{(i)}_1(x_1)\otimes \psi^{(i)-1}_1
+  +\cdots
+  +\psi^{(i)}_{m_i}(x_{m_i})\otimes \psi^{(i)-1}_{m_i})\\
+  &=a\psi^{(i)}(x_1,\cdots,x_{m_i})
+  \end{align*}
+  より$\psi^{(i)}$は$A$加群の準同型である。$\psi=\oplus_i\psi^{(i)}:V\rightarrow\bigoplus_{i}U_i\otimes_{\complex}W_i$とする。
+
+  \begin{align*}
+    (\psi\circ\phi)(\sum_ix_i\otimes f_i)
+  \end{align*}
+\end{proof}
+
+
+\begin{lemm}\label{gen_of_symtensor}
+  $V$を$n$次元ベクトル空間とする。$\Sym^k(V)$は$\{v\otimes\cdots\otimes v\}_{v\in V}$によって生成される
+\end{lemm}
+
+\begin{proof}
+  $n$変数$k$次斉次多項式のなすベクトル空間を$S$とおく。主張は$S$が1次斉次多項式の$k$乗で生成されることと同値である。単項式
+  \[
+  x_1^{i_1}\cdots x_n^{i_n},\quad i_1+\cdots+i_n=k
+  \]
+  が生成されることを示せば十分である。$f_0(x_1,\cdots,x_n)=(x_1+\cdots +x_n)^k$とおく。
+  \[
+  f_1(x_1,\cdots,x_n)=f_0(2x_1,x_2,\cdots,x_n)-2^{k}f_0(x_1,\cdots,x_n)  
+  \]
+  とすれば、$f_1$は$x_1^k$を含む項をもたない。次に
+  \[
+  f_2(x_1,\cdots,x_n)=f_1(2x_1,x_2,\cdots,x_n)-2^{k-1}f_1(x_1,\cdots,x_n)  
+  \]
+  とすれば$f_2$は$x_1^{k}$, $x_1^{k-1}$を含む項をもたない。この操作を$i_1$以外に対して行えば、最終的に$x_1^{i_1}$を含む項以外をもたないような多項式$g_0(x_1,\cdots,x_n)$を得る。そして$g_0$は作り方から、一次斉次多項式の$k$乗の線形結合で表される。同様に
+  \[
+  g_1(x_1,\cdots,x_n)=g_0(x_1,2x_2,x_3,\cdots,x_n)-2^{k}g_0(x_1,\cdots,x_n)  
+  \]
+  とすれば$g_1$は$x_2^k$を含む項をもたない。再びこの操作を繰り返して$x_1^{i_1}$, $x_2^{i_2}$を含む項以外をもたないような多項式を得る。これを繰り返していけば、有限回のうちに$x_1^{i_1}x_2^{i_2}\cdots x_n^{i_n}$を作ることができる。
+\end{proof}
+
+
+\begin{lemm}\label{lemma}
+  $A$を$\End(V^{\otimes k})$における$\complex[\mathfrak{S}_k]$の像とし、$B$を$\End(V^{\otimes k})$における$\complex[\gl(V)]$の像とする。$A$は半単純環であり、$B=\End_A(V^{\otimes k})$が成り立つ。
+\end{lemm}
+
+\begin{proof}
+  Maschkeの定理(定理\ref{general_maschke})より$\complex[\mathfrak{S}_n]$は半単純であり、$A$は$\complex[\mathfrak{S}_n]$の剰余環であるが、半単純環の剰余環はまた半単純であるからよい。
+
+  $\End_A(V^{\otimes k})=(\End(V^{\otimes k}))^{\mathfrak{S}_n}=(\End(V)^{\otimes k})^{\mathfrak{S}_n}=\Sym^k(\End(V))$であるから補題\ref{gen_of_symtensor}より、$\End_A(V^{\otimes k})$は$\{X\otimes\cdots\otimes X\}_{X\in\End(V)}$によって生成される。$\gl(V)\subset\End(V)$なのだから、$B\subset \End_A(V^{\otimes k})$は直ちに従う。$g\in\gl(V)$に対して$g\otimes \cdots\otimes g$が生成する$\End(V^{\otimes k})$の部分代数を$B'$とする。任意の(正則とは限らない)$X\in\End(V)$に対して$X\otimes \cdots\otimes X$が$B'$に含まれることを示せばよい。$X+tE$は有限個の$t$を除いて正則である
+  \footnote{
+    行列式は$t$の多項式
+  }
+  から、$X$に収束する$\gl(V)$の点列$(X+t_iE)$が存在する
+  \footnote{
+    すなわち$\gl(V)$は$\End(V)$の稠密集合
+  }。$\End(V^{\otimes k})$は有限次元だから$B'$は閉部分空間であるので、
+  \[
+  X^{\otimes k}=\lim_{i\rightarrow\infty}(X+t_iE)^{\otimes k}\in B'  
+  \]
+  が成り立つ\footnote{
+    表現は連続だからこのような極限操作が可能である。
+  }
+\end{proof}
+
+定理\ref{schur_weyl}を示そう。
+\begin{proof}
+  補題\ref{lemma}と補題\ref{DCT}より$\mathfrak{S}_k\times\gl(V)$の表現(すなわち$\complex[\mathfrak{S}_k]\otimes_{\complex}\complex[\gl(V)]$加群)として
+  \[
+  V^{\otimes k}=\bigoplus_{\lambda\in\mathcal{P}_k}S_\lambda\boxtimes \Hom_A(S_\lambda,V^{\otimes k})  
+  \]
+  と分解される。
+  
+  ここで$S_\lambda$の指標を$\chi_\lambda$とすると、$S_\lambda$の反傾表現の指標を$\chi^*_\lambda$とすると、
+  \[
+  \chi^*_\lambda(g)=\overline{\chi_\lambda(g)}=\chi_\lambda(\inv{g})=\chi_\lambda(g)  
+  \]
+  である。実際$g$は置換なので$g$と$\inv{g}$は同一の共役類に含まれる。よって表現として$S_\lambda\simeq S_\lambda^*$が成り立つ。
+
+  $S_\lambda=\complex[\mathfrak{S}_k]c_\lambda$だから
+  \begin{align*}
+    \Hom_A(S_\lambda,V^{\otimes k})
+    &=(S_\lambda)^*\otimes_AV^{\otimes k}\\
+    &=S_\lambda\otimes_AV^{\otimes k}\\
+    &=\complex[\mathfrak{S}_k]c_\lambda\otimes_{\complex[\mathfrak{S}_k]}V^{\otimes k}\\
+    &=c_\lambda V^{\otimes k}\\
+    &=W_\lambda(V)
+  \end{align*}
+
+  補題\ref{DCT}より$\Hom_A(S_\lambda,V^{\otimes k})$は既約$\gl(V)$表現だから$W_\lambda(V)$は既約である。
+\end{proof}
+
+
 \end{document}

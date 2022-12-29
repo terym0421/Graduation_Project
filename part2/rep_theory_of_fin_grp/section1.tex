@@ -206,7 +206,7 @@
 
 
 
-\subsection{指標理論}
+\subsection{有限群の表現に対する指標}
 
 次に既約表現の分類をする上で鍵となる指標の概念を導入する。
 
@@ -533,37 +533,21 @@
   \]
   が成り立つ。$m_i$を$\rho$の$\rho_i$に関する重複度という。また
   \[
-  V\simeq \bigoplus_{i=1}^rW_i\otimes \Hom_G(W_i,V)  
+  V\simeq \bigoplus_{i=1}^rW_i\otimes \Hom_G(W_i,V) =\bigoplus_{i=1}^rW_i\otimes \Hom_G(V,W_i)  
   \]
   がなりたつ。
 \end{cor}
 
 \begin{proof}
-  系\ref{irr_char_is_basis}より前半は直ちに従う。後半を示す。
-  まず、$\psi_i:W_i\otimes \Hom_G(W_i,V) \rightarrow V$を
+  系\ref{irr_char_is_basis}より前半は直ちに従う。後半については、$\Hom_G(W_i,V)$は定義から自明な表現の直和に等しいことからわかる。また、$\generated{\chi_{W_i},\chi_V}$は整数であるから
   \[
-  \psi_i(x\otimes f)=f(x)  
+  dim_\complex\Hom_G(W_i,V)=\generated{\chi_{W_i},\chi_V}=\generated{\chi_V,\chi_{W_i}}=\dim_\complex\Hom_G(V,W_i)
   \]
-  を双線形に拡張して定め、$\psi:\bigoplus_{i=1}^rW_i\otimes \Hom_G(W_i,V)\rightarrow V$を$\psi=\oplus_{i=1}^r\psi_i$とする。
-  
-  $V$の既約表現への直和分解
+  よって
   \[
-  V=\bigoplus_{i=1}^rU^{(i)}_{1}\oplus\cdots\oplus U^{(i)}_{m_i},\qquad U^{(i)}_j\simeq W_i
+  \Hom_G(W_i,V)\simeq\Hom_G(V,W_i)  
   \]
-  を1つ固定し、$G$同型$\phi^{(i)}_j:W_i\rightarrow U^{(i)}_j$を取る。$\phi^{(i)}_j\in\Hom_G(W_i,V)$であるから、\\$\phi^{(i)}:U^{(i)}_{1}\oplus\cdots\oplus U^{(i)}_{m_i}\rightarrow W_i\otimes\Hom_G(W_i,V)$を
-  \[
-  \phi^{(i)}(x_1,\cdots,x_{m_i})
-  =\phi^{(i)-1}_1(x_1)\otimes \phi^{(i)}_1+\cdots+\phi^{(i)-1}_{m_i}(x_{m_i})\otimes \phi^{(i)}_{m_i}
-  \]
-  によって定め、$\phi:V\rightarrow \bigoplus_{i=1}^rW_i\otimes\Hom_G(W_i,V)$を$\phi=\oplus_{i=1}^r\phi^{(i)}$とおけば、これらは$G$線形であり
-  \[
-  \psi\circ\phi=\id{V}  
-  \]
-  となることがわかる。よって$\phi$は単射であり、
-  \[
-  dim_{\complex}V=\dim_{\complex}  \bigoplus_{i=1}^rW_i\otimes \Hom_G(W_i,V)
-  \]
-  だから、同型である。
+  である。
 \end{proof}
 
 \begin{cor}
