@@ -1,0 +1,44 @@
+\documentclass{ltjsreport}
+\input{../setting.tex}
+
+\begin{document}
+\chapter{Wedderburnの構造定理}
+
+Wedderburnの構造定理は、半単純Artin環の分類に関する定理である。本節で環は乗法単位元をもつ必ずしも可換とは限らない環を指し、たんに環の上の加群といったら左加群を指しているとする。
+
+\begin{defin}
+  環$A$が半単純であるとは任意の$A$加群$M$が半単純である、すなわち任意の$M$の部分加群が$M$の直和因子であることをいう。
+\end{defin}
+
+\begin{eg}
+  有限群$G$の体$K$上の群環$K[G]$は$\ch K$と$|G|$が互いに素であるとき、またその時に限り半単純である(Maschkeの定理)。
+\end{eg}
+
+\begin{defin}
+  環$A$が左Artin環であるとは、任意の左イデアルの列
+  \[
+  I_0\supset I_1\supset \cdots  
+  \]
+  に対して、ある番号$n$が存在して$I_n=I_{n+1}=\cdots$が成り立つことをいう。
+\end{defin}
+
+\begin{eg}
+  体$K$上の有限次元代数$A$はArtin環である。特に有限群$G$の群環$K[G]$はArtin環である。
+\end{eg}
+
+\begin{theo}[Wedderburnの構造定理]
+  次の条件は同値である。
+  \begin{enumerate}
+    \item $A$は半単純Artin環である
+    \item $A$は左加群として半単純である
+    \item $A$の左Jacobson根基が0である。
+    \item 斜体$D_i$が存在して、
+    \[
+    A\simeq \prod_iM_{n_i}(D_i)  
+    \]
+    が成り立つ。ただし$M_{n_i}(D_i)$は$D_i$を成分にもつ全行列環である。
+  \end{enumerate}
+\end{theo}
+
+
+\end{document}
