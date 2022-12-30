@@ -71,16 +71,16 @@ g(v_1\otimes\cdots\otimes v_k)=gv_1\otimes\cdots\otimes gv_k
 このとき、
 $c_{(k)}=\sum_{\sigma\in \mathfrak{S}_n}\sigma\in\complex[\mathfrak{S}_n]$, $c_{1^k}=\sum_{\sigma\in \mathfrak{S}_n}\sgn(\sigma)\sigma\in\complex[\mathfrak{S}_n]$とおくと
 \[
-\Sym^k(V)=c_{(k)}V^{\otimes k},\qquad\Alt^k(V)=c_{1^k}V^{\otimes k}
+\Sym^k(V)=V^{\otimes k}c_{(k)},\qquad\Alt^k(V)=V^{\otimes k}c_{1^k}
 \]
 となることがわかり、命題\ref{comm_of_sym_gl}よりこの2つは$\gl(V)$の表現でもある。よって$k>2$のときにも、$\lambda\in\mathcal{P}_k$に対するYoung対称子$c_\lambda$による像
 \[
-W_\lambda(V)=c_\lambda V^{\otimes k}  
+W_\lambda(V)=V^{\otimes k}c_\lambda   
 \]
-を考察することは自然である。再び\ref{comm_of_sym_gl}より$W_\lambda(V)$は$\gl(V)$の部分表現になるが、このとき次が成り立つ
+を考察することは自然である。再び命題\ref{comm_of_sym_gl}より$W_\lambda(V)$は$\gl(V)$の部分表現になるが、このとき次が成り立つ
 
 \begin{theo}[Schur-Weyl双対性]\label{schur_weyl}
-  $W_\lambda(V)$は$\gl(V)$の既約表現であり、$\mathfrak{S}_\lambda\times\gl(V)$の表現として
+  $W_\lambda(V)$は$\gl(V)$の既約表現であり、$\mathfrak{S}_k\times\gl(V)$の表現として
   \[
   V^{\otimes k}\simeq \bigoplus_{\lambda\in\mathcal{P}_k}S_\lambda\boxtimes W_\lambda(V)  
   \]
@@ -91,36 +91,73 @@ W_\lambda(V)=c_\lambda V^{\otimes k}
 ポイントになるのは次の補題である。
 
 \begin{lemm}\label{DCT}
-  $G$を有限群, $A=\complex[G]$とし、$V$を右$A$加群, $B=\End_A(V)$とする。$\{U_i\}_i$を互いに同型でない単純$A$加群とし、$W_i=\Hom_A(U_i,V)\simeq\Hom_A(V,U_i)$とする。$f\in W_i, b\in B$に対して
-  \[
-  bf=b\circ f  
-  \]
-  として$W_i$を左$B$加群とみなす。
-  このとき$(A,B)$-両側加群として分解
-    \[
-      V\simeq \bigoplus_iU_i\otimes_\complex W_i  
-    \]
-  が成り立ち、さらに$W_i$は単純$B$加群である。
+  $G$を有限群, $A=\complex[G]$, $U$を右$A$加群, $B=\End_A(U)$とおく。
+  \begin{enumerate}
+    \item $c\in A$に対して、左$B$加群として$U\otimes_AAc\simeq Uc$が成り立つ。
+    \item $c\in A$に対して、$W=Ac$が単純左$A$加群ならば$U\otimes_AW=Uc$は単純左$B$加群である。
+    が成り立つ。
+  \end{enumerate}
 \end{lemm}
 
 \begin{proof}
-  系\ref{multiplicity}より、右$A$加群として
-  \[
-  V\simeq \bigoplus_iU_i\otimes_{\complex}W_i  
-  \]
-  と分解されるが、この同型を与える写像$\phi_i:U_i\otimes_\complex W_i\rightarrow V$について、$a\in A, b\in B$に対して
-  \[
-  \phi_i(xa\otimes bf)=\phi_i(xa\otimes bf)=bf(xa)=(bf(x))a=b(f(x)a)  
-  \]
-  となるから$\phi_i$は両側加群の準同型である。よってこの分解は$(A,B)$-両側加群として成り立つ。$W_i$の単純性を示す。任意の$f\in W_i$に対して$Bf=W_i$が成り立つことを示せばよい。$U_i$は単純$A$加群だから、$0$でない$U_i$の元$u$をとって、$U_i=uA$とおく。任意の$f,f'\in W_i$に対して$v=f(u), v'=f(u')$とおく。Maschkeの定理から
-  \[
-  V=vA\oplus X  
-  \]
-  を満たす部分$A$加群$X$が存在する。そこで、$b:V\rightarrow V$を
-  \[
-  b(va)=v'a,\qquad b(x)=0\:(x\in X)  
-  \]
-  によって定めると、$b\in\End_A(V)=B$であり、$f'=b\circ f$である。よって示せた。
+  \begin{enumerate}
+    \item 次の可換図式を考える。
+    \[
+    \xymatrix{
+      U\otimes_AA \ar[r]^{\cdot c} \ar[d]  & U\otimes_AAc \ar[r] \ar[d]  & U\otimes_AA \ar[d]\\
+      U \ar[r]^{\cdot c} & Uc \ar[r] & U 
+    }  
+    \]
+    ここで$\cdot c$は$c$倍写像(全射)であり、$U\otimes_AAc\rightarrow U\otimes_AA$, $U_c\rightarrow U$は埋め込み(単射), 両端の縦の写像は同型である。Diagram Chasingをすれば中央の縦の写像も同型になることがわかる。
+
+    \item $U$が単純右$A$加群である場合を考える。このときSchurの補題から$B\simeq\complex$であることに注意する。$\dim_\complex U\otimes_AW\leq 1$であることを示せばよい。Wedderburnの構造定理より、
+    \[
+    A\simeq\prod_{i=1}^rM_{m_i}(\complex)
+    \]
+    である。$W$は$A$の極小左イデアルなので、$W$は
+    \begin{align*}
+    &W=\set{(M_1,\cdots,M_i,\cdots,M_r)}{M_k=0,(k\neq i), M_i\in I_\alpha}=0\times\cdots\times I_\alpha\times\cdots\times 0 \\
+    &I_\alpha=\set{\pmat{
+      0 & \cdots & a_1 & \cdots & 0\\
+      0 & \cdots & a_2 & \cdots & 0\\
+      \vdots & \cdots & \vdots & \cdots &\vdots\\
+      0 & \cdots & a_{m_i} & \cdots & 0
+      }}{a_1,a_2\cdots,a_{m_i}\in\complex\text{は$\alpha$列}}
+    \end{align*}
+    このような形になる。同様に$U$を$A$の極小右イデアルと同一視すれば
+    \footnote{
+      $G$の正則表現はすべての既約表現を直和因子に含むことに注意
+    }、
+    \begin{align*}
+      &U=\set{(M_1,\cdots,M_j,\cdots,M_r)}{M_k=0,(k\neq j), M_j\in J_\beta}=0\times\cdots\times J_\beta\times\cdots\times 0  \\
+      &J_\beta=\set{\pmat{
+        0 & 0 & \cdots & 0\\
+        \vdots & \vdots & \cdots & \vdots\\
+        a_1 & a_2 &\cdots & a_{m_j}\\
+        \vdots & \vdots & \cdots & \vdots\\
+        0 & 0 & \cdots & 0 
+        }}{a_1,a_2\cdots,a_{m_j}\in\complex\text{は$\beta$行}}
+      \end{align*}
+      となるから、
+      \begin{align*}
+        U\otimes_AW&=\left\{\begin{array}{cc}
+          J_\beta\otimes_{M_{m_i}(\complex)}I_\alpha=\complex E_{\beta\alpha} & \text{if $i=j$}\\
+          0 & \text{otherwise}
+        \end{array}\right.
+      \end{align*}
+      よって$\dim_\complex (U\otimes_AW)\leq 1$だから単純である。
+
+      一般の$U$については、
+      $A$の半単純性より$U$を単純右$A$加群の直和$U\simeq\bigoplus_iU_k^{\oplus n_k}$に分解しておいて、再びSchurの補題から
+      \[
+      B=\End_A(U)=\End_A(\bigoplus_kU_k^{\oplus n_k})=\bigoplus_k\End_A(U_k^{\oplus n_k})=\prod_kM_{n_k}(\complex)
+      \]
+      また、前半に示したことにより
+      \[
+      U\otimes_AW=\bigoplus_k(U_k\otimes_AW)^{\oplus n_k}\simeq \complex^{\oplus n_i}
+      \]
+      となる。実際、$U_j\otimes_AW\simeq \complex$ならば$U_j=0\times\cdots\times J_\beta\times\cdots\times 0$と表した時、$J_\beta$は$i$番目の位置になければならないから、$U_j\simeq U_i$となる。$\complex^{\oplus n_i}$は単純左$M_{n_i}(\complex)$加群だから、$U\otimes_AW$は単純左$B$加群である。
+  \end{enumerate}
 \end{proof}
 
 
@@ -170,36 +207,37 @@ W_\lambda(V)=c_\lambda V^{\otimes k}
   }
 \end{proof}
 
-定理\ref{schur_weyl}を示そう。
+定理\ref{schur_weyl}を証明しよう
 \begin{proof}
-  補題\ref{lemma}と定理\ref{DCT}より$\mathfrak{S}_k\times\gl(V)$の表現(すなわち$(\complex[\mathfrak{S}_k],\complex[\gl(V)])$-両側加群)として
+  補題\ref{DCT}と補題\ref{gen_of_symtensor}, 補題\ref{lemma}より、
   \[
-  V^{\otimes k}=\bigoplus_{\lambda\in\mathcal{P}_k}S_\lambda\boxtimes \Hom_A(V^{\otimes k},S_\lambda,)  
+  W_\lambda(V)=V^{\otimes k}c_\lambda  
   \]
-  と分解される。
-  
-  ここで対称群の任意の表現は自己双対的である。すなわち、任意の指標$\chi$に対して、
-  \[
-  \chi^*(g)=\overline{\chi(g)}=\chi(\inv{g})=\chi(g)  
-  \]
-  が成り立つ。これより表現として$(V^{\otimes k})^*\simeq V^{\otimes k}$となる。
-
-  $A=\complex[\mathfrak{S}_k]$として、$S_\lambda=Ac_\lambda$だから
+  は単純$\gl(V)$加群であることが従う。ここで、$V^{\otimes k}$は左$A=\complex[\mathfrak{S}_k]$加群とみなすこともできたことを思い出す。
   \begin{align*}
-    \Hom_A(V^{\otimes k},S_\lambda)
-    &=(V^{\otimes k})^*\otimes_AS_\lambda\\
-    &=V^{\otimes k}\otimes_AAc_\lambda\\
-    &=V^{\otimes k}c_\lambda\\
-    &=W_\lambda(V)
+    &\sigma\in\mathcal{H}_\lambda\implies\inv{\sigma}\in\mathcal{H}_\lambda\\
+    &\tau\in\mathcal{V}_\lambda\implies\inv{\tau}\in\mathcal{V}_\lambda
   \end{align*}
+  が成り立つことに注意すると、
+  \[
+  c_\lambda V^{\otimes k}=V^{\otimes k}c_\lambda  
+  \]
+  となることがわかる。
 
-  定理\ref{DCT}より$\Hom_A(S_\lambda,V^{\otimes k})$は既約$\gl(V)$表現だから$W_\lambda$は既約である。
+  系\ref{multiplicity}より、
+  \[
+  V^{\otimes k}\simeq \bigoplus_{\lambda\in\mathcal{P}_k}S_\lambda\otimes_\complex\Hom_A(S_\lambda,V^{\otimes k})  
+  \]
+  となる。$B=\gl(V)$加群として$\Hom_A(S_\lambda,V^{\otimes k})\simeq W_\lambda(V)$となることを示せばよい。$S_\lambda=Ac_\lambda$だから、$\phi:\Hom_A(S_\lambda,V^{\otimes k})\rightarrow W_\lambda(V)$を
+  \[
+    \phi(f)=f(c_\lambda)=f(c_\lambda^2)=c_\lambda f(c_\lambda)
+  \]
+  によって定める\footnote{$c_\lambda$は適当にスカラー倍することでべき等元であった}。$b\in\End_A(V^{\otimes k})=\gl(V)$に対して、
+  \[
+  \phi(bf)=c_\lambda bf(c_\lambda)=b(c_\lambda f(c_\lambda))=b\phi(f)
+  \]
+  より$\phi$は左$B$加群の準同型である。$S_\lambda=Ac_\lambda$, $W_\lambda(V)=c_\lambda V^{\otimes k}$より、$\phi$は全単射である。
 \end{proof}
-
-
-
-
-
 
 
 \begin{cor}
@@ -268,7 +306,7 @@ W_\lambda(V)=c_\lambda V^{\otimes k}
 
 \subsection{一般線形群の表現に対する指標}
 
-前節でWeyl表現という、一般線形群の既約表現を構成したが、これらが互いに同型でないことは示していなかった。一般線形群の表現に対しても指標と呼ばれる関数を定義することができ、有限群の場合ほどではないが強力な道具となる。
+前節でWeyl表現という一般線形群の既約表現を構成したが、これらが互いに同型でないことは示していなかった。本節ではこれを示し、さらに表現の指標を導入する。指標は有限群の場合のようにある範囲での表現を特徴づけるものであり、一般線形群においても強力な道具となる。
 
 \begin{defin}
   $\rho:\gl(V)\rightarrow \gl(W)$を表現とする。$H$を$\gl(V)$の対角行列のなす部分群とする。
@@ -299,6 +337,111 @@ W_\lambda(V)=c_\lambda V^{\otimes k}
   である。
 \end{eg}
 
+有限群の場合と同様、トレースの性質から次が従う。
+
+\begin{prop}$W,U$を$\gl(V)$の表現とする。
+  \begin{enumerate}
+    \item $\ch_{W\oplus U}=\ch_W+\ch_U$
+    \item $\ch_{W\otimes U}=\ch_W\ch_U$
+  \end{enumerate}
+  が成り立つ。
+\end{prop}
+
+\begin{theo}\label{char_schur}
+  $\lambda\in\mathcal{P}_k$, $\dim_\complex V=n$とする。$W_\lambda(V)$の指標を$\ch_\lambda$とおくと、$g=\diag(x_1,\cdots,x_n)$に対して
+  \[
+  \ch_\lambda(g)=s_\lambda(x_1,\cdots,x_n)
+  \]
+  が成り立つ。
+\end{theo}
+
+\begin{proof}
+  $\lambda=(\lambda_1,\cdots,\lambda_s)$とする。補題\ref{DCT}を$M_\lambda=Aa_\lambda$に用いて、
+  \[
+  V^{\otimes k}a_\lambda\simeq V^{\otimes k}\otimes_AM_\lambda  
+  \]
+  $a_\lambda$の定義から、
+  \[
+  V^{\otimes k}a_\lambda
+  =\Sym^{\lambda_1}(V)\otimes_{\complex}\cdots\otimes_\complex\Sym^{\lambda_s}(V)
+  =W_{(\lambda_1)}(V)\otimes\cdots\otimes W_{(\lambda_s)}(V)
+  \]
+  となる。Youngの規則(系\ref{young_rule_for_rep})より
+  \[
+  M_\lambda
+  =S_\lambda\oplus\bigoplus_{\mu>\lambda}S_\mu^{\oplus k_{\lambda\mu}}
+  =Ac_\lambda\oplus\bigoplus_{\mu>\lambda}Ac_\mu^{\oplus k_{\lambda\mu}}
+  \]
+  したがって、
+  \[
+  W_{(\lambda_1)}(V)\otimes\cdots\otimes W_{(\lambda_s)}(V)
+  \simeq 
+  W_\lambda(V)\oplus\bigoplus_{\mu>\lambda}W_{\mu}(V)^{\oplus k_{\lambda\mu}}
+  \]
+  両辺の指標をとれば
+  \[
+  s_\lambda=\ch_\lambda+\sum_{\mu>\lambda}k_{\lambda\mu}\ch_\mu  
+  \]
+  よって帰納法により従う。
+\end{proof}
+
+\begin{cor}
+  $W_\lambda(V)\simeq W_\mu(V)$であることと$\lambda=\mu$は同値である。
+\end{cor}
+
+\begin{proof}
+  定理$\ref{char_schur}$より$\lambda\neq\mu$ならば指標が異なる。
+\end{proof}
+
+\begin{cor}
+  $W,U$を$\gl(V)$の表現で、ともにWeyl表現の直和で表されるものとする。$W\simeq U$となるための必要十分条件はその指標が等しいことである。
+\end{cor}
+
+\begin{proof}
+  Schur多項式の一次独立性から従う。
+\end{proof}
+
+定理\ref{char_schur}の証明中に現れた式を再掲しておく
+
+\begin{cor}[Youngの規則]
+  \[
+  W_{(\lambda_1)}(V)\otimes\cdots\otimes W_{(\lambda_s)}(V)
+  \simeq 
+  W_\lambda(V)\oplus\bigoplus_{\mu>\lambda}W_{\mu}(V)^{\oplus k_{\lambda\mu}}
+  \]
+  が成り立つ。ただし$k_{\lambda\mu}$はKostka数である。
+\end{cor}
+
+\begin{cor}[Littlewood-Richardson規則]
+  $2$つのYoung図形$\lambda,\mu$に対して、
+  \[
+  W_\lambda(V)\otimes_{\complex}W_\mu(V)\simeq \bigoplus_\nu W_\nu(V)^{\oplus \eta^{\nu}_{\lambda\mu}}
+  \]
+  が成り立つ。ただし$\eta^{\nu}_{\lambda\mu}$はLittlewood-Richardson数である。
+\end{cor}
+
+\begin{proof}
+  $W_\lambda(V)\otimes_{\complex}W_\mu(V)$がWeyl表現の直和に表されることを示せばよい。$\lambda\in\mathcal{P}_k$, $\mu\in\mathcal{P}_l$とする。
+  \begin{align*}
+    W_\lambda(V)\otimes_\complex W_\mu(V)
+    &\simeq V^{\otimes k}c_\lambda\otimes_{\complex}V^{\otimes l}c_\mu\\
+    &\simeq V^{\otimes (k+l)}(c_\lambda\otimes c_\mu)
+  \end{align*}
+  ここで、$c_\lambda\otimes c_\mu\in\complex[\mathfrak{S}_k]\otimes_\complex\complex[\mathfrak{S}_l]=\complex[\mathfrak{S}_{k}\times\mathfrak{S}_l]\subset\complex[\mathfrak{S}_{k+l}]$である。$c=c_\lambda\otimes c_\mu$とおく。
+  \[
+  \complex[\mathfrak{S}_{k+l}]c=\bigoplus_{\nu\in\mathcal{P}_{k+l}}S_\nu^{\oplus t_\nu}
+  \]
+  とおけば\footnote{
+    実際は個の表現は$\complex[\mathfrak{S}_{k+l}]c=\ind_{\complex[\mathfrak{S}_k]\times\complex[\mathfrak{S}_l]}^{\complex[\mathfrak{S}_{k+l}]}S_\lambda\boxtimes S_\mu=S_\lambda\circ S_\mu$に他ならない。
+  }、補題\ref{DCT}より
+  \begin{align*}
+    V^{\otimes (k+l)}c
+    &\simeq V^{\otimes (k+l)}\otimes_{\complex[\mathfrak{S}_{k+l}]}\complex[\mathfrak{S}_{k+l}]c\\
+    &\simeq V^{\otimes (k+l)}\otimes_{\complex[\mathfrak{S}_{k+l}]}\bigoplus_{\nu\in\mathcal{P}_{k+l}}S_\nu^{\oplus t_\nu}\\
+    &\simeq \bigoplus_{\nu\in\mathcal{P}_{k+l}}V^{\otimes (k+l)}\otimes_{\complex[\mathfrak{S}_{k+l}]}\complex[\mathfrak{S}_{k+l}]c_\nu^{\oplus t_\nu}\\
+    &\simeq \bigoplus_{\nu\in\mathcal{P}_{k+l}}W_\nu(V)^{\oplus t_\nu}\\
+  \end{align*}
+\end{proof}
 
 
 
