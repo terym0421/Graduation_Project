@@ -9,7 +9,7 @@
 
 前節までに述べたことは有限群の表現論の一般論であり、具体的な群が与えられたときその表現を求める手法を提供しているわけではない。そこでこの節では対称群を例に取り上げ、既約表現の分類を行う。
 
-$\mathcal{P}_n$を大きさ$n$のYoung図形のなす集合とする。既約表現の種類は共役類の数だけあったが、$G=\mathfrak{S}_n$の共役類と$\mathcal{P}_n$の元は1対1に対応することが知られている。$G$の既約表現は$\mathcal{P}_n$から自然に作ることができる。
+$\mathcal{P}_n$を大きさ$n$のYoung図形のなす集合とする。既約表現の種類は共役類の数だけあったが、$G=\mathfrak{S}_n$の共役類は置換の型によって$\mathcal{P}_n$と1対1に対応することが知られている。$G$の既約表現は$\mathcal{P}_n$から自然に作ることができる。
 
 %\ref{}
 
@@ -62,7 +62,7 @@ $\mathcal{P}_n$を大きさ$n$のYoung図形のなす集合とする。既約表
 a_T=\sum_{\sigma\in \mathcal{H}_T}\sigma,\qquad
 b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in\mathcal{H}_T,\tau\in\mathcal{V}_T}\sgn(\tau)\sigma\tau
 \]
-によって定める。$c_T$をYoung対称子という。ここで$c_T$は$0$でないことに注意しておく。実際$c_T$の和に現れる$\sigma\tau$はすべて異なる元である。なぜならもし$\sigma\tau=\sigma'\tau'$, $\sigma,\sigma'\in\mathcal{H}_T$, $\tau,\tau'\in\mathcal{V}_T$ならば、$\mathcal{H}_T\cap\mathcal{V}_T=e$より$\sigma=\sigma'$, $\tau=\tau'$である。
+によって定める。$c_T$をYoung対称子という。ここで$c_T$は$0$でないことに注意しておく。実際$c_T$の和に現れる$\sigma\tau$はすべて異なる元である。なぜならもし$\sigma\tau=\sigma'\tau'$,\:( $\sigma,\sigma'\in\mathcal{H}_T\:\tau,\tau'\in\mathcal{V}_T)$ならば、$\mathcal{H}_T\cap\mathcal{V}_T=e$より$\sigma=\sigma'$, $\tau=\tau'$である。
 
 
 \begin{theo}\label{sym_irr_rep}
@@ -106,11 +106,11 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
   \end{equation}
   を示せば$\alpha=a_ec_T$となって証明が完了する。$g$に関する条件$g\notin\mathcal{H}_T\mathcal{V}_T$について次の補題を示す。
   \begin{lemm}\label{lamm:117}
-    $g\in\mathfrak{S}_n$について、$T$の同じ行にある任意の数字$i,j$(ただし$i\neq j$)が$gT$では異なる列にあるならば$g\in\mathcal{H}_T\mathcal{V}_T$が成り立つ。
+    $g\in G$について、$T$の同じ行にある任意の数字$i,j$(ただし$i\neq j$)が$gT$では異なる列にあるならば$g\in\mathcal{H}_T\mathcal{V}_T$が成り立つ。
   \end{lemm}
 
   \begin{proof}
-    $T$のYoung図形$\lambda=(\lambda_1,\cdots,\lambda_r)$の高さ$r$に関する帰納法で示す。$r=1$ならば$\mathcal{H}_T=\mathfrak{S}_n$なので明らか。$r>1$とする。$T$の第1行にある数字に注目する。仮定から、これらは$gT$でそれぞれ異なる列に入っているので、適当に$gT$に垂直置換$\nu\in\mathcal{V}_{gT}$を施すことで$\nu gT$においても第1行に入っているようにできる。
+    $T$のYoung図形$\lambda=(\lambda_1,\cdots,\lambda_r)$の高さ$r$に関する帰納法で示す。$r=1$ならば$\mathcal{H}_T=G$なので明らか。$r>1$とする。$T$の第1行にある数字に注目する。仮定から、これらは$gT$でそれぞれ異なる列に入っているので、適当に$gT$に垂直置換$\nu\in\mathcal{V}_{gT}$を施すことで$\nu gT$においても第1行に入っているようにできる。
     \[
     T=\quad\begin{ytableau}
       *(yellow)7&*(yellow)8&*(yellow)2\\
@@ -156,7 +156,7 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
     となるので示せた。
   \end{proof}
 
-  補題\ref{young_symmetrizer}の証明に戻ろう。(\ref{lemm:coefficient_zero})を示せばよいのであった。$g\notin\mathcal{H}_T\mathcal{V}_T$であるのなら、上記の補題から$T$の同じ行になる異なる数字$i,j$であって$gT$では同じ列にあるものが存在する。よって$\sigma=(i, j)$とすれば$\sigma\in\mathcal{H}_T\cap\mathcal{V}_{gT}$である。
+  補題\ref{young_symmetrizer}の証明に戻ろう。(\ref{lemm:coefficient_zero})を示せばよいのであった。$g\notin\mathcal{H}_T\mathcal{V}_T$であるのなら、上記の補題から$T$の同じ行にある異なる数字$i,j$であって$gT$では同じ列にあるものが存在する。よって$\sigma=(i, j)$とすれば$\sigma\in\mathcal{H}_T\cap\mathcal{V}_{gT}$である。
   $\mathcal{V}_{gT}=g\mathcal{V}_T\inv{g}$より$\sigma=g\tau\inv{g}$とおけば(\ref{a_sigmag}), (\ref{a_gtau})より
   \[
   a_{g}=a_{\sigma g}=a_{g\tau}=\sgn(\tau)a_g=-a_g 
@@ -178,13 +178,13 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
   \]
   であり、
   \[
-  b_T\tau=\sum_{g\in\mathcal{V}_T}\sgn(g)g\tau=\sgn{\tau}b_T  
+  b_T\tau=\sum_{g\in\mathcal{V}_T}\sgn(g)g\tau=\sgn(\tau)b_T  
   \]
   だから、補題\ref{young_symmetrizer}よりある$n_T\in\complex$で
   \[
   c_T^2=n_T c_T  
   \]
-  となることはわかる。$n_T$を求めよう。準同型$\map{\phi}{\complex[G]}{\complex[G]}$を
+  となることはわかる。$n_T$を求めよう。左加群の準同型$\map{\phi}{\complex[G]}{\complex[G]}$を
   \[
   \phi(\alpha)=\alpha c_T  
   \]
@@ -194,7 +194,7 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
   \]
   となるから、$\phi$の対角成分はすべて$1$である。よって
   \[
-  \tr\phi=\dim_\complex\complex[G]=n!  
+  \tr(\phi)=\dim_\complex\complex[G]=n!  
   \]
   である。$\complex[G]$は半単純だから、
   \[
@@ -211,15 +211,15 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
   \end{align*}
   となることがわかる。よって
   \[
-  \tr\phi=\tr\phi|_{\complex[G]c_T}  
+  \tr(\phi)=\tr(\phi|_{\complex[G]c_T})  
   \]
   である。$\alpha\in\complex[G]$に対して
   \[
-  \phi(\alpha c_T)=\alpha\phi(c_T)=n_T\alpha c_T
+  \phi(\alpha c_T)=\alpha\phi(c_T)=\alpha\phi(c_T^2)=n_T\alpha c_T
   \]
   だから、$\complex[G]c_T$は$\phi$の固有値$n_T$の固有空間の部分空間である。
   \[
-  \tr\phi|_{\complex[G]c_T}=n_T\dim_\complex\complex[G]c_T 
+  \tr(\phi|_{\complex[G]c_T})=n_T\dim_\complex\complex[G]c_T 
   \]
   $c_T\neq 0$だから$\dim_\complex\complex[G]c_T\neq 0$,
   よって
@@ -231,7 +231,7 @@ b_T=\sum_{\tau\in \mathcal{V}_T}\sgn(\tau)\tau,\qquad c_T=a_Tb_T=\sum_{\sigma\in
 定理\ref{sym_irr_rep}の証明を述べる
 
 \begin{proof}
-  定理\ref{reverse_schur}より
+  系\ref{reverse_schur}より
   \[
   \dim_\complex\Hom(\complex[G]c_T,\complex[G]c_T)=1  
   \]
@@ -266,7 +266,7 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
   \[
   \psi(\phi(xa_Tb_T))=\psi(xa_Tb_Ta_T)=xa_Tb_Ta_Tb_T=n_Txa_Tb_T  
   \]
-  よって$\psi\circ\phi$は0でないスカラー倍写像なので$\phi$は単射、$\psi$は全射である。命題\ref{square_of_young_sym}とまったく同様に$\tilde{c_T}^2=\tilde{n_T}\tilde{c_T}$となる0でないスカラー$\tilde{n_T}$が存在することがわかる。よって$\phi$は同型である。
+  よって$\psi\circ\phi$は0でないスカラー倍写像なので$\phi$は単射、$\psi$は全射である。命題\ref{square_of_young_sym}とまったく同様に$\tilde{c_T}^2=\tilde{n_T}\tilde{c_T}$となる0でないスカラー$\tilde{n_T}$が存在することがわかる。よって$\phi\circ\psi$もスカラー倍写像になるから、$\phi$は同型である。
 \end{proof}
 
 
@@ -404,16 +404,16 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
   \[
   v=c_\lambda, \qquad u=(1,2,3)c_\lambda=-e+(1,3)-(2,3)+(1,2,3)
   \]
-  とすれば、$\complex[G]c_\lambda=\complex v\oplus\complex v$であり、
+  とすれば、$\complex[G]c_\lambda=\complex v\oplus\complex u$であり、
   \begin{align*}
     &(1,2)v=v,\qquad (1,2)u=-v-u\\
     &(1,2,3)v=u,\qquad (1,2,3)u=-v-u
   \end{align*}
-  だから、
+  だから、指標を$\chi$とすると
   \begin{align*}
-  &\tr e=\dim_\complex\complex[G]c_\lambda=2  \\
-  &\tr(1,2)=0\\
-  &\tr(1,2,3)=-1 
+  &\chi(e)=\dim_\complex\complex[G]c_\lambda=2  \\
+  &\chi((1,2))=0\\
+  &\chi((1,2,3))=-1 
   \end{align*}
   となり、指標が一致している。
 \end{eg}
@@ -470,7 +470,7 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
   \]
   このとき
   \[
-  \complex[G]_{c_\lambda}\otimes_\complex\complex_{\sgn}\simeq \complex[G]_{c_{\lambda^*}}
+  \complex[G]{c_\lambda}\otimes_\complex\complex_{\sgn}\simeq \complex[G]{c_{\lambda^*}}
   \]
   となることを示す。定義より、
   \[
@@ -500,23 +500,23 @@ Young対称子の定義において$a_T$, $b_T$の積の順序に本質的な違
   \[
   M_\lambda=\ind_{\mathcal{H}_\lambda}^{G}(\mathbf{1})  
   \]
-  とする。ここで$\mathbf{1}$は$\mathcal{H}_\lambda$の自明な表現である。\ref{ind_from_trivial}より、$M_\lambda$は$G/\mathcal{H}_\lambda$の置換表現に他ならない。
+  とする。ここで$\mathbf{1}$は$\mathcal{H}_\lambda$の自明な表現である。例\ref{ind_from_trivial}より、$M_\lambda$は$G/\mathcal{H}_\lambda$の置換表現に他ならない。
   $M_\lambda=\complex[G]a_\lambda$となることを示す。
   $\phi:M_\lambda=\complex[G]\otimes_{\complex[H_\lambda]} \mathbf{1}\rightarrow \complex[G]a_\lambda$を
   \[
   \phi(g\otimes c)=cga_\lambda  
   \]
-  $\complex[\mathcal{H}_\lambda]$双線形に拡張して定める。$h\in\mathcal{H}_\lambda$に対して
+  を$\complex[\mathcal{H}_\lambda]$双線形に拡張して定める。$h\in\mathcal{H}_\lambda$に対して
   \[
   \phi(gh\otimes c)=cgha_\lambda=cga_\lambda=\phi(g\otimes hc)
   \]
   だから$\phi$はwell-definedであり$\complex[G]$準同型である。逆に$\psi:\complex[G]a_\lambda\rightarrow\complex[G]\otimes_{\complex[H_\lambda]} \mathbf{1}$を
   \[
-  \psi(ga_\lambda)=\frac{1}{|\mathcal{H}_\lambda|}ga_\lambda\otimes 1=  g\otimes 1
+  \psi(x)=\frac{1}{|\mathcal{H}_\lambda|}x\otimes 1
   \]
   によって定めれば$\phi,\psi$は互いに逆写像であるから、同型である。
   
-  $\lambda$が1行のYoung図形の場合、$\mathcal{H}_\lambda=G$であるから、$M_\lambda$は自明な表現にほかならない。一方$\lambda$が1列のYoung図形の場合は$\mathfrak{H}_\lambda=1$であるから$M_\lambda$は正則表現である。
+  $\lambda$が1行のYoung図形の場合、$\mathcal{H}_\lambda=G$であるから、$M_\lambda$は自明な表現にほかならない。一方$\lambda$が1列のYoung図形の場合は$\mathcal{H}_\lambda=1$であるから$M_\lambda$は正則表現である。
   
   この表現が後に重要になるので、$M_\lambda$に関する性質を一つ示しておく。
 \end{eg}
@@ -570,7 +570,7 @@ Youngの規則はSchur多項式の線形結合で表すときにも現れた(系
 \end{cor}
 
 \begin{proof}
-  $\lambda\in\mathcal{P}_n$の、辞書式順序に関する数学的帰納法で示す。$\mathcal{P}_n$の最大元は、1行Young図形$(n)$であるが、このとき$S_{(n)}$は自明な表現なので指標は当然整数である。ある$\lambda$より大きいすべてのYoung図形$\mu$に対して$\chi_\mu$が整数値であったとする。定理\ref{Young_rule_for_rep}より
+  $\lambda\in\mathcal{P}_n$の辞書式順序に関する数学的帰納法で示す。$\mathcal{P}_n$の最大元は1行Young図形$(n)$であるが、このとき$S_{(n)}$は自明な表現なので指標は当然整数値である。ある$\lambda$より大きいすべてのYoung図形$\mu$に対して$\chi_\mu$が整数値であったとする。定理\ref{Young_rule_for_rep}より
   \[
   \chi_{M_\lambda}  =\chi_{\lambda}+\sum_{\mu>\lambda}k_{\lambda\mu}\chi_\mu
   \]
@@ -599,9 +599,9 @@ Youngの規則はSchur多項式の線形結合で表すときにも現れた(系
   =\sharp\set{\sigma\mathcal{H}_{\lambda}\in G/\mathcal{H}_\lambda}{g\sigma\mathcal{H}_\lambda=\sigma\mathcal{H}_\lambda}
   =\frac{1}{|\mathcal{H}_\lambda|}\sharp\set{\sigma\in G}{g\in\mathcal{H}_{\sigma\lambda}}
   \]
-  と書くことができる。$N=\sharp\set{\sigma\in G}{g\in\mathcal{H}_{\sigma\lambda}}$とおく。$N$は形$\lambda$の標準タブローであって、$g$がその水平置換になっているものの個数である。
+  と書くことができる。$N=\sharp\set{\sigma\in G}{g\in\mathcal{H}_{\sigma\lambda}}$とおく。$N$は$g$を水平置換にもつ形$\lambda$の標準タブローの個数である。
   
-  $g$がある標準タブロー$\sigma\lambda$の水平置換であるための必要十分条件は、$g$を巡回置換の積で表したときその各巡回置換$(i_1,\cdots,i_k)$について、$i_1,\cdots,i_k$が$\sigma\lambda$の同一行に含まれていることである。よって、逆に$g$からそのような標準タブローを構成するには、$g$の長さ$q$の巡回置換が$\lambda$の$p$行目に何個含まれているかを指定し、水平置換で動かせばよい。
+  $g$がある標準タブロー$\sigma\lambda$の水平置換であるための必要十分条件は、$g$を巡回置換の積で表したときその各巡回置換$(i_1,\cdots,i_k)$について、各文字$i_1,\cdots,i_k$が$\sigma\lambda$の同一行に含まれていることである。よって、逆に$g$からそのような標準タブローを構成するには、$g$の長さ$q$の巡回置換が$\lambda$の$p$行目に何個含まれているかを指定し、水平置換で動かせばよい。
 
   $g$の長さ$q$の巡回置換が$\lambda$の$p$行目に$c_{pq}$個含まれているとする。このとき$p$行目に含まれる巡回置換の長さの総和が、$\lambda$の$p$行目の箱の数に等しくなければならない。また、長さ$q$の巡回置換は全部で$m_q$個あることに注意すると、
   $c_{pq}$は

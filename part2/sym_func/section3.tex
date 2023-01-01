@@ -11,7 +11,7 @@
 \[
 m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}  
 \]
-とし、に対して
+とし
 \begin{align*}
   &e_k=m_{1^k}=\sum_{1\leq i_1<\cdots<i_k\leq n}x_{i_1}\cdots x_{i_k},\qquad(k=1,\cdots,n)\\
   &h_k=\sum_{\lambda\in\mathcal{P}_k}m_\lambda=\sum_{1\leq i_1\leq\cdots\leq i_k\leq n}x_{i_1}\cdots x_{i_k}\\
@@ -206,7 +206,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   \[
   \xi_{\lambda\mu}=\sum\prod_{q=1}^n\frac{m_q!}{c_{1q}!\cdots c_{nq}!}=\chi_{M_\lambda}(g_\mu)  
   \]
-  ただし、$g_\mu$は$\mu$を置換の型にもつ元であり、$\mu=(1^{m_1},2^{m_2},\cdots)$であり、また和は命題\ref{m_lambda_char_1}と同様
+  ただし、$g_\mu$は$\mu$を置換の型にもつ元であり、$\mu=(1^{m_1},2^{m_2},\cdots,n^{m_n})$であり、また和は命題\ref{m_lambda_char_1}と同様
   \begin{itemize}
     \item $c_{p1}+2c_{p2}+3c_{p3}+\cdots+nc_{pn}=\lambda_p$, for all $p=1,\cdots,n$
     \item $c_{1q}+c_{2q}+c_{3q}+\cdots+c_{nq}=m_q$, for all $q=1,\cdots,n$
@@ -220,15 +220,15 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   p_q^{m_q}=(x_1^q+x_2^q+\cdots+x_n^q)^{m_q}
   =\sum_{
     c_{1q},c_{2q},\cdots,c_{nq}\geq 0
-  } \frac{m_q!}{c_{1q}!c_{2q}!\cdots c_{nq}!}x_1^{c_{1q}}x_2^{c_{2q}}\cdots x_n^{c_{nq}}
+  } \frac{m_q!}{c_{1q}!c_{2q}!\cdots c_{nq}!}x_1^{qc_{1q}}x_2^{qc_{2q}}\cdots x_n^{qc_{nq}}
   \]
   であるので、
   \begin{align*}
   p_\mu
   &=\prod_{q=1}^n\sum_{
     c_{1q},c_{2q},\cdots,c_{nq}\geq 0
-  } \frac{m_q!}{c_{1q}!c_{2q}!\cdots c_{nq}!}x_1^{c_{1q}}x_2^{c_{2q}}\cdots x_n^{c_{nq}}\\
-  &=\sum\prod_{q=1}^n\frac{m_q!}{c_{1q}!c_{2q}!\cdots c_{nq}!}x_1^{\mu_1}x_2^{\mu_2}\cdots x_n^{\mu_n}
+  } \frac{m_q!}{c_{1q}!c_{2q}!\cdots c_{nq}!}x_1^{qc_{1q}}x_2^{qc_{2q}}\cdots x_n^{qc_{nq}}\\
+  &=\sum_{\lambda\in\mathcal{P}_k}\sum\prod_{q=1}^n\frac{m_q!}{c_{1q}!c_{2q}!\cdots c_{nq}!}x_1^{\lambda_1}x_2^{\lambda_2}\cdots x_n^{\lambda_n}
   \end{align*}
 \end{proof}
 
@@ -304,7 +304,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   とする。
 \end{eg}
 
-このように、対称関数はいままでみてきた対称多項式を自然に無限変数に拡張した概念であり、対称多項式で成り立っていた関係式が対称関数においても成立することが多い。このことは対称関数の$k$次斉次部分$\Lambda^k$が$k$次斉次対称多項式からの射影極限と考えることができることによる。$\Lambda_n^k$を$n$変数$k$次斉次対称多項式のなす$\integer$加群とする。$m\leq n$に対して線形写像$\map{\rho_{m,n}}{\Lambda^k_n}{\Lambda^k_m}$を
+このように、対称関数はいままでみてきた対称多項式を自然に無限変数に拡張した概念であり、対称多項式で成り立っていた関係式が対称関数においても成立することが多い。このことは対称関数の$k$次斉次部分$\Lambda^k$が$k$次斉次対称多項式からの射影極限と考えることができることによる。$\Lambda_n^k$を$n$変数$k$次斉次対称多項式のなす$\integer$加群とする。$m\leq n$に対して準同型$\map{\rho_{m,n}}{\Lambda^k_n}{\Lambda^k_m}$を
 \[
 \rho_{m,n}(f(x_1,\cdots,x_m,x_{m+1},\cdots,x_n))=f(x_1,\cdots,x_m,0,\cdots,0)  
 \]
@@ -327,7 +327,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   \[
   \rho_{m,n}\circ\theta_n=\theta_m  
   \]
-  が成り立つから、射影極限の普遍性から線形写像
+  が成り立つから、射影極限の普遍性から準同型
   \[
   \theta:\Lambda^k\rightarrow\mathop{\lim_{\longleftarrow}}\Lambda^k_n
   \]
@@ -404,12 +404,6 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     f=((1+x_1),\:(1+x_1)(1+x_2),\:(1+x_1)(1+x_2)(1+x_3),\:\cdots)
   \]
   を考えると、$f$は対称多項式の射影極限の元であるが、次数の有界性を満たさないので対称関数ではない。
-
-  一方
-  \[
-  \integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}=\bigoplus_{k=0}^\infty \Lambda^k_n  
-  \]
-  だから、対称関数環は射影極限が直和と可換でない例を与えている。
 \end{notice}
 
 
@@ -561,7 +555,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   \[
   ([V]+[V'])\circ [W]=[V\oplus V']\circ [W]=[V]\circ[W]+[V']\circ[W]  
   \]
-  より$\circ$は双線形である。$\circ$が可換であることは$\mathfrak{S}_n$の元と$\mathfrak{S}_m$の元が$\mathfrak{S}_{n+m}$において可換であることからわかる。
+  より$\circ$は双線形である。$\circ$が可換であることは$\mathfrak{S}_n\times\mathfrak{S}_m\simeq\mathfrak{S}_m\times\mathfrak{S}_n$であることからわかる。
 
   乗法が結合的であることを示そう。すなわち
   \[
@@ -629,7 +623,7 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
 \[
 \generated{[V],[W]}=\generated{\chi_V,\chi_W}  
 \]
-と定義し、$\generated{,}$を$R$に双線形に拡張し内積を入れる。本節の主定理の一つが次の定理である。
+と定義し、$\generated{,}$を$R$に双線形に拡張し内積を入れる。本節の主定理が次の定理である。
 
 \begin{theo}\label{rep_ring_and_func_ring}
   $\varphi:\Lambda\rightarrow R$を$\varphi(h_\lambda)=[M_\lambda]$によって定めると$\varphi$は内積を保つ環の同型
@@ -711,7 +705,7 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
 
 この定理によって対称群の表現を対称関数の知識を使って調べることができる。
 
-\begin{cor}\label{LR_for_rep}
+\begin{cor}[Littlewood-Richardson規則]\label{LR_for_rep}
   $\mathfrak{S}_n$の既約表現$S_\lambda$, $\mathfrak{S}_m$の既約表現$S_\mu$について
   \[
   \ind_{\mathfrak{S}_n\times\mathfrak{S}_m}^{\mathfrak{S}_{n+m}}S_\lambda\boxtimes S_\mu =\bigoplus_{\nu}S_\nu^{\oplus\eta^{\nu}_{\lambda\mu}} 
@@ -719,7 +713,7 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
   が成り立つ。ただし$\eta^{nu}_{\lambda\mu}$はLittlewood-Richardson数である。
 \end{cor}
 
-\begin{cor}
+\begin{cor}[Youngの規則]
   $k_{\lambda\mu}$をKostka数とする。
   \[
   M_\lambda=S_\lambda\oplus \left(\bigoplus_{\mu>\lambda}S_\mu^{\oplus k_{\lambda\mu}}\right)  
