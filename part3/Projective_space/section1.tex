@@ -1,5 +1,5 @@
-\documentclass{ltjsareport}
-\input{../../setting.js}
+\documentclass{ltjsreport}
+\input{../../setting.tex}
 
 \begin{document}
   \section{射影空間}  
@@ -10,13 +10,60 @@
     \[
     z\sim w\Leftrightarrow \text{ある$c\in\complex$が存在して}w=cz  
     \]
-    と定義する。$\proj^n=(\complex^{n+1}\setminus\{0\})/\sim$を$n$次元(複素)射影空間という。
+    と定義する。$\proj^n=(\complex^{n+1}\setminus\{0\})/\sim$を$n$次元(複素)射影空間という。$(z_0,z_1,\cdots,z_n)\in\complex^{n+1}$の同値類を$[z_0:z_1:\cdots:z_n]$と書いて、これを斉次座標という。
   \end{defin}
-  
+
+  $\proj^n$の部分集合$U_i$を
+  \[
+  U_i=\set{[z_0:z_1:\cdots:z_n]\in\proj^n}{z_i\neq 0}=\set{[z_0:\cdots:z_{i-1}:1:z_{i+1}:\cdots:z_n]\in\proj^n}{z_i\neq 0} 
+  \]
+  によって定める。$[z_0:z_1\cdots:z_i:\cdots:z_n]\in U_i$のとき
+  \[
+    [z_0:z_1\cdots:z_i:\cdots:z_n]=[\frac{z_0}{z_i}:\frac{z_1}{z_i}:\cdots:1:\cdots:\frac{z_n}{z_i}] 
+  \]
+  だから、
+  \[
+    \varphi_i:U_i\owns [z_0:z_1\cdots:z_i:\cdots:z_n]
+    \mapsto 
+    (\frac{z_0}{z_i},\frac{z_1}{z_i},\cdots,\frac{z_{i-1}}{z_i},\frac{z_{i+1}}{z_i},\cdots:\frac{z_n}{z_i})
+    \in\complex^{n}
+  \]
+  のような写像を考えることができるが、$\varphi_i$は全単射であり、$U_i$と$\complex^n$を同一視することができる\footnote{
+    $\proj^n$に$\simeq$により定まる商位相を入れたとき$\varphi_i$は同相となる。
+  }。
+  \[
+  \proj^n=\bigcup_{i=0}^nU_i  
+  \]
+  が成り立つから、$\proj^n$は$\complex^n$を$n+1$枚貼り合わせた構造を持っている。
+
   複素数上で定義をしたが実数上でもまったく同様に実射影空間が定義できる。射影空間を考える理由に次の2つがある。
   \begin{itemize}
+    \item $\proj^n$における$k$次元平面は$\complex^{n+1}$の$k+1$次元線形部分空間と1対1に対応する。
     \item $\proj^n$における平行線は1点で交わる
-    \item $\proj^n$における$k$次元平面は$\complex^{n+1}$の$k+1$次元線形部分空間と1対1に対応する
   \end{itemize}
   これらのことを説明しよう。
+
+  \begin{defin}
+    $A$をランク$n-r$の$(n-r)\times (n+1)$行列とする。
+    \[
+    \set{[z_0:z_1:\cdots:z_n]\in\proj^n}{A\pmat{z_0\\z_1\\\vdots\\z_n}=\pmat{0\\\vdots\\0}}  
+    \]
+    の形の$\proj^n$の部分集合を$\proj^n$のr次元平面という。とくに$r=1$のときは直線, $r=n-1$のときは超平面と呼ぶ。
+  \end{defin}
+
+  \begin{eg}
+    直線
+    \[
+    L=\set{[z_0:z_1:z_2]\in\proj^2}{z_2-2z_0-z_1=0}  
+    \]
+    を考えてみる。
+    \begin{align*}
+    &L\cap U_0=\set{[1:z_1:z_2]\in\proj^2}{z_2-z_1-2=0} \approx \set{(x,y)\in\complex^2}{x-y-2=0}\subset \complex^2\\
+    &L\cap U_1=\set{[z_0:1:z_2]\in\proj^2}{z_2-2z_0-1=0}
+    \approx \set{(x,y)\in\complex^2}{y-2x-1=0}\subset\complex^2\\
+    &L\cap U_2=\set{[z_0:z_1:1]\in\proj^2}{1-2z_0-z_1=0}
+    \approx \set{(x,y)\in\complex^2}{1-2x-y=0}\subset\complex^2
+    \end{align*}
+    
+  \end{eg}
 \end{document}
