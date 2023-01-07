@@ -1,0 +1,395 @@
+\documentclass{ltjsreport}
+\input{../../setting.tex}
+
+\begin{document}
+\section{基本的な代数幾何学}
+
+
+数え上げ幾何学について述べる前に、いくつか代数幾何学の言葉を用いるのでその定義をしておく。
+
+\subsection{代数的集合とZariski位相}
+\begin{defin}
+  $k$を体とする。直積集合$k^n$を$\affine^n(k)$や$\affine^n$と書き、$n$次元アフィン空間という。
+\end{defin}
+
+\begin{defin}
+  $S$を$k[X_1,\cdots,X_n]$の部分集合とする。
+  \[
+  V(S)=\set{P\in\affine^n}{\text{任意の$F\in S$に対して }F(P)=0}  
+  \]
+  とする。$V(S)$の形の集合を$\affine^n$の代数的集合という。
+\end{defin}
+
+$S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})$である。体上の多項式環$k[X_1,\cdots,X_n]$はNoether環であるからイデアル$\mathfrak{a}$は有限生成である。
+したがって$V(S)=V(F_1,\cdots,F_r)$となる多項式$F_1,\cdots,F_r\in k[X_1,\cdots,X_n]$が存在する。
+
+\begin{eg}\label{rei1}
+  $V(0)=\affine^n$, $V(1)=\varnothing$である。$k$が無限体である場合、逆にイデアル$\mathfrak{a}$に対して$V(\mathfrak{a})=\affine^n$ならば$\mathfrak{a}=(0)$である。
+  
+  実際、$\mathfrak{a}\neq 0$であるとして$F\in\mathfrak{a}$を$0$でも定数でもない多項式とする。$F$はある変数$X_i$に関して$1$次以上だからとくに$X_1$を含むとする。$F_*=F(X_1,0,\cdots,0)\in k[X_1]$を考えると、$F_*$の根は高々有限かつ、$k$は代数閉なので無限体だから、$V(\mathfrak{a})$に含まれない点が存在する。
+
+  $V(\mathfrak{a})=\varnothing$ならば$\mathfrak{a}=(1)$となることは$k$が代数閉ならば成り立つが、それはHilbertの零点定理の帰結である。
+\end{eg}
+
+
+
+\begin{eg}
+  $k=\real$とする。$V(Y-X^2)\subset\affine^2(\real)$は放物線$y=x^2$である。$V(X^n)=V(X)\subset \affine^2(\real)$は直線$x=0$である。
+\end{eg}
+
+\begin{eg}
+  $\affine^1$の代数的集合は$\affine^1,\varnothing$と有限集合のいずれかである。実際$V(F)=\{\text{$F$の根}\}$であるが、$F$の根はたかだか有限である。
+\end{eg}
+
+
+\begin{prop}  
+  $S\subset T$ならば$V(S)\supset V(T)$である。
+\end{prop}
+
+\begin{proof}
+  $P\in V(T)$ならば任意の$F\in S$について、$F\in S\subset T$だから$F(P)=0$. したがって$P\in V(S)$
+\end{proof}
+
+\begin{prop}\label{zariski}
+  $\affine^n$の代数的集合について
+  \begin{enumerate}
+    \item $V(0)=\affine^n$, $V(1)=\varnothing$
+    \item $V(S)\cup V(T)=V(ST)$, ただし$ST=\set{FG}{F\in S, G\in T}$
+    \item $\bigcap_{\lambda\in\Lambda}V(S_\lambda)=V(\bigcup_{\lambda\in\Lambda}S_\lambda)$
+  \end{enumerate}
+  が成り立つ
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+    \item はよい
+    \item $p\in V(S)\cup V(T)$ならば任意の$F\in S, G\in T$について$F(p)=0$または$G(p)=0$が成り立つから、$FG(p)=F(p)G(p)=0$. よって$p\in V(ST)$である。逆に$p\in V(ST)$かつ、$p\notin V(T)$であるとする。ある$G\in T$があって$G(p)\neq 0$だから任意の$F\in S$について$0=FG(p)=F(p)G(p)$より$F(p)=0$. すなわち$p\in V(S)$
+    \item $S_\lambda\subset \bigcup_{\lambda\in\Lambda} S_\lambda$だから、$V(S_\lambda)\supset V(\bigcup_{\lambda\in\Lambda}S_\lambda)$. よって$\bigcap_{\lambda\in\Lambda} V(S_\lambda)\supset V(\bigcup_{\lambda\in\Lambda} S_\lambda)$. $p\in\bigcap_{\lambda\in\Lambda}V(S_\lambda)$ならば、任意の$F\in\bigcup_{\lambda\in\Lambda}S_\lambda$に対して$F(p)=0$すなわち$p\in V(\bigcup_{\lambda\in\Lambda}S_\lambda)$
+  \end{enumerate}
+\end{proof}
+
+命題\ref{zariski}より、$\affine^n$には代数的集合$V(S)$を閉集合とする位相が定まる。これを$\affine^n$のZariski位相といい、以降$\affine^n=k^n$にはいつもこの位相が入っているとする。
+
+\begin{eg}
+  $\affine^1$における閉集合は$\varnothing,\affine^1,(\text{有限集合})$であるから、Zariski位相はいわゆる補有限位相である。
+\end{eg}
+
+\begin{prop}
+  $k$を無限体とすると$\affine^n$はHausdorffでない。
+\end{prop}
+
+\begin{proof}
+  実際、空でない任意の2つの開集合$U,W$に対して、$\affine^n\setminus U=V(F_1\cdots,F_r)$, $\affine^n\setminus W=V(G_1,\cdots,G_s)$と置けば、
+  \[
+  U\cap W=(\affine^n \setminus V(F_1,\cdots,f_r))\cap (\affine^n \setminus V(G_1,\cdots,G_s))=\affine^n\setminus(V(F_1,\cdots,f_r)\cup V(G_1,\cdots,G_s))  
+  \]
+  だが、
+  \[
+    V(F_1,\cdots,F_r)\cup V(G_1,\cdots,G_s)=V(\{F_iG_j\}_{ij}) 
+  \]
+  となる。$U,W$は空でないので$\{F_1,\cdots,F_r\},\{F_1,\cdots,G_s\}\neq \{0\}$ゆえに、$\{F_iG_j\}_{ij}\neq \{0\}$. したがって例\ref{rei1}より$V(\{F_iG_j\}_{ij})\subsetneq \affine^n$. よって
+  \[
+  U\cap W\neq \varnothing
+  \]
+\end{proof}
+
+\begin{prop}\label{continuity}
+  $\phi:\affine^n\rightarrow \affine^m$が、ある多項式$F_1,\cdots,F_m\in k[X_1,\cdots,Xn]$に対して
+  \[
+  \phi(x_1,\cdots,x_n)=(F_1(x_1,\cdots,x_n),\cdots,F_m(x_1,\cdots,x_n))  
+  \]
+  となるなら、$\phi$はZariski位相に関して連続である。
+\end{prop}
+
+\begin{proof}
+  $\affine^m$の閉集合$V(G_1,\cdots,G_r)$に対して、
+  \[
+  \inv{\phi}(V(G_1,\cdots,G_r))=V(G_1(F_1,\cdots,F_m),\cdots,G_r(F_1,\cdots,Fm))  
+  \]
+  が成り立つことから、$\inv{\phi}(V(G_1,\cdots,G_r))$は閉集合である。
+\end{proof}
+
+
+多項式環のイデアルが与えられたときにアフィン空間の部分集合を定めたが、逆にアフィン空間の部分集合からイデアルを作ることを考える。
+
+\begin{defin}
+  $A$を$\affine^n$の部分集合とする。
+  \[
+  I(A)=\{F\in k[X_1,\cdots,X_n]\}{\text{すべての$p\in A$に対して }F(p)=0}
+  \]
+  を$A$のイデアルという。
+\end{defin}
+
+\begin{eg}
+  定義より$S\subset k[X_1,\cdots,X_n]$に対して、$S\subset I(V(S))$である。また、$A\subset k[X_1,\cdots,X_n]$に対して$A\subset V(I(A))$である。
+\end{eg}
+
+\begin{eg}
+  $\affine^1$において、$V(X^2)=\{0\}$だから、$I(V(X^2))=(X)\supsetneq (X^2)$である。
+\end{eg}
+
+\begin{prop}
+  $A\subset B$ならば$I(A)\supset I(B)$である。
+\end{prop}
+
+\begin{proof}
+  $F\in I(B)$ならば、すべての$p\in A\subset B$に対して$F(p)=0$. すなわち$F\in I(A)$
+\end{proof}
+
+\begin{prop}\label{VIrelation}
+  次が成り立つ。
+  \begin{enumerate}
+    \item $A\subset \affine^n$に対して$A\subset V(I(A))$, また$V(I(V(A)))=V(A)$
+    \item $S\subset k[X_1,\cdots,X_n]$に対して$S\subset I(V(S))$, また$I(V(I(S)))=I(S)$
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  略
+\end{proof}
+
+\begin{prop}
+  $V,W$を$\affine^n$の代数的集合とする。$V=W$であるための必要十分条件は$I(V)=I(W)$が成り立つことである。
+\end{prop}
+
+\begin{proof}
+  必要性は明らか。十分性を示す。$V=V(S), W=V(T)$とする。命題\ref{VIrelation}より
+  \[
+  V(S)=V(I(V(S)))=V(I(V(T)))=V(T)
+  \]
+\end{proof}
+
+
+
+
+
+\subsection{アフィン多様体}
+
+\begin{defin}
+  位相空間$X$の閉集合$V$について、
+  \[
+  \text{$X$の閉集合$V_1,V_2$が }V=V_1\cup V_2\text{をみたすなら$V_1=V$または$V_2=V$}  
+  \]
+  をみたすとき、$V$を既約な閉集合という。既約でない集合は可約であるという。空集合は既約ではないとする。
+\end{defin}
+
+\begin{defin}
+  $\affine^n$の既約な代数的集合をアフィン多様体という。
+\end{defin}
+
+\begin{eg}
+  $V(X,Y)\subset\affine^2$はアフィン多様体である。実際$V(X,Y)=\{(0,0)\}$で1点集合は既約である。
+\end{eg}
+
+\begin{eg}
+  $V(Y^2-X^2)\subset \affine^2$はアフィン多様体でない。実際
+  \[
+  V(Y^2-X^2)=V((Y-X)(Y+X))=V(Y-X)\cup V(Y+X)
+  \]
+\end{eg}
+
+\begin{prop}\label{prime_affine}
+  代数的集合$V$がアフィン多様体となるための必要十分条件は$I(V)$が素イデアルとなることである。
+\end{prop}
+
+\begin{proof}
+  $V$が可約であるとし、$V=V_1\cup V_2$,  $\varnothing\subsetneq V_1,V_2\subsetneq V$とする。このとき
+  \[
+  I(V)=I(V_1\cup V_2)=I(V_1)\cap I(V_2)  
+  \]
+  である。$\varnothing\subsetneq V_1,V_2\subsetneq V$より、$F\in I(V_1)\setminus I(V)$, $G\in I(V_2)\setminus I(V)$が存在するが、$FG\in I(V_1)\cap I(V_2)=I(V)$だから、$I(V)$は素イデアルでない。
+
+  逆に$I(V)$が素イデアルでないとする。このとき$F, G\notin I(V)$で$FG\in I(V)$をみたすものが存在する。したがって
+  \[
+  V\subset V(I(V))\subset V(FG)
+  \]
+  が成り立つ。よって
+  \[
+  V=V\cap V(FG)=V\cap (V(F)\cup V(G))=(V\cap V(F))\cup V(\cap V(G))  
+  \]
+  $F\notin I(V)$, $G\notin I(V)$より$V\cap V(F), V\cap V(G)\subsetneq V$. よって$V$は可約である。
+\end{proof}
+
+
+以降$k$は$\complex$などの代数閉体とする。代数閉体で考える理由の一つは次の事実である。
+
+\begin{fact}[Hilbertの零点定理]\label{nullstellenzats}
+  $k$を代数閉体,$\mathfrak{a}$を$k[X_1,\cdots,X_n]$のイデアルとする。$I(V(\mathfrak{a}))=\sqrt{\mathfrak{a}}$が成り立つ。
+\end{fact}
+
+ここで、$\sqrt{\mathfrak{a}}$は$\mathfrak{a}$の根基と呼ばれるイデアルで、
+\[
+\sqrt{\mathfrak{a}}=\set{F\in k[X_1,\cdots,X_n]}{\text{ある整数$n\geq 0$で }F^n\in\mathfrak{a}}  
+\]
+で定義される。イデアルの根基に関しては、次の特徴づけがある。
+\[
+\sqrt{\mathfrak{a}}=\bigcap_{\mathfrak{a}\subset\mathfrak{p}}\mathfrak{p}  
+\]
+よってとくに、$\mathfrak{a}$が素イデアルならば$\mathfrak{a}=\sqrt{\mathfrak{a}}$が成り立つ(逆は一般に成り立たない)。
+
+また、$\sqrt{\mathfrak{a}}=\mathfrak{a}$が成り立つとき、$\mathfrak{a}$を根基イデアルという。$V(\mathfrak{a})=V(\sqrt{\mathfrak{a}})$に注意すると、事実\ref{nullstellenzats}と命題\ref{prime_affine}より、$\affine^n$の代数的集合は$k[X_1,\cdots,X_n]$の根基イデアルと1対1に対応し、アフィン多様体は素イデアルと1対1に対応することがわかる。
+
+
+
+\begin{defin}
+  $X$を位相空間とする。$X$の既約な閉集合の列
+  \[
+  X_0\subsetneq X_1\subsetneq X_2\subsetneq\cdots\subsetneq X_n\subset X   
+  \]
+  の長さ$n$の上限値を$X$の次元といい、$\dim X=n$と書く。
+\end{defin}
+
+\begin{eg}
+  $\dim\affine^n=n$である。例えば、$\affine^1$の既約閉集合は$\affine^1$と1点集合のみであるから、たしかに$\dim\affine^1=1$である。一般の場合の証明は省略する。
+\end{eg}
+
+\begin{eg}
+  $V=V(Y-X^2)\subset\affine^2$について、$\dim V=1$であることを示す。$\phi:\affine^1\rightarrow V$を$\phi(t)=(t,t^2)$とすると$\phi$は多項式写像なので、命題\ref{continuity}(Zariski位相に関して)連続である。逆に$\psi:V\rightarrow \affine^1$を$\psi(x,y)=x$とすると$\psi$も多項式写像だから連続である。$\phi$,$\psi$は互いに逆の写像だから、$\affine^1\approx V$. よって$\dim V=1$
+\end{eg}
+
+
+
+
+
+\subsection{射影空間と射影多様体}
+
+次に4直線問題の舞台となる射影空間について解説し、射影空間においてもアフィン空間と同様に代数的集合が定義され、既約性や次元などの概念を定義する。
+
+\begin{defin}
+  $k^{n+1}\setminus\{0\}$上の同値関係$\sim$を
+  \[
+  z\sim w\Leftrightarrow \text{ある$c\in k$が存在して}w=cz  
+  \]
+  と定義する。$\proj^n=(k^{n+1}\setminus\{0\})/\sim$を$n$次元射影空間という。$(x_0,x_1,\cdots,x_n)\in k^{n+1}$の同値類を$[x_0:x_1:\cdots:x_n]$と書いて、これを斉次座標という。自然な全射$p:k^{n+1}\setminus\{0\}\rightarrow \proj^n$を射影化と呼ぶ。また、$S\subset k^{n+1}\setminus\{0\}$が任意の$\lambda\in k^\times $に対して$\lambda S\subset S$を満たすとき、$p(S)$を$S$の射影化と呼ぶ。
+\end{defin}
+
+射影空間においても、多項式の零点集合を定義したいが、アフィン空間と同じ方法ではうまくいかない。例えば、$k=\complex$, $F=Y-X^2$として$V=\set{[x:y]\in\proj^1}{F(x,y)=0}$を考えてみる。このとき$F(1,1)=0$だから、$[1:1]\in V$となるはずだが、$[1:1]=[2:2]$かつ$F(2,2)\neq 0$だから$[1:1]\notin V$にもなってしまう。これを回避するには、多項式に少し制限を設けなければならない。
+
+\begin{defin}
+  $S\subset k[X_0,\cdots,X_n]$を斉次多項式の集合とする。
+  \[
+  V(S)=\set{[x_0:x_1:\cdots:x_n]}{\text{すべての$F\in S$に対して }F(x_0,x_1,\cdots,x_n)=0}  
+  \]
+  を$\proj^n$の代数的集合という。
+\end{defin}
+
+$F$が$d$次斉次多項式であるならば、$\lambda\in k$に対して$F(\lambda X_0,\cdots,\lambda X_n)=\lambda^dF(X_0,\cdots,X_n)$が成り立つから、$p=[x_0:\cdots:x_n]\in \proj^n$に対して$p\in V(F)$となることは$p$の代表元$(x_0,\cdots,x_n)$の取り方によらない。
+
+\begin{prop}\label{zariski_for_proj}
+  $\proj^n$の代数的集合について次が成り立つ
+  \begin{enumerate}
+    \item $V(0)=\proj^n$, $V(1)=\varnothing$
+    \item $S,T$を斉次多項式の集合とする。$V(S)\cup V(T)=V(ST)$
+    \item $\{S_\lambda\}_{\lambda\in\Lambda}$を斉次多項式の集合の族とする。$\bigcap_{\lambda\in\Lambda}V(S_\lambda)=V(\bigcup_{\lambda\in\Lambda}S_\lambda)$
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  命題\ref{zariski}と同様である。
+\end{proof}
+
+命題\ref{zariski_for_proj}より、アフィン空間と同様射影空間にも、代数的集合を閉集合とする位相が定まる。これをZariski位相と呼び、以下射影空間にはいつもこの位相が入っているとする。
+
+$k^{n+1}\setminus\{0\}$の部分集合$\tilde{U}_i$を
+\[
+\tilde{U}_i=\set{(x_0,x_1,\cdots,x_n)\in k^{n+1}\setminus\{0\}}{x_i\neq 0}  
+\]
+とする。$\tilde{U}_i$の射影化を$U_i=p(\tilde{U}_i)$とする。
+\[
+U_i=\set{[x_0:x_1:\cdots:x_n]\in\proj^n}{x_i\neq 0}=\set{[x_0:\cdots:x_{i-1}:1:x_{i+1}:\cdots:x_n]\in\proj^n}{x_j\in k} 
+\]
+また、写像$\tilde{\varphi}_i:\tilde{U}_i\rightarrow \affine^n$を
+\[
+\tilde{\varphi}_i(x_0,x_1,\cdots,x_n)=(\frac{x_0}{x_i},\frac{x_1}{x_i},\cdots,\frac{x_{i-1}}{x_i},\frac{x_{i+1}}{x_i},\cdots:\frac{x_n}{x_i})
+\]
+によって定めると$\tilde{U}_i$の射影化$U_i$に写像$\varphi:U_i\rightarrow \affine^n$を誘導する。
+\[
+\varphi([x_0:x_1:\cdots:x_n])=[\frac{x_0}{x_i}:\frac{x_1}{x_i}:\cdots:1:\cdots:\frac{x_n}{x_i}] 
+\]
+$\varphi$は全単射であり
+\[
+\proj^n=\bigcup_{i=0}^nU_i  
+\]
+がわかるが、さらに次が成り立つ。
+
+\begin{prop}
+  $U_i$はZariski開集合であり、$\varphi:U_i\rightarrow \affine^n$はZariski位相に関して同相である。
+\end{prop}
+
+\begin{proof}
+  簡単のため、$i=0$の場合についてのみ示す。
+  \[
+  \proj^n\setminus U_0=\set{[x_0:x_1:\cdots:x_n]}{x_0=0}=V(X_0) 
+  \]
+  だから$U_0$は開集合である。$\varphi$が連続であることを示す。斉次とはかぎらない多項式$F\in k[X_1,\cdots,X_n]$に対して$\affine^n$の閉集合$V(F)$を考える。ポイントになるのは$F$を「斉次化」する操作である。$F$の単項式の最大次数を$d$とする。
+  $F^*\in k[X_0,X_1,\cdots,X_n]$を
+  \[
+  F^*(X_0,X_1,\cdots,X_n)=X_0^dF(\frac{X_1}{X_0},\cdots,\frac{X_n}{X_0})
+  \]
+  とおくと、$F^*$は斉次多項式であり、$\inv{\varphi}(V(F))=V(F^*)\cap U_0$が成り立つことを示す。$F$に含まれる単項式$X_1^{i_1}\cdots X_n^{i_n}$について考えると、
+  \[
+  X_0^d(\frac{X_1}{X_0})^{i_1}\cdots(\frac{X_n}{X_0})^{i_n}=X_0^{d-(i_1+\cdots+i_n)}X_1^{i_1}\cdots X_n^{i_n} 
+  \]
+  となるから、$F^*$の単項式の次数はすべて$d$である。よって$F^*$は斉次多項式. $p=[x_0:x_1:\cdots:x_n]\in V(F^*)\cap U_0$であるならば、
+  \[
+  0=F^*(x_0,x_1,\cdots,x_n)=x_0^dF(\frac{x_1}{x_0},\cdots,\frac{x_n}{x_0})
+  \]
+  $x_0\neq 0$だから
+  \[
+  0=F(\frac{x_1}{x_0},\cdots,\frac{x_n}{x_0})=F(\varphi(p)) 
+  \]
+  したがって$p=[x_0:x_1:\cdots:x_n]\in \inv{\varphi}(V(F))$. 逆に$p=[x_0:x_1:\cdots:x_n]\in U_0$が$p\in\inv{\varphi}(V(F))$ならば
+  \[
+  F(\frac{x_1}{x_0},\cdots,\frac{x_n}{x_0})=0
+  \]
+  したがって
+  \[
+  F^*(x_0,x_1,\cdots,x_n)=x_0^dF(\frac{x_1}{x_0},\cdots,\frac{x_n}{x_0})=0
+  \]
+  よって$p\in V(F^*)$. したがって$\inv{\varphi}(V(F))$は閉集合である。一般の$\affine^n$の閉集合$V(F_1,\cdots,F_r)$については、今の議論と同様$\inv{\varphi}(V(F_1,\cdots,F_r))=V(F_1^*,\cdots,F_r^*)$となることが示せるので、$\varphi$は連続である。
+
+  次に$\psi:\affine^n\rightarrow U_0$を
+  \[
+  \psi(x_1,\cdots,x_n)=[1:x_1:\dots:x_n]  
+  \]
+  によって定める。$\psi$は$\varphi$の逆写像であるので$\psi$が連続であることを示せばよい。
+\end{proof}
+
+
+射影空間を考える理由に次の2つがある。
+\begin{itemize}
+  \item $\proj^n$における$k$次元平面は$k^{n+1}$の$k+1$次元線形部分空間と1対1に対応する。
+  \item $\proj^n$における平行線は1点で交わる
+\end{itemize}
+これらのことを説明しよう。
+
+\begin{defin}
+  $A$をランク$n-r$の$(n-r)\times (n+1)$行列とする。
+  \[
+  \set{[z_0:z_1:\cdots:z_n]\in\proj^n}{A\pmat{z_0\\z_1\\\vdots\\z_n}=\pmat{0\\\vdots\\0}}  
+  \]
+  の形の$\proj^n$の部分集合を$\proj^n$のr次元平面という。とくに$r=1$のときは直線, $r=n-1$のときは超平面と呼ぶ。
+\end{defin}
+
+\begin{eg}
+  直線
+  \[
+  L=\set{[z_0:z_1:z_2]\in\proj^2}{z_2-2z_0-z_1=0}  
+  \]
+  を考えてみる。
+  \begin{align*}
+  &L\cap U_0=\set{[1:z_1:z_2]\in\proj^2}{z_2-z_1-2=0} \approx \set{(x,y)\in k^2}{x-y-2=0}\subset \affine^2\\
+  &L\cap U_1=\set{[z_0:1:z_2]\in\proj^2}{z_2-2z_0-1=0}
+  \approx \set{(x,y)\in k^2}{y-2x-1=0}\subset \affine^2\\
+  &L\cap U_2=\set{[z_0:z_1:1]\in\proj^2}{1-2z_0-z_1=0}
+  \approx \set{(x,y)\in k^2}{1-2x-y=0}\subset \affine^2
+  \end{align*}
+  となって、$L$は各$U_i\approx \affine^2$上で直線のようにふるまっていることがわかる。
+\end{eg}
+
+
+
+
+
+
+\end{document}
