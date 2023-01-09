@@ -15,12 +15,12 @@
 \begin{defin}
   $S$を$k[X_1,\cdots,X_n]$の部分集合とする。
   \[
-  V(S)=\set{P\in\affine^n}{\text{任意の$F\in S$に対して }F(P)=0}  
+  V(S)=\set{p\in\affine^n}{F(p)=0\text{ for all }F\in S}  
   \]
   とする。$V(S)$の形の集合を$\affine^n$の代数的集合という。
 \end{defin}
 
-$S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})$である。体上の多項式環$k[X_1,\cdots,X_n]$はNoether環であるからイデアル$\mathfrak{a}$は有限生成である。
+$S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})$である。Hilbertの基底定理により体上の多項式環$k[X_1,\cdots,X_n]$はNoether環であるからイデアル$\mathfrak{a}$は有限生成である。
 したがって$V(S)=V(F_1,\cdots,F_r)$となる多項式$F_1,\cdots,F_r\in k[X_1,\cdots,X_n]$が存在する。
 
 \begin{eg}\label{rei1}
@@ -115,7 +115,7 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
 \begin{defin}
   $A$を$\affine^n$の部分集合とする。
   \[
-  I(A)=\{F\in k[X_1,\cdots,X_n]\}{\text{すべての$p\in A$に対して }F(p)=0}
+  I(A)=\set{F\in k[X_1,\cdots,X_n]}{F(p)=0 \text{ for all }p\in A}
   \]
   を$A$のイデアルという。
 \end{defin}
@@ -234,7 +234,7 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
 \begin{defin}
   $X$を位相空間とする。$X$の既約な閉集合の列
   \[
-  X_0\subsetneq X_1\subsetneq X_2\subsetneq\cdots\subsetneq X_n\subset X   
+  Z_0\subsetneq Z_1\subsetneq Z_2\subsetneq\cdots\subsetneq Z_n\subset X   
   \]
   の長さ$n$の上限値を$X$の次元といい、$\dim X=n$と書く。
 \end{defin}
@@ -246,6 +246,29 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
 \begin{eg}
   $V=V(Y-X^2)\subset\affine^2$について、$\dim V=1$であることを示す。$\phi:\affine^1\rightarrow V$を$\phi(t)=(t,t^2)$とすると$\phi$は多項式写像なので、命題\ref{continuity}(Zariski位相に関して)連続である。逆に$\psi:V\rightarrow \affine^1$を$\psi(x,y)=x$とすると$\psi$も多項式写像だから連続である。$\phi$,$\psi$は互いに逆の写像だから、$\affine^1\approx V$. よって$\dim V=1$
 \end{eg}
+
+\begin{defin}
+  位相空間$X$について、$X$の任意の既約閉集合の列
+  \[
+  Z_0\subset Z_1\subset\cdots  
+  \]
+  が与えられたとき、ある番号$n$があって$Z_n=Z_{n+1}=\cdots$が成り立つとする。$X$がこの性質をもつときNoether的空間という。
+\end{defin}
+
+\begin{prop}
+  $X$をNoether的位相空間とすると、$X$の有限個の既約閉集合$Z_1,\cdots,Z_r$が一意的に存在して
+  \[
+  X=Z_1\cup\cdots\cup Z_r  ,\quad i\neq j\implies Z_i\not\subset Z_j
+  \]
+  が成り立つ。$Z_1,\cdots,Z_r$を$X$の既約成分という。
+\end{prop}
+
+\begin{proof}
+  略
+\end{proof}
+
+この命題から、任意の代数的集合はアフィン多様体の有限個の和集合で書けることがわかる。
+
 
 
 
@@ -268,12 +291,12 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
 \begin{defin}
   $S\subset k[X_0,\cdots,X_n]$を斉次多項式の集合とする。
   \[
-  V(S)=\set{[x_0:x_1:\cdots:x_n]}{\text{すべての$F\in S$に対して }F(x_0,x_1,\cdots,x_n)=0}  
+  V(S)=\set{[x_0:x_1:\cdots:x_n]}{F(x_0,x_1,\cdots,x_n)=0\text{ for all }F\in S}  
   \]
   を$\proj^n$の代数的集合という。
 \end{defin}
 
-$F$が$d$次斉次多項式であるならば、$\lambda\in k$に対して$F(\lambda X_0,\cdots,\lambda X_n)=\lambda^dF(X_0,\cdots,X_n)$が成り立つから、$p=[x_0:\cdots:x_n]\in \proj^n$に対して$p\in V(F)$となることは$p$の代表元$(x_0,\cdots,x_n)$の取り方によらない。
+$F$が$d$次斉次多項式であるならば、$\lambda\in k$に対して$F(\lambda X_0,\cdots,\lambda X_n)=\lambda^dF(X_0,\cdots,X_n)$が成り立つから、$p=[x_0:\cdots:x_n]\in \proj^n$に対して$p\in V(F)$となることは$p$の代表元$(x_0,\cdots,x_n)$の取り方によらない。また、アフィン空間の場合と同様、$k[X_0,X_1,\cdots,X_n]$はNoether環であるから、$S$の有限個の元$F_1,\cdots,F_r$をとることで$V(S)=V(F_1,\cdots,F_r)$とすることができる。
 
 \begin{prop}\label{zariski_for_proj}
   $\proj^n$の代数的集合について次が成り立つ
@@ -352,40 +375,175 @@ $\varphi$は全単射であり
   \[
   \psi(x_1,\cdots,x_n)=[1:x_1:\dots:x_n]  
   \]
-  によって定める。$\psi$は$\varphi$の逆写像であるので$\psi$が連続であることを示せばよい。
+  によって定める。$\psi$は$\varphi$の逆写像であるので$\psi$が連続であることを示せばよい。$\proj^n$の閉集合$V(F)$ (ただし$F\in k[X_0,X_1,\cdots,X_n]$は斉次多項式)に対して、$F_*\in k[X_1,\cdots,X_n]$を
+  \[
+  F_*(X_1,\cdots,X_n)=F(1,X_1,\cdots,X_n)  
+  \]
+  とすると$\inv{\psi}(V(F)\cap U_0)=V(F_*)$となる。実際、$q=(x_1,\cdots,x_n)\in V(F_*)$であるならば
+  \[
+  0=F(1,x_1,\cdots,x_n)  
+  \]
+  ゆえに$\psi(q)=[1:x_1:\cdots:x_n]\in V(F)\cap U_0$. 逆に$q=(x_1,\cdots,x_n)\in\affine^n$が$\psi(q)\in V(F)\cap U_0$ならば$F(1,x_1,\cdots,x_n)=0$であるので$q\in V(F_*)$. よって$\inv{\psi}(V(F)\cap U_0)$は$\affine^n$の閉集合である。一般の$\proj^n$の閉集合$V(F_1,\cdots,F_r)$に対しても同様に$\inv{\psi}(V(F_1,\cdots,F_r)\cap U_0)=V(F_{1*},\cdots,F_{r*})$となることが示せるので$\psi$も連続である。
 \end{proof}
 
+\begin{prop}\label{dim_property}
+  $X$を位相空間, $\{U_i\}_{i\in I}$を$X$の開被覆とする。このとき$\dim X=\sup_{i\in I}\dim U_i$である。
+\end{prop}
+
+\begin{proof}
+  略
+\end{proof}
+
+命題\ref{dim_property}より、$\dim \proj^n=n$である。$k=\real,\complex$の場合、上で与えた射影空間の開被覆は$C^\infty$多様体や複素多様体の構造も与える。
+
+\begin{defin}
+  $\proj^n$の既約閉集合を射影多様体という。
+\end{defin}
+
+$V=V(F_1,\cdots,F_r)\subset\proj^n$を射影多様体とする。$\proj^n=\bigcup_{i=0}^nU_i$より、
+\[
+V=\bigcup_{i=0}^n(V\cap U_i)
+\]
+となるが、$\varphi:U_i\rightarrow \affine^n$による同一視を思い出せば、例えば$i=0$の場合
+\begin{align*}
+V\cap U_0
+&=\set{[x_0:x_1:\cdots:x_n]\in U_0}{F_j(x_0,x_1,\cdots,x_n)=0\text{ for all $j=1,\cdots,r$}}\\
+&\approx \set{(\frac{x_1}{x_0},\cdots,\frac{x_n}{x_0})\in\affine^n}{F_j(x_0,x_1,\cdots,x_n)=0\text{ for all $j=1,\cdots,r$}}\\
+&=\set{(x_1,\dots,x_n)\in\affine^n}{F_j(1,x_1,\cdots,x_n)=0\text{ for all $j=1,\cdots,r$}}\\
+&=V(F_{1*},\cdots,F_{r*})
+\end{align*}
+
+$V(F_{1*},\cdots,F_{r*})\subset\affine^n$は有限個のアフィン多様体の和集合で表せたから、すべての射影多様体(さらに$\proj^n$の代数的集合)はアフィン多様体の有限個の和集合(貼り合わせ)で書ける。
 
 射影空間を考える理由に次の2つがある。
 \begin{itemize}
   \item $\proj^n$における$k$次元平面は$k^{n+1}$の$k+1$次元線形部分空間と1対1に対応する。
-  \item $\proj^n$における平行線は1点で交わる
+  \item $\affine^n$における平行線は$\proj^n$において交わる
 \end{itemize}
 これらのことを説明しよう。
 
 \begin{defin}
-  $A$をランク$n-r$の$(n-r)\times (n+1)$行列とする。
+  $F\in k[X_0,X_1,\cdots,X_n]$を$d$次斉次多項式とする。$V(F)\subset\proj^n$を$\proj^n$の$d$次超曲面という。とくに$d=1$のときは超平面という。$F_1,\cdots,F_r$,$(r\leq n)$を1次斉次多項式で、
   \[
-  \set{[z_0:z_1:\cdots:z_n]\in\proj^n}{A\pmat{z_0\\z_1\\\vdots\\z_n}=\pmat{0\\\vdots\\0}}  
+  F_i=a_{i0}X_0+\cdots+a_{in}X_n
   \]
-  の形の$\proj^n$の部分集合を$\proj^n$のr次元平面という。とくに$r=1$のときは直線, $r=n-1$のときは超平面と呼ぶ。
+  とおいたとき、行列
+  \[
+  \pmat{
+    a_{10} & a_{11} & \cdots & a_{1n}\\
+    \vdots & \vdots & \cdots & \vdots \\
+    a_{r0} & a_{r1} & \cdots & a_{rn}
+  } 
+  \]
+  のランクが$r$であるとする。このとき$V(F_1,\cdots,F_r)$を$\proj^n$の$n-r$次元平面という。とくに$r=n-1$のときは直線という。
 \end{defin}
+
+$V(F_1,\cdots,F_r)$はベクトル空間$k^{n+1}$の$r+1$次元部分空間の射影化として得られる。実際、
+\[
+\tilde{V}=\set{(x_0,x_1,\cdots,x_n)}{\pmat{
+    a_{10} & a_{11} & \cdots & a_{1n}\\
+    \vdots & \vdots & \cdots & \vdots \\
+    a_{r0} & a_{r1} & \cdots & a_{rn}
+}\pmat{x_0\\x_1\\\vdots\\x_n}=0}\subset k^{n+1}
+\]
+とおくと、$V=p(\tilde{V}\setminus\{0\})$である。したがって、とくに$\proj^n$中の直線全体を考えるときには、$k^{n+1}$中の平面全体を考えればよい。これは次節にGrassmann多様体として定式化される。
 
 \begin{eg}
   直線
   \[
-  L=\set{[z_0:z_1:z_2]\in\proj^2}{z_2-2z_0-z_1=0}  
+  L=\set{[x_0:x_1:x_2]\in\proj^2}{x_0-x_1-x_2=0}  
   \]
   を考えてみる。
   \begin{align*}
-  &L\cap U_0=\set{[1:z_1:z_2]\in\proj^2}{z_2-z_1-2=0} \approx \set{(x,y)\in k^2}{x-y-2=0}\subset \affine^2\\
-  &L\cap U_1=\set{[z_0:1:z_2]\in\proj^2}{z_2-2z_0-1=0}
-  \approx \set{(x,y)\in k^2}{y-2x-1=0}\subset \affine^2\\
-  &L\cap U_2=\set{[z_0:z_1:1]\in\proj^2}{1-2z_0-z_1=0}
-  \approx \set{(x,y)\in k^2}{1-2x-y=0}\subset \affine^2
+  &L\cap U_0=\set{[1:x_1:x_2]\in\proj^2}{1-x_1-x_2=0} \approx \set{(x,y)\in k^2}{1-x-y=0}\subset \affine^2\\
+  &L\cap U_1=\set{[x_0:1:x_2]\in\proj^2}{x_0-1-x_2=0}
+  \approx \set{(x,y)\in k^2}{-1+x-y=0}\subset \affine^2\\
+  &L\cap U_2=\set{[x_0:x_1:1]\in\proj^2}{x_0-x_1-1=0}
+  \approx \set{(x,y)\in k^2}{x-y-1=0}\subset \affine^2
   \end{align*}
   となって、$L$は各$U_i\approx \affine^2$上で直線のようにふるまっていることがわかる。
 \end{eg}
+
+\begin{eg}
+  $\proj^2$中の2直線
+  \begin{align*}
+    L_1=\set{[x_0:x_1:x_2]\in\proj^2}{x_0-x_1-x_2=0}\\
+    L_2=\set{[x_0:x_1:x_2]\in\proj^2}{x_0+x_1+x_2=0}
+  \end{align*}
+  を考える。
+  \begin{align*}
+    L_1\cap U_0\approx\set{(x,y)\in k^2}{-1+x+y=0}\subset\affine^2\\
+    L_2\cap U_0\approx\set{(x,y)\in k^2}{1+x+y=0}\subset\affine^2
+  \end{align*}
+  ゆえに$L_1\cap U_0$, $L_2\cap U_0$は平行である。一方で、
+  \[
+  L_1\cap L_2=\set{[x_0:x_1:x_2]\in\proj^2}{
+    \begin{array}{cc}
+      x_0-x_1-x_2 & =0\\
+      x_0+x_1+x_2 & =0
+    \end{array}}=\{[0:1:-1]\}\notin U_0
+  \]
+  だから、$\affine^2$の平行線が$\proj^2$にまで拡張することで無限遠で交わっていると考えることができる。
+\end{eg}
+
+\begin{eg}
+  $k$を代数閉体とする。$\proj^n$の$d$次超曲面$S=V(F)$と直線$L=V(G_1,\cdots,G_{n-1})$の交点は重複もこめてちょうど$d$個である。$\tilde{V}(F)$, $\tilde{V}(G_1,\cdots,G_{n-1})$を$\affine^{n+1}$における代数的集合とすれば、
+  \[
+  V(F)\cap V(G_1,\cdots,G_{n-1})=p(\tilde{V}(F)\cap\tilde{V}(G_1,\cdots,G_{n-1})\setminus\{0\})  
+  \]
+  である。
+  \begin{align*}
+  G_i=a_{i0}X_0+\cdots+a_{in}X_n  
+  \end{align*}
+  とおけば
+  \begin{align*}
+    \tilde{V}(G_1,\cdots,G_{n-1})&=\set{(x_0,x_1,\cdots,x_n)\in \affine^{n+1}}{\pmat{
+      a_{10} & a_{11} & \cdots & a_{1n}\\
+      \vdots & \vdots & \cdots & \vdots \\
+      a_{n-1,0} & a_{n-1,1} & \cdots & a_{n-1,n}
+      }\pmat{x_0\\x_1\\\vdots\\x_n}=0}\\
+    &=\set{(\alpha_0x+\beta_0 y,\cdots,\alpha_nx+\beta_ny)}{x,y\in k}
+  \end{align*}
+  となる$\alpha_0,\cdots,\alpha_n,\beta_0,\cdots,\beta_n$が存在し、$(\alpha_0,\cdots,\alpha_n), (\beta_0,\cdots,\beta_n)$は1次独立。よって
+  \begin{align*}
+    &(\alpha_0x+\beta_0 y,\cdots,\alpha_nx+\beta_ny)\in \tilde{V}(F)\\
+    &\Leftrightarrow F(\alpha_0x+\beta_0y,\alpha_1x+\beta_1y,\cdots,\alpha_nx+\beta_ny)=0
+  \end{align*}
+  $H(X,Y)=F(\alpha_0X+\beta_0Y,\alpha_1X+\beta_1Y,\cdots,\alpha_nX+\beta_nY)$とおくと$H$は$X,Y$の$d$次斉次多項式であるから、$k$が代数閉より、次に述べる補題により
+  \[
+  H(X,Y)=\prod_{i=1}^d(t_iX+s_iY)  
+  \]
+  と書くことができる。よって$H(X,Y)$の零点集合はたかだか$d$本の原点を通る直線であるから、それらに対応して$\tilde{V}(F)\cap\tilde{V}(G_1,\cdots,G_{n-1})$もたかだか$d$本の原点を通る直線からなる。したがってその射影化$V(F)\cap V(G_1,\cdots,G_{n-1})=p(\tilde{V}(F)\cap\tilde{V}(G_1,\cdots,G_{n-1})\setminus\{0\})$もたかだか$d$個の点からなる。
+\end{eg}
+
+\begin{lemm}
+  $k$を代数閉体, $H(X,Y)$を$d$次斉次多項式とする。
+  \[
+  H(X,Y)=\prod_{i=1}^{d}(t_iX+s_iY)
+  \]
+  となる$t_i,s_i\in k$が存在する。
+\end{lemm}
+
+\begin{proof}
+  ここでも多項式の「斉次化」,「非斉次化」がポイントになる。$k$は代数閉なので
+  \[
+  H(X,1)=\prod_{i=1}^d(t_{i}X+s_i)  
+  \]
+  と書くことができる。一方、
+  \[
+  H(X,Y)=\sum_{i=0}^dc_{i}X^iY^{d-i}  
+  \]
+  とおくと、
+  \[
+  Y^dH(\frac{X}{Y},1)
+  =Y^d\sum_{i=0}^dc_{i}\frac{X^i}{Y^i}  
+  =\sum_{i=0}^dc_{i}X^iY^{d-i}=H(X,Y)
+  \]
+  となることがわかる。したがって、
+  \[
+  H(X,Y)=Y^dH(\frac{X}{Y},1)=Y^d\prod_{i=1}^d(t_i\frac{X}{Y}+s_i)=\prod_{i=1}^{d}(t_iX+s_iY) 
+  \]
+\end{proof}
 
 
 
