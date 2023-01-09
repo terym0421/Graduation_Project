@@ -31,8 +31,6 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
   $V(\mathfrak{a})=\varnothing$ならば$\mathfrak{a}=(1)$となることは$k$が代数閉ならば成り立つが、それはHilbertの零点定理の帰結である。
 \end{eg}
 
-
-
 \begin{eg}
   $k=\real$とする。$V(Y-X^2)\subset\affine^2(\real)$は放物線$y=x^2$である。$V(X^n)=V(X)\subset \affine^2(\real)$は直線$x=0$である。
 \end{eg}
@@ -74,6 +72,14 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
   $\affine^1$における閉集合は$\varnothing,\affine^1,(\text{有限集合})$であるから、Zariski位相はいわゆる補有限位相である。
 \end{eg}
 
+\begin{eg}
+  $\affine^{n^2}$の座標を$x_{ij}$, $i,j=1,\cdots,n$で表す。\\$V=V(\det (X_{ij}))=\set{(x_{ij})\in\affine^2}{\det(x_{ij})=\sum_{\sigma\in\mathfrak{S}_n}\sgn(\sigma)x_{1\sigma(1)}\cdots x_{n\sigma(n)}=0}$とする。$\gl_n(k)\subset \affine^{n^2}$を$k$に成分をもつ$n$次正則行列のなす集合とすると
+  \[
+  \gl_n(k)=\affine^{n^2}\setminus V  
+  \]
+  であるから$\gl_n(k)$は$\affine^{n^2}$のZariski開集合である。
+\end{eg}
+
 \begin{prop}
   $k$を無限体とすると$\affine^n$はHausdorffでない。
 \end{prop}
@@ -98,7 +104,7 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
   \[
   \phi(x_1,\cdots,x_n)=(F_1(x_1,\cdots,x_n),\cdots,F_m(x_1,\cdots,x_n))  
   \]
-  となるなら、$\phi$はZariski位相に関して連続である。
+  となる(これを多項式写像という)なら、$\phi$はZariski位相に関して連続である。
 \end{prop}
 
 \begin{proof}
@@ -108,6 +114,24 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
   \]
   が成り立つことから、$\inv{\phi}(V(G_1,\cdots,G_r))$は閉集合である。
 \end{proof}
+
+\begin{eg}\label{affine_gl_n}
+  $V\subset\affine^{n^2+1}$を$V=V(T\det(X_{ij})-1)=\set{((x_{ij}),t)\in\affine^{n^2+1}}{t\det(x_{ij})=1}$とする。$\phi:V\rightarrow \gl_n(k)$を
+  \[
+  \phi((x_{ij}),t)=(x_{ij})  
+  \]
+  によて定め、、$\psi:\gl_n(k)\rightarrow V$を$\psi((x_{ij}))=((x_{ij}),\det(x_{ij})^{-1})$によって定める。$\phi,\psi$は互いに逆の写像であるが、$\phi$は多項式写像なので連続である。$\psi$の連続性を示す。$\affine^{n^2+1}$の閉集合$V(F((X_{ij}),T))$に対して、
+  \[
+  V\cap V(F)=\set{((x_{ij}),\det(x_{ij})^{-1})}{F((x_{ij}),\det(x_{ij})^{-1})=0}  
+  \]
+  だから、十分大きい整数$r\geq 0$をとって
+  \[
+  \psi^{-1}(V\cap V(F))=\set{(x_{ij})\in\gl_n(k)}{\det(x_{ij})^rF((x_{ij}),\det(x_{ij})^{-1})=0}  
+  \]
+  において$\det(x_{ij})^rF((x_{ij}),\det(x_{ij})^{-1})$を多項式にすることができる。よって$\psi^{-1}(V\cap V(F))$も閉集合である。一般の$\affine^{n^2+1}$の閉集合に対しても同様である。よって$\gl_n(k)\approx V$である。
+\end{eg}
+
+
 
 
 多項式環のイデアルが与えられたときにアフィン空間の部分集合を定めたが、逆にアフィン空間の部分集合からイデアルを作ることを考える。
@@ -166,15 +190,15 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
 \subsection{アフィン多様体}
 
 \begin{defin}
-  位相空間$X$の閉集合$V$について、
+  位相空間$X$の部分集合$V$について、
   \[
   \text{$X$の閉集合$V_1,V_2$が }V=V_1\cup V_2\text{をみたすなら$V_1=V$または$V_2=V$}  
   \]
-  をみたすとき、$V$を既約な閉集合という。既約でない集合は可約であるという。空集合は既約ではないとする。
+  をみたすとき、$V$を既約という。既約でない集合は可約であるという。空集合は既約ではないとする。
 \end{defin}
 
 \begin{defin}
-  $\affine^n$の既約な代数的集合をアフィン多様体という。
+  $\affine^n$の既約な代数的集合をアフィン多様体という。アフィン多様体のZariski開集合を準アフィン多様体という。
 \end{defin}
 
 \begin{eg}
@@ -210,10 +234,18 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
   $F\notin I(V)$, $G\notin I(V)$より$V\cap V(F), V\cap V(G)\subsetneq V$. よって$V$は可約である。
 \end{proof}
 
+\begin{eg}
+  $\gl_n(k)$は$\affine^{n^2}$の準アフィン多様体であり、$\affine^{n^2+1}$のアフィン多様体としての構造ももつ。実際$\gl_n(k)=V(T\det(X_{ij})-1)$であるが、$T\det(X_{ij}-1)$は$T$について$1$次なので既約多項式である。$k[(X_{ij}),T]$はUFDなので$T\det(X_{ij})-1$は素元。したがって$V(T\det(X_{ij})-1)$は既約である。
+\end{eg}
+
+
+
+
+
 
 以降$k$は$\complex$などの代数閉体とする。代数閉体で考える理由の一つは次の事実である。
 
-\begin{fact}[Hilbertの零点定理]\label{nullstellenzats}
+\begin{fact}[Hilbertの零点定理\cite{AM}]\label{nullstellenzats}
   $k$を代数閉体,$\mathfrak{a}$を$k[X_1,\cdots,X_n]$のイデアルとする。$I(V(\mathfrak{a}))=\sqrt{\mathfrak{a}}$が成り立つ。
 \end{fact}
 
@@ -240,7 +272,7 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
 \end{defin}
 
 \begin{eg}
-  $\dim\affine^n=n$である。例えば、$\affine^1$の既約閉集合は$\affine^1$と1点集合のみであるから、たしかに$\dim\affine^1=1$である。一般の場合の証明は省略する。
+  $\dim\affine^n=n$である。例えば、$\affine^1$の既約閉集合は$\affine^1$と1点集合のみであるから、たしかに$\dim\affine^1=1$である。一般の場合の証明は省略する(\cite{RH})。
 \end{eg}
 
 \begin{eg}
@@ -283,7 +315,7 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
   \[
   z\sim w\Leftrightarrow \text{ある$c\in k$が存在して}w=cz  
   \]
-  と定義する。$\proj^n=(k^{n+1}\setminus\{0\})/\sim$を$n$次元射影空間という。$(x_0,x_1,\cdots,x_n)\in k^{n+1}$の同値類を$[x_0:x_1:\cdots:x_n]$と書いて、これを斉次座標という。自然な全射$p:k^{n+1}\setminus\{0\}\rightarrow \proj^n$を射影化と呼ぶ。また、$S\subset k^{n+1}\setminus\{0\}$が任意の$\lambda\in k^\times $に対して$\lambda S\subset S$を満たすとき、$p(S)$を$S$の射影化と呼ぶ。
+  と定義する。$\proj^n=(k^{n+1}\setminus\{0\})/\sim$を$n$次元射影空間という。$(x_0,x_1,\cdots,x_n)\in k^{n+1}$の同値類を$[x_0:x_1:\cdots:x_n]$と書いて、これを斉次座標という。自然な全射$p:k^{n+1}\setminus\{0\}\rightarrow \proj^n$を射影化と呼ぶ。また、$S\subset k^{n+1}\setminus\{0\}$が任意の$\lambda\in k^\times $に対して$\lambda S\subset S$を満たすとき、$p(S)$を$S$の射影化と呼び、$\proj(S)$と書いたりする。
 \end{defin}
 
 射影空間においても、多項式の零点集合を定義したいが、アフィン空間と同じ方法ではうまくいかない。例えば、$k=\complex$, $F=Y-X^2$として$V=\set{[x:y]\in\proj^1}{F(x,y)=0}$を考えてみる。このとき$F(1,1)=0$だから、$[1:1]\in V$となるはずだが、$[1:1]=[2:2]$かつ$F(2,2)\neq 0$だから$[1:1]\notin V$にもなってしまう。これを回避するには、多項式に少し制限を設けなければならない。
@@ -387,12 +419,20 @@ $\varphi$は全単射であり
 \end{proof}
 
 \begin{prop}\label{dim_property}
-  $X$を位相空間, $\{U_i\}_{i\in I}$を$X$の開被覆とする。このとき$\dim X=\sup_{i\in I}\dim U_i$である。
+  $X$を位相空間, $U$を$X$の空でない開集合とする。このとき$\dim X=\dim U$である。
 \end{prop}
 
 \begin{proof}
   略
 \end{proof}
+
+\begin{eg}
+  $\proj^n=\bigcup_{i=0}^nU_i$, $U_i\approx \affine^n$より、$\dim\proj^n=n$である。
+\end{eg}
+
+\begin{eg}
+  $\gl_n(k)\subset\affine^{n^2}$はZariski開集合であったから、$\dim\gl_n(k)=n^2$である。
+\end{eg}
 
 命題\ref{dim_property}より、$\dim \proj^n=n$である。$k=\real,\complex$の場合、上で与えた射影空間の開被覆は$C^\infty$多様体や複素多様体の構造も与える。
 
@@ -413,14 +453,16 @@ V\cap U_0
 &=V(F_{1*},\cdots,F_{r*})
 \end{align*}
 
-$V(F_{1*},\cdots,F_{r*})\subset\affine^n$は有限個のアフィン多様体の和集合で表せたから、すべての射影多様体(さらに$\proj^n$の代数的集合)はアフィン多様体の有限個の和集合(貼り合わせ)で書ける。
+$V(F_{1*},\cdots,F_{r*})\subset\affine^n$は有限個のアフィン多様体の和集合で表せたから、すべての射影多様体(さらに$\proj^n$の代数的集合)はアフィン多様体の有限個の和集合(貼り合わせ)で書ける。このようにアフィン多様体の貼り合わせになっているものや、そのZariski開集合を総称して代数多様体という(より厳密な定義は存在するがここでは省略する)。また、それに付随して代数多様射の間の射や同型\footnote{
+  代数多様体$V$上の関数$f$が、各点$p$の近傍において多項式$F,G$を用いて$f=\frac{G}{F}$と表されるとき、$f$を正則関数という。代数多様体の間の写像$\varphi:W\rightarrow V$は$V$の正則関数の引き戻しが$W$の正則関数になるとき、代数多様体の射という。$V,W$が代数的集合の場合、多項式写像は代数多様体の射である。
+}も定義されるが、ここでは扱わないことにする。
 
-射影空間を考える理由に次の2つがある。
+冒頭で述べた数え上げ問題において、「3次元空間」というのは実は「3次元複素射影空間」を指している。射影空間で考える理由として次2つがある。
 \begin{itemize}
   \item $\proj^n$における$k$次元平面は$k^{n+1}$の$k+1$次元線形部分空間と1対1に対応する。
   \item $\affine^n$における平行線は$\proj^n$において交わる
 \end{itemize}
-これらのことを説明しよう。
+この性質によって$\proj^3$では問題が簡単になるのである。これらのことを説明しよう。
 
 \begin{defin}
   $F\in k[X_0,X_1,\cdots,X_n]$を$d$次斉次多項式とする。$V(F)\subset\proj^n$を$\proj^n$の$d$次超曲面という。とくに$d=1$のときは超平面という。$F_1,\cdots,F_r$,$(r\leq n)$を1次斉次多項式で、

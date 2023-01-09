@@ -8,12 +8,156 @@
 前節の準備をもとに数え上げ問題を定式化しよう。以下では係数体はすべて$\complex$で考えているとする。
 
 \begin{defin}
-  $n+1$次元ベクトル空間の$d$次元部分空間全体のなす集合を$G(d,n)$と書き、これをGrassmann多様体という。
+  $\complex^{n}$の$d$次元部分空間全体のなす集合を$\mathcal{G}(d,n)$と書き、これをGrassmann多様体という。
 \end{defin}
 
-第3部冒頭で述べた数え上げ問題においては$\proj^3$中の直線全体を考えたいから、$G(2,4)$を考察していくことになる。重要な考え方として、ある条件をみたす直線の集合を$G(2,4)$の部分多様体としてとらえることで、「複数の条件を満たす直線の数え上げ$\Leftrightarrow$いくつかの$G(2,4)$の部分多様体の交点を数える」という問題の変換を行う。
+Grassmann多様体が代数多様体の構造をもつことを示しておく。
+$\complex^n$の$d$階交代テンソル空間$\bigwedge^d\complex^n$を考える。$\bigwedge^d\complex^n$は$\comb{n}{d}$次元ベクトル空間であるから、その射影化$\proj(\bigwedge^d\complex^n)$は$\proj^{\comb{n}{d}-1}$と同一視することができる。また、$e_1,\cdots,e_n$を$\complex^n$の標準基底とすれば$\omega\in\bigwedge^d\complex^n$は
+\[
+\omega=\sum_{1\leq i_1<\cdots <i_d\leq n}x_{i_1,\cdots, i_d}e_{i_1}\wedge\cdots\wedge e_{i_d}  
+\]
+と表せるので、$p(\omega)$の斉次座標は
+\[
+p(\omega)=[x_{i_1,\cdots,i_d}]_{1\leq i_1<\cdots<i_d\leq n}  
+\]
+のように書くことができる。
 
+$V\in\mathcal{G}(d,n)$に対して、$V$の基底を$v_1,\cdots,v_d\in\complex^n$とし写像$\pi:\mathcal{G}(d,n)\rightarrow \proj^{\comb{n}{d}-1}$を
+\[
+\pi(V)=p(v_1\wedge\cdots\wedge v_d)  
+\]
+とする。ただし$p$は射影化$p:\bigwedge^d\complex^n\rightarrow \proj^{\comb{n}{d}-1}$である。$\pi$はwell-definedである。実際、$V$の別の基底$u_1,\cdots,u_d$をとったとき、ある正則行列$P\in\gl_d(\complex)$が存在して
+\[
+(v_1,\cdots,v_d)=(u_1,\cdots,u_d)P  
+\]
+が成り立つから、$P=(a_{ij})$とおけば
+\begin{align*}
+  p(v_1\wedge\cdots\wedge v_d)
+  &=p\left(
+    (a_{11}u_1+\cdots+a_{d1}u_d)\wedge\cdots\wedge
+    (a_{d1}u_1+\cdots+a_{dd}u_d)
+  \right)\\
+  &=p(\det P(u_1\wedge\cdots\wedge u_d))\\
+  &=p(u_1\wedge\cdots\wedge u_d)
+\end{align*}
 
+\begin{prop}[Plucker埋め込み]\label{plucker}
+  $\pi:\mathcal{G}(d,n)\rightarrow \proj^{\comb{n}{d}-1}$は単射である。
+\end{prop}
+
+\begin{proof}
+  次の補題を用いる。
+  \begin{lemm}\label{ker_wedge}
+    $V\in\mathcal{G}(d,n)$に対してその基底$v_1,\cdots,v_d$を固定して、$\omega=v_1\wedge\cdots\wedge v_d\in\bigwedge^d\complex^n$とする。$\Gamma_\omega:\complex^n\rightarrow \bigwedge^{d+1}\complex^n$を
+    \[
+    \Gamma_\omega(u)=\omega\wedge u  
+    \]
+    によって定めると、
+    \begin{equation*}
+      \ker\Gamma_\omega =V
+    \end{equation*}
+    が成り立つ。
+  \end{lemm}
   
+  \begin{proof}
+    $V$の元が$\ker\Gamma_\omega$に含まれることは明らか。$u\in\ker\Gamma_\omega$であるとする。$v_1,\cdots,v_d$を延長して$\complex^n$の基底$v_1,\cdots,v_d,v_{d+1},\cdots,v_n$をとる。
+    \[
+    u=a_{1}v_1+\cdots+a_{d}v_d+a_{d+1}v_{d+1}+\cdots+a_nv_n  
+    \]
+    とおく。
+    \begin{align*}
+    0=\omega\wedge u
+    &=v_1\wedge\cdots\wedge v_d\wedge(a_{1}v_1+\cdots+a_{d}v_d+a_{d+1}v_{d+1}+\cdots+a_nv_n )  \\
+    &=a_{d+1}v_1\wedge\cdots\wedge v_d\wedge v_{d+1}
+        +\cdots+
+      a_{n}v_1\wedge\cdots\wedge v_d\wedge v_{n}
+    \end{align*}
+    となるが、$v_{i_1}\wedge\cdots\wedge v_{i_{d+1}}$, $(i_1<\cdots<i_{d+1})$は1次独立であるので、$a_{d+1}=\cdots=a_n=0$. よって$u\in V$
+  \end{proof}
+
+  命題の証明に戻る。$\pi(V)=\pi(U)$であるとする。$U$の基底を$u_1,\cdots,u_d$とすると仮定より
+  \[
+  cu_1\wedge\cdots\wedge u_d=v_1\wedge\cdots\wedge v_d=\omega  
+  \]
+  となる定数$c$が存在する。したがって$\Gamma_\omega(u_i)=\omega\wedge u_i=0$であるから補題により、$U=\ker\Gamma_\omega= V$
+\end{proof}
+  
+$\pi(\mathcal{G}(d,n))\subset\proj^{\comb{n}{d}-1}$が射影多様体の構造をもつことを示す。
+
+\begin{defin}
+  $\omega\in\bigwedge^d \complex^n$がtotally decomposableであるとは、1次独立な$v_1,\cdots,v_d\in V$が存在して$\omega=v_1\wedge\cdots\wedge v_d$となることをいう。
+\end{defin}
+
+\begin{lemm}\label{totally_decomposable}
+  $\omega\in\bigwedge^d \complex^n$がtotally decomposableであることと$\Gamma_\omega:\complex^n\rightarrow\bigwedge^{d+1}\complex^n$のランクが$n-d$となることは同値である。
+\end{lemm}
+
+\begin{proof}
+  $\omega=v_1\wedge\cdots\wedge v_d$とおく。このとき補題\ref{ker_wedge}の証明より$\dim\ker\Gamma_\omega=\dim \generated{v_1,\cdots,v_d}=d$だから$\rank\Gamma_\omega=n-d$である。逆に$\rank\Gamma_\omega=n-d$であるとする。$\dim\ker\Gamma_\omega=d$だから$\ker\Gamma_\omega$の基底を$v_1,\cdots,v_d$をとり、これを延長して$\complex^n$の基底$v_1,\cdots,v_d,v_{d+1},\cdots,v_n$をとって
+  \[
+  \omega=\sum_{1\leq i_1<\cdots<i_d\leq n}c_{i_1,\cdots,i_d}v_{i_1}\wedge\cdots\wedge v_{i_d}  
+  \]
+  とおく。すると$\Gamma_\omega(v_j)=0$, $j=1,\cdots,d$より
+  \begin{align*}
+    &v_1\wedge\omega=0\text{ すなわち } c_{i_1,\cdots,i_d}=0\text{ for } i_1 > 1\\
+    &v_2\wedge\omega=0\text{ すなわち } c_{i_1,\cdots,i_d}=0\text{ for }i_2 > 2\\
+    &\qquad\vdots\\
+    &v_d\wedge\omega=0\text{ すなわち } c_{i_1,\cdots,i_d}=0\text{ for }i_d > d
+  \end{align*}
+  よって$\omega=c_{1,2,\cdots,d}v_1\wedge\cdots\wedge v_d$
+\end{proof}
+
+
+
+$\pi(\mathcal{G}(n,d))=\set{p(\omega)\in\proj(\bigwedge^d\complex^n)}{\omega\text{ is totally decomposable}}$である。$e_1,\cdots,e_n\in \complex^n$を標準基底とし、$\omega\in\bigwedge^d\complex^n$を
+\[
+\omega=\sum_{1\leq i_1<\cdots<i_d\leq n}x_{i_1,\cdots,i_d}e_{i_1}\wedge\cdots\wedge e_{i_d}  
+\]
+とおく。補題より、$p(\omega)\in\pi(\mathcal{G}(n,d))$であるための必要十分条件は$\rank\Gamma_\omega=n-d$となることである。この条件は$\Gamma_\omega:\complex^n\rightarrow \bigwedge^d\complex^n$を行列表示したとき、その$(n-d+1)\times(n-d+1)$小行列式がすべて$0$になることと同値である
+\footnote{
+  $\Gamma_\omega$のランクは必ず$n-d$以上であることに注意。実際、もし$\dim\ker\Gamma_{\omega}\geq d+1$であるなら、補題\ref{totally_decomposable}の証明と同様の議論をすると、$\omega=0$となってしまう。
+}。
+そして$\Gamma_\omega$の小行列式は$x_{i_1,\cdots,i_d}$の多項式で表されるから、$\pi(\mathcal{G}(n,d))$は$\proj({\bigwedge^d\complex^n})$の代数的集合である。
+
+
+最後にGrassmann多様体が既約、すなわち射影多様体の構造を持つことを示そう。
+
+\begin{lemm}\label{image_of_irrspace}
+  $X$, $Y$を位相空間, $f:X\rightarrow Y$を連続写像とする。$A\subset X$が既約であるならば$f(A)$も既約である。
+\end{lemm}
+
+\begin{proof}
+  $f(A)$が可約であったとして$f(A)=Z_1\cup Z_2$, $\varnothing\subsetneq Z_1,Z_2\subsetneq f(A)$となる閉集合$Z_1,Z_2$をとる。
+  \[
+  A\subset \inv{f}(f(A))=\inv{f}(Z_1\cup Z_2)=\inv{f}(Z_1)\cup\inv{f}(Z_2)  
+  \]
+  $f$は連続であるから$\inv{f}(Z_1), \inv{f}(Z_2)$は閉集合である。
+  \[
+  A=(A\cap\inv{f}(Z_1))\cup(A\cap\inv{f}(Z_2))
+  \]
+  より$A$は可約である。
+\end{proof}
+
+\begin{prop}
+  $\mathcal{G}(n,d)$は既約である。
+\end{prop}
+
+\begin{proof}
+  $V\in\mathcal{G}(n,d)$を固定して、$\alpha:\gl_n(\complex)\rightarrow\mathcal{G}(n,d)$を
+  \[
+  \alpha(P)=PV  
+  \]
+  によって定める。ただし$PV$は$V$の基底を$v_1,\cdots,v_d$とするとき$Pv_1,\cdots,Pv_d$によって生成される$d$次元部分空間を表す。$\alpha$は全射である。実際任意の$d$次元部分空間$W=\generated{w_1,\cdots,w_d}$に対して、各$v_i$を$w_i$に写すような$n$次正則行列$P$をとればよい。また$\alpha$は多項式写像だから命題\ref{continuity}より連続である。$\gl_n(\complex)$は既約であるから、補題\ref{image_of_irrspace}より$\mathcal{G}(n,d)$も既約である。
+\end{proof}
+
+
+
+
+
+
+\subsection{Shubert胞体}
+
+第3章冒頭で述べた数え上げ問題においては$\proj^3$中の直線全体を考えたいから、$\mathcal{G}(2,4)$を考察していくことになる。重要な考え方として、ある条件をみたす直線の集合を$\mathcal{G}(2,4)$の部分多様体としてとらえることで、「複数の条件を満たす直線の数え上げ$\Leftrightarrow$いくつかの$\mathcal{G}(2,4)$の部分多様体の交点を数える」という問題の変換を行う。
+
 
 \end{document}

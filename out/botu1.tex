@@ -606,4 +606,41 @@ Schur-Weyl双対性の証明で用いる定理を一つ解説しておく。
 \end{proof}
 
 
+
+
+
+\subsection{Grassmann}
+
+$\mathcal{M}(d,n)$をランクが$d$の$n\times d$行列全体のなす集合とする。$A\in\mathcal{M}(d,n)$に対して、
+$
+A=(v_1,\cdots,v_d)  
+$
+とおけば、$v_1,\cdots,v_d$の生成する部分空間$V=\generated{v_1,\cdots,v_d}$は$\dim V = d$であるので$V\in\mathcal{G}(d,n)$である。これにより写像$\tilde{\varphi}:\mathcal{M}(d,n)\rightarrow \mathcal{G}(d,n)$を
+\[
+\tilde{\varphi}(A)=\generated{v_1,\cdots,v_d}  
+\]
+によって定めることができる。$G$を$d$次正則行列全体のなす群とすれば、
+\[
+\tilde{\varphi}(A)=\tilde{\varphi}(B)\Leftrightarrow\text{ある$P\in G$が存在して}B=AP
+\]
+が成り立つから、$\tilde{\varphi}$は全単射$\varphi:\mathcal{M}(d,n)/G\rightarrow \mathcal{G}(d,n)$を誘導する。したがって$\mathcal{G}(d,n)$を$\mathcal{M}(d,n)/G$と同一視することができる。
+
+次に、$\bigwedge^d\complex^n$を$\complex^n$の$d$階の交代テンソル空間とする。これは$_nC_d$次元ベクトル空間であるから、その射影化$\proj(\bigwedge^d\complex^n)$を$\proj^{_nC_d-1}$と同一視する。$\tilde{\pi}:\mathcal{M}(d,n)\rightarrow \proj^{\comb{n}{d}-1}$を
+\[
+\tilde{\pi}(A)=p(v_1\wedge \cdots\wedge v_d)  
+\]
+によって定義する(ただし$p$は射影化$p:\bigwedge^d\complex^n\rightarrow \proj^{\comb{n}{d}-1}$である)。このとき、$P\in G$を$P=(a_{ij})$とおけば
+\begin{align*}
+  \tilde{\pi}(AP)
+  &=p\left(
+    (a_{11}v_1+\cdots+a_{d1}v_d)\wedge\cdots\wedge
+    (a_{d1}v_1+\cdots+a_{dd}v_d)
+  \right)\\
+  &=p(\det P(v_1\wedge\cdots\wedge v_d))\\
+  &=p(v_1\wedge\cdots\wedge v_d)\\
+  &=\tilde{\pi}(A)
+\end{align*}
+となることがわかるから、$\tilde{\pi}$は$\pi:\mathcal{G}(d,n)\rightarrow \proj^{\comb{n}{d}-1}$を誘導する。
+
+
 \end{document}
