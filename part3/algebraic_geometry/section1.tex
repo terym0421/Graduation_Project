@@ -40,7 +40,7 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
 \end{eg}
 
 
-\begin{prop}  
+\begin{prop}\label{containment1}
   $S\subset T$ならば$V(S)\supset V(T)$である。
 \end{prop}
 
@@ -145,14 +145,10 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
 \end{defin}
 
 \begin{eg}
-  定義より$S\subset k[X_1,\cdots,X_n]$に対して、$S\subset I(V(S))$である。また、$A\subset k[X_1,\cdots,X_n]$に対して$A\subset V(I(A))$である。
-\end{eg}
-
-\begin{eg}
   $\affine^1$において、$V(X^2)=\{0\}$だから、$I(V(X^2))=(X)\supsetneq (X^2)$である。
 \end{eg}
 
-\begin{prop}
+\begin{prop}\label{containment2}
   $A\subset B$ならば$I(A)\supset I(B)$である。
 \end{prop}
 
@@ -163,13 +159,16 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
 \begin{prop}\label{VIrelation}
   次が成り立つ。
   \begin{enumerate}
-    \item $A\subset \affine^n$に対して$A\subset V(I(A))$, また$V(I(V(A)))=V(A)$
-    \item $S\subset k[X_1,\cdots,X_n]$に対して$S\subset I(V(S))$, また$I(V(I(S)))=I(S)$
+    \item $A\subset \affine^n$に対して$A\subset V(I(A))$, また$I(V(I(A)))=I(A)$
+    \item $S\subset k[X_1,\cdots,X_n]$に対して$S\subset I(V(S))$, また$V(I(V(S)))=V(S)$
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
-  略
+  \begin{enumerate}
+    \item $p\in A$として任意の$F\in I(A)$に対して定義より$F(p)=0$. すなわち$p\in V(I(A))$. \ref{containment2}より$I(V(I(A)))\subset I(A)$. $F\in I(A)$ならば任意の$p\in V(I(A))$に対して定義より$F(p)=0$. すなわち$I(A)\subset I(V(I(A)))$
+    \item (i)と同様。
+  \end{enumerate}
 \end{proof}
 
 \begin{prop}
@@ -280,7 +279,7 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
 \end{eg}
 
 \begin{defin}
-  位相空間$X$について、$X$の任意の既約閉集合の列
+  位相空間$X$について、$X$の任意の閉集合の列
   \[
   Z_0\subset Z_1\subset\cdots  
   \]
@@ -477,7 +476,7 @@ $V(F_{1*},\cdots,F_{r*})\subset\affine^n$は有限個のアフィン多様体の
     a_{r0} & a_{r1} & \cdots & a_{rn}
   } 
   \]
-  のランクが$r$であるとする。このとき$V(F_1,\cdots,F_r)$を$\proj^n$の$n-r$次元平面という。とくに$r=n-1$のときは直線という。
+  のランクが$r$であるとする。このとき$V(F_1,\cdots,F_r)$を$\proj^n$の$n-r$次元平面、または線形部分多様体という。とくに$r=n-1$のときは直線という。
 \end{defin}
 
 $V(F_1,\cdots,F_r)$はベクトル空間$k^{n+1}$の$r+1$次元部分空間の射影化として得られる。実際、

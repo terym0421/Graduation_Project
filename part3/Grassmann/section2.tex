@@ -155,9 +155,245 @@ $\pi(\mathcal{G}(n,d))=\set{p(\omega)\in\proj(\bigwedge^d\complex^n)}{\omega\tex
 
 
 
-\subsection{Shubert胞体}
+\subsection{Shubert胞体とSchubert多様体}
 
-第3章冒頭で述べた数え上げ問題においては$\proj^3$中の直線全体を考えたいから、$\mathcal{G}(2,4)$を考察していくことになる。重要な考え方として、ある条件をみたす直線の集合を$\mathcal{G}(2,4)$の部分多様体としてとらえることで、「複数の条件を満たす直線の数え上げ$\Leftrightarrow$いくつかの$\mathcal{G}(2,4)$の部分多様体の交点を数える」という問題の変換を行う。
+第3章冒頭で述べた数え上げ問題においては$\proj^3$中の直線全体を考えたいから、$\mathcal{G}(2,4)$を考察していくことになる。重要な考え方として、ある条件をみたす直線の集合を$\mathcal{G}(2,4)$の部分多様体としてとらえることで、「複数の条件を満たす直線の数え上げ$\Leftrightarrow$いくつかの$\mathcal{G}(2,4)$の部分多様体の交点を数える」という問題の変換を行う。このように幾何学的な条件をみたす射影空間中の直線や平面などの線形部分多様体をパラメトライズする空間をSchubert多様体という。
 
+$\mathcal{M}(d,n)$をランク$d$の$n\times d$行列全体のなす集合とする。$\mathcal{M}(d,n)$は$\gl_d(\complex)$が右からの積で作用するが、この軌道空間$\mathcal{M}(d,n)/\gl_d(\complex)$は$\mathcal{G}(d,n)$と同一視される。実際、$\complex^n$の$d$次元部分空間に対して、その基底を並べた行列を考えればそれは$\gl_d(\complex)$軌道の違いを除いて一意的である。$A\in\mathcal{M}(d,n)$に対してその$\gl_d(\complex)$軌道を$[A]$と書く。正則行列を右からかけることはいくつかの列基本変形を施すことと同値だから、$[A]\in\mathcal{G}(d,n)$に対して、$A$の第$1$列から順に列基本変形を行えば、$[A]=[(a_{ij})]$はある$1\leq i_1<i_2<\cdots<i_d\leq n$があって
+$A$の第$i_1,\cdots,i_d$行を取り出した小正方行列が単位行列であり、$(i_1,1),(i_2,2),\cdots,(i_d,d)$成分よりも右上の成分がすべて$0$になる。すなわち
+\begin{equation}\label{schubertcell}
+a_{ij}=\left\{\begin{array}{cl}
+  0 & \text{ if } i \leq i_{j}-1 \text{ or } i=i_k,\: j\leq k-1 \text{ for some $1\leq k\leq d$}\\
+  1 & \text{ if } i = i_k,\: j = k \text{ for some $1\leq k\leq d$}
+\end{array}\right.  
+\end{equation}
+をみたすようにできる。
+
+\begin{eg}
+  $[A]\in\mathcal{G}(2,4)$は次のいずれかの形になる。
+  \begin{align*}
+    &\bmat{
+      1 & 0\\
+      0 & 1\\
+      * & *\\
+      * & *
+    },\qquad 
+    \bmat{
+      1 & 0\\
+      * & 0\\
+      0 & 1\\
+      * & *
+    },\qquad
+    \bmat{
+      1 & 0\\
+      * & 0\\
+      * & 0\\
+      0 & 1
+    }\\
+    &\bmat{
+      0 & 0\\
+      1 & 0\\
+      0 & 1\\
+      * & *
+    },\qquad
+    \bmat{
+      0 & 0\\
+      1 & 0\\
+      * & 0\\
+      0 & 1
+    },\qquad
+    \bmat{
+      0 & 0\\
+      0 & 0\\
+      1 & 0\\
+      0 & 1
+    }
+  \end{align*}
+  ただし$*$の部分には任意の複素数が入る。
+\end{eg}
+
+\begin{defin}
+  $1\leq i_1<i_2<\cdots<i_d\leq n$に対して
+  \[
+  \Omega^\circ_{i_1,\cdots,i_d}=\set{[(a_{ij})]\in\mathcal{G}(d,n)}{a_{ij}\text{ satisfies the condition (\ref{schubertcell})}}  
+  \]
+  をSchubert胞体という。
+\end{defin}
+
+上の議論から、
+\[
+\mathcal{G}(d,n)=\bigsqcup_{1\leq i_1<\cdots<i_d\leq n}\Omega^\circ_{i_1,\cdots,i_d}  
+\]
+が成り立つ。
+
+\begin{eg}
+$\mathcal{G}(2,4)$は
+  \begin{align*}
+    &\Omega^\circ_{1,2}=\bmat{
+      1 & 0\\
+      0 & 1\\
+      * & *\\
+      * & *
+    },\qquad 
+    \Omega^\circ_{1,3}=\bmat{
+      1 & 0\\
+      * & 0\\
+      0 & 1\\
+      * & *
+    },\qquad
+    \Omega^\circ_{1,4}=\bmat{
+      1 & 0\\
+      * & 0\\
+      * & 0\\
+      0 & 1
+    }\\
+    &\Omega^\circ_{2,3}=\bmat{
+      0 & 0\\
+      1 & 0\\
+      0 & 1\\
+      * & *
+    },\qquad
+    \Omega^\circ_{2,4}=\bmat{
+      0 & 0\\
+      1 & 0\\
+      * & 0\\
+      0 & 1
+    },\qquad
+    \Omega^\circ_{3,4}=\bmat{
+      0 & 0\\
+      0 & 0\\
+      1 & 0\\
+      0 & 1
+    }
+  \end{align*}
+  の直和に分解される。
+\end{eg}
+
+$\Omega^\circ_{i_1,\cdots,i_d}$に含まれる$*$の数を$k$とすれば$\Omega^\circ_{i_1,\cdots,i_d}$は$\affine^k$に同相であるから$\dim\Omega^\circ_{i_1,\cdots,i_d}=k$である。
+
+Schubert胞体とYoung図形の関係について述べておく。$1\leq i_1<\cdots<i_d\leq n$に対して、
+\begin{equation}\label{young_and_schubert}
+\lambda_{k}=i_{d+1-k}-d-1+k  
+\end{equation}
+とおくと、$(\lambda_1,\cdots,\lambda_d)$は$d\times (n-d)$の部分Young図形になる。逆に式(\ref{young_and_schubert})によって$d\times (n-d)$の部分Young図形からSchubert胞体を得ることができる。そこで$\mathcal{Y}_d(n)$を$d\times (n-d)$の部分Young図形全体のなす集合とし、$\lambda\in\mathcal{Y}_d(n)$に対応するSchubert胞体を$\Omega^\circ_{\lambda}$と表すことにする。
+
+式(\ref{young_and_schubert})の対応関係をもう少し詳しく説明する。$d\times (n-d)$のYoung図形を用意し、各辺に沿って一番左下の頂点から一番右上の頂点に行く最短経路を考える。そのパターンは、各ステップごとに上に行くか右に行くかを選べば決まる。右上にたどり着くためにはどこかで必ず$d$上に行く選択をしなければならないから、$i_1,\cdots,i_d$ステップ目で上に行き、それ以外では右に行くとすれば、1つ最短経路が定まる。この最短経路によって分けられる$d\times(n-d)$Young図形の左上の部分を、対応するYoung図形$\lambda$とするのである。
+\begin{figure}[H]
+  \centering
+  \includegraphics*[scale=0.6]{C:/Users/Xsaku/OneDrive/Projects/graduate_project/src/young_and_schur.jpg}
+\end{figure}
+またこのとき対応する$\lambda$は、$A$から$i_1,\dots,i_d$行と$*$の入っている部分を取り除いてできる形(を$90^\circ$左に開店したもの)と同じである。
+
+
+
+\begin{eg}
+\begin{align*}
+  \ytableausetup{boxsize=0.5em}
+  &\Omega^\circ_{\varnothing}=\bmat{
+    1 & 0\\
+    0 & 1\\
+    * & *\\
+    * & *
+  },\qquad 
+  \Omega^\circ_{\ydiagram{1}}=\bmat{
+    1 & 0\\
+    * & \fbox{0}\\
+    0 & 1\\
+    * & *
+  },\qquad
+  \Omega^\circ_{\ydiagram{2}}=\bmat{
+    1 & 0\\
+    * & \fbox{0}\\
+    * & \fbox{0}\\
+    0 & 1
+  }\\
+  &\Omega^\circ_{\ydiagram{1,1}}=\bmat{
+    \fbox{0} & \fbox{0}\\
+    1 & 0\\
+    0 & 1\\
+    * & *
+  },\qquad
+  \Omega^\circ_{\ydiagram{2,1}}=\bmat{
+    \fbox{0} & \fbox{0}\\
+    1 & 0\\
+    * & \fbox{0}\\
+    0 & 1
+  },\qquad
+  \Omega^\circ_{\ydiagram{2,2}}=\bmat{
+    \fbox{0} & \fbox{0}\\
+    \fbox{0} & \fbox{0}\\
+    1 & 0\\
+    0 & 1
+  }
+\end{align*}
+$\Box$で囲った成分のなす形とYoung図形とが対応している。
+\end{eg}
+
+
+\begin{defin}[標準的な旗に付随するShubert多様体]
+  $\lambda\in\mathcal{Y}_d(n)$に対して、
+  \[
+  \Omega_\lambda=\bigsqcup_{\mu\supset\lambda}\Omega^\circ_\mu
+  \]
+  をSchubert多様体という。ここで$\mu\supset\lambda\Leftrightarrow \mu_i\geq \lambda_i$ for all $i=1,\cdots,d$である。
+\end{defin}
+
+ここで定義したSchubert多様体は、正確には標準的な旗に付随するSchubert多様体と呼ぶべきものである。旗の概念は後で定義するが、一般のSchubert多様体はこの標準的なSchubert多様体のもつ幾何学的な性質を一般化する形で定める。
+
+\begin{prop}\label{schubert_var}
+  $\lambda\in\mathcal{Y}_d(n)$とする。$e_1,\cdots,e_n$を$\complex^n$の標準基底とし$F^i=\generated{e_{i+1},\cdots,e_n}$とおく。
+  \[
+  \Omega_{\lambda}=\set{V\in\mathcal{G}(d,n)}{\dim(V\cap F^{\lambda_i+d-i})\geq i}  
+  \]
+  が成り立つ。
+\end{prop}
+
+\begin{proof}
+  
+\end{proof}
+
+\begin{defin}
+  $\complex^n$の部分空間の列
+  \[
+  F^0=\complex^n\supset F^1\supset \cdots\supset F^{n-1}\supset F^n=0,\qquad \dim F^i=n-i  
+  \]
+  を旗といい、$F^\bullet$と表す。とくに$e_1,\cdots,e_n$を標準基底として$F^i=\generated{e_{i+1},\cdots,e_n}$なる旗を標準旗という。$\proj^{n-1}$の線形部分多様体は$\complex^n$の部分空間と1対1に対応することを思い出せば、旗の各部分空間を射影化することで$\proj^{n-1}$の線形部分多様体の列を得る。
+\end{defin}
+
+\begin{eg}
+  $\complex^4$において旗
+  \[
+  \complex^4=F^0\supset F^1\supset F^2\supset F_3\supset F^4=0  
+  \]
+  の射影化は
+  \[
+  \proj^3\supset e_0\supset l_0\owns p_0\supset \varnothing  
+  \]
+  である。ここで$e_0$, $l_0$, $p_0$はそれぞれ$\proj^3$の平面, 直線, 点を表している。
+\end{eg}
+
+命題\ref{schubert_var}を一般化して次の定義を得る。
+
+\begin{defin}
+  $F^\bullet$を$\complex^n$の旗とする。$\lambda\in\mathcal{Y}_d(n)$に対して、
+  \[
+  \Omega_\lambda(F^\bullet)=\set{V\in\mathcal{G}(d,n)}{\dim(V\cap F^{\lambda_i+d-i})\geq i}
+  \]
+  を$F^\bullet$に付随するSchubert多様体という
+\end{defin}
+
+$\mathcal{G}(2,4)$において、$F^\bullet$を任意の$\complex^4$の旗としてその射影化を$\proj^3\supset e_0\supset l_0\owns p_0\supset\varnothing$とする。このとき
+\begin{align*}
+  &\Omega_{\varnothing}=\mathcal{G}(2,4)\\
+  &\Omega_{\ydiagram{1}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^2)\geq 1}\approx\set{l\subset\proj^3:\text{直線}}{l\cap l_0\neq\varnothing}\\
+  &\Omega_{\ydiagram{2}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^3)\geq 1}\approx\set{l\subset\proj^3:\text{直線}}{l\owns p_0}\\
+  &\Omega_{\ydiagram{1,1}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^2)\geq 1,\:\dim(V\cap F^1)\geq 2}\approx\set{l\subset\proj^3:\text{直線}}{l\cap l_0\neq\varnothing,\:l\subset e_0}\\
+  &\Omega_{\ydiagram{2,1}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^3)\geq 1,\:\dim(V\cap F^1)\geq 2}\approx\set{l\subset\proj^3:\text{直線}}{l\owns p_0\neq\varnothing,\:l\subset e_0}\\
+  &\Omega_{\ydiagram{2,2}}\approx\{l=l_0\}
+\end{align*}
+となり、Schubert多様体が幾何学的な条件をみたす射影空間の線形部分多様体をパラメトライズしていることがわかる。
+
+
+次にSchubert多様体の基本的な性質をいくつか示しておく。
 
 \end{document}
