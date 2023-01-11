@@ -160,14 +160,14 @@ $\pi(\mathcal{G}(n,d))=\set{p(\omega)\in\proj(\bigwedge^d\complex^n)}{\omega\tex
 第3章冒頭で述べた数え上げ問題においては$\proj^3$中の直線全体を考えたいから、$\mathcal{G}(2,4)$を考察していくことになる。重要な考え方として、ある条件をみたす直線の集合を$\mathcal{G}(2,4)$の部分多様体としてとらえることで、「複数の条件を満たす直線の数え上げ$\Leftrightarrow$いくつかの$\mathcal{G}(2,4)$の部分多様体の交点を数える」という問題の変換を行う。このように幾何学的な条件をみたす射影空間中の直線や平面などの線形部分多様体をパラメトライズする空間をSchubert多様体という。
 
 $\mathcal{M}(d,n)$をランク$d$の$n\times d$行列全体のなす集合とする。$\mathcal{M}(d,n)$は$\gl_d(\complex)$が右からの積で作用するが、この軌道空間$\mathcal{M}(d,n)/\gl_d(\complex)$は$\mathcal{G}(d,n)$と同一視される。実際、$\complex^n$の$d$次元部分空間に対して、その基底を並べた行列を考えればそれは$\gl_d(\complex)$軌道の違いを除いて一意的である。$A\in\mathcal{M}(d,n)$に対してその$\gl_d(\complex)$軌道を$[A]$と書く。正則行列を右からかけることはいくつかの列基本変形を施すことと同値だから、$[A]\in\mathcal{G}(d,n)$に対して、$A$の第$1$列から順に列基本変形を行えば、$[A]=[(a_{ij})]$はある$1\leq i_1<i_2<\cdots<i_d\leq n$があって
-$A$の第$i_1,\cdots,i_d$行を取り出した小正方行列が単位行列であり、$(i_1,1),(i_2,2),\cdots,(i_d,d)$成分よりも右上の成分がすべて$0$になる。すなわち
+$A$の第$i_1,\cdots,i_d$行を取り出した小正方行列が単位行列であり、$(i_1,1),(i_2,2),\cdots,(i_d,d)$成分よりも右上の成分がすべて$0$になる。式で表すと
 \begin{equation}\label{schubertcell}
 a_{ij}=\left\{\begin{array}{cl}
   0 & \text{ if } i \leq i_{j}-1 \text{ or } i=i_k,\: j\leq k-1 \text{ for some $1\leq k\leq d$}\\
   1 & \text{ if } i = i_k,\: j = k \text{ for some $1\leq k\leq d$}
 \end{array}\right.  
 \end{equation}
-をみたすようにできる。
+をみたすということである。
 
 \begin{eg}
   $[A]\in\mathcal{G}(2,4)$は次のいずれかの形になる。
@@ -222,7 +222,7 @@ a_{ij}=\left\{\begin{array}{cl}
 
 上の議論から、
 \[
-\mathcal{G}(d,n)=\bigsqcup_{1\leq i_1<\cdots<i_d\leq n}\Omega^\circ_{i_1,\cdots,i_d}  
+\mathcal{G}(d,n)=\bigcup_{1\leq i_1<\cdots<i_d\leq n}\Omega^\circ_{i_1,\cdots,i_d}  
 \]
 が成り立つ。
 
@@ -270,6 +270,16 @@ $\mathcal{G}(2,4)$は
 \end{eg}
 
 $\Omega^\circ_{i_1,\cdots,i_d}$に含まれる$*$の数を$k$とすれば$\Omega^\circ_{i_1,\cdots,i_d}$は$\affine^k$に同相であるから$\dim\Omega^\circ_{i_1,\cdots,i_d}=k$である。
+
+\begin{prop}
+  $(1\leq <i_1<\cdots<i_d\leq n)$, $(1\leq j_1<\cdots<j_d\leq n)$が異なるならば、$\Omega_{i_1,\cdots,i_d}^\circ\cap\Omega_{j_1,\cdots,j_d}^\circ=\varnothing$である。
+\end{prop}
+
+\begin{proof}
+  
+\end{proof}
+
+
 
 Schubert胞体とYoung図形の関係について述べておく。$1\leq i_1<\cdots<i_d\leq n$に対して、
 \begin{equation}\label{young_and_schubert}
@@ -335,21 +345,70 @@ $\Box$で囲った成分のなす形とYoung図形とが対応している。
   \[
   \Omega_\lambda=\bigsqcup_{\mu\supset\lambda}\Omega^\circ_\mu
   \]
-  をSchubert多様体という。ここで$\mu\supset\lambda\Leftrightarrow \mu_i\geq \lambda_i$ for all $i=1,\cdots,d$である。
+  をSchubert多様体という。ここで$\mu\supset\lambda\Leftrightarrow \mu_k\geq \lambda_k$ for all $k=1,\cdots,d$である。
 \end{defin}
 
 ここで定義したSchubert多様体は、正確には標準的な旗に付随するSchubert多様体と呼ぶべきものである。旗の概念は後で定義するが、一般のSchubert多様体はこの標準的なSchubert多様体のもつ幾何学的な性質を一般化する形で定める。
 
 \begin{prop}\label{schubert_var}
-  $\lambda\in\mathcal{Y}_d(n)$とする。$e_1,\cdots,e_n$を$\complex^n$の標準基底とし$F^i=\generated{e_{i+1},\cdots,e_n}$とおく。
+  $\lambda\in\mathcal{Y}_d(n)$とする。$e_1,\cdots,e_n$を$\complex^n$の標準基底とし$F^k=\generated{e_{k+1},\cdots,e_n}$とおく。
   \[
-  \Omega_{\lambda}=\set{V\in\mathcal{G}(d,n)}{\dim(V\cap F^{\lambda_i+d-i})\geq i}  
+  \Omega_{\lambda}=\set{V\in\mathcal{G}(d,n)}{\dim(V\cap F^{\lambda_k+d-k})\geq k}  
   \]
   が成り立つ。
 \end{prop}
 
 \begin{proof}
+  $\mu\supset\lambda$とする。式(\ref{young_and_schubert})によって$\lambda,\mu$に対応する整数列をそれぞれ$(i_1,\cdots,i_d)$, $(j_1,\cdots,j_d)$とする。すなわち
+  \[
+  i_k=\lambda_{d+1-k}+k,\qquad j_k=\mu_{d+1-k}+k  
+  \]
+  である。$\mu\supset\lambda$より$j_k\geq i_k$である。
   
+  $V\in\Omega_{\mu}^\circ$はベクトル
+  \begin{align*}
+    &v_1=e_{j_1}+f_1,\quad f_1\in\generated{e_{j_1+1},\cdots,e_n}=F^{j_1}\\
+    &v_2=e_{j_2}+f_2,\quad f_2\in\generated{e_{j_2+1},\cdots,e_n}=F^{j_2}\\
+    &\quad\vdots\\
+    &v_d=e_{j_d}+f_d,\quad f_d\in\generated{e_{j_d+1},\cdots,e_n}=F^{j_d}
+  \end{align*}
+  を適当にとって$V=\generated{v_1,v_2,\cdots,v_d}$とできる。$\lambda_k+d-k=(i_{d+1-k}-d-1+k)+d-k=i_{d+1-k}-1$であるが、$\dim(V\cap F^{i_{d+1-k}-1})\geq k$を示そう。$v_{d+1-k},v_{d+2-k},\cdots,v_d\in F^{j_{d+1-k}-1}$である。$j_k\geq i_k$であるから$F^{j_{d+1-k}-1}\subset F^{i_{d+1-k}-1}$. したがって
+  \[
+  \dim(V\cap F^{i_{d+1-k}-1})\geq k
+  \]
+  である。
+
+  逆に$V\in\mathcal{G}(d,n)$が$\dim(V\cap F^{i_{d+1-k}-1})\geq k$を満たしているとする。このとき$V$の基底$v_1,\cdots,v_d$として次の条件を満たすものがとれる。
+  \begin{align*}
+    &v_d\in V\cap F^{i_d-1}\\
+    &v_{d-1}\in V\cap F^{i_{d-1}-1}\setminus F^{i_d-1}\\
+    &\quad\vdots\\
+    &v_1\in V\cap F^{i_1-1}\setminus F^{i_2-1}
+  \end{align*}
+  よって標準基底に関して成分表示すると
+  \begin{align*}
+    \begin{array}{ccr}
+      v_d & = & c^{(d)}_{i_d}e_{i_d}+\cdots+c^{(1)}_{n}e_n\\
+      v_{d-1} & = & c^{(d-1)}_{i_{d-1}}e_{i_{d-1}}+\cdots+c^{(d-1)}_{i_d-1}e_{i_d-1}+c^{(d-1)}_{i_d}e_{i_d}+\cdots+c^{(d-1)}_{n}e_n\\
+          & \vdots & \\
+      v_1 & = & c^{(1)}_{i_1}e_{i_1}+\cdots+c^{(1)}_{i_2-1}e_{i_2-1}+\cdots+c^{(1)}_{i_d}e_{i_d}+\cdots+c^{(1)}_{n}e_n
+    \end{array}
+  \end{align*}
+  となるが、上の条件より
+  \begin{align*}
+    &c^{(d)}_{i_d},\dots,c^{(d)}_n\text{　は同時に$0$にならない}\\
+    &c^{(d-1)}_{i_{d-1}},\cdots,c^{(d-1)}_{i_d-1}\text{　は同時に$0$にならない}\\
+    &\quad\vdots\\
+    &c^{(1)}_{i_1},\cdots,c^{(1)}_{i_2-1}\text{　は同時に$0$にならない}\\
+  \end{align*}
+  が成り立つ。各$k$において$0$でない$c^{(k)}_{i_{k}},\cdots,c^{(k)}_{n}$のうち最も左にあるものを$c^{(k)}_{j_k}$とおいて、$v_k$を$\frac{1}{c^{(k)}_{j_k}}v_k$で置き換えれば、
+  \begin{align*}
+    &v_d=e_{j_1}+f_1,\quad f_1\in\generated{e_{j_1+1},\cdots,e_n}=F^{j_1}\\
+    &v_{d-1}=e_{j_2}+f_2,\quad f_2\in\generated{e_{j_2+1},\cdots,e_n}=F^{j_2}\\
+    &\quad\vdots\\
+    &v_d=e_{j_d}+f_d,\quad f_d\in\generated{e_{j_d+1},\cdots,e_n}=F^{j_d}
+  \end{align*}
+  の形にすることができる。これは$V=\generated{v_1,\cdots,v_d}$が$V\in\Omega_{j_1,\cdots,j_d}^\circ$であることに他ならないが、$j_k\geq i_k$であるので、$j_1,\cdots,j_d$の対応するYoung図形を$\mu$とすれば$\mu\supset\lambda$である。
 \end{proof}
 
 \begin{defin}
@@ -363,13 +422,13 @@ $\Box$で囲った成分のなす形とYoung図形とが対応している。
 \begin{eg}
   $\complex^4$において旗
   \[
-  \complex^4=F^0\supset F^1\supset F^2\supset F_3\supset F^4=0  
+  \complex^4=F^0\supset F^1\supset F^2\supset F^3\supset F^4=0  
   \]
   の射影化は
   \[
   \proj^3\supset e_0\supset l_0\owns p_0\supset \varnothing  
   \]
-  である。ここで$e_0$, $l_0$, $p_0$はそれぞれ$\proj^3$の平面, 直線, 点を表している。
+  である。ここで$e_0$, $l_0$, $p_0$はそれぞれ$\proj^3$の平面, 直線, 点である。
 \end{eg}
 
 命題\ref{schubert_var}を一般化して次の定義を得る。
@@ -395,5 +454,9 @@ $\mathcal{G}(2,4)$において、$F^\bullet$を任意の$\complex^4$の旗とし
 
 
 次にSchubert多様体の基本的な性質をいくつか示しておく。
+
+\begin{prop}
+  Grassmann多様体はSchubert胞体
+\end{prop}
 
 \end{document}
