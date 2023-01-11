@@ -11,6 +11,9 @@
   $\complex^{n}$の$d$次元部分空間全体のなす集合を$\mathcal{G}(d,n)$と書き、これをGrassmann多様体という。
 \end{defin}
 
+$d=1$のときGrassmann多様体は射影空間に他ならない。この意味でGrassmann多様体は射影空間の一般化である。
+第3章冒頭で述べた数え上げ問題においては$\mathcal{G}(2,4)$を考えることになる。
+
 Grassmann多様体が代数多様体の構造をもつことを示しておく。
 $\complex^n$の$d$階交代テンソル空間$\bigwedge^d\complex^n$を考える。$\bigwedge^d\complex^n$は$\comb{n}{d}$次元ベクトル空間であるから、その射影化$\proj(\bigwedge^d\complex^n)$は$\proj^{\comb{n}{d}-1}$と同一視することができる。また、$e_1,\cdots,e_n$を$\complex^n$の標準基底とすれば$\omega\in\bigwedge^d\complex^n$は
 \[
@@ -21,6 +24,10 @@ $\complex^n$の$d$階交代テンソル空間$\bigwedge^d\complex^n$を考える
 p(\omega)=[x_{i_1,\cdots,i_d}]_{1\leq i_1<\cdots<i_d\leq n}  
 \]
 のように書くことができる。
+
+
+
+
 
 $V\in\mathcal{G}(d,n)$に対して、$V$の基底を$v_1,\cdots,v_d\in\complex^n$とし写像$\pi:\mathcal{G}(d,n)\rightarrow \proj^{\comb{n}{d}-1}$を
 \[
@@ -227,7 +234,7 @@ a_{ij}=\left\{\begin{array}{cl}
 が成り立つ。
 
 \begin{eg}
-$\mathcal{G}(2,4)$は
+$\mathcal{G}(2,4)$の場合
   \begin{align*}
     &\Omega^\circ_{1,2}=\bmat{
       1 & 0\\
@@ -266,20 +273,9 @@ $\mathcal{G}(2,4)$は
       0 & 1
     }
   \end{align*}
-  の直和に分解される。
 \end{eg}
 
 $\Omega^\circ_{i_1,\cdots,i_d}$に含まれる$*$の数を$k$とすれば$\Omega^\circ_{i_1,\cdots,i_d}$は$\affine^k$に同相であるから$\dim\Omega^\circ_{i_1,\cdots,i_d}=k$である。
-
-\begin{prop}
-  $(1\leq <i_1<\cdots<i_d\leq n)$, $(1\leq j_1<\cdots<j_d\leq n)$が異なるならば、$\Omega_{i_1,\cdots,i_d}^\circ\cap\Omega_{j_1,\cdots,j_d}^\circ=\varnothing$である。
-\end{prop}
-
-\begin{proof}
-  
-\end{proof}
-
-
 
 Schubert胞体とYoung図形の関係について述べておく。$1\leq i_1<\cdots<i_d\leq n$に対して、
 \begin{equation}\label{young_and_schubert}
@@ -411,12 +407,56 @@ $\Box$で囲った成分のなす形とYoung図形とが対応している。
   の形にすることができる。これは$V=\generated{v_1,\cdots,v_d}$が$V\in\Omega_{j_1,\cdots,j_d}^\circ$であることに他ならないが、$j_k\geq i_k$であるので、$j_1,\cdots,j_d$の対応するYoung図形を$\mu$とすれば$\mu\supset\lambda$である。
 \end{proof}
 
+\begin{prop}
+  $\lambda\neq\mu$ならば、$\Omega_\lambda^\circ\cap\Omega_\mu^\circ=\varnothing$である。
+\end{prop}
+
+\begin{proof}
+  $\lambda,\mu$に対応する整数列をそれぞれ$(i_1,\cdots,i_d)$, $(j_1,\cdots,j_d)$とおく。$V\in\Omega_\lambda^\circ$とすると、$V$の基底$v_1,\cdots,v_d$を
+  \begin{align*}
+    &v_1=e_{i_1}+f_1,\quad f_1\in\generated{e_{i_1+1},\cdots,e_n}=F^{i_1}\\
+    &v_2=e_{i_2}+f_2,\quad f_2\in\generated{e_{i_2+1},\cdots,e_n}=F^{i_2}\\
+    &\quad\vdots\\
+    &v_d=e_{i_d}+f_d,\quad f_d\in\generated{e_{i_d+1},\cdots,e_n}=F^{i_d}
+  \end{align*}
+  となるように取れる。さらにもし$V\in\Omega_{\mu}^\circ$でもあるなら$V$の別の基底$w_1,\cdots,w_d$で
+  \begin{align*}
+    &w_1=e_{j_1}+s_1,\quad s_1\in\generated{e_{j_1+1},\cdots,e_n}=F^{j_1}\\
+    &w_2=e_{j_2}+s_2,\quad s_2\in\generated{e_{j_2+1},\cdots,e_n}=F^{j_2}\\
+    &\quad\vdots\\
+    &w_d=e_{j_d}+s_d,\quad s_d\in\generated{e_{j_d+1},\cdots,e_n}=F^{j_d}
+  \end{align*}
+  となるものが存在する。ここで$j_k\neq\{i_1,\cdots,i_d\}$なる$j_k$に対して、$w_{k}\neq\generated{v_1,\cdots,v_d}$であることを示す。もし
+  \[
+  w_k=c_1v_1+\cdots+c_dv_d  
+  \]
+  となったとする。このとき
+  \[
+  e_{j_k}+s_k=c_1e_{i_1}+\cdots+c_de_{i_d}+c_1f_1+\cdots+c_df_d  
+  \]
+  だが、$i_1<\cdots<i_{t}<j_k<i_{t+1}<\cdots<i_d$として両辺$F^{j_k}$の剰余類を取れば
+  \[
+  \overline{e_{j_k}}=c_1\overline{e_{i_1}}+\cdots+c_t\overline{e_{i_t}}+c_1\overline{f_1}+\cdots+c_t\overline{f_t}  
+  \]
+  となる。$\overline{e_{i_1}}\in (F^{i_1-1}/F^{j_k})\setminus (F^{i_1}/F^{j_k})$かつ、それ以外のすべての元は$F^{i_1}/F^{j_k}$に含まれている。したがって$c_1=0$でなければならない。$e_{i_2}$に同様の議論をして$c_2=0$. 結局$c_t=0$までが言えるので、$\overline{e_{j_k}}=0$すなわち$e_{j_k}\in F^{j_k}$となるがこれは矛盾である。
+\end{proof}
+
+\begin{cor}
+  Grassmann多様体はSchubert胞体の直和である。
+  \[
+    \mathcal{G}(d,n)=\bigsqcup_{\lambda\in\mathcal{Y}_d(n)}\Omega_{\lambda}^\circ
+  \]
+\end{cor}
+
+
+
+
 \begin{defin}
   $\complex^n$の部分空間の列
   \[
-  F^0=\complex^n\supset F^1\supset \cdots\supset F^{n-1}\supset F^n=0,\qquad \dim F^i=n-i  
+  \complex^n=F^0\supset F^1\supset \cdots\supset F^{n-1}\supset F^n=0,\qquad \dim F^k=n-k  
   \]
-  を旗といい、$F^\bullet$と表す。とくに$e_1,\cdots,e_n$を標準基底として$F^i=\generated{e_{i+1},\cdots,e_n}$なる旗を標準旗という。$\proj^{n-1}$の線形部分多様体は$\complex^n$の部分空間と1対1に対応することを思い出せば、旗の各部分空間を射影化することで$\proj^{n-1}$の線形部分多様体の列を得る。
+  を旗といい、$F^\bullet$と表す。とくに$e_1,\cdots,e_n$を標準基底として$F^k=\generated{e_{k+1},\cdots,e_n}$なる旗を標準旗といい$F_{st}^\bullet$と表す。$\proj^{n-1}$の線形部分多様体は$\complex^n$の部分空間と1対1に対応することを思い出せば、旗の各部分空間を射影化することで$\proj^{n-1}$の線形部分多様体の列を得る。
 \end{defin}
 
 \begin{eg}
@@ -453,10 +493,38 @@ $\mathcal{G}(2,4)$において、$F^\bullet$を任意の$\complex^4$の旗とし
 となり、Schubert多様体が幾何学的な条件をみたす射影空間の線形部分多様体をパラメトライズしていることがわかる。
 
 
-次にSchubert多様体の基本的な性質をいくつか示しておく。
+Schubert胞体・Schubert多様体の基本的な性質をいくつか示しておく。
+
+
+旗$F^\bullet$と$g\in\gl_n(\complex)$に対して$gF^\bullet$を
+\[
+gF^\bullet:\complex^n=gF^0\supset gF^1\supset\cdots\supset gF^n=0
+\]
+によって定めれば$gF^\bullet$は新しい旗になる。逆に任意の旗$F^\bullet,E^\bullet$に対して、$F^k=\generated{v_{k+1},\cdots,v_n}$, $E^k=\generated{w_{k+1},\cdots,w_n}$となる$\complex^n$の基底$v_1,\cdots,v_n$, $w_1,\cdots,w_n$をとって変換行列$g$を考えれば、$gF^\bullet =E^\bullet$となる。言い換えれば$\gl_n(\complex)$は$\complex^n$の旗全体のなす集合に推移的に作用する。
 
 \begin{prop}
-  Grassmann多様体はSchubert胞体
+  $F^\bullet$を旗、$g\in\gl_n(\complex)$とする。$g\Omega_\lambda(F^\bullet)=\Omega_{\lambda}(gF^\bullet)$である。  
 \end{prop}
+
+\begin{proof}
+  \begin{align*}
+    V\in\Omega_\lambda(gF^\bullet)
+    &\Leftrightarrow \dim(V\cap gF^{\lambda_k+d-k})\geq k, \text{ for all $k$ }\\
+    &\Leftrightarrow \dim(\inv{g}V\cap F^{\lambda_k+d-k})\geq k, \text{ for all $k$}\\
+    &\Leftrightarrow \inv{g}V\in \Omega_{\lambda}(F^\bullet)\\
+    &\Leftrightarrow V\in g\Omega_{\lambda}(F^\bullet)
+  \end{align*}
+\end{proof}
+
+任意の旗$F^\bullet$に対して、$F^\bullet$はある$g\in\gl_n(\complex)$で$F^\bullet=gF_{st}^\bullet$と書けるが、
+\[
+\Omega_{\lambda}(F_{st}^\bullet)=\bigsqcup_{\mu\supset\lambda}\Omega_{\mu}^\circ  
+\]
+であったから、
+\[
+\Omega_{\lambda}(F)=\bigsqcup_{\mu\supset\lambda}g\Omega_{\mu}^\circ    
+\]
+そこで、$g\Omega_{\mu}^\circ$を旗$F^\bullet$に付随するSchubert胞体という。
+
 
 \end{document}

@@ -80,6 +80,16 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
   であるから$\gl_n(k)$は$\affine^{n^2}$のZariski開集合である。
 \end{eg}
 
+\begin{eg}
+  $\affine^{nd}$の座標を$x_{ij}$, $1\leq i\leq n$, $1\leq j\leq d$で表す。$\mathcal{M}(d,n)\subset\affine^{nd}$をランク$d$の$n\times d$行列全体のなす集合とする。$A\in\affine^{nd}$に対して、$A$の$i_1,\cdots,i_d$を取り出した小正方行列を$A_{i_1,\cdots,i_d}$とする。
+  \begin{align*}
+  \affine^{nd}\setminus \mathcal{M}(d,n)
+  &=\set{A\in\affine^{nd}}{\det A_{i_1,\cdots,i_d}=0, \text{for all $1\leq i_1<\cdots<i_d\leq n$}}\\
+  &=V(\{\det X_{i_1,\cdots,i_d}\}_{i_1,\cdots,i_d})
+  \end{align*}
+  よって$\mathcal{M}(d,n)$は$\affine^{nd}$のZariski開集合である。
+\end{eg}
+
 \begin{prop}
   $k$を無限体とすると$\affine^n$はHausdorffでない。
 \end{prop}
