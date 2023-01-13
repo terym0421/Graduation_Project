@@ -3,7 +3,55 @@
 
 \begin{document}
 \section{Grassmann多様体の交叉理論}
-\subsection{Schubert類}
+\subsection{一般の位置}
+
+前節で導入したように、$\proj^n$の固定された旗に対して、ある特定の位置条件にある線形部分多様体をパラメータづける空間がSchubert多様体であった。したがって今度は複数の旗に対してそれぞれのSchubert多様体がどのように交わるかを記述することを考える。ここで重要になるのが2つの旗が一般の位置にあるという条件である。これが第3章冒頭に述べた「ある程度一般の状況」という言葉の意味である。一般の位置にある2つの旗のSchubert多様体に対してはその次元がうまくふるまうことが知られており、それによって交点の数え上げに整った代数的・組み合わせ的計算が現れる。
+
+\begin{defin}
+  $F^\bullet$, $E^\bullet$を$\complex^n$の旗とする。各$k$において
+  \[
+  F^k\cap E^{n-k}=0  
+  \]
+  が成り立つとき、$F^\bullet,E^\bullet$は一般の位置にあるという。
+\end{defin}
+
+\begin{eg}
+  旗$F^\bullet$に対して$F^k=\generated{v_{k+1},\cdots,v_n}$となる基底$v_1,\cdots,v_n$をとる。$F^k_{op}$を
+  \[
+  F^k_{op}=\generated{v_1,\cdots,v_{n-k}}  
+  \]
+  とすれば
+  \[
+  F^{n-k}_{op}\cap F^k=\generated{v_1,\cdots,v_k}\cap\generated{v_{k+1},\cdots,v_n}  =0
+  \]
+  となるから、$F^\bullet,F^\bullet_{op}$は一般の位置にある。$F^\bullet_{op}$を$F^\bullet$の反対旗という。
+\end{eg}
+
+\begin{eg}
+  $F^\bullet$を標準旗とする。$g\in \gl_n(\complex)$を$g=(v_1,\cdots,v_n)=(a_{ij})$とすれば
+  \[
+  gF^k=\generated{v_{k+1},\cdots,v_n}
+  \]
+  である。$F^\bullet$, $gF^\bullet$が一般の位置にあるための必要十分条件は、各$k$において
+  \[
+  e_{k+1},\cdots,e_n,v_{n-k+1},\cdots,v_n  
+  \]
+  が一次独立となることである。すなわち$\det(e_{k+1},\cdots,e_n,v_{n-k+1},\cdots,v_n)\neq 0$である。よって
+  $F^\bullet$, $gF^\bullet$が一般の位置にあるような$g$のなす$\gl_n(\complex)$の部分集合はZariski開集合である。Zariski開集合は稠密であるので、ほとんどすべての旗は一般の位置にあるといってよい。
+\end{eg}
+
+\begin{prop}
+  $F^\bullet$, $E^\bullet$を一般の位置にある旗とする。$\complex^n$の基底$v_1,\cdots,v_n$を適当にとって、
+  \[
+  F^k=\generated{v_{k+1},\cdots,v_n}, \quad E^{n-k}=\generated{v_1,\cdots,v_k}  
+  \]
+  となるようにできる。
+\end{prop}
+
+\begin{proof}
+  $\dim (E^{n-k}\cap F^{k-1})=1$を示す。
+\end{proof}
+
 
 
 
