@@ -567,11 +567,37 @@ E_\lambda=E_{i_1,\cdots,i_d}
 
 
 \begin{prop}
-  $\Omega_{\lambda}^\circ(F^\bullet)\subset \mathcal{G}(d,n)\subset\proj(\bigwedge^d\complex^n)$はZariski閉集合である。
+  $\Omega_{\lambda}(F^\bullet)\subset \mathcal{G}(d,n)\subset\proj(\bigwedge^d\complex^n)$はZariski閉集合である。
 \end{prop}
 
 \begin{proof}
-  命題\ref{zariski_vs_quotient}より、$\mathcal{M}(d,n)$によって誘導される位相に関して閉集合であることを示せばよい。
+  命題\ref{flag_schubert}より$\Omega_{\lambda}(F^{\bullet}_{st})$に対して示せば十分である。
+  また、命題\ref{zariski_vs_quotient}より、$\mathcal{M}(d,n)$によって誘導される位相に関して閉集合であることを示せばよい。$\Omega_{\lambda}(F^\bullet_{st})=\set{V\in\mathcal{G}(d,n)}{\dim V\cap F^{\lambda_i+d-i}\geq i}$において、線形写像$\eta_i(V)$を
+  \[
+  \eta_i(V):V\rightarrow \complex^n\rightarrow \complex^n/F^{\lambda_i+d-i}
+  \]
+  なる自然な写像とすれば、$\dim V\cap F^{\lambda_i+d-i}\geq i$は$\rank\eta_i(V)\geq d-i$と同値である。
+  $\phi:\mathcal{M}(d,n)\rightarrow\mathcal{M}(d,n)/\gl_d(\complex)=\mathcal{G}(d,n)$を自然な写像とすれば
+  \[
+  \inv{\phi}(\Omega_{\lambda}(F^\bullet_{st}))=\set{A\in\mathcal{M}(d,n)}{\rank\eta_i([A])\geq d-i}  
+  \]
+  となる。したがって$\rank\eta_i([A])\geq d-i$が($A$の成分の多項式)$=0$の形で記述できることがわかればよい。$V=[A]$とする。$V$の基底を$A$の列ベクトル, $\complex^n$の基底を標準基底でとれば、
+  \[
+  V\rightarrow \complex^n
+  \]
+  の表現行列は$A$に他ならない。また、$\complex^n/F^{\lambda_i+d-i}$の基底として$e_1,\cdots,e_{\lambda_i+d-i}$がとれるから
+  \[
+  \complex^n\rightarrow \complex^n/F^{\lambda_i+d-i}  
+  \]
+  の表現行列は
+  \[
+  \pmat{E_{\lambda_i+d-i}&0},\qquad \text{ただし$E_{\lambda_i+d-i}$は$\lambda_i+d-i$次単位行列}  
+  \]
+  となる。したがって$\eta_i([A])$の表現行列は
+  \[
+  \pmat{E_{\lambda_i+d-i}&0}A=\pmat{A_{\lambda_i+d-i}&0}  
+  \]
+  となる。ただし$A_{\lambda_i+d-i}$は$A$の第$1$行から$\lambda_i+d-i$行までを取り出した小正方行列である。よって$\rank\eta_i(V)\geq d-i$は$\pmat{A_{\lambda_i+d-i}&0}$の$d-i+1$小行列式がすべて$0$になることと同値だから、これは($A$の成分の多項式)$=0$の形である。
 \end{proof}
 
 
@@ -584,7 +610,7 @@ E_\lambda=E_{i_1,\cdots,i_d}
 \end{prop}
 
 \begin{proof}
-  命題\ref{flag_schubert}より$\Omega_{\lambda}(F^{\bullet}_{st})$に対して示せば十分である。次の補題を用いる。
+  $\Omega_{\lambda}(F^{\bullet}_{st})$に対して示せば十分である。次の補題を用いる。
   \begin{lemm}
     $\lambda\subset\mu$ならば$\Omega_{\mu}^\circ(F^\bullet_{st})\subset\overline{\Omega_{\lambda}^\circ(F^\bullet_{st})}$
   \end{lemm}
@@ -628,8 +654,18 @@ E_\lambda=E_{i_1,\cdots,i_d}
   \]
   であり、$\Omega_{\lambda}^\circ(F^\bullet_{st})\subset\Omega_{\lambda}(F^\bullet_{st})$かつ$\Omega_{\lambda}(F^\bullet_{st})$は閉集合であるから、
   \[
-    \Omega_{\lambda}^\circ(F^\bullet_{st})\subset\Omega_{\lambda}(F^\bullet_{st})  
+    \overline{\Omega_{\lambda}^\circ(F^\bullet_{st})}\subset\Omega_{\lambda}(F^\bullet_{st})  
   \]
+\end{proof}
+
+\begin{cor}
+  Schubert多様体は既約である。
+\end{cor}
+
+\begin{proof}
+  一般に位相空間$X$の部分集合$A$が既約であるならその閉包$\overline{A}$も既約である。実際、$\overline{A}=Y_1\cup Y_2$となる閉集合$Y_1,Y_2$が存在したら、$A=(\overline{A}\cap Y_1)\cup(\overline{A}\cap Y_2)$となるから$A$は可約になる。
+
+  Schubert胞体はアフィン空間と同相であるから既約であるので、その閉包であるSchubert多様体も既約である。
 \end{proof}
 
 
