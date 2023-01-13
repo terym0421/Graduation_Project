@@ -80,7 +80,7 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
   であるから$\gl_n(k)$は$\affine^{n^2}$のZariski開集合である。
 \end{eg}
 
-\begin{eg}
+\begin{eg}\label{M_d,n}
   $\affine^{nd}$の座標を$x_{ij}$, $1\leq i\leq n$, $1\leq j\leq d$で表す。$\mathcal{M}(d,n)\subset\affine^{nd}$をランク$d$の$n\times d$行列全体のなす集合とする。$A\in\affine^{nd}$に対して、$A$の$i_1,\cdots,i_d$を取り出した小正方行列を$A_{i_1,\cdots,i_d}$とする。
   \begin{align*}
   \affine^{nd}\setminus \mathcal{M}(d,n)
@@ -288,31 +288,9 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
   $V=V(Y-X^2)\subset\affine^2$について、$\dim V=1$であることを示す。$\phi:\affine^1\rightarrow V$を$\phi(t)=(t,t^2)$とすると$\phi$は多項式写像なので、命題\ref{continuity}(Zariski位相に関して)連続である。逆に$\psi:V\rightarrow \affine^1$を$\psi(x,y)=x$とすると$\psi$も多項式写像だから連続である。$\phi$,$\psi$は互いに逆の写像だから、$\affine^1\approx V$. よって$\dim V=1$
 \end{eg}
 
-\begin{defin}
-  位相空間$X$について、$X$の任意の閉集合の列
-  \[
-  Z_0\subset Z_1\subset\cdots  
-  \]
-  が与えられたとき、ある番号$n$があって$Z_n=Z_{n+1}=\cdots$が成り立つとする。$X$がこの性質をもつときNoether的空間という。
-\end{defin}
-
-\begin{prop}
-  $X$をNoether的位相空間とすると、$X$の有限個の既約閉集合$Z_1,\cdots,Z_r$が一意的に存在して
-  \[
-  X=Z_1\cup\cdots\cup Z_r  ,\quad i\neq j\implies Z_i\not\subset Z_j
-  \]
-  が成り立つ。$Z_1,\cdots,Z_r$を$X$の既約成分という。
-\end{prop}
-
-\begin{proof}
-  略
-\end{proof}
-
-この命題から、任意の代数的集合はアフィン多様体の有限個の和集合で書けることがわかる。
-
-
-
-
+\begin{fact}[\cite{RH}]\label{noether_space}
+  $\affine^n$の任意の代数的集合は有限個のアフィン多様体の和集合で書ける
+\end{fact}
 
 
 \subsection{射影空間と射影多様体}
@@ -427,13 +405,10 @@ $\varphi$は全単射であり
   ゆえに$\psi(q)=[1:x_1:\cdots:x_n]\in V(F)\cap U_0$. 逆に$q=(x_1,\cdots,x_n)\in\affine^n$が$\psi(q)\in V(F)\cap U_0$ならば$F(1,x_1,\cdots,x_n)=0$であるので$q\in V(F_*)$. よって$\inv{\psi}(V(F)\cap U_0)$は$\affine^n$の閉集合である。一般の$\proj^n$の閉集合$V(F_1,\cdots,F_r)$に対しても同様に$\inv{\psi}(V(F_1,\cdots,F_r)\cap U_0)=V(F_{1*},\cdots,F_{r*})$となることが示せるので$\psi$も連続である。
 \end{proof}
 
-\begin{prop}\label{dim_property}
+\begin{fact}[\cite{RH}]\label{dim_property}
   $X$を位相空間, $U$を$X$の空でない開集合とする。このとき$\dim X=\dim U$である。
-\end{prop}
+\end{fact}
 
-\begin{proof}
-  略
-\end{proof}
 
 \begin{eg}
   $\proj^n=\bigcup_{i=0}^nU_i$, $U_i\approx \affine^n$より、$\dim\proj^n=n$である。
@@ -462,9 +437,14 @@ V\cap U_0
 &=V(F_{1*},\cdots,F_{r*})
 \end{align*}
 
-$V(F_{1*},\cdots,F_{r*})\subset\affine^n$は有限個のアフィン多様体の和集合で表せたから、すべての射影多様体(さらに$\proj^n$の代数的集合)はアフィン多様体の有限個の和集合(貼り合わせ)で書ける。このようにアフィン多様体の貼り合わせになっているものや、そのZariski開集合を総称して代数多様体という(より厳密な定義は存在するがここでは省略する)。また、それに付随して代数多様射の間の射や同型\footnote{
+$V(F_{1*},\cdots,F_{r*})\subset\affine^n$は有限個のアフィン多様体の和集合で表せた(事実\ref{noether_space})から、すべての射影多様体(さらに$\proj^n$の代数的集合)はアフィン多様体の有限個の和集合(貼り合わせ)で書ける。このようにアフィン多様体の貼り合わせになっているものや、そのZariski開集合を総称して代数多様体という(より厳密な定義は存在するがここでは省略する)。また、それに付随して代数多様射の間の射や同型\footnote{
   代数多様体$V$上の関数$f$が、各点$p$の近傍において多項式$F,G$を用いて$f=\frac{G}{F}$と表されるとき、$f$を正則関数という。代数多様体の間の写像$\varphi:W\rightarrow V$は$V$の正則関数の引き戻しが$W$の正則関数になるとき、代数多様体の射という。$V,W$が代数的集合の場合、多項式写像は代数多様体の射である。
 }も定義されるが、ここでは扱わないことにする。
+
+\begin{eg}
+  $\proj^1$の代数的集合は$\varnothing$, $\proj^1$, 有限集合のいずれかである。実際$\proj^1$は2枚の$\affine^1$の貼り合わせであり$\affine^1$の真の代数的集合は有限集合のみである。
+\end{eg}
+
 
 冒頭で述べた数え上げ問題において、「3次元空間」というのは実は「3次元複素射影空間」を指している。射影空間で考える理由として次2つがある。
 \begin{itemize}
@@ -595,6 +575,47 @@ $V(F_1,\cdots,F_r)$はベクトル空間$k^{n+1}$の$r+1$次元部分空間の�
   H(X,Y)=Y^dH(\frac{X}{Y},1)=Y^d\prod_{i=1}^d(t_i\frac{X}{Y}+s_i)=\prod_{i=1}^{d}(t_iX+s_iY) 
   \]
 \end{proof}
+
+最後に射影空間のZariski位相に関して、後に必要になる命題を1つ示しておく。
+
+\begin{prop}\label{zariski_vs_quotient}
+  $k$を無限体とする。$\proj^n$のZariski位相は、$p:\affine^{n+1}\setminus\{0\}\rightarrow \proj^n$によって誘導される位相に一致する。
+\end{prop}
+
+\begin{proof}
+  $V\subset\proj^n$はZariski閉集合であるとする。このとき$V=V(F_1,\cdots,F_r)$となる斉次多項式$F_1,\cdots,F_r$が存在するが、
+  \[
+  \inv{p}(V)=\set{(x_0,x_1,\cdots,x_n)\in\affine^{n+1}\setminus\{0\}}{F_i(x_0,x_1,\cdots,x_n)=0\text{ for all $i$}}  
+  \]
+  である\footnote{
+    すなわち射影化$p:\affine^{n+1}\setminus\{0\}\rightarrow\proj^n$はZariski位相に関して連続である。
+  }。右辺は$\affine^{n+1}\setminus\{0\}$の閉集合であるから、$V$は$p$の誘導位相で閉である。逆に$V\subset\proj^n$について、$\inv{p}(V)\subset\affine^{n+1}\setminus\{0\}$が閉集合であったとする。
+  \[
+  \inv{p}(V)=V(F_1,\cdots,F_r)  
+  \]
+  とおけば各$F_i$は次の性質をもつ：
+  \[
+  F_i(x_0,x_1,\cdots,x_n)=0\text{ ならば任意の$\lambda\in k$に対して }F_i(\lambda x_0,\lambda x_1,\cdots,\lambda x_n)=0  
+  \]
+  そこで$F_i$を斉次成分に分解して$F_i=f^{(i)}_0+f^{(i)}_1+\cdots+f^{(i)}_m$とすると、$(x_0,x_1,\cdots,x_n)\in V(F_1,\cdots,F_r)$ならばすべての$\lambda\in k$に対して
+  \[
+  f^{(i)}_0(x_0,x_1,\cdots,x_n)+f^{(i)}_1(x_0,x_1,\cdots,x_n)\lambda+\cdots+f^{(i)}_m(x_0,x_1,\cdots,x_n)\lambda^m=0  
+  \]
+  $k$は無限体なので
+  \[
+  f^{i}_j(x_0,x_1,\cdots,x_n)=0  
+  \]
+  でなければならない。したがって
+  \[
+    V(F_1,\cdots,F_r)=V(\{f^{(i)}_j\}_{i,j})  
+  \]
+  が成り立つから、
+  \[
+  V=p(\inv{p}(V))=p(V(\{f^{(i)}_j\}_{i,j}))=\set{[x_0:x_1:\dots:x_n]\in\proj^n}{f^{(i)}_j(x_0,x_1,\cdots,x_n)=0,\text{ for all }i,j}  
+  \]
+  ゆえに$V$はZariski位相に関して閉集合である。
+\end{proof}
+
 
 
 

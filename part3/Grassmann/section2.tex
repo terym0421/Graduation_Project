@@ -14,8 +14,15 @@
 $d=1$のときGrassmann多様体は射影空間に他ならない。この意味でGrassmann多様体は射影空間の一般化である。
 第3章冒頭で述べた数え上げ問題においては$\mathcal{G}(2,4)$を考えることになる。
 
+
 Grassmann多様体が代数多様体の構造をもつことを示しておく。
-$\complex^n$の$d$階交代テンソル空間$\bigwedge^d\complex^n$を考える。$\bigwedge^d\complex^n$は$\comb{n}{d}$次元ベクトル空間であるから、その射影化$\proj(\bigwedge^d\complex^n)$は$\proj^{\comb{n}{d}-1}$と同一視することができる。また、$e_1,\cdots,e_n$を$\complex^n$の標準基底とすれば$\omega\in\bigwedge^d\complex^n$は
+
+
+まず、$\mathcal{M}(d,n)$をランク$d$の$n\times d$行列全体のなす集合とする。$\mathcal{M}(d,n)$は$\gl_d(\complex)$が右からの積で作用するが、この商$\mathcal{M}(d,n)/\gl_d(\complex)$は$\mathcal{G}(d,n)$と同一視される。実際、$\complex^n$の$d$次元部分空間に対して、その基底を並べた行列を考えればそれは$\gl_d(\complex)$軌道の違いを除いて一意的である。逆に$A\in\mathcal{M}(d,n)$に対して、$[A]$を$A$の列ベクトル(それは1次独立)が生成する部分空間とすれば$[A]\in\mathcal{G}(d,n)$である。
+また、$\mathcal{M}(d,n)$は$\affine^{nd}$のZariski開集合であった(例\ref{M_d,n})が、$\mathcal{G}(d,n)$には$\mathcal{M}(d,n)$から誘導される商位相を入れておく。
+
+
+次に$\complex^n$の$d$階交代テンソル空間$\bigwedge^d\complex^n$を考える。$\bigwedge^d\complex^n$は$\comb{n}{d}$次元ベクトル空間であるから、その射影化$\proj(\bigwedge^d\complex^n)$は$\proj^{\comb{n}{d}-1}$と同一視することができる。また、$e_1,\cdots,e_n$を$\complex^n$の標準基底とすれば$\omega\in\bigwedge^d\complex^n$は
 \[
 \omega=\sum_{1\leq i_1<\cdots <i_d\leq n}x_{i_1,\cdots, i_d}e_{i_1}\wedge\cdots\wedge e_{i_d}  
 \]
@@ -25,31 +32,26 @@ p(\omega)=[x_{i_1,\cdots,i_d}]_{1\leq i_1<\cdots<i_d\leq n}
 \]
 のように書くことができる。
 
-
-
-
-
-$V\in\mathcal{G}(d,n)$に対して、$V$の基底を$v_1,\cdots,v_d\in\complex^n$とし写像$\pi:\mathcal{G}(d,n)\rightarrow \proj^{\comb{n}{d}-1}$を
+$A\in\mathcal{M}(d,n)$に対して、$A$の列ベクトルを$v_1,\cdots,v_d\in\complex^n$とし写像$\tilde{\pi}:\mathcal{M}(d,n)\rightarrow \proj(\bigwedge^d\complex^n)$を
 \[
-\pi(V)=p(v_1\wedge\cdots\wedge v_d)  
+\tilde{\pi}(A)=p(v_1\wedge\cdots\wedge v_d)=[\det(A_{i_1,\cdots,i_d})]_{1\leq i_1<\cdots<i_d\leq n}  
 \]
-とする。ただし$p$は射影化$p:\bigwedge^d\complex^n\rightarrow \proj^{\comb{n}{d}-1}$である。$\pi$はwell-definedである。実際、$V$の別の基底$u_1,\cdots,u_d$をとったとき、ある正則行列$P\in\gl_d(\complex)$が存在して
-\[
-(v_1,\cdots,v_d)=(u_1,\cdots,u_d)P  
-\]
-が成り立つから、$P=(a_{ij})$とおけば
+とする。ただし$p$は射影化$p:\bigwedge^d\complex^n\rightarrow \proj(\bigwedge^d\complex^n)$である。$\tilde{\pi}$は多項式写像なので連続である。また、$P=(a_{ij})\in\gl_d(\complex)$に対して、
 \begin{align*}
-  p(v_1\wedge\cdots\wedge v_d)
+  \tilde{\pi}(AP)
   &=p\left(
-    (a_{11}u_1+\cdots+a_{d1}u_d)\wedge\cdots\wedge
-    (a_{d1}u_1+\cdots+a_{dd}u_d)
+    (a_{11}v_1+\cdots+a_{d1}v_d)\wedge\cdots\wedge
+    (a_{d1}v_1+\cdots+a_{dd}v_d)
   \right)\\
-  &=p(\det P(u_1\wedge\cdots\wedge u_d))\\
-  &=p(u_1\wedge\cdots\wedge u_d)
+  &=p(\det P(v_1\wedge\cdots\wedge v_d))\\
+  &=p(v_1\wedge\cdots\wedge v_d)\\
+  &=\tilde{\pi}(A)
 \end{align*}
+となるから、$\tilde{\pi}$は連続写像$\pi:\mathcal{G}(d,n)\rightarrow \proj(\bigwedge^d\complex^n)$を誘導する。
+
 
 \begin{prop}[Plucker埋め込み]\label{plucker}
-  $\pi:\mathcal{G}(d,n)\rightarrow \proj^{\comb{n}{d}-1}$は単射である。
+  $\pi:\mathcal{G}(d,n)\rightarrow \proj(\bigwedge^d\complex^n)=\proj^{\comb{n}{d}-1}$は単射である。
 \end{prop}
 
 \begin{proof}
@@ -89,7 +91,7 @@ $V\in\mathcal{G}(d,n)$に対して、$V$の基底を$v_1,\cdots,v_d\in\complex^n
   となる定数$c$が存在する。したがって$\Gamma_\omega(u_i)=\omega\wedge u_i=0$であるから補題により、$U=\ker\Gamma_\omega= V$
 \end{proof}
   
-$\pi(\mathcal{G}(d,n))\subset\proj^{\comb{n}{d}-1}$が射影多様体の構造をもつことを示す。
+$\pi(\mathcal{G}(d,n))\subset\proj(\bigwedge^d\complex^n)$が代数的集合であることを示す。
 
 \begin{defin}
   $\omega\in\bigwedge^d \complex^n$がtotally decomposableであるとは、1次独立な$v_1,\cdots,v_d\in V$が存在して$\omega=v_1\wedge\cdots\wedge v_d$となることをいう。
@@ -115,17 +117,16 @@ $\pi(\mathcal{G}(d,n))\subset\proj^{\comb{n}{d}-1}$が射影多様体の構造�
 \end{proof}
 
 
-
-$\pi(\mathcal{G}(n,d))=\set{p(\omega)\in\proj(\bigwedge^d\complex^n)}{\omega\text{ is totally decomposable}}$である。$e_1,\cdots,e_n\in \complex^n$を標準基底とし、$\omega\in\bigwedge^d\complex^n$を
+$T\subset\bigwedge^d\complex^n$をtotally decomposableな元の集合とする。
+$\pi(\mathcal{G}(d,n))=\proj(S)$である。$e_1,\cdots,e_n\in \complex^n$を標準基底とし、$\omega\in\bigwedge^d\complex^n$を
 \[
 \omega=\sum_{1\leq i_1<\cdots<i_d\leq n}x_{i_1,\cdots,i_d}e_{i_1}\wedge\cdots\wedge e_{i_d}  
 \]
-とおく。補題より、$p(\omega)\in\pi(\mathcal{G}(n,d))$であるための必要十分条件は$\rank\Gamma_\omega=n-d$となることである。この条件は$\Gamma_\omega:\complex^n\rightarrow \bigwedge^d\complex^n$を行列表示したとき、その$(n-d+1)\times(n-d+1)$小行列式がすべて$0$になることと同値である
+とおく。補題より、$p(\omega)\in\pi(\mathcal{G}(d,n))$であるための必要十分条件は$\rank\Gamma_\omega=n-d$となることである。この条件は$\Gamma_\omega:\complex^n\rightarrow \bigwedge^d\complex^n$を行列表示したとき、その$(n-d+1)\times(n-d+1)$小行列式がすべて$0$になることと同値である
 \footnote{
   $\Gamma_\omega$のランクは必ず$n-d$以上であることに注意。実際、もし$\dim\ker\Gamma_{\omega}\geq d+1$であるなら、補題\ref{totally_decomposable}の証明と同様の議論をすると、$\omega=0$となってしまう。
 }。
-そして$\Gamma_\omega$の小行列式は$x_{i_1,\cdots,i_d}$の多項式で表されるから、$\pi(\mathcal{G}(n,d))$は$\proj({\bigwedge^d\complex^n})$の代数的集合である。
-
+そして$\Gamma_\omega$の小行列式は$x_{i_1,\cdots,i_d}$の多項式で表されるから、$\pi(\mathcal{G}(d,n))$は$\proj({\bigwedge^d\complex^n})$の代数的集合である。
 
 最後にGrassmann多様体が既約、すなわち射影多様体の構造を持つことを示そう。
 
@@ -146,16 +147,18 @@ $\pi(\mathcal{G}(n,d))=\set{p(\omega)\in\proj(\bigwedge^d\complex^n)}{\omega\tex
 \end{proof}
 
 \begin{prop}
-  $\mathcal{G}(n,d)$は既約である。
+  $\mathcal{G}(d,n)$は既約である。
 \end{prop}
 
 \begin{proof}
-  $V\in\mathcal{G}(n,d)$を固定して、$\alpha:\gl_n(\complex)\rightarrow\mathcal{G}(n,d)$を
+  $V\in\mathcal{G}(d,n)$を固定して、$\alpha:\gl_n(\complex)\rightarrow\mathcal{G}(d,n)$を
   \[
   \alpha(P)=PV  
   \]
-  によって定める。ただし$PV$は$V$の基底を$v_1,\cdots,v_d$とするとき$Pv_1,\cdots,Pv_d$によって生成される$d$次元部分空間を表す。$\alpha$は全射である。実際任意の$d$次元部分空間$W=\generated{w_1,\cdots,w_d}$に対して、各$v_i$を$w_i$に写すような$n$次正則行列$P$をとればよい。また$\alpha$は多項式写像だから命題\ref{continuity}より連続である。$\gl_n(\complex)$は既約であるから、補題\ref{image_of_irrspace}より$\mathcal{G}(n,d)$も既約である。
+  によって定める。ただし$PV$は$V$の基底を$v_1,\cdots,v_d$とするとき$Pv_1,\cdots,Pv_d$によって生成される$d$次元部分空間を表す。$\alpha$は全射である。実際任意の$d$次元部分空間$W=\generated{w_1,\cdots,w_d}$に対して、各$v_i$を$w_i$に写すような$n$次正則行列$P$をとればよい。また$\alpha$は多項式写像だから命題\ref{continuity}より連続である。$\gl_n(\complex)$は既約であるから、補題\ref{image_of_irrspace}より$\mathcal{G}(d,n)$も既約である。
 \end{proof}
+
+なお、Plucker埋め込み$\pi$は実際に埋め込み、すなわち像への同相であることが知られている。
 
 
 
@@ -166,7 +169,10 @@ $\pi(\mathcal{G}(n,d))=\set{p(\omega)\in\proj(\bigwedge^d\complex^n)}{\omega\tex
 
 第3章冒頭で述べた数え上げ問題においては$\proj^3$中の直線全体を考えたいから、$\mathcal{G}(2,4)$を考察していくことになる。重要な考え方として、ある条件をみたす直線の集合を$\mathcal{G}(2,4)$の部分多様体としてとらえることで、「複数の条件を満たす直線の数え上げ$\Leftrightarrow$いくつかの$\mathcal{G}(2,4)$の部分多様体の交点を数える」という問題の変換を行う。このように幾何学的な条件をみたす射影空間中の直線や平面などの線形部分多様体をパラメトライズする空間をSchubert多様体という。
 
-$\mathcal{M}(d,n)$をランク$d$の$n\times d$行列全体のなす集合とする。$\mathcal{M}(d,n)$は$\gl_d(\complex)$が右からの積で作用するが、この軌道空間$\mathcal{M}(d,n)/\gl_d(\complex)$は$\mathcal{G}(d,n)$と同一視される。実際、$\complex^n$の$d$次元部分空間に対して、その基底を並べた行列を考えればそれは$\gl_d(\complex)$軌道の違いを除いて一意的である。$A\in\mathcal{M}(d,n)$に対してその$\gl_d(\complex)$軌道を$[A]$と書く。正則行列を右からかけることはいくつかの列基本変形を施すことと同値だから、$[A]\in\mathcal{G}(d,n)$に対して、$A$の第$1$列から順に列基本変形を行えば、$[A]=[(a_{ij})]$はある$1\leq i_1<i_2<\cdots<i_d\leq n$があって
+
+
+
+正則行列を右からかけることはいくつかの列基本変形を施すことと同値だから、$[A]\in\mathcal{G}(d,n)$に対して、$A$の第$1$列から順に列基本変形を行えば、$[A]=[(a_{ij})]$はある$1\leq i_1<i_2<\cdots<i_d\leq n$があって
 $A$の第$i_1,\cdots,i_d$行を取り出した小正方行列が単位行列であり、$(i_1,1),(i_2,2),\cdots,(i_d,d)$成分よりも右上の成分がすべて$0$になる。式で表すと
 \begin{equation}\label{schubertcell}
 a_{ij}=\left\{\begin{array}{cl}
@@ -335,13 +341,26 @@ Schubert胞体とYoung図形の関係について述べておく。$1\leq i_1<\c
 $\Box$で囲った成分のなす形とYoung図形とが対応している。
 \end{eg}
 
+\begin{prop}
+  $I=(1\leq i_1<\cdots<i_d\leq n)$, $J=(1\leq j_1<\cdots<\leq n)$に対応するYoung図形をそれぞれ$\lambda,\mu$とする。このとき
+  \[
+  \lambda\subset\mu\Leftrightarrow i_k\leq j_k\text{ for all k}  
+  \]
+  である。
+\end{prop}
+
+\begin{proof}
+  $\lambda\subset\mu$の定義は$\lambda_k\leq\mu_k$, for all $k$だから、式(\ref{young_and_schubert})より直ちに従う。
+\end{proof}
+
+
 
 \begin{defin}[標準的な旗に付随するShubert多様体]
   $\lambda\in\mathcal{Y}_d(n)$に対して、
   \[
   \Omega_\lambda=\bigsqcup_{\mu\supset\lambda}\Omega^\circ_\mu
   \]
-  をSchubert多様体という。ここで$\mu\supset\lambda\Leftrightarrow \mu_k\geq \lambda_k$ for all $k=1,\cdots,d$である。
+  をSchubert多様体という。
 \end{defin}
 
 ここで定義したSchubert多様体は、正確には標準的な旗に付随するSchubert多様体と呼ぶべきものである。旗の概念は後で定義するが、一般のSchubert多様体はこの標準的なSchubert多様体のもつ幾何学的な性質を一般化する形で定める。
@@ -493,8 +512,11 @@ $\mathcal{G}(2,4)$において、$F^\bullet$を任意の$\complex^4$の旗とし
 となり、Schubert多様体が幾何学的な条件をみたす射影空間の線形部分多様体をパラメトライズしていることがわかる。
 
 
-Schubert胞体・Schubert多様体の基本的な性質をいくつか示しておく。
 
+\subsection{Schubert多様体の基本性質}
+Schubert胞体・Schubert多様体の基本的な性質をいくつか示しておく。まず、$\gl_n(\complex)$の作用について解説する。
+
+$\gl_n(\complex)$は$\mathcal{G}(d,n)$に左からの積によって自然に作用する。$g:\mathcal{G}(d,n)\rightarrow\mathcal{G}(d,n)$は多項式写像であるので連続であり、$g^{-1}$がが逆写像を与えるので同相である。
 
 旗$F^\bullet$と$g\in\gl_n(\complex)$に対して$gF^\bullet$を
 \[
@@ -502,7 +524,21 @@ gF^\bullet:\complex^n=gF^0\supset gF^1\supset\cdots\supset gF^n=0
 \]
 によって定めれば$gF^\bullet$は新しい旗になる。逆に任意の旗$F^\bullet,E^\bullet$に対して、$F^k=\generated{v_{k+1},\cdots,v_n}$, $E^k=\generated{w_{k+1},\cdots,w_n}$となる$\complex^n$の基底$v_1,\cdots,v_n$, $w_1,\cdots,w_n$をとって変換行列$g$を考えれば、$gF^\bullet =E^\bullet$となる。言い換えれば$\gl_n(\complex)$は$\complex^n$の旗全体のなす集合に推移的に作用する。
 
-\begin{prop}
+$B\subset\gl_n(\complex)$を対角成分が$1$の下三角行列全体のなす部分群とし、$1\leq i_1<\cdots<i_d\leq n$に対して
+\[
+E_{i_1,\cdots,i_d}=\generated{e_{i_1},\cdots,e_{i_d}}\in\Omega_{i_1,\cdots,i_d}^\circ(F^\bullet_{st}) 
+\]
+とする。このとき
+\[
+Be_{i_k}=e_{i_k}+f_k,\quad f_k\in F^{i_k}  
+\]
+と書くことができるから、$\Omega_{i_1,\cdots,i_d}^\circ(F^\bullet_{st})=BE_{i_1,\cdots,i_d}$である。また$i_1,\cdots,i_d$に対応するYoung図形$\lambda$に対して
+\[
+E_\lambda=E_{i_1,\cdots,i_d}  
+\]
+とする。
+
+\begin{prop}\label{flag_schubert}
   $F^\bullet$を旗、$g\in\gl_n(\complex)$とする。$g\Omega_\lambda(F^\bullet)=\Omega_{\lambda}(gF^\bullet)$である。  
 \end{prop}
 
@@ -524,7 +560,80 @@ gF^\bullet:\complex^n=gF^0\supset gF^1\supset\cdots\supset gF^n=0
 \[
 \Omega_{\lambda}(F)=\bigsqcup_{\mu\supset\lambda}g\Omega_{\mu}^\circ    
 \]
-そこで、$g\Omega_{\mu}^\circ$を旗$F^\bullet$に付随するSchubert胞体という。
+そこで、$g\Omega_{\mu}^\circ$を旗$F^\bullet$に付随するSchubert胞体といい$\Omega_{\mu}^\circ(F^\bullet)$とかく。
 
 
-\end{document}
+次にSchubert多様体が既約な代数多様体であることを示す。
+
+
+\begin{prop}
+  $\Omega_{\lambda}^\circ(F^\bullet)\subset \mathcal{G}(d,n)\subset\proj(\bigwedge^d\complex^n)$はZariski閉集合である。
+\end{prop}
+
+\begin{proof}
+  命題\ref{zariski_vs_quotient}より、$\mathcal{M}(d,n)$によって誘導される位相に関して閉集合であることを示せばよい。
+\end{proof}
+
+
+
+\begin{prop}\label{schubert_closure}
+  Schubert多様体$\Omega_{\lambda}(F^\bullet)$はSchubert胞体$\Omega_{\lambda}^\circ(F^\bullet)$の閉包である：
+  \[
+    \Omega_{\lambda}(F^\bullet)=\overline{\Omega_{\lambda}^\circ(F^\bullet)}
+  \]
+\end{prop}
+
+\begin{proof}
+  命題\ref{flag_schubert}より$\Omega_{\lambda}(F^{\bullet}_{st})$に対して示せば十分である。次の補題を用いる。
+  \begin{lemm}
+    $\lambda\subset\mu$ならば$\Omega_{\mu}^\circ(F^\bullet_{st})\subset\overline{\Omega_{\lambda}^\circ(F^\bullet_{st})}$
+  \end{lemm}
+
+  \begin{proof}
+    $\lambda,\mu$に$I=(1<i_1\leq <\cdots< i_d\leq n),J=(1\leq j_i<\cdots<j_d\leq n)$がそれぞれ対応しているとする。$i_k\leq j_k$ for all $k$である。次の操作を考える。
+    \begin{equation}\label{operation}
+    \text{$\alpha\notin I\setminus J$, $\beta\in J$なる$\alpha <\beta$をとり、$J$から$\beta$を取り除き$\alpha$を加える。}
+    \end{equation}
+    $J$に操作(\ref{operation})を有限回施すことで$I$を得ることができる。そこで、$J$が操作(\ref{operation})を1回施すことで$I$を得ることができる場合を考えればよい。実際、もしこの場合に証明できれば、$J$に$k$回操作(\ref{operation})を施したものを$J_k$とおけば、
+    \[
+    \Omega_{J}^\circ(F^\bullet_{st})
+    \subset\overline{\Omega_{J_1}^\circ(F^\bullet_{st})}\subset\overline{\overline{\Omega_{J_2}^\circ(F^\bullet_{st})}}=\overline{\Omega_{J_2}^\circ(F^\bullet_{st})}  
+    \subset\cdots
+    \]
+    となるから示せる。
+
+    \[
+    \text{例： }I=(1,3,6),\: J=(1,4,6)\qquad\rightarrow\qquad (\alpha=3,\beta=4)
+    \]
+    $E_J\in \overline{\Omega_{I}^\circ(F^\bullet_{st})}$を示せば
+    $\Omega_{J}^\circ(F^\bullet_{st})
+    =BE_J\subset B\overline{\Omega_{I}^\circ(F^\bullet_{st})}\subset \overline{\Omega_{I}^\circ(F^\bullet_{st})}$より主張が従う。$\phi:\proj^1\rightarrow \mathcal{G}(d,n)$を
+    \[
+    \phi([s:t])=\generated{\set{e_k}{k\in I\cap J}\cup\{se_{\alpha}+te_{\beta}\}}  
+    \]
+    によって定める。$\phi$は多項式写像であるので連続である。$\phi([1:0])=E_I$, $\phi([0:1])=E_J$であるから、$\phi$は$E_I$と$E_J$を結ぶ曲線だと思うことができる。しかも$\phi([1:t])\in \Omega_{I}^\circ(F^\bullet_{st})$である。よって
+    \[
+    E_J=\phi([0:1])\in\phi(\overline{\proj^1\setminus\{[0:1]\}})
+    \subset\overline{\phi(\proj^1\setminus\{[0:1]\})}\subset\overline{\Omega_{I}^\circ(F^\bullet_{st})}
+    \]
+    となり示せた。
+  \end{proof}
+
+  命題\ref{schubert_closure}の証明に戻ろう。補題より
+  \[
+  \Omega_{\lambda}(F^\bullet_{st})
+  =\bigsqcup_{\mu\supset\lambda}\Omega_{\mu}^\circ(F^\bullet_{st})  
+  \subset
+  \overline{\Omega_{\lambda}^\circ(F^\bullet_{st})}
+  \]
+  であり、$\Omega_{\lambda}^\circ(F^\bullet_{st})\subset\Omega_{\lambda}(F^\bullet_{st})$かつ$\Omega_{\lambda}(F^\bullet_{st})$は閉集合であるから、
+  \[
+    \Omega_{\lambda}^\circ(F^\bullet_{st})\subset\Omega_{\lambda}(F^\bullet_{st})  
+  \]
+\end{proof}
+
+
+
+
+
+\end{document} 
