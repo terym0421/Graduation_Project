@@ -40,7 +40,7 @@
   $F^\bullet$, $gF^\bullet$が一般の位置にあるような$g$のなす$\gl_n(\complex)$の部分集合はZariski開集合である。Zariski開集合は稠密であるので、ほとんどすべての旗は一般の位置にあるといってよい。
 \end{eg}
 
-\begin{prop}
+\begin{prop}\label{flag_basis}
   $F^\bullet$, $E^\bullet$を一般の位置にある旗とする。$\complex^n$の基底$v_1,\cdots,v_n$を適当にとって、
   \[
   F^k=\generated{v_{k+1},\cdots,v_n}, \quad E^{n-k}=\generated{v_1,\cdots,v_k}  
@@ -49,8 +49,25 @@
 \end{prop}
 
 \begin{proof}
-  $\dim (E^{n-k}\cap F^{k-1})=1$を示す。
+  $\dim (E^{n-k}\cap F^{k-1})=1$を示す。まず$E^{n-k}\cap F^{k}=0$より
+  \[
+  dim(E^{n-k}+F^k)=\dim E^{n-k}+\dim F^k -\dim(E^{n-k}\cap F^{k})=n
+  \]
+  よって$\dim (E^{n-k}+F^{k-1})=n$であるから
+  \begin{align*}
+    \dim (E^{n-k}\cap F^{k-1})
+    &=\dim E^{n-k}+\dim F^{k-1}-\dim(E^{n-k}+F^{k-1})\\
+    &=k+(n-k+1)-n\\
+    &=1
+  \end{align*}
+  そこで$v_k$を$E^{n-k}\cap F^{k-1}$の生成元とする。$\dim E^{n-1}=1$だから$E^{n-1}=\generated{v_1}$である。$E^{n-k}=\generated{v_1,\cdots,v_k}$であるとする。
+  \[
+  v_{k+1}\in E^{n-k-1}\cap F^{k}  
+  \]
+  であり$F^k\cap E^{n-k}=0$であるから$v_{k+1}\notin E^{n-k}$となる。よって$E^{n-k-1}=\generated{v_1,\cdots,v_k,v_{k+1}}$。同様に$F^k=\generated{v_{k+1},\cdots,v_n}$も示せる。
 \end{proof}
+
+以下$F^\bullet$を標準旗とする。
 
 
 

@@ -30,13 +30,13 @@ Grassmann多様体が代数多様体の構造をもつことを示しておく�
 \[
 p(\omega)=[x_{i_1,\cdots,i_d}]_{1\leq i_1<\cdots<i_d\leq n}  
 \]
-のように書くことができる。
+のように書くことができる。ただし$p$は射影化$p:\bigwedge^d\complex^n\rightarrow \proj(\bigwedge^d\complex^n)$である。
 
 $A\in\mathcal{M}(d,n)$に対して、$A$の列ベクトルを$v_1,\cdots,v_d\in\complex^n$とし写像$\tilde{\pi}:\mathcal{M}(d,n)\rightarrow \proj(\bigwedge^d\complex^n)$を
 \[
 \tilde{\pi}(A)=p(v_1\wedge\cdots\wedge v_d)=[\det(A_{i_1,\cdots,i_d})]_{1\leq i_1<\cdots<i_d\leq n}  
 \]
-とする。ただし$p$は射影化$p:\bigwedge^d\complex^n\rightarrow \proj(\bigwedge^d\complex^n)$である。$\tilde{\pi}$は多項式写像なので連続である。また、$P=(a_{ij})\in\gl_d(\complex)$に対して、
+とする。$\tilde{\pi}$は多項式写像なので連続である。また、$P=(a_{ij})\in\gl_d(\complex)$に対して、
 \begin{align*}
   \tilde{\pi}(AP)
   &=p\left(
@@ -77,11 +77,11 @@ $A\in\mathcal{M}(d,n)$に対して、$A$の列ベクトルを$v_1,\cdots,v_d\in\
     \begin{align*}
     0=\omega\wedge u
     &=v_1\wedge\cdots\wedge v_d\wedge(a_{1}v_1+\cdots+a_{d}v_d+a_{d+1}v_{d+1}+\cdots+a_nv_n )  \\
-    &=a_{d+1}v_1\wedge\cdots\wedge v_d\wedge v_{d+1}
+    &=a_{d+1}(v_1\wedge\cdots\wedge v_d\wedge v_{d+1})
         +\cdots+
-      a_{n}v_1\wedge\cdots\wedge v_d\wedge v_{n}
+      a_{n}(v_1\wedge\cdots\wedge v_d\wedge v_{n})
     \end{align*}
-    となるが、$v_{i_1}\wedge\cdots\wedge v_{i_{d+1}}$, $(i_1<\cdots<i_{d+1})$は1次独立であるので、$a_{d+1}=\cdots=a_n=0$. よって$u\in V$
+    となるが、$\{v_{i_1}\wedge\cdots\wedge v_{i_{d+1}}\}_{i_1<\cdots<i_{d+1}}$は1次独立であるので、$a_{d+1}=\cdots=a_n=0$. よって$u\in V$
   \end{proof}
 
   命題の証明に戻る。$\pi(V)=\pi(U)$であるとする。$U$の基底を$u_1,\cdots,u_d$とすると仮定より
@@ -102,7 +102,7 @@ $\pi(\mathcal{G}(d,n))\subset\proj(\bigwedge^d\complex^n)$が代数的集合で�
 \end{lemm}
 
 \begin{proof}
-  $\omega=v_1\wedge\cdots\wedge v_d$とおく。このとき補題\ref{ker_wedge}の証明より$\dim\ker\Gamma_\omega=\dim \generated{v_1,\cdots,v_d}=d$だから$\rank\Gamma_\omega=n-d$である。逆に$\rank\Gamma_\omega=n-d$であるとする。$\dim\ker\Gamma_\omega=d$だから$\ker\Gamma_\omega$の基底を$v_1,\cdots,v_d$をとり、これを延長して$\complex^n$の基底$v_1,\cdots,v_d,v_{d+1},\cdots,v_n$をとって
+  $\omega=v_1\wedge\cdots\wedge v_d$とおく。このとき補題\ref{ker_wedge}の証明より$\dim\ker\Gamma_\omega=\dim \generated{v_1,\cdots,v_d}=d$であるから$\rank\Gamma_\omega=n-d$である。逆に$\rank\Gamma_\omega=n-d$であるとする。$\dim\ker\Gamma_\omega=d$であるから$\ker\Gamma_\omega$の基底$v_1,\cdots,v_d$をとり、これを延長して$\complex^n$の基底$v_1,\cdots,v_d,v_{d+1},\cdots,v_n$をとって
   \[
   \omega=\sum_{1\leq i_1<\cdots<i_d\leq n}c_{i_1,\cdots,i_d}v_{i_1}\wedge\cdots\wedge v_{i_d}  
   \]
@@ -118,7 +118,7 @@ $\pi(\mathcal{G}(d,n))\subset\proj(\bigwedge^d\complex^n)$が代数的集合で�
 
 
 $T\subset\bigwedge^d\complex^n$をtotally decomposableな元の集合とする。
-$\pi(\mathcal{G}(d,n))=\proj(S)$である。$e_1,\cdots,e_n\in \complex^n$を標準基底とし、$\omega\in\bigwedge^d\complex^n$を
+$\pi(\mathcal{G}(d,n))=\proj(T)$である。$e_1,\cdots,e_n\in \complex^n$を標準基底とし、$\omega\in\bigwedge^d\complex^n$を
 \[
 \omega=\sum_{1\leq i_1<\cdots<i_d\leq n}x_{i_1,\cdots,i_d}e_{i_1}\wedge\cdots\wedge e_{i_d}  
 \]
@@ -155,7 +155,7 @@ Grassmann多様体が既約であることを示そう。
   \[
   \alpha(P)=PV  
   \]
-  によって定める。ただし$PV$は$V$の基底を$v_1,\cdots,v_d$とするとき$Pv_1,\cdots,Pv_d$によって生成される$d$次元部分空間を表す。$\alpha$は全射である。実際任意の$d$次元部分空間$W=\generated{w_1,\cdots,w_d}$に対して、各$v_i$を$w_i$に写すような$n$次正則行列$P$をとればよい。また$\alpha$は多項式写像だから命題\ref{continuity}より連続である。$\gl_n(\complex)$は既約であるから、補題\ref{image_of_irrspace}より$\mathcal{G}(d,n)$も既約である。
+  によって定める。ただし$PV$は$V$の基底を$v_1,\cdots,v_d$とするとき$Pv_1,\cdots,Pv_d$によって生成される$d$次元部分空間を表す。$\alpha$は全射である。実際任意の$d$次元部分空間$W=\generated{w_1,\cdots,w_d}$に対して、各$v_i$を$w_i$に写すような$n$次正則行列$P$をとればよい。また$\alpha$は多項式写像であるから連続である。$\gl_n(\complex)$は既約であるから、補題\ref{image_of_irrspace}より$\mathcal{G}(d,n)$も既約である。
 \end{proof}
 
 なお、Plucker埋め込み$\pi$は実際に埋め込み、すなわち像への同相であることが知られている。
@@ -173,7 +173,7 @@ Grassmann多様体が既約であることを示そう。
   \[
   \inv{\phi}(\phi(U))=\bigcup_{g\in G}gU
   \]
-  であり$g$は$X$上の同相だから右辺の各$gU$は開集合である。
+  であり$g$は$X$上の同相であるから右辺の各$gU$は開集合である。
 }。したがって$U_{i_1,\cdots,i_d}=\phi(\tilde{U}_{i_1,\cdots,i_d})$は$\mathcal{G}(d,n)$の開集合であり$\mathcal{G}(d,n)=\bigcup_{i_1,\cdots,i_d}U_{i_1,\cdots,i_d}$である。$A\in\tilde{U}_{i_1,\cdots,i_d}$は適当に右から$\gl_d(\complex)$を書けることによって$A_{i_1,\cdots,i_d}=E_{d}$となるようにできるから
 \[
 U_{i_1,\cdots,i_d}=\set{[A]\in\mathcal{G}(d,n)}{A_{i_1,\cdots,i_d}=E_d}
@@ -190,12 +190,12 @@ U_{i_1,\cdots,i_d}=\set{[A]\in\mathcal{G}(d,n)}{A_{i_1,\cdots,i_d}=E_d}
 
 \subsection{Shubert胞体とSchubert多様体}
 
-第3章冒頭で述べた数え上げ問題においては$\proj^3$中の直線全体を考えたいから、$\mathcal{G}(2,4)$を考察していくことになる。重要な考え方として、ある条件をみたす直線の集合を$\mathcal{G}(2,4)$の部分多様体としてとらえることで、「複数の条件を満たす直線の数え上げ$\Leftrightarrow$いくつかの$\mathcal{G}(2,4)$の部分多様体の交点を数える」という問題の変換を行う。このように幾何学的な条件をみたす射影空間中の直線や平面などの線形部分多様体をパラメトライズする空間をSchubert多様体という。
+第3章冒頭で述べた数え上げ問題においては$\proj^3$中の直線全体を考えたいから、$\mathcal{G}(2,4)$を考察していくことになる。重要な考え方として、ある条件をみたす直線の集合を$\mathcal{G}(2,4)$の部分多様体としてとらえることで、「複数の条件を満たす直線の数え上げ$\Leftrightarrow$いくつかの$\mathcal{G}(2,4)$の部分多様体の交点を数える」という問題の変換を行う。このように幾何学的な条件をみたす線形部分多様体をパラメトライズする空間をSchubert多様体という。
 
 
 
 
-正則行列を右からかけることはいくつかの列基本変形を施すことと同値だから、$[A]\in\mathcal{G}(d,n)$に対して、$A$の第$1$列から順に列基本変形を行えば、$[A]=[(a_{ij})]$はある$1\leq i_1<i_2<\cdots<i_d\leq n$があって
+正則行列を右からかけることはいくつかの列基本変形を施すことと同値であるから、$[A]\in\mathcal{G}(d,n)$に対して、$A$の第$1$列から順に列基本変形を行えば、$[A]=[(a_{ij})]$はある$1\leq i_1<i_2<\cdots<i_d\leq n$があって
 $A$の第$i_1,\cdots,i_d$行を取り出した小正方行列が単位行列であり、$(i_1,1),(i_2,2),\cdots,(i_d,d)$成分よりも右上の成分がすべて$0$になる。式で表すと
 \begin{equation}\label{schubertcell}
 a_{ij}=\left\{\begin{array}{cl}
@@ -251,7 +251,7 @@ a_{ij}=\left\{\begin{array}{cl}
 \begin{defin}
   $1\leq i_1<i_2<\cdots<i_d\leq n$に対して
   \[
-  \Omega^\circ_{i_1,\cdots,i_d}=\set{[(a_{ij})]\in\mathcal{G}(d,n)}{a_{ij}\text{ satisfies the condition (\ref{schubertcell})}}  
+  \Omega^\circ_{i_1,\cdots,i_d}=\set{[(a_{ij})]\in\mathcal{G}(d,n)}{a_{ij}\text{ satisfies (\ref{schubertcell})}}  
   \]
   をSchubert胞体という。
 \end{defin}
@@ -312,7 +312,7 @@ Schubert胞体とYoung図形の関係について述べておく。$1\leq i_1<\c
 \end{equation}
 とおくと、$(\lambda_1,\cdots,\lambda_d)$は$d\times (n-d)$の部分Young図形になる。逆に式(\ref{young_and_schubert})によって$d\times (n-d)$の部分Young図形からSchubert胞体を得ることができる。そこで$\mathcal{Y}_d(n)$を$d\times (n-d)$の部分Young図形全体のなす集合とし、$\lambda\in\mathcal{Y}_d(n)$に対応するSchubert胞体を$\Omega^\circ_{\lambda}$と表すことにする。
 
-式(\ref{young_and_schubert})の対応関係をもう少し詳しく説明する。$d\times (n-d)$のYoung図形を用意し、各辺に沿って一番左下の頂点から一番右上の頂点に行く最短経路を考える。そのパターンは、各ステップごとに上に行くか右に行くかを選べば決まる。右上にたどり着くためにはどこかで必ず$d$上に行く選択をしなければならないから、$i_1,\cdots,i_d$ステップ目で上に行き、それ以外では右に行くとすれば、1つ最短経路が定まる。この最短経路によって分けられる$d\times(n-d)$Young図形の左上の部分を、対応するYoung図形$\lambda$とするのである。
+式(\ref{young_and_schubert})の対応関係をもう少し詳しく説明する。$d\times (n-d)$のYoung図形を用意し、各辺に沿って一番左下の頂点から一番右上の頂点に行く最短経路を考える。そのパターンは、各ステップごとに上に行くか右に行くかを選べば決まる。右上にたどり着くためには$d$回上に行く選択をしなければならないから、$i_1,\cdots,i_d$ステップ目で上に行き、それ以外では右に行くとすれば、1つ最短経路が定まる。この最短経路によって分けられる$d\times(n-d)$Young図形の左上の部分を、対応するYoung図形$\lambda$とするのである。
 \begin{figure}[H]
   \centering
   \includegraphics*[scale=0.6]{C:/Users/Xsaku/OneDrive/Projects/graduate_project/src/young_and_schur.jpg}
@@ -360,6 +360,7 @@ Schubert胞体とYoung図形の関係について述べておく。$1\leq i_1<\c
     1 & 0\\
     0 & 1
   }
+  \ytableausetup{boxsize=normal}
 \end{align*}
 $\Box$で囲った成分のなす形とYoung図形とが対応している。
 \end{eg}
@@ -373,7 +374,7 @@ $\Box$で囲った成分のなす形とYoung図形とが対応している。
 \end{prop}
 
 \begin{proof}
-  $\lambda\subset\mu$の定義は$\lambda_k\leq\mu_k$, for all $k$だから、式(\ref{young_and_schubert})より直ちに従う。
+  $\lambda\subset\mu$の定義は$\lambda_k\leq\mu_k$, for all $k$であるから、式(\ref{young_and_schubert})より直ちに従う。
 \end{proof}
 
 
@@ -483,14 +484,16 @@ $\Box$で囲った成分のなす形とYoung図形とが対応している。
 
 $\mathcal{G}(2,4)$において、$F^\bullet$を任意の$\complex^4$の旗としてその射影化を$\proj^3\supset e_0\supset l_0\owns p_0\supset\varnothing$とする。このとき
 \begin{align*}
+  \ytableausetup{boxsize=0.5em}
   &\Omega_{\varnothing}=\mathcal{G}(2,4)\\
   &\Omega_{\ydiagram{1}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^2)\geq 1}\approx\set{l\subset\proj^3:\text{直線}}{l\cap l_0\neq\varnothing}\\
   &\Omega_{\ydiagram{2}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^3)\geq 1}\approx\set{l\subset\proj^3:\text{直線}}{l\owns p_0}\\
   &\Omega_{\ydiagram{1,1}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^2)\geq 1,\:\dim(V\cap F^1)\geq 2}\approx\set{l\subset\proj^3:\text{直線}}{l\cap l_0\neq\varnothing,\:l\subset e_0}\\
   &\Omega_{\ydiagram{2,1}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^3)\geq 1,\:\dim(V\cap F^1)\geq 2}\approx\set{l\subset\proj^3:\text{直線}}{l\owns p_0\neq\varnothing,\:l\subset e_0}\\
   &\Omega_{\ydiagram{2,2}}\approx\{l=l_0\}
+  \ytableausetup{boxsize=normal}
 \end{align*}
-となり、Schubert多様体が幾何学的な条件をみたす射影空間の線形部分多様体をパラメトライズしていることがわかる。
+となり、Schubert多様体が幾何学的な線形部分多様体をパラメトライズしていることがわかる。
 
 
 
@@ -629,7 +632,7 @@ E_\lambda=E_{i_1,\cdots,i_d}
   \[
   \pmat{E_{\lambda_i+d-i}&0}A=\pmat{A_{\lambda_i+d-i}&0}  
   \]
-  となる。ただし$A_{\lambda_i+d-i}$は$A$の第$1$行から$\lambda_i+d-i$行までを取り出した小正方行列である。よって$\rank\eta_i(V)\geq d-i$は$\pmat{A_{\lambda_i+d-i}&0}$の$d-i+1$小行列式がすべて$0$になることと同値だから、これは($A$の成分の多項式)$=0$の形である。
+  となる。ただし$A_{\lambda_i+d-i}$は$A$の第$1$行から$\lambda_i+d-i$行までを取り出した小正方行列である。よって$\rank\eta_i(V)\geq d-i$は$\pmat{A_{\lambda_i+d-i}&0}$の$d-i+1$小行列式がすべて$0$になることと同値であるから、これは($A$の成分の多項式)$=0$の形である。
 \end{proof}
 
 
@@ -648,7 +651,7 @@ E_\lambda=E_{i_1,\cdots,i_d}
   \end{lemm}
 
   \begin{proof}
-    $\lambda,\mu$に$I=(1<i_1\leq <\cdots< i_d\leq n),J=(1\leq j_i<\cdots<j_d\leq n)$がそれぞれ対応しているとする。$i_k\leq j_k$ for all $k$である。次の操作を考える。
+    $\lambda,\mu$に$I=(1\leq i_1<\cdots< i_d\leq n),J=(1\leq j_i<\cdots<j_d\leq n)$がそれぞれ対応しているとする。$i_k\leq j_k$ for all $k$である。次の操作を考える。
     \begin{equation}\label{operation}
     \text{$\alpha\notin I\setminus J$, $\beta\in J$なる$\alpha <\beta$をとり、$J$から$\beta$を取り除き$\alpha$を加える。}
     \end{equation}

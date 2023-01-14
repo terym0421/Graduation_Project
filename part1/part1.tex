@@ -12,11 +12,11 @@
 \end{defin}
 
 \begin{eg}
-    $xy, x+y, x^2+y^2$はいずれも$\integer[x,y]$の対称多項式であり、$x-y$は交代多項式である。$xy^2$, $x+2y$などは対称でも交代でもない
+    $xy, x+y, x^2+y^2$はいずれも$\integer[x,y]$の対称多項式であり、$x-y$は交代多項式である。$xy^2$, $x+2y$などは対称でも交代でもない。
 \end{eg}
 
 \begin{prop}
-    $\integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}$は$\integer[x_1,\cdots,x_n]$の部分環をなす
+    $\integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}$は$\integer[x_1,\cdots,x_n]$の部分環をなす。
 \end{prop}
 
 \begin{proof}
@@ -76,7 +76,7 @@
 $n$変数の基本対称式は$e_1,\cdots, e_n$だけだが、完全対称式は無限に存在することに注意。ここで定義したさまざまな対称多項式は、対称多項式環$\integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}$における良い性質をもっている。
 
 \begin{prop}\label{m_is_basis}
-    $\set{m_\alpha}{\alpha=(\alpha_1\geq\cdots\geq\alpha_n), \alpha_n\geq 0}$は$\integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}$の基底をなす
+    $\set{m_\alpha}{\alpha=(\alpha_1\geq\cdots\geq\alpha_n), \alpha_n\geq 0}$は$\integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}$の基底をなす。
 \end{prop}
 
 \begin{proof}
@@ -187,7 +187,7 @@ $n$変数の基本対称式は$e_1,\cdots, e_n$だけだが、完全対称式は
 \end{eg}
 
 \begin{prop}\label{alter_poly}
-    任意の交代多項式は$A_\delta$で割り切れる
+    任意の交代多項式は$A_\delta$で割り切れる。
 \end{prop}
 
 \begin{proof}
@@ -231,13 +231,13 @@ $n$変数の基本対称式は$e_1,\cdots, e_n$だけだが、完全対称式は
 Schur多項式について重要な命題が次の定理である。
 
 \begin{theo}\label{schur}
-    $n>0$を整数とする。Schur多項式の集合$\set{s_\alpha}{\alpha=(a_1,\cdots,a_n), a_1> \cdots> a_n\geq 0}$は対称多項式のなす環$\integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}$の基底をなす
+    $n>0$を整数とする。Schur多項式の集合$\set{s_\alpha}{\alpha=(a_1,\cdots,a_n), a_1> \cdots> a_n\geq 0}$は対称多項式のなす環$\integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}$の基底をなす。
 \end{theo}
 
 \begin{proof}
     次の補題を示す。
     \begin{lemm}
-        $\mathcal{S}=\set{(a_1,\cdots,a_n)}{a_1>\cdots>a_n\geq 0}$とする。交代多項式全体のなす$\integer$加群は$\{A_\alpha\}_{\alpha\in\mathcal{S}}$を基底にもつ
+        $\mathcal{S}=\set{(a_1,\cdots,a_n)}{a_1>\cdots>a_n\geq 0}$とする。交代多項式全体のなす$\integer$加群は$\{A_\alpha\}_{\alpha\in\mathcal{S}}$を基底にもつ。
     \end{lemm}
     \begin{proof}
         $f(x_1,\cdots,x_n)$を交代多項式とする。
@@ -322,13 +322,13 @@ Schur多項式について重要な命題が次の定理である。
 
 
 
-Young図形とSchur多項式との関係は次の命題で表される
+Young図形とSchur多項式との関係は次の命題で表される。
 \begin{prop}
     $\mathcal{S}=\set{(a_1,\cdots,a_n)}{a_1>\cdots>a_n\geq 0}$と$\mathcal{Y}_n$には次の全単射が存在する。
     \[
     \mathcal{Y}_n\owns \lambda \mapsto \alpha=\lambda+\delta \in\mathcal{S}   
     \]
-    ただし$\delta=(n-1,n-2,\cdots,1,0)$である
+    ただし$\delta=(n-1,n-2,\cdots,1,0)$である。
 \end{prop}
 
 \begin{proof}
@@ -340,7 +340,7 @@ Young図形とSchur多項式との関係は次の命題で表される
 \begin{defin}
     $\lambda\in\mathcal{Y}_n$に対して、$\lambda$の各箱に次の条件が満たされるように数字を書き入れたものを形$\lambda$の半標準タブローという。
     \begin{itemize}
-        \item 各数字は1以上n以下
+        \item 各数字は$1$以上$n$以下
         \item 各行は左から右に広義単調増加
         \item 各列は上から下に狭義単調増加
     \end{itemize}
@@ -352,7 +352,7 @@ Young図形とSchur多項式との関係は次の命題で表される
 \end{defin}
 
 \begin{eg}\label{tableau_21}
-    形$(2,1)=\ydiagram{2,1}\in\mathcal{Y}_3$の半標準タブローは次の通りである
+    形$(2,1)=\ydiagram{2,1}\in\mathcal{Y}_3$の半標準タブローは次の通りである：
     \begin{align*}
         \mathcal{T}((2,1))=\{\quad
         &\begin{ytableau}
@@ -389,7 +389,7 @@ Young図形とSchur多項式との関係は次の命題で表される
         \end{ytableau}
         \quad\}
     \end{align*}
-    しかし次などは半標準タブローではない
+    しかし次などは半標準タブローではない：
     \[
     \begin{ytableau}
         1&1\\
@@ -679,7 +679,7 @@ s_\lambda s_\mu=\sum_{T:\lambda\text{-good}}s_{\lambda+\omega(T)}
     \[
     A_{\lambda+\delta}=\text{Alt}_n(x_1^{\lambda_1+\delta_1}\cdots x_n^{\lambda_n+\delta_n})
     \]
-    だから命題\ref{tableausum}より
+    であるから命題\ref{tableausum}より
     \begin{align*}
         A_{\lambda+\delta}T_\mu&=\text{Alt}_n(T_\mu\cdot x_1^{\lambda_1+\delta_1}\cdots x_n^{\lambda_n+\delta_n})\\
         &=\text{Alt}_n\left(
@@ -807,7 +807,7 @@ s_\lambda s_\mu=\sum_{T:\lambda\text{-good}}s_{\lambda+\omega(T)}
     \end{enumerate}
     である。
     \begin{enumerate}
-        \item $\iota$が$T_2$には何もしないことから、$\lambda$-badであることは直ちに従う。よって$\iota(T)$が半標準タブローであることさえ示せばよい。$\iota(T_1)$は命題\ref{tableausum}から半標準タブローであり、$T_2$も半標準タブローだから、問題になるのは$\iota(T_1)$と$T_2$の境界部分である。悪い箱は命題\ref{tableausum}の証明中の意味で自由である。すなわちその上にある箱は$k-1$より真に小さい。
+        \item $\iota$が$T_2$には何もしないことから、$\lambda$-badであることは直ちに従う。よって$\iota(T)$が半標準タブローであることさえ示せばよい。$\iota(T_1)$は命題\ref{tableausum}から半標準タブローであり、$T_2$も半標準タブローであるから、問題になるのは$\iota(T_1)$と$T_2$の境界部分である。悪い箱は命題\ref{tableausum}の証明中の意味で自由である。すなわちその上にある箱は$k-1$より真に小さい。
         \begin{quote}
             なぜならもし悪い箱の上に$k-1$があったとすると、$j-1$ステップ目で$k-1$行目に箱を追加してもYoung図形であることは保たれている。よってそのとき$k$行目の箱の数は$k-1$行目の箱の数と同じかそれ以下である。もし同じなら$j-2$ステップの時点では$k-1$行目の箱の数が$k$行目の箱の数より小さいこととなり、これはYoung図形になっていない。$k-1$行目の箱の数以下であるなら$j$ステップ目に$k$行目に箱を追加してもYoung図形であることは保たれるから、悪い箱であることに矛盾する。
         \end{quote}
@@ -860,7 +860,7 @@ Littlewood-Richardson規則の特別な場合として、$\lambda$が一行のYo
 \end{theo}
 
 \begin{proof}
-    定理\ref{LR}より、$\mu$-goodな形$\lambda$の半標準タブローを考える。$T$が形$\lambda$の$\mu$-goodな半標準タブローであるとする。いま$\lambda$は一行のYoung図形だから、$T$が$\mu$-goodであることは
+    定理\ref{LR}より、$\mu$-goodな形$\lambda$の半標準タブローを考える。$T$が形$\lambda$の$\mu$-goodな半標準タブローであるとする。いま$\lambda$は一行のYoung図形であるから、$T$が$\mu$-goodであることは
     \[
     \omega_{l}(T)+\mu_l\leq \mu_{l-1}    
     \]
@@ -876,7 +876,7 @@ Littlewood-Richardson規則の特別な場合として、$\lambda$が一行のYo
         \nu_3=\quad\ydiagram[*(yellow)]{0,1+1,1}*[*(white)]{2,1},\qquad
         \nu_4=\quad\ydiagram[*(yellow)]{2+1,0,1}*[*(white)]{2,1}
     \end{align*}
-    だから
+    であるから
     \[
     s_\lambda s_\mu=s_{\nu_1}+s_{\nu_2}+s_{\nu_3}+s_{\nu_4}
     \]
@@ -919,11 +919,11 @@ h_ks_\mu=\sum_{\substack{|\nu|=|\mu|+k\\\nu/\mu\text{は水平帯}}}s_\nu
     \begin{align*}
         \lambda_l=\lambda'_{l-1}
     \end{align*}
-    だから$\lambda/\lambda'$は水平帯である。また、$\nu/\lambda'$が水平帯であるような$|\nu|=|\lambda'|+\lambda_1$をみたす任意の$\nu$について、
+    であるから$\lambda/\lambda'$は水平帯である。また、$\nu/\lambda'$が水平帯であるような$|\nu|=|\lambda'|+\lambda_1$をみたす任意の$\nu$について、
     \[
     \nu_l\leq\lambda'_{l-1}=\lambda_l,\qquad l=2,3,\cdots,n
     \]
-    だから、
+    であるから、
     \[
     \nu_1=|\nu|-(\nu_2+\cdots+\nu_n)\geq |\lambda|-(\lambda_2+\cdots+\lambda_n)=\lambda_1    
     \]
@@ -948,7 +948,7 @@ h_ks_\mu=\sum_{\substack{|\nu|=|\mu|+k\\\nu/\mu\text{は水平帯}}}s_\nu
             \ydiagram[*(yellow)]{0,0,1+1,1}*[*(white)]{4,3,1}\quad\rightarrow\quad
             \ydiagram[*(yellow)]{0,0,1+2,1}*[*(white)]{4,3,1}\quad=\overline{\lambda}
         \end{gather*}
-        また、$\lambda<\mu$であることは「$\lambda$の列数と$μ$の列数を右から辞書式順序で比べたとき、$μ$のほうが大きい」ということと同値だから、$λ$, $μ$の列に左から１つずつ箱を足しても大小は保たれる。
+        また、$\lambda<\mu$であることは「$\lambda$の列数と$μ$の列数を右から辞書式順序で比べたとき、$μ$のほうが大きい」ということと同値であるから、$λ$, $μ$の列に左から１つずつ箱を足しても大小は保たれる。
     \end{proof}
 
     式(\ref{tmp})において$\nu\mu$は水平帯であり、$\mu>\lambda'$だったが、$\lambda'$に$\lambda_1$個の箱を水平帯となるように追加した最小のYoung図形は$\lambda$に他ならなかったから、補題により$\nu>\lambda$    

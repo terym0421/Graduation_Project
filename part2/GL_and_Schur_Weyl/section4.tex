@@ -11,7 +11,7 @@
 
 \subsection{Schur-Weyl双対性}
 
-次のような問題を考えることから始める。$V$を$n$次元ベクトル空間としたとき、テンソル空間$V^{\otimes k}$の部分空間として対称テンソル空間$\Sym^k(V)$, 交代テンソル空間$\Alt^k(V)$というものが
+次の問題を考察することから始める。$V$を$n$次元ベクトル空間としたとき、テンソル空間$V^{\otimes k}$の部分空間として対称テンソル空間$\Sym^k(V)$, 交代テンソル空間$\Alt^k(V)$が
 \begin{align*}
   &\Sym^k(V)=\set{v_1\otimes\cdots\otimes v_k}{v_{\sigma(1)}\otimes\cdots\otimes v_{\sigma (k)}=v_1\otimes\cdots\otimes v_k,\quad\text{for all $\sigma\in\mathfrak{S}_k$}}\\
   &\Alt^k(V)=\set{v_1\otimes\cdots\otimes v_k}{v_{\sigma(1)}\otimes\cdots\otimes v_{\sigma (k)}=\sgn(\sigma)v_1\otimes\cdots\otimes v_k,\quad\text{for all $\sigma\in\mathfrak{S}_k$}}
@@ -24,11 +24,11 @@
 \[
 \dim\Sym^2(V)+\dim\Alt^2(V)=n^2=\dim V\otimes V  
 \]
-だから、$\Sym^k(V)\cap\Alt^k(V)=0$に注意すれば
+であるから、$\Sym^k(V)\cap\Alt^k(V)=0$に注意すれば
 \[
 V\otimes V=\Sym^2(V)\oplus\Alt^2(V)  
 \]
-が成り立つ。$k>2$のときは次元が足りず、対称テンソルと交代テンソル以外の部分がでてくる。その分解を与える規則を考える。特に、表現を含めた分解を考えることが鍵になる。
+が成り立つ。$k>2$のときは次元が足りず、対称テンソルと交代テンソル以外の部分が現れる。その分解を与える規則は何であろうか。特に、表現を含めた分解を考える。
 
 $\sigma\in \mathfrak{S}_k$に対して、
 \[
@@ -44,14 +44,14 @@ $\sigma\in \mathfrak{S}_k$に対して、
 \[
 g(v_1\otimes\cdots\otimes v_k)=gv_1\otimes\cdots\otimes gv_k  
 \]
-とによって$V^{\otimes k}$は$\gl(V)$の表現とみなすこともできる。$V^{\otimes k}$は$\mathfrak{S}_k$, $\gl(V)$両方の作用を同時に受けている。さらに次が成り立つ。
+によって$V^{\otimes k}$は$\gl(V)$の表現とみなすこともできる。$V^{\otimes k}$は$\mathfrak{S}_k$, $\gl(V)$両方の作用を同時に受けている。
 
 \begin{prop}\label{comm_of_sym_gl}
   任意の$\sigma\in\mathfrak{S}_k$, $g\in\gl(V)$に対して、
   \[
-  \sigma g(v_1\otimes\cdots\otimes v_k)
+  (g(v_1\otimes\cdots\otimes v_k))\sigma
   =
-  g \sigma(v_1\otimes\cdots\otimes v_k)
+  g ((v_1\otimes\cdots\otimes v_k)\sigma)
   \]
   である。
 \end{prop}
@@ -59,25 +59,24 @@ g(v_1\otimes\cdots\otimes v_k)=gv_1\otimes\cdots\otimes gv_k
 \begin{proof}
   $u_i=gv_i$とおく。
   \begin{align*}
-    \sigma g(v_1\otimes\cdots\otimes v_k)
-    &=\sigma(gv_1\otimes\cdots\otimes gv_k)\\
-    &=\sigma(u_1\otimes\cdots\otimes u_k)\\
-    &=u_{\inv{\sigma}(1)}\otimes\cdots\otimes u_{\inv{\sigma}(k)}\\
-    &=gv_{\inv{\sigma}(1)}\otimes\cdots\otimes gv_{\inv{\sigma}(k)}\\
-    &=g\sigma (v_1\otimes\cdots\otimes v_k)
+    (g(v_1\otimes\cdots\otimes v_k))\sigma
+    &=(gv_1\otimes\cdots\otimes gv_k)\sigma\\
+    &=(gv_{\sigma(1)}\otimes\cdots\otimes gv_{\sigma(k)})\\
+    &=g(v_{\sigma(1)}\otimes\cdots\otimes v_{\sigma(k)})\\
+    &=g((v_1\otimes\cdots\otimes v_k)\sigma)
   \end{align*}
+  よって示せた。
 \end{proof}
 
-このとき、
-$c_{(k)}=\sum_{\sigma\in \mathfrak{S}_n}\sigma\in\complex[\mathfrak{S}_n]$, $c_{1^k}=\sum_{\sigma\in \mathfrak{S}_n}\sgn(\sigma)\sigma\in\complex[\mathfrak{S}_n]$とおくと
+$c_{(k)}=\sum_{\sigma\in \mathfrak{S}_n}\sigma\in\complex[\mathfrak{S}_n],\quad c_{1^k}=\sum_{\sigma\in \mathfrak{S}_n}\sgn(\sigma)\sigma\in\complex[\mathfrak{S}_n]$とおくと
 \[
 \Sym^k(V)=V^{\otimes k}c_{(k)},\qquad\Alt^k(V)=V^{\otimes k}c_{1^k}
 \]
-となることがわかり、命題\ref{comm_of_sym_gl}よりこの2つは$\gl(V)$の表現でもある。よって$k>2$のときにも、$\lambda\in\mathcal{P}_k$に対するYoung対称子$c_\lambda$による像
+となるが、命題\ref{comm_of_sym_gl}よりこの2つは$\gl(V)$の表現でもある。よって$k>2$のときにも、$\lambda\in\mathcal{P}_k$に対するYoung対称子$c_\lambda$による像
 \[
 W_\lambda(V)=V^{\otimes k}c_\lambda   
 \]
-を考察することは自然である。再び命題\ref{comm_of_sym_gl}より$W_\lambda(V)$は$\gl(V)$の部分表現になるが、このとき次が成り立つ
+を考察することは自然である。再び命題\ref{comm_of_sym_gl}より$W_\lambda(V)$は$\gl(V)$の部分表現になるが、このとき次が成り立つ。
 
 \begin{theo}[Schur-Weyl双対性]\label{schur_weyl}
   $W_\lambda(V)$は$\gl(V)$の既約表現であり、$\mathfrak{S}_k\times\gl(V)$の表現として
@@ -108,7 +107,7 @@ W_\lambda(V)=V^{\otimes k}c_\lambda
       U \ar[r]^{\cdot c} & Uc \ar[r] & U 
     }  
     \]
-    ここで$\cdot c$は$c$倍写像(全射)であり、$U\otimes_AAc\rightarrow U\otimes_AA$, $U_c\rightarrow U$は埋め込み(単射), 両端の縦の写像は同型である。Diagram Chasingをすれば中央の縦の写像も同型になることがわかる。
+    ここで$\cdot c$は$c$倍写像(全射)であり、$U\otimes_AAc\rightarrow U\otimes_AA$, $U_c\rightarrow U$は埋め込み(単射), 両端の縦の写像は自然な同型である。このときDiagram Chasingをすれば中央の縦の写像も同型になることがわかる。
 
     \item $U$が単純右$A$加群である場合を考える。このときSchurの補題から$B\simeq\complex$であることに注意する。$\dim_\complex U\otimes_AW\leq 1$であることを示せばよい。Wedderburnの構造定理より、
     \[
@@ -122,11 +121,11 @@ W_\lambda(V)=V^{\otimes k}c_\lambda
       0 & \cdots & a_2 & \cdots & 0\\
       \vdots & \cdots & \vdots & \cdots &\vdots\\
       0 & \cdots & a_{m_i} & \cdots & 0
-      }}{a_1,a_2\cdots,a_{m_i}\in\complex\text{は$\alpha$列}}
+      }}{a_1,a_2\cdots,a_{m_i}\in\complex\text{は第$\alpha$列}}
     \end{align*}
     このような形になる。同様に$U$を$A$の極小右イデアルと同一視すれば
     \footnote{
-      $G$の正則表現はすべての既約表現を直和因子に含むことに注意
+      $G$の正則表現はすべての既約表現を直和因子に含むことに注意すればわかる。
     }、
     \begin{align*}
       &U=\set{(M_1,\cdots,M_j,\cdots,M_r)}{M_k=0,(k\neq j), M_j\in J_\beta}=0\times\cdots\times J_\beta\times\cdots\times 0  \\
@@ -145,7 +144,8 @@ W_\lambda(V)=V^{\otimes k}c_\lambda
           0 & \text{otherwise}
         \end{array}\right.
       \end{align*}
-      よって$\dim_\complex (U\otimes_AW)\leq 1$だから単純である。
+      となることがわかる。
+      よって$\dim_\complex (U\otimes_AW)\leq 1$であるから単純である。
 
       一般の$U$については、
       $A$の半単純性より$U$を単純右$A$加群の直和$U\simeq\bigoplus_iU_k^{\oplus n_k}$に分解しておいて、再びSchurの補題から
@@ -156,7 +156,7 @@ W_\lambda(V)=V^{\otimes k}c_\lambda
       \[
       U\otimes_AW=\bigoplus_k(U_k\otimes_AW)^{\oplus n_k}\simeq \complex^{\oplus n_i}
       \]
-      となる。実際、$U_j\otimes_AW\simeq \complex$ならば$U_j=0\times\cdots\times J_\beta\times\cdots\times 0$と表した時、$J_\beta$は$i$番目の位置になければならないから、$U_j\simeq U_i$となる。$\complex^{\oplus n_i}$は単純左$M_{n_i}(\complex)$加群だから、$U\otimes_AW$は単純左$B$加群である。
+      となる。実際、$U_j\otimes_AW\simeq \complex$ならば$U_j=0\times\cdots\times J_\beta\times\cdots\times 0$と表した時、$J_\beta$は$i$番目の位置になければならないから、$U_j\simeq U_i$となる。$\complex^{\oplus n_i}$は単純左$M_{n_i}(\complex)$加群であるから、$U\otimes_AW$は単純左$B$加群である。
   \end{enumerate}
 \end{proof}
 
@@ -191,19 +191,19 @@ W_\lambda(V)=V^{\otimes k}c_\lambda
 \end{lemm}
 
 \begin{proof}
-  $\End_A(V^{\otimes k})=(\End(V^{\otimes k}))^{\mathfrak{S}_n}=(\End(V)^{\otimes k})^{\mathfrak{S}_n}=\Sym^k(\End(V))$であるから補題\ref{gen_of_symtensor}より、$\End_A(V^{\otimes k})$は$\{X\otimes\cdots\otimes X\}_{X\in\End(V)}$によって生成される。$\gl(V)\subset\End(V)$なのだから、$B\subset \End_A(V^{\otimes k})$は直ちに従う。$g\in\gl(V)$に対して$g\otimes \cdots\otimes g$が生成する$\End(V^{\otimes k})$の部分代数を$B'$とする。任意の(正則とは限らない)$X\in\End(V)$に対して$X\otimes \cdots\otimes X$が$B'$に含まれることを示せばよい。$X+tE$は有限個の$t$を除いて正則である
+  $\End_A(V^{\otimes k})=(\End(V^{\otimes k}))^{\mathfrak{S}_n}=(\End(V)^{\otimes k})^{\mathfrak{S}_n}=\Sym^k(\End(V))$であるから補題\ref{gen_of_symtensor}より、$\End_A(V^{\otimes k})$は$\{X\otimes\cdots\otimes X\}_{X\in\End(V)}$によって生成される。$\gl(V)\subset\End(V)$なのであるから、$B\subset \End_A(V^{\otimes k})$は直ちに従う。$g\in\gl(V)$に対して$g\otimes \cdots\otimes g$が生成する$\End(V^{\otimes k})$の部分代数を$B'$とする。任意の(正則とは限らない)$X\in\End(V)$に対して$X\otimes \cdots\otimes X$が$B'$に含まれることを示せばよい。$X+tE$は有限個の$t$を除いて正則である
   \footnote{
     行列式は$t$の多項式
   }
   から、$X$に収束する$\gl(V)$の点列$(X+t_iE)$が存在する
   \footnote{
     すなわち$\gl(V)$は$\End(V)$の稠密集合
-  }。$\End(V^{\otimes k})$は有限次元だから$B'$は閉部分空間であるので、
+  }。$\End(V^{\otimes k})$は有限次元であるから$B'$は閉部分空間であるので、
   \[
   X^{\otimes k}=\lim_{i\rightarrow\infty}(X+t_iE)^{\otimes k}\in B'  
   \]
   が成り立つ\footnote{
-    表現は連続だからこのような極限操作が可能である。
+    表現は連続であるからこのような極限操作が可能である。
   }
 \end{proof}
 
@@ -211,7 +211,7 @@ W_\lambda(V)=V^{\otimes k}c_\lambda
 \begin{proof}
   補題\ref{DCT}と補題\ref{gen_of_symtensor}, 補題\ref{lemma}より、
   \[
-  W_\lambda(V)=V^{\otimes k}c_\lambda  
+  W_\lambda(V)=V^{\otimes k}c_\lambda=V^{\otimes k}\otimes_{\complex[G]} \complex[G]c_\lambda 
   \]
   は単純$\gl(V)$加群であることが従う。ここで、$V^{\otimes k}$は左$A=\complex[\mathfrak{S}_k]$加群とみなすこともできたことを思い出す。
   \begin{align*}
@@ -224,11 +224,11 @@ W_\lambda(V)=V^{\otimes k}c_\lambda
   \]
   となることがわかる。
 
-  系\ref{multiplicity}より、
+  命題\ref{multi_space}より、
   \[
   V^{\otimes k}\simeq \bigoplus_{\lambda\in\mathcal{P}_k}S_\lambda\otimes_\complex\Hom_A(S_\lambda,V^{\otimes k})  
   \]
-  となる。$B=\gl(V)$加群として$\Hom_A(S_\lambda,V^{\otimes k})\simeq W_\lambda(V)$となることを示せばよい。$S_\lambda=Ac_\lambda$だから、$\phi:\Hom_A(S_\lambda,V^{\otimes k})\rightarrow W_\lambda(V)$を
+  となる。$B=\gl(V)$加群として$\Hom_A(S_\lambda,V^{\otimes k})\simeq W_\lambda(V)$となることを示せばよい。$S_\lambda=Ac_\lambda$であるから、$\phi:\Hom_A(S_\lambda,V^{\otimes k})\rightarrow W_\lambda(V)$を
   \[
     \phi(f)=f(c_\lambda)=f(c_\lambda^2)=c_\lambda f(c_\lambda)
   \]
@@ -249,7 +249,7 @@ W_\lambda(V)=V^{\otimes k}c_\lambda
 \end{cor}
 
 \begin{eg}
-  $\dim V=n$とする。$\lambda$が$n$行よりも長いYoung図形のとき$W_\lambda(V)=0$となる。$\lambda$の共役Young図形を$\lambda^*=(\lambda^*_1,\cdots,\lambda^*_s)$, $\lambda_1^*>n$とおく。このとき、
+  $\dim V=n$とする。$\lambda$が$n$行よりも長いYoung図形のとき$W_\lambda(V)=0$となることを示す。$\lambda$の共役Young図形を$\lambda^*=(\lambda^*_1,\cdots,\lambda^*_s)$, $\lambda_1^*>n$とおく。このとき、
   \[
   b_\lambda
   =\left(
@@ -260,7 +260,7 @@ W_\lambda(V)=V^{\otimes k}c_\lambda
    \right)  
   \]
   と書くことができる。$\tilde{b}_\lambda=\sum_{\mathfrak{S}_{\lambda^*_1}}\sgn(\sigma_1)\sigma_1$とする。
-  \[
+  \[\text{例：  }
   \lambda=\:\begin{ytableau}
     1 & 5\\
     2 & 6\\
@@ -270,26 +270,26 @@ W_\lambda(V)=V^{\otimes k}c_\lambda
     ,\text{ のとき }
   b_\lambda=
   \left(
-    \sum_{\tau\in\mathfrak{S}_2}\sgn(\tau)\tau
+    \sum_{\tau\in\mathfrak{S}(\{5,6\})}\sgn(\tau)\tau
   \right)
   \left(
-    \sum_{\sigma\in\mathfrak{S}_4}\sgn(\sigma)\sigma
-  \right),\:\tilde{b}_\lambda=\sum_{\sigma\in\mathfrak{S}_4}\sgn(\sigma)\sigma
+    \sum_{\sigma\in\mathfrak{S}(\{1,2,3,4\})}\sgn(\sigma)\sigma
+  \right),\:\tilde{b}_\lambda=\sum_{\sigma\in\mathfrak{S}(\{1,2,3,4\})}\sgn(\sigma)\sigma
   \]
   $V^{\otimes k}$を$\lambda$の各箱に$V$の元が書かれているものと同一視する。$V$の基底を$e_1,\cdots,e_n$とすれば$V^{\otimes k}$の元は$e_1,\cdots,e_n$を$\lambda$の各箱に配置した元で生成される。
   \[
-  \lambda=\ydiagram{2,2,1,1}\text{ のとき }V^{\otimes k}=\generated{\begin{ytableau}
+  \lambda=\ydiagram{2,2,1,1}\text{ のとき }V^{\otimes k}=\generated{\{\begin{ytableau}
                 e_{i_1} & e_{i_5}\\
                 e_{i_2} & e_{i_6}\\
                 e_{i_3}\\
                 e_{i_4}
-              \end{ytableau}}
+              \end{ytableau}\}_{i_1,\cdots,i_6}}
   \]
   このとき、$\lambda^*_1>n$より、$e_{i_1},\cdots,e_{i_{\lambda^*_1}}$には必ず重複がある。よって
   \[
   \tilde{b}_\lambda(e_{i_1}\otimes\cdots\otimes e_{i_{\lambda^*_1}})=0
   \]
-  だから、$b_\lambda V^{\otimes k}=0$である。
+  であるから、$b_\lambda V^{\otimes k}=0$である。
 \end{eg}
 
 \begin{eg}
@@ -306,7 +306,7 @@ W_\lambda(V)=V^{\otimes k}c_\lambda
 
 \subsection{一般線形群の表現に対する指標}
 
-前節でWeyl表現という一般線形群の既約表現を構成したが、これらが互いに同型でないことは示していなかった。本節ではこれを示し、さらに表現の指標を導入する。指標は有限群の場合のようにある範囲での表現を特徴づけるものであり、一般線形群においても強力な道具となる。
+前節でWeyl表現という一般線形群の既約表現を構成したが、これらが互いに同型でないことは示していなかった。本節ではこれを示し、さらに表現の指標を導入する。指標は有限群の場合のように、ある意味で表現を特徴づけるものであり、一般線形群においても強力な道具となる。
 
 \begin{defin}
   $\rho:\gl(V)\rightarrow \gl(W)$を表現とする。$H$を$\gl(V)$の対角行列のなす部分群とする。
@@ -364,7 +364,7 @@ W_\lambda(V)=V^{\otimes k}c_\lambda
   \[
   V^{\otimes k}a_\lambda
   =\Sym^{\lambda_1}(V)\otimes_{\complex}\cdots\otimes_\complex\Sym^{\lambda_s}(V)
-  =W_{(\lambda_1)}(V)\otimes\cdots\otimes W_{(\lambda_s)}(V)
+  =W_{(\lambda_1)}(V)\otimes_\complex\cdots\otimes_\complex W_{(\lambda_s)}(V)
   \]
   となる。Youngの規則(系\ref{young_rule_for_rep})より
   \[
@@ -380,7 +380,7 @@ W_\lambda(V)=V^{\otimes k}c_\lambda
   \]
   両辺の指標をとれば
   \[
-  s_\lambda=\ch_\lambda+\sum_{\mu>\lambda}k_{\lambda\mu}\ch_\mu  
+  h_\lambda=\ch_\lambda+\sum_{\mu>\lambda}k_{\lambda\mu}\ch_\mu  
   \]
   よって帰納法により従う。
 \end{proof}
@@ -432,7 +432,7 @@ W_\lambda(V)=V^{\otimes k}c_\lambda
   \complex[\mathfrak{S}_{k+l}]c=\bigoplus_{\nu\in\mathcal{P}_{k+l}}S_\nu^{\oplus t_\nu}
   \]
   とおけば\footnote{
-    実際は個の表現は$\complex[\mathfrak{S}_{k+l}]c=\ind_{\complex[\mathfrak{S}_k]\times\complex[\mathfrak{S}_l]}^{\complex[\mathfrak{S}_{k+l}]}S_\lambda\boxtimes S_\mu=S_\lambda\circ S_\mu$に他ならない。
+    実際はこの表現は$\complex[\mathfrak{S}_{k+l}]c=\ind_{\complex[\mathfrak{S}_k]\times\complex[\mathfrak{S}_l]}^{\complex[\mathfrak{S}_{k+l}]}S_\lambda\boxtimes S_\mu=S_\lambda\circ S_\mu$に他ならない。
   }、補題\ref{DCT}より
   \begin{align*}
     V^{\otimes (k+l)}c
@@ -441,6 +441,7 @@ W_\lambda(V)=V^{\otimes k}c_\lambda
     &\simeq \bigoplus_{\nu\in\mathcal{P}_{k+l}}V^{\otimes (k+l)}\otimes_{\complex[\mathfrak{S}_{k+l}]}\complex[\mathfrak{S}_{k+l}]c_\nu^{\oplus t_\nu}\\
     &\simeq \bigoplus_{\nu\in\mathcal{P}_{k+l}}W_\nu(V)^{\oplus t_\nu}\\
   \end{align*}
+  よって示せた。
 \end{proof}
 
 

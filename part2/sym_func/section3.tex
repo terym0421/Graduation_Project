@@ -6,8 +6,10 @@
 
 \section{表現環と対称関数環}
 
+対称群の表現と対称多項式の間には深い関係がある。すべての対称群のすべての表現(その同値類)をあつめたものは次数付き環の構造をもつ。また、対称多項式を無限変数に一般化した対称関数を考えると、対称関数の全体も次数付き環となる。これら2つの環には適切な内積を入れることができ、その内積を含め同型となることを示すのが本節の目標である。これによって表現間における結合係数を対称多項式の組み合わせ論によって記述することができるようになる。
+
 \subsection{続・対称多項式}
-対称群の表現と対称多項式の間には深い関係がある。次節でそのことを解説するが、そのための準備として対称多項式に関してより詳しく解説する。以下正の整数$n$を固定し、$\Lambda^k_n$を$n$変数の$k$次斉次対称多項式のなす$\integer$加群とする。第1部の記号を復習すると、$n$行のYoung図形$\lambda$に対して
+準備として対称多項式に関してより詳しく解説する。以下正の整数$n$を固定し、$\Lambda^k_n$を$n$変数の$k$次斉次対称多項式のなす$\integer$加群とする。第1章の記号を復習すると、$n$行のYoung図形$\lambda$に対して
 \[
 m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}  
 \]
@@ -80,7 +82,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 とする。
 
 \begin{prop}\label{various_basis}
-  $\Lambda^k_n$の次の部分集合について
+  $\Lambda^k_n$の部分集合
   \begin{enumerate}[(i)]
     \item $\{m_\lambda\}_\lambda$ ただし$\lambda$は大きさが$k$で$n$行
     \item $\{e_\lambda\}_\lambda$ ただし$\lambda$は大きさが$k$で$n$列
@@ -88,7 +90,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     \item $\{s_\lambda\}_\lambda$ ただし$\lambda$は大きさが$k$で$n$行
     \item $\{p_\lambda\}_\lambda$ ただし$\lambda$は大きさが$k$で$n$列
   \end{enumerate}
-  (i)$\sim$(iv)は$\Lambda^k_n$の$\integer$上の基底をなし、(v)は$\quotient\otimes_{\integer}\Lambda^k_n$の基底をなす。
+  について、(i)$\sim$(iv)は$\Lambda^k_n$の$\integer$上の基底をなし、(v)は$\quotient\otimes_{\integer}\Lambda^k_n$の基底をなす。
 \end{prop}
 
 \begin{proof}
@@ -193,7 +195,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   &=\sum_{\lambda}\frac{1}{z(\lambda)}p_\lambda(\{x_iy_j\})\\
   &=\sum_{\lambda}\frac{1}{z(\lambda)}p_\lambda(x_1,\cdots,x_m)p_\lambda(y_1,\cdots,y_n)
   \end{align*}
-  (iii)については、Robinson-Schensted-Knuth対応と呼ばれる対応を用いて証明される。詳細は付録を参照
+  (iii)については、Robinson-Schensted-Knuth対応と呼ばれる対応を用いて証明される。詳細は付録を参照。
 \end{proof}
 
 
@@ -241,7 +243,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 
 
 
-\subsection{表現環と対称関数環}
+\subsection{対称関数環}
 
 \begin{defin}
   可算無限個の変数をもつ形式的べき級数環$\integer[[x_1,x_2,\cdots]]$を考える。
@@ -357,7 +359,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   \[
   f_n=\sum_{\lambda\in\mathcal{P}_k(n)}d_\lambda m_\lambda(x_1,\cdots,x_n)    
   \]
-  とおくと$n\geq k$より$\mathcal{P}_k(n)=\mathcal{P}_k$だから
+  とおくと$n\geq k$より$\mathcal{P}_k(n)=\mathcal{P}_k$であるから
   \[
   f_n=\sum_{\lambda\in\mathcal{P}_k}d_\lambda m_\lambda(x_1,\cdots,x_n)    
   \]
@@ -390,7 +392,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
   \[
   \theta_k(f)=\sum_{\lambda\in\mathcal{P}_k}c_\lambda m_\lambda(x_1,\cdots,x_k)
   \]
-  だから
+  であるから
   \[
   \varphi(\theta(f))=f  
   \]
@@ -399,11 +401,11 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 
 
 \begin{notice}
-  対称多項式環の射影極限をとっても対称関数環にはならないことに注意せよ。例えば対称多項式の列
+  対称多項式環全体の射影極限をとっても対称関数環にはならないことに注意せよ。例えば対称多項式の列
   \[
     f=((1+x_1),\:(1+x_1)(1+x_2),\:(1+x_1)(1+x_2)(1+x_3),\:\cdots)
   \]
-  を考えると、$f$は対称多項式の射影極限の元であるが、次数の有界性を満たさないので対称関数ではない。
+  を考えると、$f$は対称多項式の射影極限の元であるが、次数の有界性を満たさないので対称関数ではない。斉次部分にわけて極限をとらなければならない。
 \end{notice}
 
 
@@ -425,13 +427,13 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 \end{eg}
 
 \begin{eg}
-  例\ref{monomial_sym_fun_as_lim}と命題\ref{various_basis}より$e_\lambda$, $h_\lambda$, $p_\lambda$,$s_\lambda$もすべて一つの対称関数を定める。$e_\lambda,h_\lambda,p_\lambda$の定める対称関数は、例\ref{elementary_func}と例\ref{power_func}に他ならない。また$s_\lambda$の定める対称関数はSchur関数という。
+  例\ref{monomial_sym_fun_as_lim}と命題\ref{various_basis}より$e_\lambda$, $h_\lambda$, $p_\lambda$,$s_\lambda$もすべて一つの対称関数を定める。$e_\lambda,h_\lambda,p_\lambda$の定める対称関数は、例\ref{elementary_func}と例\ref{power_func}に他ならない。また$s_\lambda$の定める対称関数をSchur関数という。
 \end{eg}
 
 命題\ref{various_basis}より、次が成り立つ。
 
 \begin{prop}\label{various_symfunc_basis}
-  $\Lambda^k$の次の部分集合について、
+  $\Lambda^k$の部分集合
   \begin{enumerate}[(i)]
     \item $\{m_\lambda\}_{\lambda\in\mathcal{P}_k}$
     \item $\{e_\lambda\}_{\lambda\in\mathcal{P}_k}$
@@ -439,7 +441,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     \item $\{s_\lambda\}_{\lambda\in\mathcal{P}_k}$
     \item $\{p_\lambda\}_{\lambda\in\mathcal{P}_k}$
   \end{enumerate}
-  (i)$\sim$(iv)は$\Lambda^k$の$\integer$上の基底をなし、(v)は$\quotient\otimes_\integer{\Lambda^k}$上の基底をなす。特に$\lambda$の範囲をすべてのYoung図形全体に変えれば、これらは$\Lambda$または$\quotient\otimes_\integer{\Lambda}$の基底を与える。
+  について、(i)$\sim$(iv)は$\Lambda^k$の$\integer$上の基底をなし、(v)は$\quotient\otimes_\integer{\Lambda^k}$上の基底をなす。特に$\lambda$の範囲をすべてのYoung図形全体に変えれば、これらは$\Lambda$または$\quotient\otimes_\integer{\Lambda}$の基底を与える。
 \end{prop}
 
 また、命題\ref{det_formula}や命題\ref{p_to_h}, 補題\ref{formal_power_series_relation}, Littlewood-Richardson規則などの関係式は、そのまま対称関数においても成立することがわかる。(変数の制限$\rho_{m,n}$は和や積と可換である)
@@ -473,19 +475,19 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     &\text{(vi):}\:
     p_\mu=\sum_{\lambda\in\mathcal{P}_k}\xi_{\lambda\mu}m_\lambda
     \text{ ここで }
-    \xi_{\lambda\mu}=\sum\prod_{q=1}^n\frac{m_q!}{c_{1q}!\cdots c_{nq}!}=\chi_{M_\lambda}(g_\mu)  
+    \xi_{\lambda\mu}=\sum\prod_{q=1}^n\frac{m_q!}{c_{1q}!\cdots c_{nq}!}=\chi_{M_\lambda}(g_\mu) \text{　であり　} k=|\mu| 
   \end{align*}
 \end{prop}
 
-以下、$\Lambda$の係数を$\quotient$に拡大して考える。命題\ref{various_symfunc_basis}より、$\{s_\lambda\}$は$\Lambda$の基底をなすので、$\Lambda$に
+以下、$\Lambda$の係数を$\quotient$に拡大して考える。命題\ref{various_symfunc_basis}より、$\{s_\lambda\}_\lambda$は$\Lambda$の基底をなすので、$\Lambda$に
 \[
 \generated{s_\lambda,s_\mu}=\delta_{\lambda\mu}  
 \]
 となるような内積を入れて考える。ただし$\delta_{\lambda\mu}$はKroneckerのデルタである。
 
 \begin{prop}\label{inner_prod}
-  次が成り立つ
-  \begin{enumerate}[(i)]
+  次が成り立つ：
+  \begin{enumerate}
     \item $\generated{h_\lambda,m_\mu}=\delta_{\lambda\mu}$
     \item $\generated{p_\lambda,p_\mu}=\delta_{\lambda\mu}z(\lambda)$
   \end{enumerate}
@@ -493,7 +495,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 
 \begin{proof}
   一般に$\Lambda$の基底$\{u_\lambda\}$, $\{v_\lambda\}$について
-  \begin{enumerate}[(a)]
+  \begin{enumerate}
     \item $\generated{u_\lambda,v_\mu}=\delta_{\lambda\mu}$
     \item $\sum_{\lambda}u_\lambda(x) v_\lambda(y)=\prod_{i,j}\frac{1}{1-x_iy_j}$
   \end{enumerate}
@@ -515,7 +517,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     &=\sum_{\nu}\left(\sum_{\lambda}a_{\lambda\nu}b_{\lambda\nu}\right)s_\nu(x)s_\nu(y)
     +\sum_{\nu_1\neq\nu_2}\left(\sum_{\lambda}a_{\lambda\nu_1}b_{\lambda\nu_2}\right)s_{\nu_1}(x)s_{\nu_2}(y)
   \end{align*}
-  だから、$\{s_\lambda(x)s_\mu(y)\}_{\lambda,\mu}$は一次独立であることに注意すれば、(b)は
+  であるから、$\{s_\lambda(x)s_\mu(y)\}_{\lambda,\mu}$は一次独立であることに注意すれば、(b)は
   \begin{equation}\label{equi_2}
     \sum_{\lambda}a_{\lambda\nu_1}b_{\lambda\nu_2}=\delta_{\nu_1\nu_2}  
   \end{equation}
@@ -523,6 +525,30 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
 \end{proof}
 
 
+\begin{cor}\label{isomorph}
+  $\lambda,\mu\in\mathcal{P}_k$に対して
+  \[
+  h_\lambda = \sum_{\mu}\frac{\chi_{M_\lambda}(g_\mu)}{z(\mu)}p_\mu 
+  \]
+  が成り立つ。
+\end{cor}
+
+\begin{proof}
+  命題\ref{inner_prod},命題\ref{various_relation}より
+  \[
+  \generated{h_\lambda,p_\mu}
+  =\generated{h_\lambda,\sum_{\nu\in\mathcal{P}_k}\chi_{M_\nu}(g_\mu)m_\nu}
+  =\chi_{M_\lambda}(g_\mu)  
+  \]
+  したがって、
+  \[
+    h_\lambda = \sum_{\mu}\frac{\chi_{M_\lambda}(g_\mu)}{z(\mu)}p_\mu   
+  \]
+  となる。
+\end{proof}
+
+
+\subsection{表現環}
 次に対称群の表現全体から作られる環を導入する。
 
 \begin{defin}
@@ -584,7 +610,7 @@ m_\lambda=\sum_{\alpha\sim\lambda}x_1^{\alpha_1}\cdots x_n^{\alpha_n}
     \chi_{A'}((\inv{\sigma}g\sigma)|_{n+m})\chi_U((\inv{\sigma}g\sigma)|_l)
   \end{align*}
   ここで、$(\inv{\sigma}g\sigma)|_{n+m}$は$\inv{\sigma}g\sigma$の最初の$n+m$文字の置換への制限である。
-  $g$と$\inv{\sigma}g\sigma$の置換の型は同じだから、$\inv{\sigma}g\sigma\in\mathfrak{S}_{n+m}\times\mathfrak{S}_l$と、$g\in\mathfrak{S}_{n+m}\times\mathfrak{S}_l$は同値である。よって、
+  $g$と$\inv{\sigma}g\sigma$の置換の型は同じであるから、$\inv{\sigma}g\sigma\in\mathfrak{S}_{n+m}\times\mathfrak{S}_l$と、$g\in\mathfrak{S}_{n+m}\times\mathfrak{S}_l$は同値である。よって、
   \begin{align*}
     \chi_A(g)=\left\{\begin{array}{lc}
       \frac{(n+m+l)!}{(n+m)!\:l!}\chi_{A'}(g|_{n+m})\chi_U(g|_l) & \text{if $g\in\mathfrak{S}_{n+m}\times\mathfrak{S}_l$}\\
@@ -631,38 +657,37 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
   \[
   \varphi(s_\lambda)=[S_\lambda]
   \]
-  が成り立つ。ただし$M_\lambda$は例\ref{ind_from_horizontal_perm}の誘導表現, $S_\lambda$は$\lambda$で定まる対称群の既約表現である。
+  が成り立つ。ただし$M_\lambda$は\ref{ind_from_horizontal_perm}節の誘導表現, $S_\lambda$は$\lambda$で定まる対称群の既約表現である。
 \end{theo}
 
 \begin{proof}
-  $\{h_\lambda\}$は$\Lambda$の基底だから$\varphi$は$\quotient$線形写像として定義できることに注意する。また、Youngの規則(定理\ref{Young_rule_for_rep})より
+  $\{h_\lambda\}$は$\Lambda$の基底であるから$\varphi$は$\quotient$線形写像として定義できることに注意する。また、Youngの規則(定理\ref{Young_rule_for_rep})より
   \[
   [M_\lambda]=[S_\lambda]+\sum_{\mu>\lambda}k_{\lambda\mu}[S_\mu]
   \]
-  となるから、$R_n$の基底$\{[S_\lambda]\}$に関して$\{[M_\lambda]\}$を成分表示して並べたとき、対角成分がすべて１の上三角行列になる。すなわち$\{[M_\lambda]\}$は$R_n$の基底となることがわかる。したがって$\varphi$は少なくとも線形同型であることがわかる。
+  となるから、$R_n$の基底$\{[S_\lambda]\}_\lambda$に関して$\{[M_\lambda]\}_\lambda$を成分表示して並べたとき、対角成分がすべて１の上三角行列になる。すなわち$\{[M_\lambda]\}_\lambda$は$R_n$の基底となることがわかる。したがって$\varphi$は少なくとも線形同型であることがわかる。
 
-  $\varphi$が環準同型であることを示す。$h_\lambda=h_{\lambda_1}\cdots h_{\lambda_r}$だから、
+  $\varphi$が環準同型であることを示す。$h_\lambda=h_{\lambda_1}\cdots h_{\lambda_r}$であるから、
   \[
   [M_\lambda]=[M_{(\lambda_1)}]\circ\cdots\circ[M_{(\lambda_r)}]  
   \]
-  となることを示せばよい。$n=|\lambda|$とおく。各$M_{(\lambda_i)}$について、$(\lambda_i)$は1行のYoung図形だから$M_{(\lambda_i)}$は$\mathfrak{S}_{\lambda_i}$の自明な表現である。よって$M_{(\lambda_i)}\boxtimes M_{(\lambda_j)}$は$\mathfrak{S}_{\lambda_i}\times\mathfrak{S}_{\lambda_j}$の自明な表現だから、
+  となることを示せばよい。$n=|\lambda|$とおく。各$M_{(\lambda_i)}$について、$(\lambda_i)$は1行のYoung図形であるから$M_{(\lambda_i)}$は$\mathfrak{S}_{\lambda_i}$の自明な表現である。よって$M_{(\lambda_i)}\boxtimes M_{(\lambda_j)}$は$\mathfrak{S}_{\lambda_i}\times\mathfrak{S}_{\lambda_j}$の自明な表現であるから、
   \[
   [M_{(\lambda_i)}]\circ[M_{(\lambda_j)}]
   =[\ind_{\mathfrak{S}_{\lambda_i}\times\mathfrak{S}_{\lambda_j}}^{\mathfrak{S}_{\lambda_i+\lambda_j}}\mathbf{1}]
   =[M_{(\lambda_i,\lambda_j)}]
   \]
-  積は可換かつ結合的だから
+  積は可換かつ結合的であるから
   \[
   [M_\lambda]=[M_{(\lambda_1)}]\circ\cdots\circ[M_{(\lambda_r)}]  
   \]
   
   次に$\varphi$が内積を保つことを示す。$\varphi$は同型なので$\varphi$の逆写像$\psi$が内積を保つことを示せばよい。$\psi$を求める。
   
-  命題\ref{various_relation}と命題\ref{inner_prod}より、$\lambda\in\mathcal{P}_n$に対して$h_\lambda$を$p_\lambda$の線形結合で表すことができる：
+  系\ref{isomorph}より
   \[
   h_\lambda=\sum_{\mu\in\mathcal{P}_n}\frac{\chi_{M_\lambda}(g_\mu)}{z(\mu)}p_\mu  
   \]
-  
   そこで
   \[
   \psi([V])=\sum_{\mu\in\mathcal{P}_n}\frac{\chi_V(g_\mu)}{z(\mu)}p_\mu  
@@ -673,7 +698,7 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
   \[
   |C(g_\mu)|=\frac{n!}{m_1!1^{m_1}\cdots m_n!n^{m_n}}=\frac{n!}{z(\mu)}
   \]
-  である。これは、$n$の置換のうち、長さ$i$の巡回置換は$i$通りの同じ表示をもつ($(1,2,3)=(3,1,2)=(2,3,1)$)こと、$m_i$個の巡回置換の並べ替えの分重複があることを考えればわかる。よって
+  である。これは、$n$の置換のうち、長さ$i$の巡回置換は$i$通りの表示をもつ(例えば$(1,2,3)=(3,1,2)=(2,3,1)$である。)こと、$m_i$個の巡回置換の並べ替えの分重複があることを考えればわかる。よって
   \[
   z(\mu)=\frac{n!}{|C(g_\mu)|}
   \]
@@ -702,15 +727,12 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
 \end{proof}
 
 
-
-この定理によって対称群の表現を対称関数の知識を使って調べることができる。
-
 \begin{cor}[Littlewood-Richardson規則]\label{LR_for_rep}
   $\mathfrak{S}_n$の既約表現$S_\lambda$, $\mathfrak{S}_m$の既約表現$S_\mu$について
   \[
   \ind_{\mathfrak{S}_n\times\mathfrak{S}_m}^{\mathfrak{S}_{n+m}}S_\lambda\boxtimes S_\mu =\bigoplus_{\nu}S_\nu^{\oplus\eta^{\nu}_{\lambda\mu}} 
   \]
-  が成り立つ。ただし$\eta^{nu}_{\lambda\mu}$はLittlewood-Richardson数である。
+  が成り立つ。ただし$\eta^{\nu}_{\lambda\mu}$はLittlewood-Richardson数である。
 \end{cor}
 
 \begin{cor}[Youngの規則]
@@ -734,8 +756,8 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
 \end{cor}
 
 
-\begin{cor}[Frobeniusの指標公式]
-  $\mathfrak{S}_n$の既約指標$\chi_\lambda$について、$\chi_\lambda(g_\mu)$の値は$s_\lambda$を$\{\frac{p_\mu}{z(\mu)}\}$の線形結合で表したときの$\frac{p_\mu}{z(\mu)}$の係数に等しい
+\begin{cor}[Frobeniusの指標公式]\label{char_formula}
+  $\mathfrak{S}_n$の既約指標$\chi_\lambda$について、$\chi_\lambda(g_\mu)$の値は$s_\lambda$を$\{\frac{p_\mu}{z(\mu)}\}_\lambda$の線形結合で表したときの$\frac{p_\mu}{z(\mu)}_\lambda$の係数に等しい
 \end{cor}
 
 \begin{proof}
@@ -745,6 +767,8 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
   より従う。
 \end{proof}
 
+
+定理の応用例を紹介しよう。
 
 \begin{eg}
   $\lambda=(n-1,1)=\begin{ytableau}
@@ -783,7 +807,7 @@ $R$の係数を$\quotient$に拡大して考える。$[V],[W]\in R_n$に対し�
   \[
   V\simeq \ind_{\mathfrak{S}_{n-1}}^{{\mathfrak{S}_n}}\mathbf{1}=S_{(n)}\oplus S_{(n-1,1)}=\mathbf{1}\oplus S_{(n-1,1)}
   \]
-  だから
+  であるから
   \[
   S_{(n-1,1)}\simeq U  
   \]

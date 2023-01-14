@@ -16,21 +16,22 @@
 以下、本節ではベクトル空間と言ったら複素数体$\complex$上の有限次元ベクトル空間を指すものとし、群と言ったら有限群を指すものとする。
 
 \begin{eg}
-  $G$を群、$V=\complex$とする。すべての$g\in G$に対して$\rho(g)=1$とするとこれは表現になる。これを自明な表現という
+  $G$を群、$V=\complex$とする。$\rho:G\rightarrow \gl(V)=\complex^\times$を、すべての$g\in G$に対して$\rho(g)=1$とすると$\rho$は表現になる。これを自明な表現という
 \end{eg}
 
 \begin{eg}\label{natural}
-  $G=\mathfrak{S}_n$, $V=\complex^n$として$\sigma\in\mathfrak{S}_n$に対して
+  $G=\mathfrak{S}_n$, $V=\complex^n$とする。$\rho:G\rightarrow \gl(V)$を
+  $\sigma\in\mathfrak{S}_n$に対して
   \[
   \rho(\sigma)(a_1,\cdots,a_n)=(a_{\inv{\sigma}(1)},\cdots,a_{\inv{\sigma}(b)})  
   \]
-  とするとこれは表現になる。
+  とすると$\rho$は表現になる。
 \end{eg}
 
 \begin{eg}\label{regular}
-  $G$を群、$\complex[G]$を$G$の元を基底にもつ自由ベクトル空間とする。$g\in G$に対して
+  $G$を群、$\complex[G]$を$G$の元を基底にもつ自由ベクトル空間とする。$\rho:G\rightarrow\gl(\complex[G])$を$g\in G$に対して
   \[
-  \rho(g)\sum_{x\in G}a_xx=\sum_{x\in G}a_xgx  
+  \rho(g)\left(\sum_{x\in G}a_xx\right)=\sum_{x\in G}a_xgx  
   \]
   によって定めるとこれは表現になる。これを$G$の正則表現という
 \end{eg}
@@ -92,10 +93,10 @@
   \[
   \rho(g)v=v  
   \]
-  だから$U$も$G$不変部分空間で、自明な表現と同値である。例\ref{1dim_rep}より$U$は既約である。
+  であるから$U$も$G$不変部分空間で、自明な表現と同値である。例\ref{1dim_rep}より$U$は既約である。
 \end{eg}
 
-与えられた表現から新しい表現を作る方法を導入しておく。
+与えられた表現から新しい表現を作る方法について解説する。
 \begin{defin}
   $(\rho_1,V_1)$, $(\rho_2,V_2)$を$G$の表現とする。
   \begin{itemize}
@@ -151,7 +152,7 @@
       f^2(x)&=f\left(\frac{1}{|G|}\sum_{g\in G}gp(\inv{g}x)\right)\\
       &=\frac{1}{|G|^2}\sum_{g,h\in G}ghp(\inv{h}p(\inv{g}x))
     \end{align*}
-    ここで、$\map{p}{V}{W}$は射影で$W$は$G$不変だから$p(\inv{h}p(\inv{g}x))=\inv{h}p(\inv{g}x)$ゆえに
+    ここで、$\map{p}{V}{W}$は射影で$W$は$G$不変であるから$p(\inv{h}p(\inv{g}x))=\inv{h}p(\inv{g}x)$ゆえに
     \begin{align*}
       f^2(x)=\frac{1}{|G|^2}\sum_{g,h\in G}gp(\inv{g}x)=f(x)
     \end{align*}
@@ -159,7 +160,7 @@
     \[
     f(x)=\frac{1}{|G|}\sum_{g\in G}gp(\inv{g}x)=\frac{1}{|G|}\sum_{g\in G}g\inv{g}x=x  
     \]
-    だから$f$は$W$への射影である。したがって
+    であるから$f$は$W$への射影である。したがって
     \[
     V=\im f\oplus \ker f=W\oplus \ker f  
     \]
@@ -176,12 +177,12 @@
 \end{cor}
 
 \begin{proof}
-  $\dim_\complex V$に関する帰納法で示す。$\dim_\complex V=1$なら$V$は既約だからよい。$\dim_\complex V>1$で$V$は可約であるとする。このとき
+  $\dim_\complex V$に関する帰納法で示す。$\dim_\complex V=1$なら$V$は既約であるからよい。$\dim_\complex V>1$で$V$は可約であるとする。このとき
   $V$は非自明な部分表現$V_1$をもつが、定理\ref{maschke}より部分表現$U_1$で
   \[
   V=V_1\oplus U_1  
   \]
-  となるものが存在する。$\dim_\complex V_1$, $\dim_\complex U_1<\dim_\complex V$だから帰納法の仮定により、
+  となるものが存在する。$\dim_\complex V_1$, $\dim_\complex U_1<\dim_\complex V$であるから帰納法の仮定により、
   \begin{align*}
     &V_1=W_1\oplus\cdots\oplus W_{s_1},\\
     &U_1=W_{s+1}\oplus\cdots\oplus W_{r},\qquad\text{各$W_i$は既約}
@@ -190,7 +191,7 @@
 \end{proof}
 
 \begin{notice}
-  定理\ref{maschke}は標数が群の位数と互いに素な任意の体上で成立する。実際証明中で$|G|$で割るシーンがあるが、それ以外体に依存する議論はしていない。しかし$G$の位数が無限の場合は成り立たない。例えば無限巡回群$\integer$の表現として
+  定理\ref{maschke}は標数が群の位数と互いに素な任意の体上で成立する。実際証明中で$|G|$で割る操作があるが、それ以外体に依存する議論はしていない。しかし$G$の位数が無限の場合は成り立たない。例えば無限巡回群$\integer$の表現として
   \[
   n\quad\mapsto\quad\pmat{1 & n\\0 & 1}
   \]
@@ -244,7 +245,7 @@
   \begin{enumerate}
     \item $\tr(A\oplus B)=\tr(A)+\tr(B)$より従う
     \item $\tr(A\otimes B)=\tr(A)\tr(B)$より従う
-    \item $\rho^*(g)=\transpose\rho(\inv{g})$であるから、$\tr(\rho^*(g))=\tr(\transpose\rho(\inv{g}))=\tr(\rho(\inv{g}))$となる。ここで、$G$は有限群だから$\rho(g)$は有限位数、したがってユニタリ行列である。よって$\rho(g)$の固有値$\lambda_1,\cdots,\lambda_n$はすべて絶対値が$1$なので
+    \item $\rho^*(g)=\transpose\rho(\inv{g})$であるから、$\tr(\rho^*(g))=\tr(\transpose\rho(\inv{g}))=\tr(\rho(\inv{g}))$となる。ここで、$G$は有限群であるから$\rho(g)$は有限位数、したがってユニタリ行列である。よって$\rho(g)$の固有値$\lambda_1,\cdots,\lambda_n$はすべて絶対値が$1$なので
     \[
     \tr(\rho(\inv{g}))=\frac{1}{\lambda_1}+\cdots+\frac{1}{\lambda_n}=\overline{\lambda_1}+\cdots+\overline{\lambda_n}=\overline{\tr(\rho(g))}
     \]
@@ -266,7 +267,7 @@
   \]
   である。よって指標を$\chi_V$とすれば
   \[
-  \chi_V(\sigma)=\sharp\set{i}{\sigma(i)=i}  
+  \chi_V(\sigma)=\sharp\set{i\in\{1,\cdots,n\}}{\sigma(i)=i}  
   \]
   となる。$V$は
   \[
@@ -279,7 +280,7 @@
 \end{eg}
 
 \begin{eg}\label{char_reg_rep}
-  有限群$G$に対してその正則表現(例\ref{regular})$\complex[G]$を考える。任意の$g\in G$に対して、ある$x\in G$があって$gx=x$ならば$g=e$だから、$g$を基底$G$に関して行列表示したとき$g\neq e$ならば対角成分はすべて0である。よって指標を$R$とすると
+  有限群$G$に対してその正則表現(例\ref{regular})$\complex[G]$を考える。任意の$g\in G$に対して、ある$x\in G$があって$gx=x$ならば$g=e$であるから、$g$を基底$G$に関して行列表示したとき$g\neq e$ならば対角成分はすべて0である。よって指標を$R$とすると
   \[
   R(g)=\left\{\begin{array}{cc}
     0 & \text{if }g\neq e\\
@@ -319,7 +320,7 @@
   \]
   である。
 
-  前半を示そう。$V\simeq W$とし$\varphi\in\Hom_G(V,W)$を$G$同型として固定する。任意の$f\in\Hom_G(V,W)$について、$\inv{\varphi}\circ f:V\rightarrow V$は$G$線形写像だから前半の結果より
+  前半を示そう。$V\simeq W$とし$\varphi\in\Hom_G(V,W)$を$G$同型として固定する。任意の$f\in\Hom_G(V,W)$について、$\inv{\varphi}\circ f:V\rightarrow V$は$G$線形写像であるから前半の結果より
   \[
   \inv{\varphi}\circ f=\lambda\id{V}
   \]
@@ -520,7 +521,7 @@
   \[
   0=F(e)=\sum_{g\in G}\overline{f(g)}g
   \]
-  $G$は一次独立だからすべての$g$について$f(g)=0$
+  $G$は一次独立であるからすべての$g$について$f(g)=0$
 \end{proof}
 
 \begin{cor}\label{rep_and_char}
@@ -597,7 +598,7 @@
     |G| & \text{if $g=e$}
   \end{array}\right.  
   \]
-  だから
+  であるから
   \[
   m_i=\chi_i(e)=\dim W_i  
   \]
@@ -605,18 +606,50 @@
   \[
   R=(\dim W_1)\chi_1+\cdots +(\dim W_r)\chi_r  
   \]
-  だから
+  であるから
   \[
   |G|=R(e)=(\dim W_1)^2+\cdots +(\dim W_r)^2  
   \]
 \end{proof}
+
+
+\begin{prop}\label{multi_space}
+  $V$を$G$の表現とする。
+  \[
+  V\simeq \bigoplus_{i=1}^rW_i\otimes_\complex \Hom_G(W_i,V)  
+  \]
+  が成り立つ。
+\end{prop}
+
+\begin{proof}
+  $\phi_i:W_i\otimes_\complex\Hom_G(W_i,V)\rightarrow V$を
+  \[
+  \phi_i(x\otimes f)=f(x)  
+  \]
+  を双線形に拡張して定める。
+  \[
+  \phi(gx\otimes f)=f(gx)=g(f(x))=\phi(x\otimes gf)  
+  \]
+  より$\phi$は$G$線形である。$\phi=\bigoplus_{i}\phi_i$とする。
+  
+  $V$の既約分解
+  \[
+    V=\bigoplus_i^r (U_1^{(i)}\oplus\cdots\oplus U_{m_i}^{(i)}),\qquad U^{(i)}_j\simeq W_i
+  \]
+  を固定し、$\theta^{(i)}_j:U^{(i)}_j\rightarrow W_i$を$G$同型とする。$\psi^{(i)}_j:U^{(i)}_j\rightarrow W_i\otimes_\complex \Hom_G(W_i,V) $を
+  \[
+  \psi^{(i)}_j(x)=\theta^{(i)}_j(x)\otimes \theta^{(i)-1}_j
+  \]
+  として$\psi=\bigoplus_{i,j}\psi^{(i)}_j$とする。$\psi$も$G$線形で$\phi\circ\psi=\text{id}$がわかるから、次元を比べて同型であることがわかる。
+\end{proof}
+
 
 \begin{eg}\label{S3}
   $G=\mathfrak{S}_3$の既約指標を全て求めよう。$G$の共役類は
   \[
   e,\:(1,2),\:(1,2,3)  
   \]
-  で代表される3つだから既約表現も3つある。またそれぞれの共役類の濃度は順に
+  で代表される3つであるから既約表現も3つある。またそれぞれの共役類の濃度は順に
   \[
   1,3,2  
   \]
@@ -648,7 +681,7 @@
   \[
   e,\:(1,2),\:(1,2,3),\:(1,2,3,4),\:(1,2)(3,4)  
   \]
-  で代表される5つだから既約指標も5つある。またそれぞれの共役類の濃度は順に
+  で代表される5つであるから既約指標も5つある。またそれぞれの共役類の濃度は順に
   \[
   1,6,8,6,3  
   \]
@@ -739,8 +772,6 @@
 
 本節では群環という代数を導入し、環上の加群論を用いた表現論に関するいくつかの命題を証明する。
 
-なお本節で環は、乗法単位元をもつ必ずしも可換とは限らない環を指すとする。また加群といったら考えている環上の左加群を指しているとする。
-
 \begin{defin}
   $G$を群, $K$を体とする。$K[G]$を$G$を基底にもつ$K$上の自由ベクトル空間とし、$G$の積から自然に定まる演算で$K[G]$に積を入れる。すなわち
   \[
@@ -759,13 +790,7 @@ $V$を$G$の体$K$上の表現とする。$V$は自然に$K[G]$加群の構造�
   \item $G$線形写像は$K[G]$加群の準同型
   \item 表現の同値は加群の同型
 \end{itemize}
-にそれぞれ対応することがわかる。ただし表現のテンソル積は$K[G]$加群としてのテンソル積ではないことに注意。$V,W$を$K[G]$加群とするとき、$V$と$W$の表現のテンソル積は$V\otimes_{K}W$に$g(x\otimes y)=gx\otimes gy$による作用を入れたものである。
-
-ここで、
-
-\begin{defin}
-  $A$を環とする。$A$加群$M$が単純であるとは、$M$が非自明な部分加群をもたないことをいう。
-\end{defin}
+にそれぞれ対応することがわかる。ここで、$A$加群$M$が単純であるとは、$M$が非自明な部分加群をもたないことをいう。また、表現のテンソル積は$K[G]$加群としてのテンソル積ではないことに注意。$V,W$を$K[G]$加群とするとき、$V$と$W$の表現のテンソル積は$V\otimes_{K}W$に$g(x\otimes y)=gx\otimes gy$による作用を入れたものである。
 
 である。環$A$を$A$加群とみなしたとき、$A$の部分加群とは$A$の左イデアルにほかならず、$A$に含まれる単純$A$加群は$A$の極小左イデアルである。したがって、$G$の有限次元既約表現を求めることは環$\complex[G]$の極小左イデアルを求めることと同等である。単純性に関連して次の定義をする。
 
@@ -786,7 +811,7 @@ $V$を$G$の体$K$上の表現とする。$V$は自然に$K[G]$加群の構造�
   \[
   m^2=\sum_{g,h\in G}gh=|G|m=0  
   \]
-  だから
+  であるから
   \[
   (1-xm)(1+xm)=1-x^2m^2=1  
   \]
@@ -794,7 +819,7 @@ $V$を$G$の体$K$上の表現とする。$V$は自然に$K[G]$加群の構造�
 \end{proof}
 
 
-$\complex$の標数は0だから定理\ref{maschke}は定理\ref{general_maschke}の特別な場合である。しかし系\ref{irr_decompose}は一般には成り立たない。考えている表現が有限次元の場合において成り立つことに注意せよ。
+$\complex$の標数は0であるから定理\ref{maschke}は定理\ref{general_maschke}の特別な場合である。しかし系\ref{irr_decompose}は一般には成り立たない。考えている表現が有限次元の場合において成り立つことに注意せよ。
 
 以下、$K=\complex$の場合を考える。命題\ref{dim_formula}の証明より、$G$の正則表現は$G$のすべての有限次元既約表現をその次元の数だけ直和因子にもっている。このことを群環のことばで述べると、$\complex[G]$は$\complex[G]$加群として極小左イデアルの直和
 \begin{align*}
@@ -815,7 +840,7 @@ $\complex$の標数は0だから定理\ref{maschke}は定理\ref{general_maschke
 \end{defin}
 
 \begin{prop}
-  $A$を半単純環, $e\in A$を単元でないとする。$Ae$が極小左イデアルとなるための必要十分条件は$e$が原始的べき等元であることである。
+  $A$を半単純環, $e\in A$を単元でないとする。$Ae$が極小左イデアルとなるための必要十分条件は$e$が原始的べき等元となることである。
 \end{prop}
 
 \begin{proof}
@@ -839,13 +864,9 @@ $\complex$の標数は0だから定理\ref{maschke}は定理\ref{general_maschke
   \[
   e_2=e_2^2=(c-1)e_1e_2=0
   \]
-  また$e$はべき等元なので
-  \[
-  e_1+e_2=e=(e_1+e_2)^2=e_1+-e_2e_1+e_2
-  \]
-  ゆえに$e_2e_1=0$である。したがって$Ae_2=Ae$ならば同様の議論で$e_1=0$となる。
-
-  逆に$e$が原始的べき等元であるとする。$I\subsetneq Ae$を左イデアルとする。$A$は半単純だから
+  $Ae_2=A_e$ならば同様の議論で$e_1=0$となる。
+  
+  逆に$e$が原始的べき等元であるとする。$I\subsetneq Ae$を左イデアルとする。$A$は半単純であるから
   \[
   Ae=I\oplus J  
   \]
@@ -857,7 +878,7 @@ $\complex$の標数は0だから定理\ref{maschke}は定理\ref{general_maschke
   \[
   x=ce,\quad c\in A  
   \]
-  とおくと$xe=ce^2=ce=x$。これより、
+  とおくと$xe=ce^2=ce=x$。よって
   \[
   x=xe=x^2+xy  
   \]
@@ -887,7 +908,7 @@ $\complex$の標数は0だから定理\ref{maschke}は定理\ref{general_maschke
   \[
   \phi(e)=af  
   \]
-  とおくと、$e$はべき等元だから
+  とおくと、$e$はべき等元であるから
   \[
   \phi(e)=\phi(e^2)=e\phi(e)=eaf  
   \]
@@ -1002,7 +1023,7 @@ g\sigma_i=\sigma_j h
   g\sigma_ie_k=\sigma_j he_k  \quad\in\sigma_jW,\qquad \text{for all $k=1,\cdots,n$}  
 \end{equation}
 
-となる。$g$の$V$への作用は$G/H$への置換作用と$H$の$W$への作用を組み合わせたようなものである。また式(\ref{ind_action})から次がでる。
+となる。$g$の$V$への作用は$G/H$への置換作用と$H$の$W$への作用を組み合わせたようなものである。また式(\ref{ind_action})から次が従う。
 
 \begin{prop}[誘導表現の指標]\label{ind_char}
   $V=\ind_H^GW$のとき、
@@ -1036,7 +1057,7 @@ $V=\bigoplus_{\sigma\in R}\sigma W$において、$R$として単位元$e$を含
 \overline{f}\circ\iota(x)=\overline{f}(ex)=ef(x)=f(x)  
 \]
 
-
+%\ref{multiplicity}
 
 \begin{eg}\label{ind_from_trivial}
   $H$を$G$の部分群とする。$X=G/H=\{H,g_1H,\cdots,g_nH\}$とする。$G$の$X$への左からの積による置換表現を考える。すなわち$V$を$X$を基底に持つ自由ベクトル空間として、$G$の左からの積を線形に拡張して$V$を$G$の表現とみなす。$V$の部分空間$W$を
@@ -1049,6 +1070,6 @@ $V=\bigoplus_{\sigma\in R}\sigma W$において、$R$として単位元$e$を含
   &=\bigoplus_{\sigma\in R}\sigma\complex H\\
   &=\bigoplus_{\sigma\in R}\sigma W
   \end{align*}
-  だから$V=\ind_H^GW$である。すなわち、$H$の自明な表現から誘導される$G$の表現は$G/H$への置換表現である。
+  であるから$V=\ind_H^GW$である。すなわち、$H$の自明な表現から誘導される$G$の表現は$G/H$への置換表現である。
 \end{eg}
 \end{document}
