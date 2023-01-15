@@ -67,7 +67,244 @@
   であり$F^k\cap E^{n-k}=0$であるから$v_{k+1}\notin E^{n-k}$となる。よって$E^{n-k-1}=\generated{v_1,\cdots,v_k,v_{k+1}}$。同様に$F^k=\generated{v_{k+1},\cdots,v_n}$も示せる。
 \end{proof}
 
-以下$F^\bullet$を標準旗とする。
+
+\subsection{双対定理と交叉条件}
+
+\begin{defin}
+  $\lambda\in\mathcal{Y}_d(n)$に対して、$d\times (n-d)$長方形から$\lambda$を取り除いてできる図形を、$180^\circ$回転させて得られるYoung図形を$\lambda$の双対といい$\lambda^\vee$と書く。
+  \[
+    \ydiagram[*(yellow)]{4+1,3+2,2+3}*[*(white)]{4,3,2}\qquad  
+  \]
+  式で書けば$\lambda=(\lambda_1,\cdots,\lambda_d)$に対し
+  \[
+    \lambda^\vee_i=n-d-\lambda_{d+1-i}
+  \]
+  である。
+\end{defin}
+
+\begin{eg}
+  $d=2,n=4$として
+  \[
+  \lambda=\quad\ydiagram{2,1}\text{　なら　}\lambda^\vee=\quad \ydiagram{1}  
+  \]
+\end{eg}
+
+\begin{theo}[双対定理]\label{duality}
+  $\lambda,\mu\in\mathcal{Y}_d(n)$を$|\lambda|+|\mu|=d(n-d)$であるとする。 $F^\bullet$を旗とする。このとき
+  \[
+  |\Omega_{\lambda}(F^\bullet)\cap\Omega_{\mu}(F^\bullet_{op})|=\delta_{\lambda\mu^\vee}  
+  \]
+  が成り立つ。
+\end{theo}
+
+\begin{proof}
+  $F^k=\generated{v_{k+1},\cdots,v_n}$, $F^k_{op}=\generated{v_1,\cdots,v_{n-k}}$となる基底$v_1,\cdots,v_n$をとる。$i^*=d+1-i$とおく。すなわち$i$が$1$から$d$まで動くとき$i^*$は$d$から$1$へ動く。
+  
+  $\mu=\lambda^\vee$であるとする。
+  $A_i=F^{\lambda_i+d-i}$, $B_i=F_{op}^{\lambda^\vee_{i^*+d-i^*}}$とおく。すると$V\in\Omega_{\lambda}(F^\bullet)\cap \Omega_{\lambda^{\vee}}(F^\bullet_{op})$ならば
+  \begin{align*}
+    \dim(V\cap A_i)\geq i,\qquad \dim(V\cap B_i)\geq i^*
+  \end{align*}
+  である。よって
+  \begin{align*}
+    d
+    &\geq \dim (V\cap A_i+V\cap B_i)\\
+    &=\dim(V\cap A_i)+\dim(V\cap B_i)-\dim(V\cap A_i\cap B_i)\\
+    &\geq i+i^*-\dim(V\cap A_i\cap B_i)\\
+    &=d+1-\dim(V\cap A_i\cap B_i)
+  \end{align*}
+  より
+  \[
+    \dim(V\cap A_i\cap B_i)\geq 1  
+  \]
+  一方
+  \begin{align*}
+    &A_i=F^{\lambda_i+d-i}=\generated{v_{\lambda_i+d-i+1},\cdots,v_n}\\
+    &B_i=F^{\lambda^\vee_{i^*}+d-i^*}_{op}\\
+    &\qquad=F^{n-d-\lambda_{d+1-i^*}+d-i^*}_{op}\\
+    &\qquad=F^{n-d-\lambda_{i}+d-d-1+i}\\
+    &\qquad=F^{(n-(\lambda_i+d-i+1))}\\
+    &\qquad=\generated{v_1,\cdots,v_{\lambda_i+d-i+1}}
+  \end{align*}
+  より
+  \[
+  A_i\cap B_i=\generated{v_{\lambda_i+d-i+1}}  
+  \]
+  となるから、
+  \[
+    v_{\lambda_i+d-i+1}\in V    
+  \]
+  $v_1,\cdots,v_n$は一次独立であるから
+  \[
+  V=\generated{v_{\lambda_1+d},v_{\lambda_2+d-1},\cdots,v_{\lambda_d+1}}  
+  \]
+  したがって$\Omega_{\lambda}(F^\bullet)\cap\Omega_{\lambda^\vee}(F^\bullet_{op})$は1点からなる。
+
+  次に$\mu\neq\lambda^\vee$であるとする。$|\lambda|+|\mu|=d(n-d)$より、ある$i$で$\lambda_i+\mu_{i^*}> n-d$となる。前半と同様$A_i=F^{\lambda_i+d-i}$, $B_i=F^{\mu_{i^*}+d-i^*}_{op}$とおけば
+  \begin{align*}
+    &A_i=\generated{v_{\lambda_i+d-i+1},\cdots,v_n}\\
+    &B_i=\generated{v_1,\cdots,v_{n-\mu_{i^*}-d+i^*}}\\
+    &\qquad =\generated{v_1,\cdots,v_{n-\mu_{i^*}+1-i}}\\
+    &\qquad \subsetneq\generated{v_1,\cdots,v_{\lambda_i+d-i+1}}
+  \end{align*}
+  より$A_i\cap B_i=0$であるから、前半と同様の議論をすれば$V\in\Omega_{\lambda}(F^\bullet)\cap\Omega_{\mu}(F^\bullet_{op})$とはなりえないことがわかる。
+\end{proof}
+
+\begin{eg}
+  $\ytableausetup{boxsize=0.5em}$
+  双対定理を例\ref{case_2,4}の場合で考えてみる。例えば$|\Omega_{\ydiagram{2,1}}(F^\bullet)\cap\Omega_{\ydiagram{1}}(F^\bullet_{op})|=1$は、「直線$l_0$と交わり、点$p_0$を通り平面$e_0$に含まれるような直線はただ1つ」と解釈できる。また$|\Omega_{\ydiagram{2}}(F^\bullet)\cap\Omega_{\ydiagram{2}}(F^\bullet_{op})|=1$は、「与えられた2点を通る直線はただ1つ」と解釈でき、これも確かにもっともらしい主張である。 さらに$|\Omega_{\ydiagram{1,1}}(F^\bullet)\cap\Omega_{\ydiagram{1,1}}(F^\bullet_{op})|=1$は、「与えられた2平面両方に含まれる直線はただ1つ」となる。
+\end{eg}
+
+\begin{cor}[交叉条件]
+  $\lambda,\mu\in\mathcal{Y}_d(n)$に対して、$\Omega_{\lambda}(F^\bullet)\cap\Omega_{\mu}(F^\bullet_{op})\neq\varnothing$となるための必要十分条件はすべての$i$に対して$\lambda_i+\mu_{i^*}\leq n-d$が成り立つことである。
+\end{cor}
+
+\begin{proof}
+  必要性から示す。$V\in\Omega_\lambda(F^\bullet)\cap\Omega_{\mu}(F^\bullet_{op})$ならば、定理\ref{duality}の証明と同様にして
+  \[
+  \dim (V\cap A_i\cap B_i)\geq 1
+  \]
+  したがって$A_i\cap B_i\neq 0$が成り立つ。
+  \[
+  A_i=\generated{v_{\lambda_i+d-i+1},\cdots,v_n},\quad B_i=\generated{v_1,\cdots,v_{n-\mu_{i^*}+1-i}}  
+  \]
+  より
+  \begin{align*}
+    \lambda_i+d-i+1&\leq n-\mu_{i^*}+1-i\\
+    \lambda_i+\mu_{i^*}\leq n-d
+  \end{align*}
+
+  逆にすべての$i$に対して$\lambda_i+\mu_{i^*}\leq n-d$であるならば$\mu\subset \lambda^\vee$であるから、双対定理により
+  \[
+  \Omega_{\lambda}(F^\bullet)\cap\Omega_{\mu}(F^\bullet_{op})\supset \Omega_{\lambda}(F^\bullet)\cap\Omega_{\lambda^\vee}(F^\bullet_{op})\neq \varnothing  
+  \]
+  となる。
+\end{proof}
+
+命題\ref{flag_basis}より双対定理・交叉条件は任意の一般の位置にある旗に対しても成り立つことがわかる。実際その証明において
+\[
+  F^k=\generated{v_{k+1},\cdots,v_n}, \quad E^{n-k}=\generated{v_1,\cdots,v_k}  
+\]
+なる基底の存在が本質的である。
+
+交叉条件は視覚的には、$\mu$を$180^\circ$回転させて$d\times (n-d)$長方形の右下隅に置いたとき、$\lambda$と重なることがないということと同値である。それがちょうど$\lambda^\vee$になるときが双対定理の主張である。
+
+
+
+
+\subsection{Schubert計算}
+
+いくつかの代数幾何学的事実を認めて、Schubert多様体の交点を計算するSchubert計算について説明する。
+
+\begin{fact}[Kleimanの横断性定理\cite{enu_geo},\cite{3264}]\label{kleiman}
+  $X\subset\mathcal{G}(d,n)$を部分多様体, $F^\bullet$を標準旗とする。このとき$|\lambda|=k$なるYoung図形$\lambda\in\mathcal{Y}_d(n)$に対して$\gl_n(\complex)$の稠密な開集合$U$が存在して、$X\cap \Omega_{\lambda}(gF^\bullet)$は空であるか、横断的に交わる。とくに$\codim X=k$であるなら$|X\cap \Omega_{\lambda}(gF^\bullet)|$は$0$であるか$g$によらない一定の値である。
+\end{fact}
+
+文字の集合$\{\sigma_\lambda\}_{\lambda\in\mathcal{Y}_d(n),|\lambda|=k}$で生成される自由$\integer$加群を$A^k(\mathcal{G}(d,n))$とする。$X\subset \mathcal{G}(d,n)$を余次元が$k$の部分多様体とするとき、事実\ref{kleiman}の値が定まるような十分一般の旗$F^\bullet$に対して
+\[
+[X]=\sum_{\lambda\in\mathcal{Y}_d(n),|\lambda|=k}|X\cap\Omega_{\lambda^\vee}(F^\bullet)|\sigma_\lambda  
+\]
+とする。これを$X$のシンボルという。$\Omega_{\lambda^\vee}(F^\bullet)$の次元は$|\lambda|=k$であるから、$|X\cap\Omega_{\lambda^\vee}(F^\bullet)|$は$0$次元、すなわち有限集合となるので
+係数は自然数として定まる。
+
+\begin{eg}
+  $\Omega_{\lambda}(F^\bullet)$は余次元が$|\lambda|$であるから、双対定理より
+  \[
+    [\Omega_{\lambda}(F^\bullet)]=\sigma_{\lambda}
+  \]
+  これをSchubert類という。
+\end{eg}
+
+\begin{fact}[\cite{enu_geo}]
+  $F^\bullet$, $E^\bullet$を一般の位置にある旗とする。
+  $\Omega_{\lambda}(F^\bullet)\cap\Omega_{\mu}(E^\bullet)$は余次元が$|\lambda|+|\mu|$の既約部分多様体になる。
+\end{fact}
+
+そこで、$A^*(\mathcal{G}(d,n))=\bigoplus_{k=0}^{d(n-d)}A^k(\mathcal{G}(d,n))$とし、$\sigma_\lambda\in A^k(\mathcal{G}(d,n))$, $\sigma_\mu\in A^l(\mathcal{G}(d,n))$に対して、事実\ref{kleiman}の値が定まるような十分一般の$g\in\gl_n(\complex)$に対して
+\[
+\sigma_\lambda\cdot\sigma_\mu
+=[\Omega_{\lambda}(F^\bullet)\cap\Omega_{\mu}(F^\bullet_{op})]
+=\sum_{\nu\in\mathcal{Y}_d(n),|\nu|=k+l}|\Omega_{\lambda}(F^\bullet)\cap\Omega_{\mu}(F^\bullet_{op})\cap\Omega_{\nu^\vee}(gF^\bullet)|\sigma_\nu
+\]
+と定め、$A^*(\mathcal{G}(d,n))$に積を定義する。これによって$A^*(\mathcal{G}(d,n))$は次数付き可換環の構造をもつ(\cite{3264})。$A^*(\mathcal{G}(d,n))$をChow環という。係数$|\Omega_{\lambda}(F^\bullet)\cap\Omega_{\mu}(F^\bullet_{op})\cap\Omega_{\nu^\vee}(gF^\bullet)|$を$\eta_{\lambda\mu}^\nu$と置く。
+
+次の事実が重要である。
+
+\begin{fact}[\cite{3264}]\label{intersection}
+  $X,Y\subset\mathcal{G}(d,n)$をほとんどすべての点で横断的に交わる部分多様体とする。このとき
+  \[
+  [X][Y]=[X\cap Y]  
+  \]
+  が成り立つ。
+\end{fact}
+
+交叉をとるという幾何学的な操作がそのシンボルの積という代数的な操作に置き換わっているのである。
+
+\begin{eg}
+  第3章冒頭で述べた4直線問題について考えよう。例\ref{case_2,4}より
+  \[
+  |\Omega_{\ydiagram{1}}(F_1^\bullet)\cap\Omega_{\ydiagram{1}}(F_2^\bullet)\cap\Omega_{\ydiagram{1}}(F_3^\bullet)\cap\Omega_{\ydiagram{1}}(F_4^\bullet)|  
+  \]
+  を計算したい。ここで$F_1^\bullet,F_2^\bullet,F_3^\bullet,F_4^\bullet$は十分一般にとった旗である。
+
+  この値を計算するには、事実\ref{intersection}より
+  \[
+    |\Omega_{\ydiagram{1}}(F_1^\bullet)\cap\Omega_{\ydiagram{1}}(F_2^\bullet)\cap\Omega_{\ydiagram{1}}(F_3^\bullet)\cap\Omega_{\ydiagram{1}}(F_4^\bullet)|\sigma_{\ydiagram{2,2}}=\sigma_{\ydiagram{1}}^4  
+  \]
+  となるから、$\eta_{\lambda\mu}^\nu$を決定したうえで$\sigma_{\ydiagram{1}}^4$を計算すればよい。
+
+ここで例\ref{case_2,4}を再掲しておく。
+\begin{align*}
+  &\Omega_{\varnothing}=\mathcal{G}(2,4)\\
+  &\Omega_{\ydiagram{1}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^2)\geq 1}\approx\set{l\subset\proj^3:\text{直線}}{l\cap l_0\neq\varnothing}\\
+  &\Omega_{\ydiagram{2}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^3)\geq 1}\approx\set{l\subset\proj^3:\text{直線}}{l\owns p_0}\\
+  &\Omega_{\ydiagram{1,1}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^2)\geq 1,\:\dim(V\cap F^1)\geq 2}\approx\set{l\subset\proj^3:\text{直線}}{l\subset e_0}\\
+  &\Omega_{\ydiagram{2,1}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^3)\geq 1,\:\dim(V\cap F^1)\geq 2}\approx\set{l\subset\proj^3:\text{直線}}{ p_0\in l\subset e_0}\\
+  &\Omega_{\ydiagram{2,2}}\approx\{l=l_0\}
+\end{align*}
+
+$\sigma_{\ydiagram{1}}^2$を計算する。大きさ$2$のYoung図形は $\ydiagram{2}$ と $\ydiagram{1,1}$ の２つで、どちらも自己双対的であるから、
+  \[
+  \sigma_{\ydiagram{1}}^2
+  =\alpha\sigma_{\ydiagram{2}}+\beta\sigma_{\ydiagram{1,1}}  
+  \]
+  である。ここで
+  \[
+  \alpha=|\Omega_{\ydiagram{1}}(F^\bullet)\cap
+  \Omega_{\ydiagram{1}}(F^\bullet_{op})\cap
+  \Omega_{\ydiagram{2}}(gF^\bullet)|,\qquad
+  \beta=|\Omega_{\ydiagram{1}}(F^\bullet)\cap
+  \Omega_{\ydiagram{1}}(F^\bullet_{op})\cap
+  \Omega_{\ydiagram{1,1}}(gF^\bullet)| 
+  \]
+  である。
+  
+  $\alpha$を求める。
+  $\Omega_{\ydiagram{1}}(F^\bullet)\cap
+  \Omega_{\ydiagram{1}}(F^\bullet_{op})\cap
+  \Omega_{\ydiagram{2}}(gF^\bullet)$は「$2$つの直線$l_0,l_1$と交わり、$1$点$p_0$を通る直線」の全体である。$p$を通り$l_0$と交わる直線全体の軌跡を考えると、これは$1$つの平面となる。この平面ともう$1$本の直線$l_1$は必ず1点で交わる(射影空間で考えている!)から、$\alpha=1$である。
+
+  次に$\beta$を求める。
+  $\Omega_{\ydiagram{1}}(F^\bullet)\cap
+  \Omega_{\ydiagram{1}}(F^\bullet_{op})\cap
+  \Omega_{\ydiagram{1,1}}(gF^\bullet)$は「$2$つの直線$l_0,l_1$と交わり、$1$つの平面$e_0$に含まれる直線」の全体である。$e_0$と$l_0$は$1$点$p_0$で交わり、$e_0$と$l_1$も1点$p_1$で交わる。よって$l\cap l_0\neq\varnothing$,$l\cap l_1\neq\varnothing$ $l\subset e_0$ならば$p_0,p_1\in l$である。$2$点を結ぶ直線は一般にただ1つだから$\beta=1$である。
+
+  よって$\sigma_{\ydiagram{1}}^2=\sigma_{\ydiagram{2}}+\sigma_{\ydiagram{1,1}}$である。同様の考察を行うと、
+  \[
+  \sigma_{\ydiagram{2}}\sigma_{\ydiagram{1}}=\sigma_{\ydiagram{1,1}}\sigma_{\ydiagram{1}}=\sigma_{\ydiagram{2,1}}  
+  \]
+  がわかる。したがって、
+  \[
+  \sigma_{\ydiagram{1}}^4=2\sigma_{\ydiagram{2,2}}  
+  \]
+  であるから、一般の位置にある$4$本の直線と交わる直線の数は$2$である。
+\end{eg}
+
+
+\subsection{Schur多項式との関係}
+
+前小節で4直線問題の解を与えたが、Schubert類の積を計算するために、易しい問題に帰着されたとはいえ幾何学的な考察が必要であった。しかし、実はGrassmann多様体のChow環は対称多項式環の剰余環として表されること、さらにはSchubert類はSchur多項式と対応することが示され、これによってSchubert計算は完全に組み合わせ論の問題に帰着される。
+
 
 
 
