@@ -851,13 +851,17 @@ Littlewood-Richardson規則の特別な場合として、$\lambda$が一行のYo
     がすべての$l=2,3,\cdots$について成り立つことと同値である。
 \end{defin}
 
-\begin{theo}[Pieriの規則]\label{Pieri}
+\begin{cor}[Pieriの規則]\label{Pieri}
     $\lambda=(k)$, $\mu\in\mathcal{Y}_n$に対して
     \[
     s_\lambda s_\mu=\sum_{\substack{|\nu|=|\mu|+k\\\nu/\mu\text{は水平帯}}}s_\nu    
     \]
-    が成り立つ
-\end{theo}
+    が成り立つ。例\ref{1row_schur}より、
+    \[
+    h_ks_\mu=\sum_{\substack{|\nu|=|\mu|+k\\\nu/\mu\text{は水平帯}}}s_\nu  
+    \]
+    と書くこともできる。
+\end{cor}
 
 \begin{proof}
     定理\ref{LR}より、$\mu$-goodな形$\lambda$の半標準タブローを考える。$T$が形$\lambda$の$\mu$-goodな半標準タブローであるとする。いま$\lambda$は一行のYoung図形であるから、$T$が$\mu$-goodであることは
@@ -869,7 +873,7 @@ Littlewood-Richardson規則の特別な場合として、$\lambda$が一行のYo
 \end{proof}
 
 \begin{eg}
-    $\lambda=\quad\ydiagram{2}$, $\mu=\quad\ydiagram{2,1}\quad\in\mathcal{Y}_3$として$s_\lambda s_\mu$を計算する。定理\ref{Pieri}より大きさ$5$のYoung図形で水平帯となっているものを探せばよい。それらは
+    $\lambda=\quad\ydiagram{2}$, $\mu=\quad\ydiagram{2,1}\quad\in\mathcal{Y}_3$として$s_\lambda s_\mu$を計算する。系\ref{Pieri}より大きさ$5$のYoung図形で水平帯となっているものを探せばよい。それらは
     \begin{align*}
         \nu_1=\quad\ydiagram[*(yellow)]{2+2}*[*(white)]{2,1},\qquad
         \nu_2=\quad\ydiagram[*(yellow)]{2+1,1+1}*[*(white)]{2,1},\qquad
@@ -881,12 +885,6 @@ Littlewood-Richardson規則の特別な場合として、$\lambda$が一行のYo
     s_\lambda s_\mu=s_{\nu_1}+s_{\nu_2}+s_{\nu_3}+s_{\nu_4}
     \]
 \end{eg}
-
-例\ref{1row_schur}より、Pieriの規則は
-\[
-h_ks_\mu=\sum_{\substack{|\nu|=|\mu|+k\\\nu/\mu\text{は水平帯}}}s_\nu  
-\]
-と書くこともできる。
 
 
 \begin{cor}[Youngの規則]\label{Young_rule_for_poly}
@@ -911,10 +909,10 @@ h_ks_\mu=\sum_{\substack{|\nu|=|\mu|+k\\\nu/\mu\text{は水平帯}}}s_\nu
         h_{\lambda_1}h_{\lambda_2}\cdots h_{\lambda_n}
         &=s_{(\lambda_1)}\left(s_{\lambda'}+\sum_{\mu>\lambda'}k_{\lambda'\mu}s_\mu \right)
     \end{align*}
-    となる。$s_{(\lambda_1)}s_{\lambda'}$について考えると、Pieriの規則(系\ref{Pieri})より、
-    \[
+    となる。$s_{(\lambda_1)}s_{\lambda'}$について考えると、Pieriの規則より、
+    \begin{equation}\label{induction}
         s_{(\lambda_1)}s_{\lambda'}=\sum_{\substack{|\nu|=|\lambda'|+\lambda_1\\\nu/\lambda'\text{は水平帯}}}s_\nu 
-    \]
+    \end{equation}
     となるが、$l=2,3,\cdots,n$に対して
     \begin{align*}
         \lambda_l=\lambda'_{l-1}
@@ -927,15 +925,15 @@ h_ks_\mu=\sum_{\substack{|\nu|=|\mu|+k\\\nu/\mu\text{は水平帯}}}s_\nu
     \[
     \nu_1=|\nu|-(\nu_2+\cdots+\nu_n)\geq |\lambda|-(\lambda_2+\cdots+\lambda_n)=\lambda_1    
     \]
-    よって$\lambda\leq \nu$である。したがって
+    よって$\lambda\leq \nu$である。したがって式(\ref{induction})は
     \[
-        s_{(\lambda_1)}s_{\lambda'}=s_{\lambda}+\sum_{\mu>\lambda}s_\mu
+        s_{(\lambda_1)}s_{\lambda'}=s_{\lambda}+\sum_{\nu>\lambda}\varepsilon_{\nu}s_\nu,\quad \varepsilon_{\nu}=1\text{ or }0
     \]
     と書くことができる。一方で、$\mu>\lambda'$に対して$s_{(\lambda_1)}s_\mu$を考えると、再びPieriの規則から
     \begin{equation}\label{tmp}
     s_{(\lambda_1)}s_\mu=\sum_{\substack{|\nu|=|\mu|+\lambda_1 \\ \nu/\mu\text{は水平帯}}}s_\nu
     \end{equation}
-    であるが、$\nu>\lambda$となることを示れば証明が完了する。次の補題を示す。
+    であるが、右辺の和に関して$\nu>\lambda$となることを示れば証明が完了する。次の補題を示す。
     \begin{lemm}
         Young図形$\lambda,\mu$について、$\mu>\lambda$であるとする。$\mu$に$k$個の箱を、水平帯条件が成り立つように追加してできる最小のYoung図形を$\overline{\mu}$とおき、同様に$\lambda$に$k$個の箱を、水平帯条件が成り立つように追加してできる最小のYoung図形を$\overline{\lambda}$とおく。このとき$\overline{\mu}>\overline{\lambda}$である。
     \end{lemm}
@@ -948,12 +946,157 @@ h_ks_\mu=\sum_{\substack{|\nu|=|\mu|+k\\\nu/\mu\text{は水平帯}}}s_\nu
             \ydiagram[*(yellow)]{0,0,1+1,1}*[*(white)]{4,3,1}\quad\rightarrow\quad
             \ydiagram[*(yellow)]{0,0,1+2,1}*[*(white)]{4,3,1}\quad=\overline{\lambda}
         \end{gather*}
-        また、$\lambda<\mu$であることは「$\lambda$の列数と$μ$の列数を右から辞書式順序で比べたとき、$μ$のほうが大きい」ということと同値であるから、$λ$, $μ$の列に左から１つずつ箱を足しても大小は保たれる。
+        また、$\lambda<\mu$であることは「$\lambda$の列数と$\mu$の列数を右から辞書式順序で比べたとき、$\mu$のほうが大きい」ということと同値であるから、$\lambda$, $\mu$の列に左から１つずつ箱を足しても大小は保たれる。
     \end{proof}
 
-    式(\ref{tmp})において$\nu\mu$は水平帯であり、$\mu>\lambda'$だったが、$\lambda'$に$\lambda_1$個の箱を水平帯となるように追加した最小のYoung図形は$\lambda$に他ならなかったから、補題により$\nu>\lambda$    
-    
+    式(\ref{tmp})において$\nu/\mu$は水平帯であり、$\mu>\lambda'$だったが、$\lambda'$に$\lambda_1$個の箱を水平帯となるように追加した最小のYoung図形は$\lambda$に他ならなかったから、補題により$\nu>\lambda$である。
 \end{proof}
+
+Pieriの規則はLittlewood-Richardson規則に比べ少ない結合係数しか記述できないと思われるかもしれない。しかし実際はPieriの規則を繰り返し使うことによってすべてのLittlewood-Richarson数を求めることができる。
+\begin{eg}
+    $\ytableausetup{boxsize=0.5em}$
+    Pieriの規則より$s_{\yd{1}}s_{\yd{2}}=s_{\yd{3}}+s_{\yd{2,1}}$が成り立つから、
+    \[
+    s_{\yd{2,1}}=s_{\yd{1}}s_{\yd{2}}-s_{\yd{3}}
+    =\vmat{
+        s_{\yd{1}} & s_{\yd{3}}\\
+        1          & s_{\yd{2}}
+    }  
+    \]
+    これより、たとえば
+    \begin{align*}
+        s_{\yd{2,1}}s_{\yd{1,1}}
+        &=(s_{\yd{1}}s_{\yd{2}}-s_{\yd{3}})s_{\yd{1,1}}\\
+        &=s_{\yd{1}}s_{\yd{2}}s_{\yd{1,1}}-s_{\yd{3}}s_{\yd{1,1}}\\
+        &=s_{\yd{1}}(s_{\yd{3,1}}+s_{\yd{2,1,1}})
+        -s_{\yd{4,1}}-s_{\yd{3,1,1}}\\
+        &=(s_{\yd{4,1}}+s_{\yd{3,2}}+s_{\yd{3,1,1}})+(s_{\yd{3,1,1}}+s_{\yd{2,2,1}}+s_{\yd{2,1,1,1}})-s_{\yd{4,1}}-s_{\yd{3,1,1}}\\
+        &=s_{\yd{3,2}}+s_{\yd{3,1,1}}+s_{\yd{2,2,1}}+s_{\yd{2,1,1,1}}
+    \end{align*}
+\end{eg}
+
+このように一般にYoung図形$\lambda$に対して$s_{\lambda}$を1行
+Young図形に対するSchur多項式(それはすなわち$h_{k}$)の多項式で表すことができればよい。
+
+\begin{theo}[Jacobi-Trudiの公式]\label{Jacobi-Trudi}
+    $n$行Young図形$\lambda\in\mathcal{Y}_n$に対して
+    \[
+    s_\lambda
+    =\det(h_{\lambda_{i}-i+j})_{1\leq i,j\leq n}
+    =\det(s_{(\lambda_{i}-i+j)})_{1\leq i,j\leq n}
+    \]
+    が成り立つ。ただし$\lambda_i+i-j<0$なら$h_{\lambda_i-i+j}=0$とする。
+\end{theo}
+
+\begin{proof}
+    次の補題が成り立つ。
+    \begin{lemm}\label{Jacobi-Trudi_lemm}
+        $n>1$とする。
+        $\lambda\in\mathcal{Y}_n$に対して、
+        \[
+        s_\lambda=\sum_{k=1}^n(-1)^{n-k}s_{\lambda_1,\cdots,\lambda_{k-1},\lambda_{k+1}-1,\cdots,\lambda_{n}-1}\cdot h_{\lambda_k+d-k}    
+        \]
+        が成り立つ。
+    \end{lemm}
+
+    この補題を認めると$n$に関する数学的帰納法により公式が従う。$n=1$なら$s_\lambda=h_\lambda$ゆえに成り立つ。右辺の行列式を第$n$列に関して余因子展開して、
+    \begin{align*}
+        \det(h_{\lambda_{i}-i+j})_{1\leq i,j\leq n}
+        &=\sum_{k=1}^n(-1)^{n-k}s_{(\lambda_1,\cdots,\lambda_{k-1},\lambda_{k+1}-1,\cdots,\lambda_{n}-1)}\cdot h_{\lambda_k+d-k}=s_{\lambda}
+    \end{align*}
+    となる。補題\ref{Jacobi-Trudi_lemm}を示そう。
+
+    \begin{proof}
+        右辺の和に関して、$s_{(\lambda_1,\cdots,\lambda_{k-1},\lambda_{k+1}-1,\cdots,\lambda_{n}-1)}\cdot h_{\lambda_k+d-k}$にPieriの規則を適用して現れるYoung図形の集合を$J_k$とおく。すなわち
+        \[
+        s_{(\lambda_1,\cdots,\lambda_{k-1},\lambda_{k+1}-1,\cdots,\lambda_{n}-1)}\cdot h_{\lambda_k+d-k}
+        =\sum_{\mu\in J_k}s_\mu   
+        \]
+        とする。$J_k$は、$\lambda$の第$k$行目の箱と$k+1$行以降の一番右にある箱をすべて取り除いてできるYoung図形
+        \[\lambda'=(\lambda_1,\cdots,\lambda_{k-1},\lambda_{k+1}-1,\cdots,\lambda_{n}-1)\]
+        に、取り除いた箱の数だけ水平帯を追加してできるYoung図形のなす集合である。
+        \begin{enumerate}
+            \item $J_k(m)=\set{\mu\in J_k}{\lambda_m>\mu_m\text{　かつ　}j<m\implies \lambda_j\leq \mu_j}$とすると$J_k=J_k(k)\sqcup J_k(k+1)$である。
+            
+            $\mu\in J_k$であるならば、定義から$\lambda_1\leq \mu_1,\:\cdots,\:\lambda_{k-1}\leq\mu_{k-1}$である。したがって$J_k(1),\cdots,J_k(k-1)=\varnothing$であることがわかる。$m>k+1$として、もし$\mu\in J_k(m)$が存在したならば
+            \[
+            \lambda_{k+1}\leq \mu_{k+1}    
+            \]
+            である。$\mu/\lambda'$は水平帯であるから
+            \[
+            \mu_{k+1}\leq \lambda'_{k}=\lambda_{k+1}-1 
+            \]
+            これは矛盾である。したがって$J_k=J_k(k)\sqcup J_k(k+1)$となる。
+
+            \item $J_1(1)=\varnothing$, $J_k(k+1)=J_{k+1}(k+1),(1\leq k\leq n-1)$, $J_n(n+1)=\{\lambda\}$である。
+            
+            もし$\mu\in J_1(1)$が存在したとする。$\mu$は
+            \[
+            \lambda'=(\lambda_2-1,\cdots,\lambda_n-1)    
+            \]
+            に$\lambda_1+n-1$個の箱を水平帯条件を満たすように追加したYoung図形である。よって第$i$行に追加した箱の数を$\alpha_i$とすれば
+            \begin{align*}
+                \alpha_1+\cdots+\alpha_{n}&=\lambda_1+n-1\\
+                \alpha_1+\lambda_2-1&<\lambda_1\qquad\text{($J_1(1)$の定義)}\\
+                \alpha_{i}+\lambda_{i+1}-1&\leq \lambda_{i}-1,\qquad2\leq i\leq n,\:\text{(水平帯条件)}
+            \end{align*}
+            下$2$つの不等式の両辺を足すと、
+            \[
+            n< 1
+            \]
+            が従うが、これは矛盾である。
+
+            次に$J_n(n+1)=\{\lambda\}$を示そう。$\mu\in J_n(n+1)$は
+            \[
+            \lambda'=(\lambda_1,\cdots,\lambda_{n-1})    
+            \]
+            に$\lambda_n$個の箱を、水平帯条件が成り立つように追加してできる。$J_n(n+1)$の定義から$\mu_n\geq \lambda_n$でなければならないから、$\mu_n=\lambda_n$にするしかなく、これは$\mu=\lambda$に他ならない。
+
+            $J_k(k+1)=J_{k+1}(k+1)$, $1\leq k\leq n-1$を示す。$\mu\in J_k(k+1)$である条件をすべて書き出すと
+            \begin{align*}
+                &\mu_1\geq \lambda_1,\:\cdots,\:\mu_k\geq\lambda_k,\:\mu_{k+1}<\lambda_{k+1},\qquad\text{($J_k(k+1)$の定義)}\\
+                &\mu_2\leq\lambda_1,\:\cdots,\:\mu_k\leq\lambda_{k-1},\\
+                &\mu_{k+1}\leq\lambda_{k+1}-1,\:\cdots,\:\mu_{n}\leq\lambda_{n}-1\qquad\text{(水平帯条件)}
+            \end{align*}
+            である。$\mu\in J_{k+1}(k+1)$である条件も書き出せば
+            \begin{align*}
+                &\mu_1\geq \lambda_1,\:\cdots,\:\mu_k\geq\lambda_k,\:\mu_{k+1}<\lambda_{k+1},\qquad\text{($J_{k+1}(k+1)$の定義)}\\
+                &\mu_2\leq\lambda_1,\:\cdots,\:\mu_k\leq\lambda_{k-1},\\
+                &\mu_{k+1}\leq\lambda_{k+1},\:\mu_{k+2}\leq\lambda_{k+2}-1,\:\cdots,\:\mu_{n}\leq\lambda_{n}-1\qquad\text{(水平帯条件)}
+            \end{align*}
+            となるが、$\mu_{k+1}<\lambda_{k+1}$が$\mu_{k+1}\leq\lambda_{k+1}-1$であることに注意すればこれらは同値である。
+        \end{enumerate}
+
+        (i),(ii)より
+        \begin{align*}
+            \sum_{k=1}^n(-1)^{n-k}\sum_{\mu\in J_k}s_\mu
+            &=\sum_{k=1}^n(-1)^{n-k}(\sum_{\mu\in J_{k}(k)}s_\mu+\sum_{\mu\in J_k(k+1)}s_\mu)\\
+            &\begin{aligned}
+                =(-1)^{n-1}&(\sum_{\mu\in J_1(1)}s_\mu + \sum_{\mu\in J_1(2)}s_\mu \\
+                &-\sum_{\mu\in J_2(2)}s_\mu - \sum_{\mu\in J_2(3)}s_\mu \\
+                &+\sum_{\mu\in J_3(3)}s_\mu + \sum_{\mu\in J_3(4)}s_\mu \\
+                &\qquad\qquad\vdots\\
+                &+(-1)^{n-2}\sum_{\mu\in J_{n-1}(n-1)}s_\mu + (-1)^{n-2}\sum_{\mu\in J_{n-1}(n)}s_\mu\\
+                &+(-1)^{n-1}\sum_{\mu\in J_n(n)}s_\mu + (-1)^{n-1}\sum_{\mu\in J_n(n+1)}s_\mu)
+            \end{aligned}\\
+            &=s_\lambda
+        \end{align*}
+        よって示せた。
+    \end{proof}
+\end{proof}
+
+
+Jacobi-Trudi公式より、$\integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}$は$\{h_k\}_{k=1,2,\cdots}$によって($\integer$代数として)生成されることがわかる。
+
+また、証明からわかるようにJacobi-Trudiの公式はPieriの規則からのみ導かれている。したがって一般に$\mathcal{Y}_n$を基底に持つ環$R$において、Pieriの規則：
+\[
+\lambda\cdot {(k)}=\sum_{\substack{|\nu|=|\mu|+k\\\nu/\mu\text{は水平帯}}}\nu
+\]
+が成り立つとき、$R$でもJacobi-Trudiの公式が成り立つから、$R$は対称多項式環$\integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}$に同型である。とくにその同型は
+\[
+R\owns \lambda\mapsto s_\lambda\in \integer[x_1,\cdots,x_n]^{\mathfrak{S}_n}   
+\]
+によって得られる。
 
 
     

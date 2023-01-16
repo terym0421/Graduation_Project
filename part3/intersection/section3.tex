@@ -197,7 +197,11 @@
 いくつかの代数幾何学的事実を認めて、Schubert多様体の交点を計算するSchubert計算について説明する。
 
 \begin{fact}[Kleimanの横断性定理\cite{enu_geo},\cite{3264}]\label{kleiman}
-  $X\subset\mathcal{G}(d,n)$を部分多様体, $F^\bullet$を標準旗とする。このとき$|\lambda|=k$なるYoung図形$\lambda\in\mathcal{Y}_d(n)$に対して$\gl_n(\complex)$の稠密な開集合$U$が存在して、$X\cap \Omega_{\lambda}(gF^\bullet)$は空であるか、横断的に交わる。とくに$\codim X=k$であるなら$|X\cap \Omega_{\lambda}(gF^\bullet)|$は$0$であるか$g$によらない一定の値である。
+  $X\subset\mathcal{G}(d,n)$を部分多様体, $F^\bullet$を標準旗とする。このとき$|\lambda|=k$なるYoung図形$\lambda\in\mathcal{Y}_d(n)$に対して$\gl_n(\complex)$の稠密な開集合$U$が存在して、$X\cap \Omega_{\lambda}(gF^\bullet)$は空であるか、横断的に交わる\footnote{
+  多様体$X$の部分多様体$Y,Z$が点$p\in Y\cap Z$で横断的に交わるとは、$T_pY+T_pZ=T_pX$が成り立つことをいう。例えば、平面
+  内の直線$x=0$と$y=0$は$(x,y)=(0,0)$で横断的に交わるが、放物線$y=x^2$と$y=0$は$(x,y)=(0,0)$で横断的に交わらない。
+  }
+  。とくに$\codim X=k$であるなら$|X\cap \Omega_{\lambda}(gF^\bullet)|$は$0$であるか$g$によらない一定の値である。
 \end{fact}
 
 文字の集合$\{\sigma_\lambda\}_{\lambda\in\mathcal{Y}_d(n),|\lambda|=k}$で生成される自由$\integer$加群を$A^k(\mathcal{G}(d,n))$とする。$X\subset \mathcal{G}(d,n)$を余次元が$k$の部分多様体とするとき、事実\ref{kleiman}の値が定まるような十分一般の旗$F^\bullet$に対して
@@ -241,7 +245,16 @@
 交叉をとるという幾何学的な操作がそのシンボルの積という代数的な操作に置き換わっているのである。
 
 \begin{eg}
-  第3章冒頭で述べた4直線問題について考えよう。例\ref{case_2,4}より
+  第3章冒頭で述べた4直線問題について考えよう。例\ref{case_2,4}を再掲すると
+  \begin{align*}
+    &\Omega_{\varnothing}=\mathcal{G}(2,4)\\
+    &\Omega_{\ydiagram{1}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^2)\geq 1}\approx\set{l\subset\proj^3:\text{直線}}{l\cap l_0\neq\varnothing}\\
+    &\Omega_{\ydiagram{2}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^3)\geq 1}\approx\set{l\subset\proj^3:\text{直線}}{l\owns p_0}\\
+    &\Omega_{\ydiagram{1,1}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^2)\geq 1,\:\dim(V\cap F^1)\geq 2}\approx\set{l\subset\proj^3:\text{直線}}{l\subset e_0}\\
+    &\Omega_{\ydiagram{2,1}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^3)\geq 1,\:\dim(V\cap F^1)\geq 2}\approx\set{l\subset\proj^3:\text{直線}}{ p_0\in l\subset e_0}\\
+    &\Omega_{\ydiagram{2,2}}\approx\{l=l_0\}
+  \end{align*}
+  である。
   \[
   |\Omega_{\ydiagram{1}}(F_1^\bullet)\cap\Omega_{\ydiagram{1}}(F_2^\bullet)\cap\Omega_{\ydiagram{1}}(F_3^\bullet)\cap\Omega_{\ydiagram{1}}(F_4^\bullet)|  
   \]
@@ -251,17 +264,8 @@
   \[
     |\Omega_{\ydiagram{1}}(F_1^\bullet)\cap\Omega_{\ydiagram{1}}(F_2^\bullet)\cap\Omega_{\ydiagram{1}}(F_3^\bullet)\cap\Omega_{\ydiagram{1}}(F_4^\bullet)|\sigma_{\ydiagram{2,2}}=\sigma_{\ydiagram{1}}^4  
   \]
-  となるから、$\eta_{\lambda\mu}^\nu$を決定したうえで$\sigma_{\ydiagram{1}}^4$を計算すればよい。
+  となるから、$\sigma_{\ydiagram{1}}^4$を計算すればよい。
 
-ここで例\ref{case_2,4}を再掲しておく。
-\begin{align*}
-  &\Omega_{\varnothing}=\mathcal{G}(2,4)\\
-  &\Omega_{\ydiagram{1}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^2)\geq 1}\approx\set{l\subset\proj^3:\text{直線}}{l\cap l_0\neq\varnothing}\\
-  &\Omega_{\ydiagram{2}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^3)\geq 1}\approx\set{l\subset\proj^3:\text{直線}}{l\owns p_0}\\
-  &\Omega_{\ydiagram{1,1}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^2)\geq 1,\:\dim(V\cap F^1)\geq 2}\approx\set{l\subset\proj^3:\text{直線}}{l\subset e_0}\\
-  &\Omega_{\ydiagram{2,1}}=\set{V\in\mathcal{G}(2,4)}{\dim(V\cap F^3)\geq 1,\:\dim(V\cap F^1)\geq 2}\approx\set{l\subset\proj^3:\text{直線}}{ p_0\in l\subset e_0}\\
-  &\Omega_{\ydiagram{2,2}}\approx\{l=l_0\}
-\end{align*}
 
 $\sigma_{\ydiagram{1}}^2$を計算する。大きさ$2$のYoung図形は $\ydiagram{2}$ と $\ydiagram{1,1}$ の２つで、どちらも自己双対的であるから、
   \[
@@ -303,9 +307,104 @@ $\sigma_{\ydiagram{1}}^2$を計算する。大きさ$2$のYoung図形は $\ydiag
 
 \subsection{Schur多項式との関係}
 
-前小節で4直線問題の解を与えたが、Schubert類の積を計算するために、易しい問題に帰着されたとはいえ幾何学的な考察が必要であった。しかし、実はGrassmann多様体のChow環は対称多項式環の剰余環として表されること、さらにはSchubert類はSchur多項式と対応することが示され、これによってSchubert計算は完全に組み合わせ論の問題に帰着される。
+前小節で4直線問題の解を与えたが、Schubert類の積を計算するために、易しい問題に帰着されたとはいえ幾何学的な考察が必要であった。しかし、実はGrassmann多様体のChow環は対称多項式環の剰余環として表されること、さらにはSchubert類はSchur多項式と対応することが示され、これによってSchubert計算はSchur多項式の展開に帰着される。
 
 
+\begin{theo}[Pieriの規則]
+  $\lambda\in\mathcal{Y}_d(n)$とする。
+  \[
+  \sigma_{(k)}\sigma_\lambda=\sum_{\substack{|\nu|=|\lambda|+k\\\nu/\lambda\text{は水平帯},\nu\in\mathcal{Y}_d(n)}}\sigma_\nu
+  \]
+  が成り立つ。
+\end{theo}
+
+\begin{proof}
+  
+\end{proof}
+
+\begin{cor}[Giambelliの公式]\label{giambelli}
+  $\lambda\in\mathcal{Y}_d(n)$に対して
+    \[
+    \sigma_\lambda
+    =\det(\sigma_{(\lambda_{i}-i+j)})_{1\leq i,j\leq d}
+    \]
+    が成り立つ。ただし$\lambda_i+i-j<0$または$\lambda_i+i-j>n-d$なら$\sigma_{\lambda_i-i+j}=0$
+\end{cor}
+
+\begin{proof}
+  Jacobi-Trudi公式(定理\ref{Jacobi-Trudi})の証明
+  とまったく同様である。
+\end{proof}
+
+
+加法群の準同型$\varphi:\integer[x_1,\cdots,x_n]^{\mathfrak{S}(n)}\rightarrow A^*(\mathcal{G}(d,n))$を
+\[
+\varphi(s_\lambda)=\left\{\begin{array}{cc}
+  \sigma_{\lambda} & \text{ if } \lambda\in\mathcal{Y}_d(n)\\
+  0 & \text{ otherwise}
+\end{array}\right.
+\]
+によって定めると、Jacobi-Trudi公式およびGiambelliの公式から$\varphi$は全射環準同型である。また
+\[
+\ker\varphi=\bigoplus_{\lambda\notin\mathcal{Y}_d(n)}s_\lambda
+\]
+である。したがって
+\[
+  A^*(\mathcal{G}(d,n))\simeq\bigoplus_{\lambda\in\mathcal{Y}_d(n)}s_\lambda
+\]
+
+\begin{cor}[Littlewood-Richardson規則]
+  $\lambda,\mu\in\mathcal{Y}_d(n)$に対して、
+  \[
+  \sigma_\lambda\sigma_\mu=\sum_{\nu\in\mathcal{Y}_d(n)}\eta_{\lambda\mu}^\nu\sigma_\nu  
+  \]
+  が成り立つ。すなわち
+  \[
+  |\Omega_{\lambda}(F_1)\cap\Omega_{\mu}(F_2)\cap\Omega_{\nu^\vee}(F_3)|=\eta_{\lambda\mu}^\nu  
+  \]
+  ただし$\eta_{\lambda\mu}^\nu$はLittlewood-Richardson数である。
+\end{cor}
+
+
+これまでの議論を用いて様々な数え上げ問題を解いてみる。
+
+\begin{eg}
+  $\proj^4$内の3つの直線と交わる直線を数える。条件「$\proj^4$の$1$つの直線と交わる」に対応する$\mathcal{G}(2,5)$のSchubert多様体は
+  \[
+  \set{V\in\mathcal{G}(2,5)}{\dim V\cap F^3 \geq 1}=\Omega_{\ydiagram{2}}  
+  \]
+  である。よって$\sigma_{\ydiagram{2}}^3$を計算すればよい。$\mathcal{Y}_2(5)$は$2\times 3$長方形の部分Young図形であることに注意すれば、
+  \begin{align*}
+  &\sigma_{\ydiagram{2}}^2=\sigma_{\ydiagram{3,1}}+\sigma_{\ydiagram{2,2}}\\
+  &\sigma_{\ydiagram{2}}^3=\sigma_{\ydiagram{3,3}}
+  \end{align*}
+  したがってそのような直線は$1$本である。
+\end{eg}
+
+\begin{eg}
+  条件「$\proj^n$の$1$つの直線と交わる」に対応する$\mathcal{G}(2,n)$のSchubert多様体は
+  \[
+  \set{V\in\mathcal{G}(2,n)}{\dim V\cap F^{n-2}\geq 1}=\Omega_{(n-3)}  
+  \]
+  であるから、$m$本の直線と交わる直線の本数が有限の値として定まるためには、$n-3$が$2(n-2)=2n-4$を割り切ることが必要十分である。それは$n=1,2,4,5$の場合のみである。
+\end{eg}
+
+\begin{eg}
+  $\proj^4$内の$6$つの直線と交わる平面を数える。条件「$\proj^4$の$1$つの直線と交わる」に対応する$\mathcal{G}(3,5)$のSchubert多様体は
+  \[
+  \set{V\in\mathcal{G}(3,5)}{\dim V\cap F^3\geq 1}=\Omega_{\ydiagram{1}}  
+  \]
+  である。よって$\sigma_{\ydiagram{1}}^6$を計算すればよい。
+  \begin{align*}
+    &\sigma_{\ydiagram{1}}^2
+    =\sigma_{\ydiagram{2}}+\sigma_{\ydiagram{1,1}}\\
+    &\sigma_{\ydiagram{1}}^3=2\sigma_{\ydiagram{2,1}}+\sigma_{\ydiagram{1,1,1}}\\
+    &\sigma_{\ydiagram{1}}^4=2\sigma_{\ydiagram{2,2}}+3\sigma_{\ydiagram{2,1,1}}\\
+    &\sigma_{\ydiagram{1}}^5=5\sigma_{\ydiagram{2,2,1}}\\
+    &\sigma_{\ydiagram{1}}^6=5\sigma_{\ydiagram{2,2,2}}
+  \end{align*}
+  よってそのような平面は$5$枚である。
+\end{eg}
 
 
 
