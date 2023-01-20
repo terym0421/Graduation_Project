@@ -5,7 +5,7 @@
 \section{Grassmann多様体の交叉理論}
 \subsection{一般の位置}
 
-前節で導入したように、$\proj^n$の固定された旗に対して、ある特定の位置条件にある線形部分多様体をパラメータづける空間がSchubert多様体であった。したがって今度は複数の旗に対してそれぞれのSchubert多様体がどのように交わるかを記述することを考える。ここで重要になるのが2つの旗が一般の位置にあるという条件である。これが第3章冒頭に述べた「ある程度一般の状況」という言葉の意味である。一般の位置にある2つの旗のSchubert多様体に対してはその次元がうまくふるまうことが知られており、それによって交点の数え上げに整った代数的・組み合わせ的計算が現れる。
+前節で導入したように、$\proj^n$の固定された旗に対して、その旗と特定の位置にある線形部分多様体をパラメータづける空間がSchubert多様体であった。今度は複数の旗に対してそれぞれのSchubert多様体がどのように交わるかを記述することを考える。ここで重要になるのが2つの旗が一般の位置にあるという条件である。これが第3章冒頭に述べた「ある程度一般の状況」という言葉の意味である。一般の位置にある2つの旗のSchubert多様体の交叉に対してはその次元がうまくふるまうことが知られており、それによって交点の数え上げに整った代数的・組み合わせ的計算が現れる。
 
 \begin{defin}
   $F^\bullet$, $E^\bullet$を$\complex^n$の旗とする。各$k$において
@@ -37,7 +37,7 @@
   e_{k+1},\cdots,e_n,v_{n-k+1},\cdots,v_n  
   \]
   が一次独立となることである。すなわち$\det(e_{k+1},\cdots,e_n,v_{n-k+1},\cdots,v_n)\neq 0$である。よって
-  $F^\bullet$, $gF^\bullet$が一般の位置にあるような$g$のなす$\gl_n(\complex)$の部分集合はZariski開集合である。Zariski開集合は稠密であるので、ほとんどすべての旗は一般の位置にあるといってよい。
+  $F^\bullet$, $gF^\bullet$が一般の位置にあるような$g$のなす$\gl_n(\complex)$の部分集合はZariski開集合である。Zariski開集合は稠密であるから、ほとんどすべての旗は一般の位置にあるといってよい。
 \end{eg}
 
 \begin{prop}\label{flag_basis}
@@ -51,7 +51,7 @@
 \begin{proof}
   $\dim (E^{n-k}\cap F^{k-1})=1$を示す。まず$E^{n-k}\cap F^{k}=0$より
   \[
-  dim(E^{n-k}+F^k)=\dim E^{n-k}+\dim F^k -\dim(E^{n-k}\cap F^{k})=n
+  \dim(E^{n-k}+F^k)=\dim E^{n-k}+\dim F^k -\dim(E^{n-k}\cap F^{k})=n
   \]
   よって$\dim (E^{n-k}+F^{k-1})=n$であるから
   \begin{align*}
@@ -60,7 +60,9 @@
     &=k+(n-k+1)-n\\
     &=1
   \end{align*}
-  そこで$v_k$を$E^{n-k}\cap F^{k-1}$の生成元とする。$\dim E^{n-1}=1$だから$E^{n-1}=\generated{v_1}$である。$E^{n-k}=\generated{v_1,\cdots,v_k}$であるとする。
+  そこで$v_k$を$E^{n-k}\cap F^{k-1}$の生成元とする。$E^{k}=\generated{v_{k+1},\cdots,v_n}$となることが帰納法により従う。
+  
+  $\dim E^{n-1}=1$であるから$E^{n-1}=\generated{v_1}$である。$E^{n-k}=\generated{v_1,\cdots,v_k}$であるとする。
   \[
   v_{k+1}\in E^{n-k-1}\cap F^{k}  
   \]
@@ -155,7 +157,7 @@
   双対定理を例\ref{case_2,4}の場合で考えてみる。例えば$|\Omega_{\ydiagram{2,1}}(F^\bullet)\cap\Omega_{\ydiagram{1}}(F^\bullet_{op})|=1$は、「直線$l_0$と交わり、点$p_0$を通り平面$e_0$に含まれるような直線はただ1つ」と解釈できる。また$|\Omega_{\ydiagram{2}}(F^\bullet)\cap\Omega_{\ydiagram{2}}(F^\bullet_{op})|=1$は、「与えられた2点を通る直線はただ1つ」と解釈でき、これも確かにもっともらしい主張である。 さらに$|\Omega_{\ydiagram{1,1}}(F^\bullet)\cap\Omega_{\ydiagram{1,1}}(F^\bullet_{op})|=1$は、「与えられた2平面両方に含まれる直線はただ1つ」となる。
 \end{eg}
 
-\begin{cor}[交叉条件]
+\begin{cor}[交叉条件]\label{condition}
   $\lambda,\mu\in\mathcal{Y}_d(n)$に対して、$\Omega_{\lambda}(F^\bullet)\cap\Omega_{\mu}(F^\bullet_{op})\neq\varnothing$となるための必要十分条件はすべての$i$に対して$\lambda_i+\mu_{i^*}\leq n-d$が成り立つことである。
 \end{cor}
 
@@ -197,11 +199,13 @@
 いくつかの代数幾何学的事実を認めて、Schubert多様体の交点を計算するSchubert計算について説明する。
 
 \begin{fact}[Kleimanの横断性定理\cite{enu_geo},\cite{3264}]\label{kleiman}
-  $X\subset\mathcal{G}(d,n)$を部分多様体, $F^\bullet$を標準旗とする。このとき$|\lambda|=k$なるYoung図形$\lambda\in\mathcal{Y}_d(n)$に対して$\gl_n(\complex)$の稠密な開集合$U$が存在して、$X\cap \Omega_{\lambda}(gF^\bullet)$は空であるか、横断的に交わる\footnote{
+  $X\subset\mathcal{G}(d,n)$を部分多様体, $F^\bullet$を標準旗とする。このとき$|\lambda|=k$なるYoung図形$\lambda\in\mathcal{Y}_d(n)$に対して$\gl_n(\complex)$の稠密\footnote{
+    位相空間$X$の部分集合$D$が$X$で稠密であるとは、$D$の閉包$\overline{D}$について$\overline{D}=X$がなりたつことをいう。
+  }な開集合$U$が存在して、$X\cap \Omega_{\lambda^\vee}(gF^\bullet)$は空であるか、横断的に交わる\footnote{
   多様体$X$の部分多様体$Y,Z$が点$p\in Y\cap Z$で横断的に交わるとは、$T_pY+T_pZ=T_pX$が成り立つことをいう。例えば、平面
   内の直線$x=0$と$y=0$は$(x,y)=(0,0)$で横断的に交わるが、放物線$y=x^2$と$y=0$は$(x,y)=(0,0)$で横断的に交わらない。
   }
-  。とくに$\codim X=k$であるなら$|X\cap \Omega_{\lambda}(gF^\bullet)|$は$0$であるか$g$によらない一定の値である。
+  。とくに$\codim X=k$であるなら$|X\cap \Omega_{\lambda^\vee}(gF^\bullet)|$は$0$であるか$g$によらない一定の値である。
 \end{fact}
 
 文字の集合$\{\sigma_\lambda\}_{\lambda\in\mathcal{Y}_d(n),|\lambda|=k}$で生成される自由$\integer$加群を$A^k(\mathcal{G}(d,n))$とする。$X\subset \mathcal{G}(d,n)$を余次元が$k$の部分多様体とするとき、事実\ref{kleiman}の値が定まるような十分一般の旗$F^\bullet$に対して
@@ -235,7 +239,7 @@
 次の事実が重要である。
 
 \begin{fact}[\cite{3264}]\label{intersection}
-  $X,Y\subset\mathcal{G}(d,n)$をほとんどすべての点で横断的に交わる部分多様体とする。このとき
+  $X,Y\subset\mathcal{G}(d,n)$を一般の点で横断的に交わる部分多様体とする。このとき
   \[
   [X][Y]=[X\cap Y]  
   \]
@@ -291,7 +295,7 @@ $\sigma_{\ydiagram{1}}^2$を計算する。大きさ$2$のYoung図形は $\ydiag
   次に$\beta$を求める。
   $\Omega_{\ydiagram{1}}(F^\bullet)\cap
   \Omega_{\ydiagram{1}}(F^\bullet_{op})\cap
-  \Omega_{\ydiagram{1,1}}(gF^\bullet)$は「$2$つの直線$l_0,l_1$と交わり、$1$つの平面$e_0$に含まれる直線」の全体である。$e_0$と$l_0$は$1$点$p_0$で交わり、$e_0$と$l_1$も1点$p_1$で交わる。よって$l\cap l_0\neq\varnothing$,$l\cap l_1\neq\varnothing$ $l\subset e_0$ならば$p_0,p_1\in l$である。$2$点を結ぶ直線は一般にただ1つだから$\beta=1$である。
+  \Omega_{\ydiagram{1,1}}(gF^\bullet)$は「$2$つの直線$l_0,l_1$と交わり、$1$つの平面$e_0$に含まれる直線」の全体である。$e_0$と$l_0$は$1$点$p_0$で交わり、$e_0$と$l_1$も1点$p_1$で交わる。よって$l\cap l_0\neq\varnothing$,$l\cap l_1\neq\varnothing$ $l\subset e_0$ならば$p_0,p_1\in l$である。$2$点を結ぶ直線は一般にただ1つであるから$\beta=1$である。
 
   よって$\sigma_{\ydiagram{1}}^2=\sigma_{\ydiagram{2}}+\sigma_{\ydiagram{1,1}}$である。同様の考察を行うと、
   \[
@@ -310,7 +314,7 @@ $\sigma_{\ydiagram{1}}^2$を計算する。大きさ$2$のYoung図形は $\ydiag
 前小節で4直線問題の解を与えたが、Schubert類の積を計算するために、易しい問題に帰着されたとはいえ幾何学的な考察が必要であった。しかし、実はGrassmann多様体のChow環は対称多項式環の剰余環として表されること、さらにはSchubert類はSchur多項式と対応することが示され、これによってSchubert計算はSchur多項式の展開に帰着される。
 
 
-\begin{theo}[Pieriの規則]
+\begin{theo}[Pieriの規則]\label{Pieri_formula}
   $\lambda\in\mathcal{Y}_d(n)$とする。
   \[
   \sigma_{(k)}\sigma_\lambda=\sum_{\substack{|\nu|=|\lambda|+k\\\nu/\lambda\text{は水平帯},\nu\in\mathcal{Y}_d(n)}}\sigma_\nu
@@ -318,9 +322,182 @@ $\sigma_{\ydiagram{1}}^2$を計算する。大きさ$2$のYoung図形は $\ydiag
   が成り立つ。
 \end{theo}
 
+証明のためにいくつか補題を示そう。まず、
+一般の旗$F^\bullet$, $F^\bullet_{op}$, $E^\bullet$に対して、
+\[
+\Omega_{(k)}(E^\bullet)\cap \Omega_\lambda(F^\bullet)\cap \Omega_{\nu^\vee}(F^\bullet_{op})
+\]
+を考える。双対定理の証明と同様、
+\begin{align*}
+  A_i=F^{\lambda_i+d-i},\qquad B_i=F_{op}^{\mu_{i^*}+d-i^*}
+\end{align*}
+とおく。ここで$i^*=d+1-i$である。$a(i)=\lambda_i+d-i+1$, $b(i)=n-\mu_{i^*}-d+i^*$とおけば、
+\[
+A_i=\generated{e_{a(i)},\cdots,e_n},\qquad B_i=\generated{e_1,\cdots,e_{b(i)}}  
+\]
+である。
+
+さらに
+\[
+W_i=A_i\cap B_i=\generated{e_{a(i)},\cdots,e_{b(i)}},  \qquad i=1,2,\cdots,d
+\]
+とおいて、$W=\sum_{i=1}^dW_i$とする。
+
+この状況において、$\lambda,\mu$が交叉条件をみたすならば、$a(i)\leq b(i)$である。すなわち$W_i\neq 0$が成り立つ。また、$\nu/\lambda$が水平帯であるならば、$\lambda,\mu$は交叉条件をみたす。
+
+実際、$\lambda,\mu$が交叉条件をみたすならば、系\ref{condition}より$\lambda_i+\mu_{i^*}\leq n-d$である。このとき、
+  \begin{align*}
+    a(i)-b(i)
+    &=(\lambda_i+d-i+1)-(n-\mu_{i^*}-d+i^*)\\
+    &=\lambda_i+\mu_{i^*}+(d-i+1)-(n-i+1)\\
+    &=\lambda_i+\mu_{i^*}+d-n\\
+    &\leq 0
+  \end{align*}
+よって$a(i)\leq b(i)$である。
+
+また、$\nu/\lambda$が水平帯であるならば、系\ref{Pieri}より$\mu_{i^*}=\nu^\vee_{i^*}=n-d-\nu_{i}$だから、
+\[
+\lambda_i+\mu_{i^*}=\lambda_i-\nu_i+n-d \leq n-d 
+\]
+である。よって、$\nu/\lambda$が水平帯であるならば$\Omega_{\lambda}(F^\bullet)\cap\Omega_{\mu}(F^\bullet_{op})$は空でなく、$W\neq 0$である。
+
+以下、$\nu/\lambda$は水平帯であるとする。
+
+\begin{lemm}\label{W_form}
+  $A_0=0$, $B_{d+1}=0$とする。
+  \[
+  W=\bigcap_{i=0}^d (A_i+B_{i+1})=\bigcap_{i=0}^d \generated{e_1,\cdots,e_{b(i+1)},e_{a(i)},\cdots,e_n}
+  \]
+  が成り立つ。
+\end{lemm}
+
 \begin{proof}
-  
+  $e_j\in W_i$とする。定義より$a(i)\leq j\leq b(i)$であるが、任意の$l=0,1,\cdots,d$に対して、$l\geq i$であるならば、$a(l)\leq a(i)$であるから、$e_j\in A_{l}\subset A_{l}+B_{l+1}$、一方$l+1\leq i$であるならば、$b(l+1)\geq b(i)$であるから、$e_j\in B_{l+1}\subset A_l+B_{l+1}$である。
+
+  次に$e_j\in \bigcap_{i=0}^d (A_i+B_{i+1})$とする。$i=0$として$1\leq j \leq b(1)$が成り立つ。ここで、もし$a(1)\leq j$がなりたつなら$e_j\in A_1\cap B_1$となるから$a(1) > j$ としよう。すると$i=1$として$1\leq j\leq b(2)$が成り立つ。$a(2)\leq j$ならば$e_j\in A_2\cap B_2$となるから$a(2)>j$としよう。すると$i=2$として$1\leq j\leq b(3)$が成り立つ。この議論を繰り返していって、最後には$a(d)\leq j\leq n$かつ$1\leq j\leq b(d)$となるが、これは$e_j\in A_d\cap B_d$を意味する。
 \end{proof}
+
+\begin{lemm}\label{V_subset_W}
+  $V\in \Omega_{\lambda}(F^\bullet)\cap\Omega_{\mu}(F^\bullet_{op})$ならば$V\subset W$である。
+\end{lemm}
+
+\begin{proof}
+  補題$\ref{W_form}$より、すべての$i$に対して$V\subset A_i+B_{i+1}$が成り立つことを示せばよい。$b(i+1)\geq a(i)$ならば、$A_i+B_{i+1}=\complex^n$だから$b(i+1)<a(i) $としてよい。$V\in \Omega_{\lambda}(F^\bullet)\cap\Omega_{\mu}(F^\bullet_{op})$より
+  \[
+  \dim V\cap A_i\geq i,\qquad \dim V\cap B_{i+1}\leq {i+1}^*=d-i  
+  \]
+  が成り立つ。また$A_i\cap B_{i+1}=0$である。これより
+  \begin{align*}
+    d&\leq \dim V\cap A_i + \dim  V\cap B_{i+1}\\
+    &=\dim (V\cap A_i+ V\cap B_{i+1})+\dim (V\cap A_i\cap B_{i+1})\\
+    &\leq \dim V\cap (A_i+B_{i+1})
+  \end{align*}
+  となる。$\dim V=d$であるのでこれは$V\subset A_i+B_{i+1}$を意味する。
+\end{proof}
+
+\begin{lemm}\label{W_direct_sum}
+  $W=\bigoplus_{i=1}^d W_i$が成り立つ。
+\end{lemm}
+
+\begin{proof}
+  まず、$\nu/\lambda$が水平帯であることから
+  \begin{align*}
+    \lambda_{i}+\mu_{(i+1)^*}=\lambda_i+n-d-\nu_{i+1}\geq n-d
+  \end{align*}
+  が成り立つ。これより
+  \begin{align*}
+    a(i)-b(i+1)
+    &=(\lambda_i+d-i+1)-(n-\mu_{(i+1)^*}-d+(i+1)^*)\\
+    &=\lambda_i+\mu_{(i+1)^*}+(d-i-1)-(n-i)\\
+    &=\lambda_i+\mu_{(i+1)^*}d-n+1\\
+    &\geq 1
+  \end{align*}
+  すなわち$a(i)\geq b(i+1)$となるから$A_i\cap B_{i+1}=0$である。したがって、
+  \[
+  W_i\cap W_{i+1}=(A_i\cap B_i)\cap (A_{i+1}\cap B_{i+1})=0  
+  \]
+  これより
+  \[
+  W=\bigoplus_{i=1}^dW_i  
+  \]
+  となる。
+\end{proof}
+
+\begin{lemm}\label{W_cap_L}
+  一般の旗$E^\bullet$に対して$L=E^{k+d-1}$とおくと$\dim W\cap L=1$である。
+\end{lemm}
+
+\begin{proof}
+  補題\ref{W_direct_sum}より
+  \[
+  \dim W=\sum_{i=1}^d\dim A_i\cap B_i=\sum_{i=1}^d(b(i)-a(i)+1)=k+d  
+  \]
+  である。一方、
+  \[
+  \dim L=n+1-(k+d)  
+  \]
+  である。よって$\dim W\cap L=(k+d)+(n+1-k-d)-\dim (W+L)\geq 1$となるが、一般の$L$に対しては$\dim W\cap L=1$である\footnote{
+    一般に部分空間$V,W\subset \complex^n$が、線形写像$f,g:\complex^n\rightarrow \complex^n$に対して$V=\ker f$, $W=\ker g$で与えられているとする。このとき$V\cap W=\ker (f \diamond g:\complex^n\owns x\mapsto (f(x),g(x))\in \complex^{2n})$である。よって$\dim V\cap W=2n-\rank (f\diamond g)$となるから、$\dim V\cap W=1$となる条件は$f\diamond g$を行列表示したときの成分の多項式で与えられる。
+  }。
+\end{proof}
+
+
+\begin{lemm}\label{V_direct_sum}
+  $V=\bigoplus_{i=1}^d V\cap W_i$が成り立つ。
+\end{lemm}
+
+\begin{proof}
+  $\dim V\cap A_i\geq i$, $\dim V\cap B_i\geq d+1-i$より
+  \begin{align*}
+    \dim V\cap W_i
+    &=\dim V\cap A_i\cap B_{i+1}\\
+    &=\dim V\cap A_i + \dim V\cap B_{i+1}-\dim (V\cap A_i + V\cap B_{i+1})\\
+    &\geq 1
+  \end{align*}
+  となる。補題\ref{W_direct_sum}より
+  \[
+  d\geq \dim \sum_{i=1}^d V\cap W_i=\sum_{i=1}^d \dim V\cap W_i\geq d  
+  \]
+  ゆえに
+  \[
+  V=  \bigoplus_{i=1}^d V\cap W_i
+  \]
+\end{proof}
+
+
+以上の準備をもとに定理\ref{Pieri_formula}を証明しよう。
+示した補題をもう一度述べると
+\begin{align*}
+  &V\subset W,\qquad \text{補題\ref{V_subset_W}}\\
+  &W=\bigoplus_{i=1}^d W_i,\qquad \text{補題\ref{W_direct_sum}}\\
+  &\dim W\cap L = 1,\qquad \text{補題\ref{W_cap_L}}\\
+  &V=\bigoplus_{i=1}^d V\cap W_i,\qquad \text{補題\ref{V_direct_sum}}
+\end{align*}
+である。
+
+\begin{proof}
+  $V\in \Omega_\lambda(F^\bullet)\cap \Omega_\mu(F^\bullet_{op})\cap \Omega_{(k)}(E^\bullet)$とする。補題\ref{W_cap_L}より$W\cap L=\generated{w}$となる$w$をとる。$V\in \Omega_{(k)}(E^\bullet)$より$\dim V\cap L\geq 1$であるから、補題\ref{V_subset_W}より
+    \[
+  0\neq V\cap L\subset W\cap L=\generated{w}   
+  \]
+  ゆえに$w\in V$である。補題\ref{V_direct_sum}より、
+  \[
+  w=w_1+\cdots+w_d,\qquad w_i\in V\cap W_i  
+  \]
+  と分解する。ここで、必要なら$L$を少し動かして$w_i\neq 0$としてよい\footnote{
+    $L$は$\dim W\cap L=1$となる次元の和が$n+1$の部分空間であった。例えば、$W=\generated{e_1,e_2}\subset \complex^3$, $L=\generated{e_2,e_3}$のとき$W\cap L=\generated{e_2}$であるが、$L$の基底を動かして$L'=\generated{e_1+e_2,e_3}$などにすれば、$W\cap L=\generated{e_1+e_2}$となる。
+  }。すると、補題\ref{W_direct_sum}より$w_1,\cdots,w_d$は一次独立であるので、$V=\generated{w_1,\cdots,w_d}$である。これで、
+  $\nu/\lambda$が水平帯であるならば、
+  \[
+    \Omega_\lambda(F^\bullet)\cap \Omega_\mu(F^\bullet_{op})\cap \Omega_{(k)}(E^\bullet)=\{\generated{w_1,\cdots,w_d}\}  
+  \]
+  となることが示せた。
+
+  次に$\nu/\lambda$が水平帯でないとする。このとき一連の補題のうち補題\ref{W_direct_sum}が成り立たない。したがって$\dim W<k+d$となるから、一般の$L$(その次元は$n+1-(k+d)$)に対して$L\cap W=0$である。$V\in \Omega_{\lambda}(F^\bullet)\cap \Omega_{\mu}(F^\bullet_{op})$ならば$V\subset W$であるから、$\dim V\cap L \geq 1$とならない。したがって$\Omega_\lambda(F^\bullet)\cap \Omega_\mu(F^\bullet_{op})\cap \Omega_{(k)}(E^\bullet)=\varnothing$である。
+\end{proof}
+
+
+
 
 \begin{cor}[Giambelliの公式]\label{giambelli}
   $\lambda\in\mathcal{Y}_d(n)$に対して

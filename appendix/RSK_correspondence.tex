@@ -4,13 +4,13 @@
 \begin{document}
 \chapter{Robinson-Schensted-Knuth対応}
 
-Robinson-Schensted-Knuth対応(以下RSK対応と呼ぶ)とは、非負整数行列と、同じ形をもつ半標準タブローの組との間の1対1対応のことである。この付録ではRSK対応の証明はせず、主張の紹介と第2章で用いたCauchyの等式(補題\ref{formal_power_series_relation})の証明を解説する。
+Robinson-Schensted-Knuth対応(以下RSK対応と呼ぶ)とは、非負整数行列と、同じ形をもつ半標準タブローの組との間の1対1対応のことである。この付録ではRSK対応の証明はせず、主張の紹介と第2章で用いたCauchyの等式(補題\ref{formal_power_series_relation})の証明を解説する。詳しくは\cite{young_tableau},\cite{knuth}を参照されたい。
 
 \begin{defin}[行挿入]
   $T$を形$\lambda$の半標準タブローとし、$k$を正の整数とする。次の帰納的な操作で得られる半標準タブローを$T\leftarrow k$と書く：
   \begin{enumerate}
     \item $T$の一行目の一番右の数が$k$以下なら、右端に$k$を追加したものを$T\leftarrow k$として操作を終了する。
-    \item $T$の右端が$k$より真に大きいならば、$T$の一行目において$k$より大きいもののうち最も左にある箱を$k$で置き換える。またそのときもともと入っていた数を$l$とおく。
+    \item $T$の右端が$k$より真に大きいならば、$T$の一行目において$k$より大きいもののうち最も左にある箱を$k$で置き換える。また置き換えた箱にもともと入っていた数を$l$とおく。
     \item $T$の二行目以降の部分タブローを$T'$とし、$T'\leftarrow l$と$T$の一行目を結合したものを$T\leftarrow k$として操作を終了する。
   \end{enumerate}
 \end{defin}
