@@ -24,11 +24,11 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
 したがって$V(S)=V(F_1,\cdots,F_r)$となる多項式$F_1,\cdots,F_r\in k[X_1,\cdots,X_n]$が存在する。
 
 \begin{eg}\label{rei1}
-  $V(0)=\affine^n$, $V(1)=\varnothing$である。$k$が無限体である場合、逆にイデアル$\mathfrak{a}$に対して$V(\mathfrak{a})=\affine^n$ならば$\mathfrak{a}=(0)$である。
+  $V(0)=\affine^n$, $V(1)=\varnothing$である。$k$が無限体である場合、逆にイデアル$\mathfrak{a}$に対して$V(\mathfrak{a})=\affine^n$ならば$\mathfrak{a}=0$である。
   
-  実際、$\mathfrak{a}\neq 0$であるとして$F\in\mathfrak{a}$を$0$でも定数でもない多項式とする。$F$はある変数$X_i$に関して$1$次以上であるからとくに$X_1$を含むとする。$F_*=F(X_1,1,\cdots,1)\in k[X_1]$を考えると、$F_*$の根は高々有限かつ、$k$は無限体であるから、$F_*$根でない$X_1$, したがって$V(\mathfrak{a})$に含まれない点が存在する。
+  実際、$\mathfrak{a}\neq 0$であるとして$F\in\mathfrak{a}$を$0$でも定数でもない多項式とする。$F$はある変数$X_i$に関して$1$次以上であるからとくに$X_1$を含むとしてよい。$F_*=F(X_1,1,\cdots,1)\in k[X_1]$を考えると、$F_*$の根は高々有限かつ、$k$は無限体であるから、$F_*$の根でない$X_1$, したがって$V(\mathfrak{a})$に含まれない点が存在する。
 
-  $V(\mathfrak{a})=\varnothing$ならば$\mathfrak{a}=(1)$となることは$k$が代数閉ならば成り立つが、それはHilbertの零点定理の帰結である。
+  $V(\mathfrak{a})=\varnothing$ならば$\mathfrak{a}=(1)$となることは$k$が代数閉ならば成り立つが、それはHilbertの零点定理(事実\ref{nullstellenzats})の帰結である。
 \end{eg}
 
 \begin{eg}
@@ -45,7 +45,7 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
 \end{prop}
 
 \begin{proof}
-  $P\in V(T)$ならば任意の$F\in S$について、$F\in S\subset T$であるから$F(P)=0$. したがって$P\in V(S)$
+  $P\in V(T)$ならば任意の$F\in S$について、$F\in S\subset T$であるから$F(P)=0$. したがって$P\in V(S)$となる。
 \end{proof}
 
 \begin{prop}\label{zariski}
@@ -55,14 +55,15 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
     \item $V(S)\cup V(T)=V(ST)$, ただし$ST=\set{FG}{F\in S, G\in T}$
     \item $\bigcap_{\lambda\in\Lambda}V(S_\lambda)=V(\bigcup_{\lambda\in\Lambda}S_\lambda)$
   \end{enumerate}
-  が成り立つ
+  が成り立つ。
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
-    \item はよい
-    \item $p\in V(S)\cup V(T)$ならば任意の$F\in S, G\in T$について$F(p)=0$または$G(p)=0$が成り立つから、$FG(p)=F(p)G(p)=0$. よって$p\in V(ST)$である。逆に$p\in V(ST)$かつ、$p\notin V(T)$であるとする。ある$G\in T$があって$G(p)\neq 0$であるから任意の$F\in S$について$0=FG(p)=F(p)G(p)$より$F(p)=0$. すなわち$p\in V(S)$
-    \item $S_\lambda\subset \bigcup_{\lambda\in\Lambda} S_\lambda$であるから、$V(S_\lambda)\supset V(\bigcup_{\lambda\in\Lambda}S_\lambda)$. よって$\bigcap_{\lambda\in\Lambda} V(S_\lambda)\supset V(\bigcup_{\lambda\in\Lambda} S_\lambda)$. $p\in\bigcap_{\lambda\in\Lambda}V(S_\lambda)$ならば、任意の$F\in\bigcup_{\lambda\in\Lambda}S_\lambda$に対して$F(p)=0$すなわち$p\in V(\bigcup_{\lambda\in\Lambda}S_\lambda)$
+    \item はよい。
+    \item $p\in V(S)\cup V(T)$ならば任意の$F\in S, G\in T$について$F(p)=0$または$G(p)=0$が成り立つから、$FG(p)=F(p)G(p)=0$となる。
+    よって$p\in V(ST)$である。逆に$p\in V(ST)$かつ、$p\notin V(T)$であるとする。ある$G\in T$があって$G(p)\neq 0$であるから任意の$F\in S$について$0=FG(p)=F(p)G(p)$より$F(p)=0$となる。 すなわち$p\in V(S)$となる。
+    \item $S_\lambda\subset \bigcup_{\lambda\in\Lambda} S_\lambda$であるから、$V(S_\lambda)\supset V(\bigcup_{\lambda\in\Lambda}S_\lambda)$となり、よって$\bigcap_{\lambda\in\Lambda} V(S_\lambda)\supset V(\bigcup_{\lambda\in\Lambda} S_\lambda)$である。 $p\in\bigcap_{\lambda\in\Lambda}V(S_\lambda)$ならば、任意の$F\in\bigcup_{\lambda\in\Lambda}S_\lambda$に対して$F(p)=0$すなわち$p\in V(\bigcup_{\lambda\in\Lambda}S_\lambda)$である。
   \end{enumerate}
 \end{proof}
 
@@ -81,11 +82,11 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
 \end{eg}
 
 \begin{eg}\label{M_d,n}
-  $\affine^{nd}$の座標を$x_{ij}$, $(1\leq i\leq n$, $1\leq j\leq d)$で表す。$\mathcal{M}(d,n)\subset\affine^{nd}$をランク$d$の$n\times d$行列全体のなす集合とする。$A\in\affine^{nd}$に対して、$A$の$i_1,\cdots,i_d$を取り出した小正方行列を$A_{i_1,\cdots,i_d}$とする。
+  $\affine^{nd}$の座標を$x_{ij}$, $(1\leq i\leq n$, $1\leq j\leq d)$で表す。$\mathcal{M}(d,n)\subset\affine^{nd}$をランク$d$の$n\times d$行列全体のなす集合とする。$A\in\affine^{nd}$に対して、$A$の$i_1,\cdots,i_d$行を取り出した小正方行列を$A_{i_1,\cdots,i_d}$とする。
   \begin{align*}
   \affine^{nd}\setminus \mathcal{M}(d,n)
   &=\set{A\in\affine^{nd}}{\det A_{i_1,\cdots,i_d}=0, \text{for all $1\leq i_1<\cdots<i_d\leq n$}}\\
-  &=V(\{\det X_{i_1,\cdots,i_d}\}_{i_1,\cdots,i_d})
+  &=V(\{\det X_{i_1,\cdots,i_d}\}_{1\leq i_1<\cdots<i_d\leq n})
   \end{align*}
   よって$\mathcal{M}(d,n)$は$\affine^{nd}$のZariski開集合である。
 \end{eg}
@@ -140,7 +141,7 @@ $S$の生成するイデアルを$\mathfrak{a}$とすれば$V(S)=V(\mathfrak{a})
   \]
   において$\det(x_{ij})^rF((x_{ij}),\det(x_{ij})^{-1})$を多項式にすることができる。よって$\psi^{-1}(V\cap V(F))$も閉集合である。一般の$\affine^{n^2+1}$の閉集合に対しても同様である。よって$\gl_n(k)\approx V$である。
 
-  すなわち$\gl_n(k)$は$\affine^{n^2}$のZariski開集合, $\affine^{n^2+1}$のZariski閉集合どちらとみなしてもよいから、状況によって扱いやすいほうを選ぶ。
+  すなわち$\gl_n(k)$は$\affine^{n^2}$のZariski開集合とみなしてもよいし、$\affine^{n^2+1}$のZariski閉集合どちらとみなしてもよい。状況によって扱いやすいほうを選ぶ。
 \end{eg}
 
 
