@@ -16,7 +16,7 @@
 以下、本節ではベクトル空間と言ったら複素数体$\complex$上の有限次元ベクトル空間を指すものとし、群と言ったら有限群を指すものとする。
 
 \begin{eg}
-  $G$を群、$V=\complex$とする。$\rho:G\rightarrow \gl(V)=\complex^\times$を、すべての$g\in G$に対して$\rho(g)=1$とすると$\rho$は表現になる。これを自明な表現という
+  $G$を群、$V=\complex$とする。$\rho:G\rightarrow \gl(V)=\complex^\times$を、すべての$g\in G$に対して$\rho(g)=1$とすると$\rho$は表現になる。これを自明な表現という。
 \end{eg}
 
 \begin{eg}\label{natural}
@@ -33,7 +33,7 @@
   \[
   \rho(g)\left(\sum_{x\in G}a_xx\right)=\sum_{x\in G}a_xgx  
   \]
-  によって定めるとこれは表現になる。これを$G$の正則表現という
+  によって定めるとこれは表現になる。これを$G$の正則表現という。
 \end{eg}
 
 文脈から明らかな場合や特に明示する必要がないとき、$\rho(g)x$のことをたんに$gx$と書く。表現論の基本的な問題は、$G$の考えうるあらゆる作用を分類することである。表現の分類の基準となるのは、次の定義である。
@@ -238,17 +238,18 @@
     \item $\chi_{V_1\otimes V_2}=\chi_1\chi_2$
     \item $\chi_{V_1^*}=\overline{\chi_1}$
   \end{enumerate}
-  が成り立つ
+  が成り立つ。
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
-    \item $\tr(A\oplus B)=\tr(A)+\tr(B)$より従う
-    \item $\tr(A\otimes B)=\tr(A)\tr(B)$より従う
+    \item $\tr(A\oplus B)=\tr(A)+\tr(B)$より従う。
+    \item $\tr(A\otimes B)=\tr(A)\tr(B)$より従う。
     \item $\rho^*(g)=\transpose\rho(\inv{g})$であるから、$\tr(\rho^*(g))=\tr(\transpose\rho(\inv{g}))=\tr(\rho(\inv{g}))$となる。ここで、$G$は有限群であるから$\rho(g)$は有限位数、したがってユニタリ行列である。よって$\rho(g)$の固有値$\lambda_1,\cdots,\lambda_n$はすべて絶対値が$1$なので
     \[
     \tr(\rho(\inv{g}))=\frac{1}{\lambda_1}+\cdots+\frac{1}{\lambda_n}=\overline{\lambda_1}+\cdots+\overline{\lambda_n}=\overline{\tr(\rho(g))}
     \]
+    である。
   \end{enumerate}
 \end{proof}
 
@@ -277,6 +278,7 @@
   \[
   \chi_U=\chi_V-1  
   \]
+  となる。
 \end{eg}
 
 \begin{eg}\label{char_reg_rep}
@@ -287,6 +289,7 @@
     |G| & \text{if }g=e
   \end{array}\right. 
   \]
+  が成り立つ。
 \end{eg}
 
 \begin{eg}
@@ -351,7 +354,7 @@
   \[
   \chi_{\Hom(V,W)}=\overline{\chi_V}\chi_W  
   \]
-  が成り立つ
+  が成り立つ。
 \end{lemm}
 
 \begin{proof}
@@ -389,7 +392,7 @@
   \[
   f(x)=\frac{1}{|G|}\sum_{g\in G}gx=\frac{1}{|G|}\sum_{g\in G}x=x  
   \]
-  ゆえに$\im f\subset V^G$. 射影のトレースは像の次元に等しい\footnote{
+  となるから$\im f\subset V^G$である。 射影のトレースは像の次元に等しい\footnote{
     射影は$f^2=f$をみたすので固有値は$0$か$1$のどちらかであることから従う。
   }ので
   \[
@@ -418,7 +421,7 @@
   \[
   f(\inv{g}xg)=f(x),\qquad\text{for all $g\in G$}  
   \]
-  を満たすとき、$f$を類関数という。類関数全体を$C(G)$と置くと$C(G)$には点ごとに和とスカラー倍を定めて$\complex$ベクトル空間の構造が入る
+  を満たすとき、$f$を類関数という。類関数全体を$C(G)$と置くと$C(G)$には点ごとに和とスカラー倍を定めて$\complex$ベクトル空間の構造が入る。
 \end{defin}
 
 \begin{eg}
@@ -480,7 +483,7 @@
   \begin{quote}
     $f\in C(G)$が$\generated{\chi_i,f}=0$を各$i=1,\cdots, r$に対して満たせば$f=0$である
     \footnote{
-    一般に内積空間$V$の正規直交系$v_1,\cdots,v_n$が、性質「$w\in V$がすべての$i$に対して$\generated{w,v_i}=0$をみたすならば$w=0$」をもてば$v_1,\cdots,v_n$は$V$の基底になる。実際、任意の$x\in V$に対して$w=x-(\generated{x,v_1}v_1+\cdots+\generated{x,v_n}v_n)$と置けば$\generated{w,v_i}=0$をみたすから$w=0$
+    一般に内積空間$V$の正規直交系$v_1,\cdots,v_n$が、性質「$w\in V$がすべての$i$に対して$\generated{w,v_i}=0$をみたすならば$w=0$」をもてば$v_1,\cdots,v_n$は$V$の基底になる。実際、任意の$x\in V$に対して$w=x-(\generated{x,v_1}v_1+\cdots+\generated{x,v_n}v_n)$と置けば$\generated{w,v_i}=0$をみたすから$w=0$である。
     }
   \end{quote}
   $f$が仮定をみたす類関数であるとする。各$i$について$\chi_i$を指標に持つ既約表現を$(\rho_i,V_i)$とおく。
@@ -521,7 +524,7 @@
   \[
   0=F(e)=\sum_{g\in G}\overline{f(g)}g
   \]
-  $G$は一次独立であるからすべての$g$について$f(g)=0$
+  $G$は一次独立であるからすべての$g$について$f(g)=0$が成り立つ。
 \end{proof}
 
 \begin{cor}\label{rep_and_char}
@@ -583,7 +586,7 @@
   \[
   |G|=(\dim W_1)^2+\cdots +(\dim W_r)^2  
   \]
-  が成り立つ
+  が成り立つ。
 \end{prop}
 
 \begin{proof}
@@ -610,6 +613,7 @@
   \[
   |G|=R(e)=(\dim W_1)^2+\cdots +(\dim W_r)^2  
   \]
+  が成り立つ。
 \end{proof}
 
 
@@ -888,7 +892,7 @@ $\complex$の標数は0であるから定理\ref{maschke}は定理\ref{general_m
   \[
   m=a(x+y)=ay\in J  
   \]
-  $I\cap J=0$より$m=0$
+  $I\cap J=0$より$m=0$である。
 \end{proof}
 
 したがって$G$の既約表現を求める問題は$\complex[G]$の原始的べき等元を求める問題に帰着された。具体的に原始的べき等元を見つけるのは難しいが、対称群の場合はYoung図形とのきれいな対応により構成することができる。次節にそのことを解説する。
