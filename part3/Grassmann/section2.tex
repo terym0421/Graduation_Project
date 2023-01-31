@@ -263,7 +263,17 @@ a_{ij}=\left\{\begin{array}{cl}
 が成り立つ。
 
 \begin{eg}
-$\mathcal{G}(2,4)$の場合
+  $\mathcal{G}(1,n+1)=\proj^{n}$の場合Schubert胞体は
+  \[
+  \Omega_{1}^\circ=\bmat{1\\ * \\ * \\\vdots\\ *},
+  \Omega_{2}^\circ=\bmat{0\\1\\ * \\\vdots\\ *},
+  \cdots,
+  \Omega_{n+1}^\circ=\bmat{0\\0\\0\\\vdots\\1}
+  \]
+\end{eg}
+
+\begin{eg}
+$\mathcal{G}(2,4)$の場合Schubert胞体は
   \begin{align*}
     &\Omega^\circ_{1,2}=\bmat{
       1 & 0\\
@@ -320,8 +330,21 @@ Schubert胞体とYoung図形の関係について述べておく。$1\leq i_1<\c
 またこのとき対応する$\lambda$は、$A$から$i_1,\dots,i_d$行と$*$の入っている部分を取り除いてできる形(を$90^\circ$左に開店したもの)と同じである。
 
 
+\begin{eg}
+  $\mathcal{G}(1,n+1)$の場合
+  \[
+  \ytableausetup{boxsize=0.5em}
+  \Omega_{\varnothing}^\circ=\bmat{1\\ * \\ * \\\vdots\\ *},
+  \Omega_{\ydiagram{1}}^\circ=\bmat{\fbox{0}\\1\\ * \\\vdots\\ *},
+  \cdots,
+  \Omega_{(n)}^\circ=\bmat{\fbox{0}\\\fbox{0}\\\fbox{0}\\\vdots\\1}
+  \ytableausetup{boxsize=normal}
+  \]
+\end{eg}
+
 
 \begin{eg}
+  $\mathcal{G}(2,4)$の場合
 \begin{align*}
   \ytableausetup{boxsize=0.5em}
   &\Omega^\circ_{\varnothing}=\bmat{
@@ -386,6 +409,21 @@ $\Box$で囲った成分のなす形とYoung図形とが対応している。
   \]
   をSchubert多様体という。
 \end{defin}
+
+\begin{eg}
+  $\mathcal{G}(1,n+1)=\proj^n$において
+  \[
+  \ytableausetup{boxsize=0.5em}
+  \Omega_{\ydiagram{1}}=\bmat{0\\1\\ * \\ \vdots \\ *}\cup \bmat{0\\0\\1\\\vdots\\ * }\cup\cdots\cup\bmat{0\\0\\0\\\vdots\\1}=\set{[0:x_1,\cdots,x_n]\in\proj^n}{x_i\in\complex}=\proj^{n-1}
+  \ytableausetup{boxsize=normal}
+  \]
+  同様に
+  \[
+  \Omega_{(k)}=\proj^{n-k}  
+  \]
+  である。
+\end{eg}
+
 
 ここで定義したSchubert多様体は、正確には標準的な旗に付随するSchubert多様体と呼ぶべきものである。旗の概念は後で定義するが、一般のSchubert多様体はこの標準的なSchubert多様体のもつ、次の幾何学的な性質を一般化する形で定める。
 
@@ -481,7 +519,6 @@ $\Box$で囲った成分のなす形とYoung図形とが対応している。
   \]
   を$F^\bullet$に付随するSchubert多様体という
 \end{defin}
-
 
 \begin{eg}\label{case_2,4}
 $\mathcal{G}(2,4)$において、$F^\bullet$を任意の$\complex^4$の旗としてその射影化を$\proj^3\supset e_0\supset l_0\owns p_0\supset\varnothing$とする。このとき
